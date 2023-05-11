@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+
+////!!!! ОСНОВНОЙ КЛАСС СТАТИСТИКИ ИГРАКОВ
 public class StatisticMath {   // класс дял подчета количетва играков )))))
 
     public static boolean key_recalculate_statistics = true;

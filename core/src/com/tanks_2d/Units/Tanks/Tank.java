@@ -55,7 +55,8 @@ public class Tank {
     private float time_life = 0;
     private float g = 1;
 
-    private boolean banner_feith;
+    private boolean banner_feith;   //банер драки
+    private boolean banner_death; // банер смерти
 
 
 //    private HashMap<Float, Integer> targetTreet; // цели - угол до цели - номер цели )))
@@ -77,6 +78,8 @@ public class Tank {
         direction_tower.setAngleDeg(direction.angleDeg());
         //targetCoordinat = new Vector2()
         this.sb = gsp.getBatch();
+        banner_death = false;
+
 
 ///////////////////////////////////////
 

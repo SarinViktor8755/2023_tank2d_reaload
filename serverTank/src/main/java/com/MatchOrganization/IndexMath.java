@@ -38,7 +38,7 @@ public class IndexMath {
         if (!pause_game) this.realTimeMath += dt;
         this.listPlayers = listPlayers;
         this.restartMath(this.realTimeMath);
-        if (pause_game) System.out.println("PAUSE game");
+        if (pause_game) System.out.println("PAUSE game " + this.realTimeMath);
     }
 
 

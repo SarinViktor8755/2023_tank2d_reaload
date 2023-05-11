@@ -383,7 +383,7 @@ public class Controller {
         feature = gamePlayScreen.getAMG().get("treck_bar1.png", Texture.class);
 
 
-        banner = new Banner(gsp.getBatch(), gsp.getAudioEngine(), fith,victory,failed, track);
+        banner = new Banner(gsp.getBatch(), gsp.getAudioEngine(), fith,victory,failed,track);
     }
 
     public boolean isButtonChangingOpponent() {

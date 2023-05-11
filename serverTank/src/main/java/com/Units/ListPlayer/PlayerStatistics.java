@@ -1,6 +1,8 @@
 package main.java.com.Units.ListPlayer;
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class PlayerStatistics {
     static HashMap<Integer, player_Static> list_static = new HashMap<Integer, player_Static>();
@@ -33,6 +35,15 @@ public class PlayerStatistics {
     /////////////////////////
 
     public String getStatistigString(){
+        int i = 0;
+
+        Iterator<Map.Entry<Integer, player_Static>> itr = list_static.entrySet().iterator();
+        while (itr.hasNext()) {
+            i++;
+            Map.Entry<Integer, player_Static> tank = itr.next();
+            System.out.println(i + tank.getValue().toString());
+            System.out.println();
+        }
         return list_static.toString();
     }
 
@@ -62,5 +73,9 @@ public class PlayerStatistics {
         String name;
 
     }
+
+
+
+
 }
 
