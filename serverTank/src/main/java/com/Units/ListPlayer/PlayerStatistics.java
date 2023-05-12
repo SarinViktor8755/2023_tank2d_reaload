@@ -23,6 +23,11 @@ public class PlayerStatistics {
         list_static.get(id_player).death++;
     }
 
+    public void add_damage_done_in_hp(int id_player, int damage){ // добавить смерть
+        if(!list_static.containsKey(id_player)) addPlayer(id_player);
+        list_static.get(id_player).damage_done_in_hp += damage;
+    }
+
     public void addFrag(int id_player){ // добавить фраг
         if(!list_static.containsKey(id_player)) addPlayer(id_player);
         list_static.get(id_player).fargs++;
@@ -41,7 +46,7 @@ public class PlayerStatistics {
         while (itr.hasNext()) {
             i++;
             Map.Entry<Integer, Player_statistics> tank = itr.next();
-            System.out.println(i + tank.getValue().name +"  "+tank.getValue().fargs + " d " + tank.getValue().death );
+            System.out.println(i + tank.getValue().name +"  "+tank.getValue().fargs + " d " + tank.getValue().death + " d " + tank.getValue().damage_done_in_hp);
             System.out.println();
         }
         return list_static.toString();

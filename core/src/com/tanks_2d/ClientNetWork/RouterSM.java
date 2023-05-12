@@ -78,7 +78,7 @@ public class RouterSM {
             //   System.out.println("=+++++++++++++  " + sm.p1);
             if (sm.p1 == Heading_type.PAUSE_GAME) {
                 MainGame.setFlagChangeScreen((byte) MainGame.STATUS_GAME_PAUSE);
-                // тут адо забрать статстику матча и распарсить ее 
+                // тут адо забрать статстику матча и распарсить ее
 
             }
              if(sm.p1 == Heading_type.PLAY_GAME) MainGame.setFlagChangeScreen((byte) MainGame.STATUS_GAME_GAMEPLAY);

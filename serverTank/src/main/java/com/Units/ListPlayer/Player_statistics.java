@@ -5,10 +5,13 @@ public class Player_statistics {
     public int death;  // смерти игрока
     String name;  // nik игрока
 
+    public int damage_done_in_hp;  // нанесенный урон в хп
+
     public Player_statistics(String name) {
         fargs = 0;
         death = 0;
-        name = name;
+        this.name = name;
+        damage_done_in_hp = 0;
 
     }
 
@@ -16,6 +19,7 @@ public class Player_statistics {
         fargs = 0;
         death = 0;
         name = null;
+        damage_done_in_hp = 0;
     }
 
 
@@ -29,7 +33,7 @@ public class Player_statistics {
     }
 
     public String toStringForClient() {
-        return name + "<_<nn " + fargs + " " + death;
+        return name + "<_<nn " + fargs + " " + death + " " + damage_done_in_hp;
     }
 
 

@@ -91,7 +91,7 @@ public class IndexBullets {
                     //   System.out.println( "---" + bullet.getTimeLife() + "   " + MathUtils.map(Heading_type.SHOT_LIFETIME, 0, 15, 50, bullet.getTimeLife()));
                     int hp = (int) MathUtils.clamp(MathUtils.map(2000, 0, 10, 35, bullet.getTimeLife()), 10, 35);
                     player.minusHP(hp);
-
+                    playerStatistics.add_damage_done_in_hp(bullet.getAuthor_bullet(),hp); // добавляет в статистику нанесенног одемейджа
 
                     gameServer.send_PARAMETERS_PLAYER(player); // рассылка всем
                     if (!player.isLive()) {     // если игрок умер тогда присваиваем очки
