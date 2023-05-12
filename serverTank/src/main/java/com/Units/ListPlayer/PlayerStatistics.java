@@ -5,15 +5,15 @@ import java.util.Iterator;
 import java.util.Map;
 
 public class PlayerStatistics {
-    static HashMap<Integer, player_Static> list_static = new HashMap<Integer, player_Static>();
-
+    static HashMap<Integer, Player_statistics> list_static = new HashMap<Integer, Player_statistics>();
+    static String result_for_client;
     public void addPlayer(int id_player, Player player){
-        player_Static ps = new player_Static(player.nikName);
+        Player_statistics ps = new Player_statistics(player.nikName);
         list_static.put(id_player,ps);
     }
 
     public void addPlayer(int id_player){
-        player_Static ps = new player_Static();
+        Player_statistics ps = new Player_statistics();
         list_static.put(id_player,ps);
     }
 
@@ -37,45 +37,26 @@ public class PlayerStatistics {
     public String getStatistigString(){
         int i = 0;
 
-        Iterator<Map.Entry<Integer, player_Static>> itr = list_static.entrySet().iterator();
+        Iterator<Map.Entry<Integer, Player_statistics>> itr = list_static.entrySet().iterator();
         while (itr.hasNext()) {
             i++;
-            Map.Entry<Integer, player_Static> tank = itr.next();
-            System.out.println(i + tank.getValue().toString());
+            Map.Entry<Integer, Player_statistics> tank = itr.next();
+            System.out.println(i + tank.getValue().name +"  "+tank.getValue().fargs + " d " + tank.getValue().death );
             System.out.println();
         }
         return list_static.toString();
     }
 
-
-
-
-
-
-
-    public class player_Static {
-        public player_Static(String name) {
-            fargs = 0;
-            death = 0;
-            name = name;
-
+    // передача для клиентов для экрана паузы
+    public String generating_string_clients(){
+        StringBuilder resuld_bilder = new StringBuilder();
+        Iterator<Map.Entry<Integer, Player_statistics>> itr = list_static.entrySet().iterator();
+        while (itr.hasNext()) {
+            resuld_bilder.append("<p>::" + itr.next().getValue().toStringForClient());
         }
 
-        public player_Static() {
-            fargs = 0;
-            death = 0;
-            name = null;
-        }
-
-        public int fargs; // фраги игрока
-        public int death;  // смерти игрока
-
-        String name;
-
+        return resuld_bilder.toString();
     }
-
-
-
 
 }
 

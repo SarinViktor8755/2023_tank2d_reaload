@@ -37,6 +37,8 @@ public class Heading_type {
 
     public static final int RESPOWN_TANK_PLAYER = 49; // дать команду на респаун - в пакет нужно поместить номер команды ))
 
+
+   // public static final int MATCH_STATISTICS = 51; //match statistics
     ////
     public static final int IN_MENU = -1;
     public static final int IN_GAME = -2;

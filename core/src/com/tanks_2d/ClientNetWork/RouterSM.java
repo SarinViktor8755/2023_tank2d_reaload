@@ -76,9 +76,11 @@ public class RouterSM {
 
         if (Heading_type.CHANGE_THE_SCREEN == sm.tip) {
             //   System.out.println("=+++++++++++++  " + sm.p1);
-            if (sm.p1 == Heading_type.PAUSE_GAME) MainGame.setFlagChangeScreen((byte) MainGame.STATUS_GAME_PAUSE);
+            if (sm.p1 == Heading_type.PAUSE_GAME) {
+                MainGame.setFlagChangeScreen((byte) MainGame.STATUS_GAME_PAUSE);
+                // тут адо забрать статстику матча и распарсить ее 
 
-
+            }
              if(sm.p1 == Heading_type.PLAY_GAME) MainGame.setFlagChangeScreen((byte) MainGame.STATUS_GAME_GAMEPLAY);
         }
 
@@ -188,6 +190,12 @@ public class RouterSM {
             // mainGame.getGamePlayScreen().getTanksOther().delPlayer((int)sm.p1);
             return;
         }
+//
+//        if (Heading_type.MATCH_STATISTICS == sm.tip) { // сервер прислал статистика матча после боя
+//
+//
+//            return;
+//        }
 
     }
 

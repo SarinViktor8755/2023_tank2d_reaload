@@ -52,6 +52,7 @@ public class MainGame {
         if(!indexMath.isPause()) return;
          gameServer.send_Chang_screen(true,PAUSE_TIME);
 
+
         pause_math = PAUSE_TIME;
         System.out.println("startPauseTimer");
         indexMath.setPause(false);

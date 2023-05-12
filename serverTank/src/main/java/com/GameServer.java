@@ -56,7 +56,7 @@ public class GameServer {
                                @Override
                                public void disconnected(Connection connection) {
                                    try {
-                                      lp.disconect(connection.getID());
+                                       lp.disconect(connection.getID());
 //                                       lp.getPlayerForId(connection.getID()).setStatus(Heading_type.DISCONECT_PLAYER);
 //                                       lp.getPlayerForId(connection.getID()).setPosition(Player.DISCONECT_SYS_LAYER);
                                        // getLp().getPlayers().remove(connection.getID());
@@ -82,12 +82,12 @@ public class GameServer {
                                    ///      System.out.println(server.getConnections().length +"    -------------");
                                    if (object instanceof Network.PleyerPosition) {
                                        try {
-                                       Network.PleyerPosition pp = (Network.PleyerPosition) object;
-                                       //  lp.sendToAllPlayerPosition(connection.getID(), (Network.PleyerPosition) object);
-                                       lp.getPlayerForId(connection.getID()).setPosition(pp.xp, pp.yp);
-                                       lp.getPlayerForId(connection.getID()).setRotTower(pp.roy_tower);
-                                       return;
-                                       }catch (NullPointerException e){
+                                           Network.PleyerPosition pp = (Network.PleyerPosition) object;
+                                           //  lp.sendToAllPlayerPosition(connection.getID(), (Network.PleyerPosition) object);
+                                           lp.getPlayerForId(connection.getID()).setPosition(pp.xp, pp.yp);
+                                           lp.getPlayerForId(connection.getID()).setRotTower(pp.roy_tower);
+                                           return;
+                                       } catch (NullPointerException e) {
                                            e.printStackTrace();
                                            return;
                                        }
@@ -186,13 +186,19 @@ public class GameServer {
         //////////////////Смена команды но надо еще мсообщить всем о смене )))
     }
 
-    public void send_Chang_screen(boolean pause,float time) { // нужно добаить время на сколько уходим на паузу
+    public void send_Chang_screen(boolean pause, float time) { // нужно добаить время на сколько уходим на паузу
         Network.StockMessOut stockMessOut = new Network.StockMessOut();
         stockMessOut.tip = Heading_type.CHANGE_THE_SCREEN;
-        if (pause) stockMessOut.p1 = Heading_type.PAUSE_GAME;
-        else stockMessOut.p1 = Heading_type.PLAY_GAME;
+        if (pause) {
+            stockMessOut.p1 = Heading_type.PAUSE_GAME;
+            stockMessOut.textM = "";
+        } else {
+            stockMessOut.p1 = Heading_type.PLAY_GAME;
+            stockMessOut.textM = "";
+        }
         stockMessOut.p2 = time;
-       // if (stockMessOut.p1 == Heading_type.PLAY_GAME) return;
+
+        // if (stockMessOut.p1 == Heading_type.PLAY_GAME) return;
         ////System.out.println(">>>>>>>>>>>");
         this.server.sendToAllTCP(stockMessOut);
 
@@ -294,6 +300,15 @@ public class GameServer {
         System.out.println("!!!!!!!!!!MAP:::");
     }
 
+
+//    public void send_MATCH_STATISTICS() { // сообщить о статистики матча после матча
+//        Network.StockMessOut stockMessOut = new Network.StockMessOut();
+//        stockMessOut.tip = Heading_type.MATCH_STATISTICS;
+//        stockMessOut.textM = mainGame.mapSpace.getMap_math();
+//        this.server.sendToAllTCP(stockMessOut);
+//
+//    }
+
     public void sendToAllTCP_in_game(Object object) { // разослать тем кто в игре
         this.server.sendToAllTCP(object);
 //        Connection[] connections = server.getConnections();
@@ -321,7 +336,7 @@ public class GameServer {
 //                    e.printStackTrace();
 //                }
 
-       // }
+        // }
 
 
     }

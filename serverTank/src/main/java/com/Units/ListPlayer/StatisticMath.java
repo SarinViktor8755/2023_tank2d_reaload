@@ -52,11 +52,9 @@ public class StatisticMath {   // класс дял подчета количе�
     }
 
     public synchronized StatisticMath counting_p() { // посчитать статичтику
+        System.out.println(playerStatistics.getStatistigString());
         if (!key_recalculate_statistics) return this;
         //System.out.println("counting_p  " + lp.getSize());
-
-
-        System.out.println(playerStatistics.getStatistigString());
 
 
 
