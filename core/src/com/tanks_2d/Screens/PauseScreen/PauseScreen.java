@@ -131,10 +131,8 @@ public class PauseScreen implements Screen {
 
         for (int i = 0; i < PauseScreen.dataPlyerStatistics.size(); i++) {
 
-            textFont.draw(batch, PauseScreen.getGame_statistics_players(), 500, 500);
+            textFont.draw(batch, PauseScreen.dataPlyerStatistics.get(i).nik, 500, 500  - (40 * i));
         }
-
-
 
 
         batch.end();
@@ -213,16 +211,27 @@ public class PauseScreen implements Screen {
         PauseScreen.getDataPlyerStatistics().clear();
         String fs = PauseScreen.getGame_statistics_players();
         PauseScreen.getGame_statistics_players();
+        System.out.println(PauseScreen.getDataPlyerStatistics());
         String[] parts = fs.split("<p>::");
         for (int i = 0; i < parts.length; i++) {
             int index = parts[i].indexOf("<_<nn");
             if (index == -1) continue;
             String nik = parts[i].substring(0, index);
-            String[] p = parts[i].split(" ");
-            int frags = Integer.valueOf(p[1]);
-            int deth = Integer.valueOf(p[2]);
-            int hp_n = Integer.valueOf(p[3]);
-            PauseScreen.getDataPlyerStatistics().add(new DataPlyerStatistic(nik, frags, deth, hp_n));
+            try {
+                String[] p = parts[i].split(" ");
+                int frags = Integer.valueOf(p[1]);
+                int deth = Integer.valueOf(p[2]);
+                int hp_n = Integer.valueOf(p[3]);
+                PauseScreen.getDataPlyerStatistics().add(new DataPlyerStatistic(nik, frags, deth, hp_n));
+            } catch (NumberFormatException e) {
+                String[] p = parts[i].substring(index).split(" ");
+                int frags = Integer.valueOf(p[1]);
+                int deth = Integer.valueOf(p[2]);
+                int hp_n = Integer.valueOf(p[3]);
+                PauseScreen.getDataPlyerStatistics().add(new DataPlyerStatistic(nik, frags, deth, hp_n));
+            }
+
+
         }
 
     }
