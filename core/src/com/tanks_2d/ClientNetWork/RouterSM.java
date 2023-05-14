@@ -81,7 +81,8 @@ public class RouterSM {
                 MainGame.setFlagChangeScreen((byte) MainGame.STATUS_GAME_PAUSE);
                 PauseScreen.setGame_statistics_players(sm.textM);
                 System.out.println(sm.textM);
-                System.out.println("*************************************************");
+                PauseScreen.parser_result();
+//                System.out.println("*************************************************");
                 // тут адо забрать статстику матча и распарсить ее
 
             }

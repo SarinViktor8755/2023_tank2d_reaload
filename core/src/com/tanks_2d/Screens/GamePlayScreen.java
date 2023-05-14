@@ -257,7 +257,7 @@ public class GamePlayScreen implements Screen {
             this.controller.draw(this.getBatch());
             this.getBatch().setColor(1, 1, 1, 1);
 
-            PauseScreen.parser_result(PauseScreen.getGame_statistics_players());
+          //  PauseScreen.parser_result(PauseScreen.getGame_statistics_players());
         } catch (ConcurrentModificationException e) {
             this.batch.end();
         }

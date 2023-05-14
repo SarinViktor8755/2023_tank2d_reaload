@@ -37,6 +37,8 @@ public class PauseScreen implements Screen {
 
     private BitmapFont textFont;
 
+    private static ArrayList<DataPlyerStatistic> dataPlyerStatistics = new ArrayList<>();
+
 
     public PauseScreen(MainGame mainGame) {
         System.out.println("PAUSE ");
@@ -124,8 +126,17 @@ public class PauseScreen implements Screen {
         batch.draw(f_bw, viewport.getScreenX(), viewport.getScreenY(), Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         batch.setColor(1, 1, 1, 1);
         batch.draw(tb, viewport.getScreenX(), viewport.getScreenY(), Gdx.graphics.getWidth() * getWith(), Gdx.graphics.getHeight() / 25);
-        textFont.draw(batch, PauseScreen.getGame_statistics_players(), 500, 500);
+
         textFont.setColor(1, 1, 1, getAlpha());
+
+        for (int i = 0; i < PauseScreen.dataPlyerStatistics.size(); i++) {
+
+            textFont.draw(batch, PauseScreen.getGame_statistics_players(), 500, 500);
+        }
+
+
+
+
         batch.end();
 
 
@@ -198,14 +209,11 @@ public class PauseScreen implements Screen {
     }
 
 
-    public static ArrayList<DataPlyerStatistic> parser_result(String pars_string) {
-        ArrayList<DataPlyerStatistic> dataPlyerStatistics = new ArrayList<>();
-        // String fs = "<p>::UserName_124<_<nn 0 1 0<p>::32<_<nn 0 0 92<p>::Bo@Bot<_<nn 2 1 120";
-        String fs = pars_string;
+    public static void parser_result() {
+        PauseScreen.getDataPlyerStatistics().clear();
+        String fs = PauseScreen.getGame_statistics_players();
         PauseScreen.getGame_statistics_players();
-        //System.out.println(PauseScreen.getGame_statistics_players());
         String[] parts = fs.split("<p>::");
-        // System.out.println(parts);
         for (int i = 0; i < parts.length; i++) {
             int index = parts[i].indexOf("<_<nn");
             if (index == -1) continue;
@@ -214,14 +222,16 @@ public class PauseScreen implements Screen {
             int frags = Integer.valueOf(p[1]);
             int deth = Integer.valueOf(p[2]);
             int hp_n = Integer.valueOf(p[3]);
-//            System.out.println(nik);
-//            System.out.println(frags + "   " + deth + "   " + hp_n);
-            dataPlyerStatistics.add(new DataPlyerStatistic(nik, frags, deth, hp_n));
+            PauseScreen.getDataPlyerStatistics().add(new DataPlyerStatistic(nik, frags, deth, hp_n));
         }
-//        System.out.println(dataPlyerStatistics);
-//        System.out.println("************** " + parts.length);
+
+    }
+
+    public static ArrayList<DataPlyerStatistic> getDataPlyerStatistics() {
         return dataPlyerStatistics;
+    }
 
-
+    public static void setDataPlyerStatistics(ArrayList<DataPlyerStatistic> dataPlyerStatistics) {
+        PauseScreen.dataPlyerStatistics = dataPlyerStatistics;
     }
 }
