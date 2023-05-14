@@ -2,12 +2,15 @@ package com.tanks_2d.Screens.PauseScreen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Interpolation;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.tanks_2d.AudioEngine.AudioEngine;
 import com.tanks_2d.ClientNetWork.MainClient;
@@ -36,6 +39,8 @@ public class PauseScreen implements Screen {
     Texture tb;
 
     private BitmapFont textFont;
+//    private Label labelHP;
+//    final private Stage stage;
 
     private static ArrayList<DataPlyerStatistic> dataPlyerStatistics = new ArrayList<>();
 
@@ -46,7 +51,7 @@ public class PauseScreen implements Screen {
         this.batch = new SpriteBatch();
         this.mainGame = mainGame;
 
-        viewport = new StretchViewport(MainGame.WIDTH_SCREEN, MainGame.HEIGHT_SCREEN, camera);
+       // viewport = new StretchViewport(MainGame.WIDTH_SCREEN, MainGame.HEIGHT_SCREEN, camera);
         //viewport.apply();
         camera = new OrthographicCamera();
         viewport = new StretchViewport(MainGame.WIDTH_SCREEN / 2, MainGame.HEIGHT_SCREEN / 2, camera);
@@ -66,8 +71,10 @@ public class PauseScreen implements Screen {
 //        Label.LabelStyle style = new Label.LabelStyle(font, Color.WHITE);
 //        puseTextLabel = new Label("PAUSE_GAME",style);
 //        font = new BitmapFont(); //or use alex answer to use custom font
-        textFont = new BitmapFont();
+
+
         ///////////////////////////////
+       // stage = null;
     }
 
     public PauseScreen(MainGame mainGame, float timeInScreen) {
@@ -96,8 +103,17 @@ public class PauseScreen implements Screen {
 //        puseTextLabel = new Label("PAUSE_GAME",style);
 //        font = new BitmapFont(); //or use alex answer to use custom font
         ///////////////////////////////
-        textFont = new BitmapFont();
+        textFont =  mainGame.getAMG().get("fonts/font.fnt", BitmapFont.class);
+        textFont.getData().scale(2);
 
+        Label.LabelStyle style = new Label.LabelStyle(textFont, Color.WHITE);
+
+//
+//        labelHP = new Label("HP:", style);
+//        labelHP.setScale(8);
+
+//        stage = new Stage(viewport, batch);
+//        stage.addActor(labelHP);
     }
 
 
@@ -128,16 +144,19 @@ public class PauseScreen implements Screen {
         batch.draw(tb, viewport.getScreenX(), viewport.getScreenY(), Gdx.graphics.getWidth() * getWith(), Gdx.graphics.getHeight() / 25);
 
         textFont.setColor(1, 1, 1, getAlpha());
+        textFont.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        textFont.setUseIntegerPositions(true);
 
         for (int i = 0; i < PauseScreen.dataPlyerStatistics.size(); i++) {
-
-            textFont.draw(batch, PauseScreen.dataPlyerStatistics.get(i).nik, 500, 500  - (40 * i));
+            textFont.draw(batch, PauseScreen.dataPlyerStatistics.get(i).nik + " " + PauseScreen.dataPlyerStatistics.get(i).frag+ "  " + PauseScreen.dataPlyerStatistics.get(i).death + "  " + PauseScreen.dataPlyerStatistics.get(i).damage_caused, 400, 1000 - (90 * i));
         }
+
+
 
 
         batch.end();
 
-
+        // stage.draw();
         // System.out.println(timeInScreen);
         //if(timeInScreen < 0) mainGame.goGameForPause();
     }
@@ -146,6 +165,8 @@ public class PauseScreen implements Screen {
         this.timeInScreen -= Gdx.graphics.getDeltaTime();
         if (timeInScreen < 0) MainGame.setFlagChangeScreen((byte) MainGame.STATUS_GAME_GAMEPLAY);
         mainGame.goGameForPause();
+
+     //   labelHP.setText(PauseScreen.dataPlyerStatistics.get(0).nik + "\n " + PauseScreen.dataPlyerStatistics.get(0).frag+ "  " + PauseScreen.dataPlyerStatistics.get(0).death + "  " + PauseScreen.dataPlyerStatistics.get(0).damage_caused);
     }
 
     private float getAlpha() {
@@ -217,19 +238,12 @@ public class PauseScreen implements Screen {
             int index = parts[i].indexOf("<_<nn");
             if (index == -1) continue;
             String nik = parts[i].substring(0, index);
-            try {
-                String[] p = parts[i].split(" ");
-                int frags = Integer.valueOf(p[1]);
-                int deth = Integer.valueOf(p[2]);
-                int hp_n = Integer.valueOf(p[3]);
-                PauseScreen.getDataPlyerStatistics().add(new DataPlyerStatistic(nik, frags, deth, hp_n));
-            } catch (NumberFormatException e) {
-                String[] p = parts[i].substring(index).split(" ");
-                int frags = Integer.valueOf(p[1]);
-                int deth = Integer.valueOf(p[2]);
-                int hp_n = Integer.valueOf(p[3]);
-                PauseScreen.getDataPlyerStatistics().add(new DataPlyerStatistic(nik, frags, deth, hp_n));
-            }
+
+            String[] p = parts[i].substring(index).split(" ");
+            int frags = Integer.valueOf(p[1]);
+            int deth = Integer.valueOf(p[2]);
+            int hp_n = Integer.valueOf(p[3]);
+            PauseScreen.getDataPlyerStatistics().add(new DataPlyerStatistic(nik, frags, deth, hp_n));
 
 
         }
