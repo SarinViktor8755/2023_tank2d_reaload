@@ -9,13 +9,13 @@ import java.util.HashMap;
 
 public class ClientThread extends Thread {
     Client client;
-    VoiceChatClient voiceChatClient;
+    //   VoiceChatClient voiceChatClient;
 
 
     public ClientThread(Client client) {
         this.start();
         this.client = client;
-        this.voiceChatClient = new VoiceChatClient(client.getKryo());
+      //  this.voiceChatClient = new VoiceChatClient(client.getKryo());
 
     }
 
@@ -27,12 +27,12 @@ public class ClientThread extends Thread {
         this.client = client;
     }
 
-    public VoiceChatClient getVoiceChatClient() {
-        return voiceChatClient;
-    }
+   // public VoiceChatClient getVoiceChatClient() {
+ //       return voiceChatClient;
+  //  }
 
     public void setVoiceChatClient(VoiceChatClient voiceChatClient) {
-        this.voiceChatClient = voiceChatClient;
+   //     this.voiceChatClient = voiceChatClient;
     }
 
     @Override
@@ -42,14 +42,14 @@ public class ClientThread extends Thread {
         Network.register(client);
         try {
             client.connect(5000, Network.host, Network.tcpPort, Network.udpPort);
-            voiceChatClient = new VoiceChatClient(client.getKryo());
-            voiceChatClient.addReceiver(client);
+          //  voiceChatClient = new VoiceChatClient(client.getKryo());
+          //  voiceChatClient.addReceiver(client);
             Network.register(client);
             Kryo kryo = client.getKryo();
-            voiceChatClient = new VoiceChatClient(kryo);
+          //  voiceChatClient = new VoiceChatClient(kryo);
 
             // Читает пришедшие записи
-            voiceChatClient.addReceiver(client);
+         //   voiceChatClient.addReceiver(client);
             // Server communication after connection can go here, or in Listener#connected().
             //    System.out.println("1111");
         } catch (IOException ex) {

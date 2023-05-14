@@ -2,6 +2,8 @@ package main.java.com;
 
 import static com.tanks_2d.ClientNetWork.Network.register;
 
+import static main.java.com.Units.ListPlayer.StatisticMath.playerStatistics;
+
 import com.badlogic.gdx.math.MathUtils;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryonet.Connection;
@@ -11,6 +13,7 @@ import com.tanks_2d.ClientNetWork.Heading_type;
 import com.tanks_2d.ClientNetWork.Network;
 import com.tanks_2d.ClientNetWork.VoiceChat.VoiceChatServer;
 import com.tanks_2d.Locations.MapsList;
+import com.tanks_2d.Screens.PauseScreen.PauseScreen;
 
 
 import java.io.IOException;
@@ -191,7 +194,10 @@ public class GameServer {
         stockMessOut.tip = Heading_type.CHANGE_THE_SCREEN;
         if (pause) {
             stockMessOut.p1 = Heading_type.PAUSE_GAME;
-            stockMessOut.textM = "";
+            ///////////
+            PauseScreen.setGame_statistics_players(playerStatistics.generating_string_clients());
+            stockMessOut.textM = PauseScreen.getGame_statistics_players();
+            //PauseScreen.parser_result();
         } else {
             stockMessOut.p1 = Heading_type.PLAY_GAME;
             stockMessOut.textM = "";

@@ -26,6 +26,8 @@ public class MainGame extends Game {
     private Screen mainMenu;
 
 
+
+
     private static byte flagChangeScreen = 0; // фоаг смены экрана - 0 не менять далее по показателям
 
     public static final int STATUS_GAME_MENU = 1;

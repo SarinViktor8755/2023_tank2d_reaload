@@ -58,7 +58,7 @@ public class IndexBullets {
         if(gameServer.getMainGame().getIndexMath().isPause()){
             activeBullets.clear();
         }
-        if(MathUtils.randomBoolean(.05f))System.out.println(playerStatistics.generating_string_clients());
+
         Bullet bullet;
 
         for (int i = 0; i < activeBullets.size; i++) {

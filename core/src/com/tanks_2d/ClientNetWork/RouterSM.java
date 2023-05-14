@@ -8,6 +8,7 @@ import com.badlogic.gdx.utils.ArrayMap;
 import com.tanks_2d.AudioEngine.AudioEngine;
 import com.tanks_2d.Locations.GameSpace;
 import com.tanks_2d.MainGame;
+import com.tanks_2d.Screens.PauseScreen.PauseScreen;
 import com.tanks_2d.Units.Tanks.OpponentsTanks;
 import com.tanks_2d.Units.Tanks.Tank;
 
@@ -78,6 +79,9 @@ public class RouterSM {
             //   System.out.println("=+++++++++++++  " + sm.p1);
             if (sm.p1 == Heading_type.PAUSE_GAME) {
                 MainGame.setFlagChangeScreen((byte) MainGame.STATUS_GAME_PAUSE);
+                PauseScreen.setGame_statistics_players(sm.textM);
+                System.out.println(sm.textM);
+                System.out.println("*************************************************");
                 // тут адо забрать статстику матча и распарсить ее
 
             }

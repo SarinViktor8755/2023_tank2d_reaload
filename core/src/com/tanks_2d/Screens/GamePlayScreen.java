@@ -23,6 +23,7 @@ import com.tanks_2d.Locations.MapsList;
 import com.tanks_2d.MainGame;
 import com.tanks_2d.ParticleEffect.ParticleCustum;
 import com.tanks_2d.Screens.Controll.Controller;
+import com.tanks_2d.Screens.PauseScreen.PauseScreen;
 import com.tanks_2d.Units.Bullets;
 import com.tanks_2d.Units.Player;
 import com.tanks_2d.Units.Tanks.Tank;
@@ -153,12 +154,12 @@ public class GamePlayScreen implements Screen {
 
         //System.out.println(controller.isVoiceButton());
 
-        if (controller.isVoiceButton()) {
-//            System.out.println("-------------");
-//            System.out.println(mainGame.getMainClient().getClient());
-//            System.out.println(mainGame.getMainClient().getVoiceChatClient());
-            mainGame.getMainClient().getVoiceChatClient().sendVoice(mainGame.getMainClient().getClient(), Gdx.graphics.getDeltaTime());
-        }
+//        if (controller.isVoiceButton()) {
+////            System.out.println("-------------");
+////            System.out.println(mainGame.getMainClient().getClient());
+////            System.out.println(mainGame.getMainClient().getVoiceChatClient());
+//            mainGame.getMainClient().getVoiceChatClient().sendVoice(mainGame.getMainClient().getClient(), Gdx.graphics.getDeltaTime());
+//        }
 
 
         if (controller.isChance()) {
@@ -256,6 +257,7 @@ public class GamePlayScreen implements Screen {
             this.controller.draw(this.getBatch());
             this.getBatch().setColor(1, 1, 1, 1);
 
+            PauseScreen.parser_result(PauseScreen.getGame_statistics_players());
         } catch (ConcurrentModificationException e) {
             this.batch.end();
         }

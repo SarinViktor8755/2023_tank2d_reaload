@@ -216,7 +216,6 @@ public class TanksOther { /// много танков )))
 
 
     private void print_nickname(SpriteBatch sb, OpponentsTanks t) { // печатает ник -если нет то отправляет запрос
-
         if (t.getNikPlayer() != null) {
             if (!gsp.getTank().isLive())
                 textFont.draw(sb, t.getNikPlayer() + " (" + t.hp + ")", t.getPosition().x - t.getNikPlayer().length() * 4 - 16, t.getPosition().y + 50);

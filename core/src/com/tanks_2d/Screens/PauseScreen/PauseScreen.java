@@ -5,13 +5,15 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Interpolation;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.tanks_2d.AudioEngine.AudioEngine;
 import com.tanks_2d.ClientNetWork.MainClient;
 import com.tanks_2d.MainGame;
+
+import java.util.ArrayList;
 
 public class PauseScreen implements Screen {
     MainGame mainGame;
@@ -24,12 +26,16 @@ public class PauseScreen implements Screen {
 
     private AudioEngine audioEngine;// игравой движок
 
+    private static String game_statistics_players = ""; // строка статистики играков для паузы
+
     /////////////////////////////////////
     private float timeInScreen;
     private float final_time;
     Texture f;
     Texture f_bw;
     Texture tb;
+
+    private BitmapFont textFont;
 
 
     public PauseScreen(MainGame mainGame) {
@@ -58,6 +64,7 @@ public class PauseScreen implements Screen {
 //        Label.LabelStyle style = new Label.LabelStyle(font, Color.WHITE);
 //        puseTextLabel = new Label("PAUSE_GAME",style);
 //        font = new BitmapFont(); //or use alex answer to use custom font
+        textFont = new BitmapFont();
         ///////////////////////////////
     }
 
@@ -87,8 +94,9 @@ public class PauseScreen implements Screen {
 //        puseTextLabel = new Label("PAUSE_GAME",style);
 //        font = new BitmapFont(); //or use alex answer to use custom font
         ///////////////////////////////
-    }
+        textFont = new BitmapFont();
 
+    }
 
 
     @Override
@@ -110,20 +118,24 @@ public class PauseScreen implements Screen {
 
         batch.setColor(1, 1, 1, getAlpha());
 
-      //  System.out.println(mainGame.getScreen());
+        //  System.out.println(mainGame.getScreen());
         batch.draw(f, viewport.getScreenX(), viewport.getScreenY(), Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         batch.setColor(1, 1, 1, 1 - getWith());
         batch.draw(f_bw, viewport.getScreenX(), viewport.getScreenY(), Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         batch.setColor(1, 1, 1, 1);
         batch.draw(tb, viewport.getScreenX(), viewport.getScreenY(), Gdx.graphics.getWidth() * getWith(), Gdx.graphics.getHeight() / 25);
+        textFont.draw(batch, PauseScreen.getGame_statistics_players(), 500, 500);
+        textFont.setColor(1, 1, 1, getAlpha());
         batch.end();
-       // System.out.println(timeInScreen);
+
+
+        // System.out.println(timeInScreen);
         //if(timeInScreen < 0) mainGame.goGameForPause();
     }
 
     private void update() {
         this.timeInScreen -= Gdx.graphics.getDeltaTime();
-        if(timeInScreen < 0 ) MainGame.setFlagChangeScreen((byte) MainGame.STATUS_GAME_GAMEPLAY);
+        if (timeInScreen < 0) MainGame.setFlagChangeScreen((byte) MainGame.STATUS_GAME_GAMEPLAY);
         mainGame.goGameForPause();
     }
 
@@ -174,6 +186,42 @@ public class PauseScreen implements Screen {
     public void dispose() {
         batch.dispose();
         mainGame.audioEngine.stopMusicPaseMenu();
+
+    }
+
+    public static String getGame_statistics_players() {
+        return game_statistics_players;
+    }
+
+    public static void setGame_statistics_players(String game_statistics_players) {
+        PauseScreen.game_statistics_players = game_statistics_players;
+    }
+
+
+    public static ArrayList<DataPlyerStatistic> parser_result(String pars_string) {
+        ArrayList<DataPlyerStatistic> dataPlyerStatistics = new ArrayList<>();
+        // String fs = "<p>::UserName_124<_<nn 0 1 0<p>::32<_<nn 0 0 92<p>::Bo@Bot<_<nn 2 1 120";
+        String fs = pars_string;
+        PauseScreen.getGame_statistics_players();
+        //System.out.println(PauseScreen.getGame_statistics_players());
+        String[] parts = fs.split("<p>::");
+        // System.out.println(parts);
+        for (int i = 0; i < parts.length; i++) {
+            int index = parts[i].indexOf("<_<nn");
+            if (index == -1) continue;
+            String nik = parts[i].substring(0, index);
+            String[] p = parts[i].split(" ");
+            int frags = Integer.valueOf(p[1]);
+            int deth = Integer.valueOf(p[2]);
+            int hp_n = Integer.valueOf(p[3]);
+//            System.out.println(nik);
+//            System.out.println(frags + "   " + deth + "   " + hp_n);
+            dataPlyerStatistics.add(new DataPlyerStatistic(nik, frags, deth, hp_n));
+        }
+//        System.out.println(dataPlyerStatistics);
+//        System.out.println("************** " + parts.length);
+        return dataPlyerStatistics;
+
 
     }
 }

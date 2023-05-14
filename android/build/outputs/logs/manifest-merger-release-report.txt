@@ -1,0 +1,89 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml:2:1-36:12
+INJECTED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml:2:1-36:12
+INJECTED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml:2:1-36:12
+INJECTED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml:2:1-36:12
+INJECTED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml:2:1-36:12
+INJECTED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml:2:1-36:12
+INJECTED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml:2:1-36:12
+	package
+		ADDED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml:4:5-27
+		INJECTED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml
+		INJECTED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml
+		ADDED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml:2:1-36:12
+		INJECTED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml
+	xmlns:tools
+		ADDED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml:3:5-51
+	android:versionCode
+		INJECTED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml
+		ADDED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml:2:1-36:12
+		INJECTED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml:2:11-69
+uses-feature#0x00020000
+ADDED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml:6:5-8:35
+	android:glEsVersion
+		ADDED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml:7:9-41
+	android:required
+		ADDED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml:8:9-32
+application
+ADDED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml:10:5-34:19
+	android:label
+		ADDED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml:16:9-41
+	android:fullBackupContent
+		ADDED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml:13:9-41
+	android:appCategory
+		ADDED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml:12:9-35
+	tools:ignore
+		ADDED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml:17:9-39
+	android:icon
+		ADDED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml:14:9-45
+	android:allowBackup
+		ADDED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml:11:9-35
+	android:isGame
+		ADDED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml:15:9-30
+profileable
+ADDED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml:18:9-20:36
+	android:shell
+		ADDED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml:19:13-33
+	tools:targetApi
+		ADDED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml:20:13-33
+activity#com.tanks_2d.AndroidLauncher
+ADDED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml:22:9-33:20
+	android:screenOrientation
+		ADDED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml:27:13-50
+	android:label
+		ADDED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml:26:13-45
+	android:exported
+		ADDED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml:25:13-36
+	android:configChanges
+		ADDED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml:24:13-107
+	android:name
+		ADDED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml:23:13-56
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml:28:13-32:29
+action#android.intent.action.MAIN
+ADDED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml:29:17-69
+	android:name
+		ADDED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml:29:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml:31:17-77
+	android:name
+		ADDED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml:31:27-74
+uses-sdk
+INJECTED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml
+INJECTED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml
+INJECTED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml
+INJECTED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml
+		ADDED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml
+		INJECTED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml
+		ADDED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml
+		INJECTED from C:\game_dev\2023_tank2d_reaload\android\AndroidManifest.xml

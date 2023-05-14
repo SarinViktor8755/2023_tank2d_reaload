@@ -204,9 +204,9 @@ public class MainClient {
     }
 
 
-    public VoiceChatClient getVoiceChatClient() {
-        return this.clientThread.getVoiceChatClient();
-    }
+//    public VoiceChatClient getVoiceChatClient() {
+//        return this.clientThread.getVoiceChatClient();
+//    }
 
     synchronized void reconectClienNewThred() { // выполняется каждые 50 мс
         //   System.out.println(">>> " + coonection + "  " + key_coonection);
