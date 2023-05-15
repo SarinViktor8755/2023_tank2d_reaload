@@ -24,6 +24,7 @@ import main.java.com.Bots.IndexBot;
 import main.java.com.MatchOrganization.IndexMath;
 import main.java.com.Units.ListPlayer.ListPlayers;
 import main.java.com.Units.ListPlayer.Player;
+import main.java.com.Units.ListPlayer.PlayerStatistics;
 import main.java.com.Units.SpaceMap.IndexMap;
 
 public class GameServer {
@@ -301,6 +302,7 @@ public class GameServer {
         else stockMessOut.p1 = Heading_type.PLAY_GAME;
 
         stockMessOut.textM = mainGame.mapSpace.getMap_math();
+        PlayerStatistics.clearListStatic();
 
         this.server.sendToTCP(id, stockMessOut);
         System.out.println("!!!!!!!!!!MAP:::");

@@ -63,5 +63,9 @@ public class PlayerStatistics {
         return resuld_bilder.toString();
     }
 
+    static public void clearListStatic(){
+        PlayerStatistics.list_static.clear();
+    }
+
 }
 

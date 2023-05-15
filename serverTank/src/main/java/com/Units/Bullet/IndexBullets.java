@@ -102,6 +102,7 @@ public class IndexBullets {
                         gameServer.send_add_frag(bullet.getAuthor_bullet());
                         /// отправить сообщение
                         ///////TEST
+
                         playerStatistics.addDeath(player.getId());
                         playerStatistics.addFrag(bullet.getAuthor_bullet());
                         playerStatistics.set_nikname(player.getId(),player.getNikName());
