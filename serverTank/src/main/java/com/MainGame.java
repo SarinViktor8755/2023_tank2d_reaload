@@ -10,6 +10,7 @@ import com.tanks_2d.Locations.MapsList;
 
 import main.java.com.MatchOrganization.IndexMath;
 import main.java.com.Units.Bullet.IndexBullets;
+import main.java.com.Units.ListPlayer.ListPlayers;
 import main.java.com.Units.ListPlayer.StatisticMath;
 import main.java.com.Units.SpaceMap.IndexMap;
 
@@ -112,7 +113,7 @@ public class MainGame {
                         if (gameServer.isServerLivePlayer()) Thread.sleep(timer_tread_50);
                         else Thread.sleep(450);
                         // System.out.println("50");
-
+                        System.out.println(ListPlayers.getListPlayers());
                         StatisticMath.key_recalculate_statistics = true;
 
 

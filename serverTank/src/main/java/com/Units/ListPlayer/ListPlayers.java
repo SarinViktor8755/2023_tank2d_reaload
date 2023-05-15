@@ -10,23 +10,20 @@ import java.util.ConcurrentModificationException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 import com.esotericsoftware.kryonet.Connection;
 
-import javax.swing.text.Position;
 
 import main.java.com.Bots.TowerRotationLogic;
 import main.java.com.GameServer;
-import main.java.com.MatchOrganization.IndexMath;
 
 public class ListPlayers {
-    static public final int DEFULT_COUNT_BOT = 60;
+    static public final int DEFULT_COUNT_BOT = 8;
 
     private int size_list_player_in_game = 0;
 
-    private HashMap<Integer, Player> players;
-    private ArrayList<Player> basket;
+    private static HashMap<Integer, Player> players;
+    private static ArrayList<Player> basket;
     //  ConcurrentHashMap<String, Integer> playersTokken; // tooken/ id
 
     GameServer gameServer;
@@ -94,6 +91,9 @@ public class ListPlayers {
         return players.get(id);
 
     }
+
+
+
 
     // public ConcurrentHashMap<String, Integer> getPlayersTokken() {
 //        return playersTokken;
@@ -191,6 +191,10 @@ public class ListPlayers {
 
     public static Vector2 getAverage_cord() {
         return average_cord;
+    }
+
+    public static HashMap<Integer, Player> getListPlayers() {
+        return ListPlayers.players;
     }
 
     public void sendToAllPlayerPosition(int id, Network.PleyerPosition pp) {

@@ -54,7 +54,7 @@ public class GameServer {
 ///////////
         relay = new VoiceChatServer(server.getKryo());
 ///////////////
-        mainGame = new MainGame(this, getSizeBot(args));
+        mainGame = new MainGame(this, GameServer.getCountBot(args));
         server.addListener(new Listener() {
 
                                @Override
@@ -408,7 +408,7 @@ public class GameServer {
     }
 
     private static int getCountBot(String[] par) {
-        int res = 10;
+        int res = 8;
         try {
             res = Integer.parseInt(par[0]);
         } catch (ArrayIndexOutOfBoundsException e) {

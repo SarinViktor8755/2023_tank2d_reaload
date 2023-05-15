@@ -8,33 +8,41 @@ public class PlayerStatistics {
     static HashMap<Integer, Player_statistics> list_static = new HashMap<Integer, Player_statistics>();
     static String result_for_client;
     public void addPlayer(int id_player, Player player){
+        if(list_static.containsKey(id_player)) return;
         Player_statistics ps = new Player_statistics(player.nikName);
+
+
+
+
         list_static.put(id_player,ps);
     }
 
     public void addPlayer(int id_player){
+        if(list_static.containsKey(id_player)) return;
         Player_statistics ps = new Player_statistics();
         list_static.put(id_player,ps);
+
+        ListPlayers.getListPlayers();
     }
 
     ////////////////////////
     public void addDeath(int id_player){ // добавить смерть
-        if(!list_static.containsKey(id_player)) addPlayer(id_player);
+        addPlayer(id_player);
         list_static.get(id_player).death++;
     }
 
     public void add_damage_done_in_hp(int id_player, int damage){ // добавить смерть
-        if(!list_static.containsKey(id_player)) addPlayer(id_player);
+        addPlayer(id_player);
         list_static.get(id_player).damage_done_in_hp += damage;
     }
 
     public void addFrag(int id_player){ // добавить фраг
-        if(!list_static.containsKey(id_player)) addPlayer(id_player);
+        addPlayer(id_player);
         list_static.get(id_player).fargs++;
     }
 
     public void set_nikname(int id_player,String nik_name){ // записать имя
-        if(!list_static.containsKey(id_player)) addPlayer(id_player);
+        addPlayer(id_player);
         list_static.get(id_player).name = nik_name;
     }
     /////////////////////////
