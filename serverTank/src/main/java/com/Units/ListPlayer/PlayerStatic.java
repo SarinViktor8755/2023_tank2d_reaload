@@ -10,6 +10,7 @@ public class PlayerStatic {
     float time_in_game;
     int score;
 
+
     public PlayerStatic(String tokken) { // tokken - ключ
         Tokken = tokken;
     }
