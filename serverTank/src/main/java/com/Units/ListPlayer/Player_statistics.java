@@ -47,7 +47,7 @@ public class Player_statistics implements Comparable<Player_statistics> {
 
     @Override
     public int compareTo(Player_statistics o) {
-        if (this.count_the_player_game_points() >= o.count_the_player_game_points()) return 1;
-        else return -1;
+        if (this.count_the_player_game_points() >= o.count_the_player_game_points()) return -1;
+        else return 1;
     }
 }

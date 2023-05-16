@@ -77,6 +77,7 @@ public class PlayerStatistics {
         ///////
         for (int i = 0; i < comparator.size(); i++) {
             System.out.println(comparator.get(i));
+            resuld_bilder.append("<p>::" + comparator.get(i).toStringForClient());
         }
 //        Iterator<Map.Entry<String, Player_statistics>> itr = list_static.entrySet().iterator();
 //        while (itr.hasNext()) {
