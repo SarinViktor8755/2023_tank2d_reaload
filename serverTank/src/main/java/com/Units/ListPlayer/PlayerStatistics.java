@@ -1,7 +1,10 @@
 package main.java.com.Units.ListPlayer;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 public class PlayerStatistics {
@@ -67,11 +70,18 @@ public class PlayerStatistics {
     // передача для клиентов для экрана паузы
     public String generating_string_clients(){
         StringBuilder resuld_bilder = new StringBuilder();
-        Iterator<Map.Entry<String, Player_statistics>> itr = list_static.entrySet().iterator();
-        while (itr.hasNext()) {
-            resuld_bilder.append("<p>::" + itr.next().getValue().toStringForClient());
+        // сортировка пр оччкам игрока
+        List<Player_statistics> comparator  = new ArrayList<>();
+        comparator.addAll(list_static.values());
+        Collections.sort(comparator);
+        ///////
+        for (int i = 0; i < comparator.size(); i++) {
+            System.out.println(comparator.get(i));
         }
-
+//        Iterator<Map.Entry<String, Player_statistics>> itr = list_static.entrySet().iterator();
+//        while (itr.hasNext()) {
+//            resuld_bilder.append("<p>::" + itr.next().getValue().toStringForClient());
+//        }
         return resuld_bilder.toString();
     }
 
