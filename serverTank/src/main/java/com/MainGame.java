@@ -113,7 +113,7 @@ public class MainGame {
                         if (gameServer.isServerLivePlayer()) Thread.sleep(timer_tread_50);
                         else Thread.sleep(450);
                         // System.out.println("50");
-                        System.out.println(ListPlayers.getListPlayers());
+                       // System.out.println(ListPlayers.getListPlayers());
                         StatisticMath.key_recalculate_statistics = true;
 
 
