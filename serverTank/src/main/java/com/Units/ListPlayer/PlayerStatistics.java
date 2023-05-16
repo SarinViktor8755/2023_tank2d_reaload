@@ -24,14 +24,13 @@ public class PlayerStatistics {
         Player_statistics ps = new Player_statistics();
         ps.name = ListPlayers.getListPlayers().get(id_player).getNikName();
         list_static.put(token,ps);
-
         return ps;
     }
 
     ////////////////////////
     public void addDeath(int id_player){ // добавить смерть
-        getPlayer(id_player);
-        list_static.get(id_player).death++;
+        Player_statistics ps = getPlayer(id_player);
+        ps.death++;
     }
 
     public void add_damage_done_in_hp(int id_player, int damage){ // добавить смерть

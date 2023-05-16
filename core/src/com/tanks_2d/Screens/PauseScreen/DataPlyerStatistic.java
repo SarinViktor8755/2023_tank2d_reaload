@@ -5,12 +5,14 @@ public class DataPlyerStatistic {
     int frag;
     int death;
     int damage_caused; // нанесенный ущерб
+    int score;
 
-    public DataPlyerStatistic(String nik, int frag, int death, int damage_caused) {
+    public DataPlyerStatistic(String nik, int frag, int death, int damage_caused,int score) {
         this.nik = nik;
         this.frag = frag;
         this.death = death;
         this.damage_caused = damage_caused;
+        this.score = score;
     }
 
     @Override
@@ -20,6 +22,7 @@ public class DataPlyerStatistic {
                 ", frag=" + frag +
                 ", death=" + death +
                 ", damage_caused=" + damage_caused +
+                ", score=" + score +
                 '}';
     }
 }

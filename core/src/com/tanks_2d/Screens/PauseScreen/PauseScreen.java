@@ -51,7 +51,7 @@ public class PauseScreen implements Screen {
         this.batch = new SpriteBatch();
         this.mainGame = mainGame;
 
-       // viewport = new StretchViewport(MainGame.WIDTH_SCREEN, MainGame.HEIGHT_SCREEN, camera);
+        // viewport = new StretchViewport(MainGame.WIDTH_SCREEN, MainGame.HEIGHT_SCREEN, camera);
         //viewport.apply();
         camera = new OrthographicCamera();
         viewport = new StretchViewport(MainGame.WIDTH_SCREEN / 2, MainGame.HEIGHT_SCREEN / 2, camera);
@@ -74,7 +74,7 @@ public class PauseScreen implements Screen {
 
 
         ///////////////////////////////
-       // stage = null;
+        // stage = null;
     }
 
     public PauseScreen(MainGame mainGame, float timeInScreen) {
@@ -103,7 +103,7 @@ public class PauseScreen implements Screen {
 //        puseTextLabel = new Label("PAUSE_GAME",style);
 //        font = new BitmapFont(); //or use alex answer to use custom font
         ///////////////////////////////
-        textFont =  mainGame.getAMG().get("fonts/font.fnt", BitmapFont.class);
+        textFont = mainGame.getAMG().get("fonts/font.fnt", BitmapFont.class);
         textFont.getData().scale(2);
 
         Label.LabelStyle style = new Label.LabelStyle(textFont, Color.WHITE);
@@ -148,10 +148,8 @@ public class PauseScreen implements Screen {
         textFont.setUseIntegerPositions(true);
 
         for (int i = 0; i < PauseScreen.dataPlyerStatistics.size(); i++) {
-            textFont.draw(batch, PauseScreen.dataPlyerStatistics.get(i).nik + " " + PauseScreen.dataPlyerStatistics.get(i).frag+ "  " + PauseScreen.dataPlyerStatistics.get(i).death + "  " + PauseScreen.dataPlyerStatistics.get(i).damage_caused, 400, 1000 - (90 * i));
+            textFont.draw(batch, PauseScreen.dataPlyerStatistics.get(i).nik + " " + PauseScreen.dataPlyerStatistics.get(i).frag + "  " + PauseScreen.dataPlyerStatistics.get(i).death + "  " + PauseScreen.dataPlyerStatistics.get(i).damage_caused + " " + PauseScreen.dataPlyerStatistics.get(i).score, 400, 1000 - (90 * i));
         }
-
-
 
 
         batch.end();
@@ -166,7 +164,7 @@ public class PauseScreen implements Screen {
         if (timeInScreen < 0) MainGame.setFlagChangeScreen((byte) MainGame.STATUS_GAME_GAMEPLAY);
         mainGame.goGameForPause();
 
-     //   labelHP.setText(PauseScreen.dataPlyerStatistics.get(0).nik + "\n " + PauseScreen.dataPlyerStatistics.get(0).frag+ "  " + PauseScreen.dataPlyerStatistics.get(0).death + "  " + PauseScreen.dataPlyerStatistics.get(0).damage_caused);
+        //   labelHP.setText(PauseScreen.dataPlyerStatistics.get(0).nik + "\n " + PauseScreen.dataPlyerStatistics.get(0).frag+ "  " + PauseScreen.dataPlyerStatistics.get(0).death + "  " + PauseScreen.dataPlyerStatistics.get(0).damage_caused);
     }
 
     private float getAlpha() {
@@ -243,7 +241,8 @@ public class PauseScreen implements Screen {
             int frags = Integer.valueOf(p[1]);
             int deth = Integer.valueOf(p[2]);
             int hp_n = Integer.valueOf(p[3]);
-            PauseScreen.getDataPlyerStatistics().add(new DataPlyerStatistic(nik, frags, deth, hp_n));
+            int score = Integer.valueOf(p[4]);
+            PauseScreen.getDataPlyerStatistics().add(new DataPlyerStatistic(nik, frags, deth, hp_n, score));
 
 
         }
