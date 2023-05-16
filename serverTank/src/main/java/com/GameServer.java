@@ -76,6 +76,7 @@ public class GameServer {
 
                                    // send_MAP_PARAMETOR(connection.getID());
 
+
                                }
 
 
