@@ -477,10 +477,10 @@ public class Tank {
 
     public void setHp(int hp) {
         this.hp = hp;
+        if(!isLive()) System.out.println("Ты мертв!!!!!!!!!!!!!!!!!!!!!!!");
     }
 
     public boolean isLive() {
-        //  System.out.println(hp + "  hp");
         if (hp > 0) return true;
         return false;
     }

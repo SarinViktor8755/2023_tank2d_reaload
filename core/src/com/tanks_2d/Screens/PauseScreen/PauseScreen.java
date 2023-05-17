@@ -38,6 +38,8 @@ public class PauseScreen implements Screen {
     Texture f_bw;
     Texture tb;
 
+    TableResult tableResult;
+
     private BitmapFont textFont;
 //    private Label labelHP;
 //    final private Stage stage;
@@ -84,7 +86,7 @@ public class PauseScreen implements Screen {
         this.mainGame = mainGame;
         final_time = timeInScreen;
 
-        viewport = new StretchViewport(MainGame.WIDTH_SCREEN, MainGame.HEIGHT_SCREEN, camera);
+        //viewport = new StretchViewport(MainGame.WIDTH_SCREEN, MainGame.HEIGHT_SCREEN, camera);
         //viewport.apply();
         camera = new OrthographicCamera();
         viewport = new StretchViewport(MainGame.WIDTH_SCREEN / 2, MainGame.HEIGHT_SCREEN / 2, camera);
@@ -106,7 +108,7 @@ public class PauseScreen implements Screen {
         textFont = mainGame.getAMG().get("fonts/font.fnt", BitmapFont.class);
         textFont.getData().scale(2);
 
-        Label.LabelStyle style = new Label.LabelStyle(textFont, Color.WHITE);
+       // Label.LabelStyle style = new Label.LabelStyle(textFont, Color.WHITE);
 
 //
 //        labelHP = new Label("HP:", style);
@@ -114,6 +116,7 @@ public class PauseScreen implements Screen {
 
 //        stage = new Stage(viewport, batch);
 //        stage.addActor(labelHP);
+        tableResult = new TableResult(mainGame,viewport,batch);
     }
 
 
@@ -153,6 +156,8 @@ public class PauseScreen implements Screen {
 
 
         batch.end();
+
+        tableResult.rander();
 
         // stage.draw();
         // System.out.println(timeInScreen);

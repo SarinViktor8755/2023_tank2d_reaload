@@ -31,7 +31,7 @@ public class RouterMassege {
             gameServer.lp.getPlayerForId(id_coonect).setCommand((int)sm.p1);
             gameServer.lp.getPlayerForId(id_coonect).setHp(100);
             gameServer.lp.getPlayerForId(id_coonect).setStatus(StatusPlayer.CLICK_BOTON_START);
-            
+
             return;
         }
         if (Heading_type.MY_TOKKEN == sm.tip) {
