@@ -7,6 +7,7 @@ public class DataPlyerStatistic {
     int damage_caused; // нанесенный ущерб
     int score;
 
+
     public DataPlyerStatistic(String nik, int frag, int death, int damage_caused,int score) {
         this.nik = nik;
         this.frag = frag;

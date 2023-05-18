@@ -49,7 +49,6 @@ public class OpponentsTanks { // ОДИН ТАНК
         this.direction = direction;
         this.direction_tower = new Vector2(1, 0);
 
-
         this.nomder = nomder;
         towerRotation = new TowerRotation(this.direction, this.direction_tower, this.position, listOpponents,command);
         directionMovementControll = new Vector2(direction);
@@ -57,7 +56,6 @@ public class OpponentsTanks { // ОДИН ТАНК
         hp = 100;
         move = false;
         temp_delta = new Vector2(0, 0);
-
 
     }
 

@@ -174,8 +174,6 @@ public class PauseScreen implements Screen {
             textFont.draw(batch, String.valueOf(p.death), 900, y);
             textFont.draw(batch, String.valueOf(p.damage_caused), 1200, y);
             textFont.draw(batch, String.valueOf(p.score), 1480, y);
-
-
         }
 
 
@@ -294,6 +292,11 @@ public class PauseScreen implements Screen {
             int deth = Integer.valueOf(p[2]);
             int hp_n = Integer.valueOf(p[3]);
             int score = Integer.valueOf(p[4]);
+            int id = Integer.valueOf(p[5]);
+
+            int coomand;
+            boolean isYou;
+
             PauseScreen.getDataPlyerStatistics().add(new DataPlyerStatistic(nik, frags, deth, hp_n, score));
 
 

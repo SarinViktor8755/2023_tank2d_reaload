@@ -28,6 +28,7 @@ public class PlayerStatistics {
         ps.tokken = token;
         ps.name = ListPlayers.getListPlayers().get(id_player).getNikName();
         ps.tokken = ListPlayers.getListPlayers().get(id_player).tokken;
+        ps.id = id_player;
         list_static.put(token,ps);
         return ps;
     }

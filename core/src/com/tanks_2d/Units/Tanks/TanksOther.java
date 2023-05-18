@@ -24,7 +24,7 @@ public class TanksOther { /// много танков )))
 
     private BitmapFont textFont;
 
-    HashMap<Integer, OpponentsTanks> listOpponents;
+    HashMap<Integer, OpponentsTanks> listOpponents;  /// инт танка
 
     HashMap<Integer, Float> listSled;
     HashMap<Integer, Vector2> deltaSledVec; // слкды танков
@@ -348,6 +348,7 @@ public class TanksOther { /// много танков )))
     public void updateLocalTank() {
 
     }
+
 
 //    public void routingInMassage(PacketModel m) {
 ////
