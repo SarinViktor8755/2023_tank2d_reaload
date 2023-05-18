@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Interpolation;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
@@ -106,9 +107,9 @@ public class PauseScreen implements Screen {
 //        font = new BitmapFont(); //or use alex answer to use custom font
         ///////////////////////////////
         textFont = mainGame.getAMG().get("fonts/font.fnt", BitmapFont.class);
-        textFont.getData().scale(2);
+        textFont.getData().scale(1.3f);
 
-       // Label.LabelStyle style = new Label.LabelStyle(textFont, Color.WHITE);
+        // Label.LabelStyle style = new Label.LabelStyle(textFont, Color.WHITE);
 
 //
 //        labelHP = new Label("HP:", style);
@@ -116,7 +117,7 @@ public class PauseScreen implements Screen {
 
 //        stage = new Stage(viewport, batch);
 //        stage.addActor(labelHP);
-        tableResult = new TableResult(mainGame,viewport,batch);
+        tableResult = new TableResult(mainGame, viewport, batch);
     }
 
 
@@ -150,18 +151,63 @@ public class PauseScreen implements Screen {
         textFont.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         textFont.setUseIntegerPositions(true);
 
+        textFont.draw(batch, "nik", 150, 1050);
+        textFont.draw(batch, "frag", 450, 1050);
+        textFont.draw(batch, "death", 700, 1050);
+        textFont.draw(batch, "d_c", 1100, 1050);
+        textFont.draw(batch, "score", 1380, 1050);
+
+        DataPlyerStatistic p;
         for (int i = 0; i < PauseScreen.dataPlyerStatistics.size(); i++) {
-            textFont.draw(batch, PauseScreen.dataPlyerStatistics.get(i).nik + " " + PauseScreen.dataPlyerStatistics.get(i).frag + "  " + PauseScreen.dataPlyerStatistics.get(i).death + "  " + PauseScreen.dataPlyerStatistics.get(i).damage_caused + " " + PauseScreen.dataPlyerStatistics.get(i).score, 400, 1000 - (90 * i));
+
+            if(MathUtils.randomBoolean()) textFont.setColor(Color.BLUE); else  textFont.setColor(Color.RED);
+            p = PauseScreen.dataPlyerStatistics.get(i);
+
+            textFont.getColor().a =  getAlpha();
+            ///textFont.draw(batch, convertStringLeft(PauseScreen.dataPlyerStatistics.get(i).nik, 3) + " " + PauseScreen.dataPlyerStatistics.get(i).frag + "  " + PauseScreen.dataPlyerStatistics.get(i).death + "  " + PauseScreen.dataPlyerStatistics.get(i).damage_caused + " " + PauseScreen.dataPlyerStatistics.get(i).score, 400, 1000 - (60 * i));
+
+            int y = 920 - (60 * i);
+            textFont.draw(batch, (i+1) + ".", 70, y);
+            textFont.draw(batch, convertStringLeft(p.nik, 3), 150, y);
+            textFont.draw(batch, String.valueOf(p.frag), 600, y);
+            textFont.draw(batch, String.valueOf(p.death), 800, y);
+            textFont.draw(batch, String.valueOf(p.damage_caused), 1100, y);
+            textFont.draw(batch, String.valueOf(p.score), 1380, y);
+
+
         }
 
 
         batch.end();
 
-        tableResult.rander();
+        //  tableResult.rander();
 
         // stage.draw();
         // System.out.println(timeInScreen);
         //if(timeInScreen < 0) mainGame.goGameForPause();
+    }
+
+    private String convertStringCen(String s, int length) {
+        String result = s;
+
+
+        return "";
+    }
+
+    private String convertStringLeft(String s, int length) { // установить длинну строки орентация слева
+//        try {
+        String result = s + "                                                                                           .";
+        System.out.println(result);
+        result = result.substring(0, length);
+//        System.out.println(result.length());
+//        System.out.println(result);
+//        System.out.println();
+        return result;
+//               } catch (StringIndexOutOfBoundsException e) {
+//            e.printStackTrace();
+//            return "s";
+//        }
+
     }
 
     private void update() {

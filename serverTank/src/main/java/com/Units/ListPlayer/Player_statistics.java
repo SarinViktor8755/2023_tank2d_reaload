@@ -37,7 +37,10 @@ public class Player_statistics implements Comparable<Player_statistics> {
     }
 
     public String toStringForClient() {
-        return name + "<_<nn " + fargs + " " + death + " " + damage_done_in_hp  + " " + count_the_player_game_points();
+        final int length_name = 12;
+        String name_delta = name;
+        if (name.length() >= length_name) name_delta = name.substring(0, length_name);
+        return name_delta + "<_<nn " + fargs + " " + death + " " + damage_done_in_hp + " " + count_the_player_game_points();
     }
 
     private int count_the_player_game_points() {

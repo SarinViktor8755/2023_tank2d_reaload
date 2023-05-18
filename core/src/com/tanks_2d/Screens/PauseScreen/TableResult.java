@@ -28,6 +28,7 @@ public class TableResult {
 
 
 
+
         table.setDebug(true);
         skinMenu = mainGame.getAMG().get("skin/uiskin.json");
         nameLabel = new Label("Name:", skinMenu);
@@ -52,6 +53,8 @@ public class TableResult {
      public void rander(){
         stage.act(Gdx.graphics.getDeltaTime());
         stage.draw();
+
+         System.out.println(stage.getViewport().getWorldHeight());
      }
 
 
