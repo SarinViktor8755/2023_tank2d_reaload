@@ -7,13 +7,16 @@ public class DataPlyerStatistic {
     int damage_caused; // нанесенный ущерб
     int score;
 
+    int id;
 
-    public DataPlyerStatistic(String nik, int frag, int death, int damage_caused,int score) {
+    public DataPlyerStatistic(String nik, int frag, int death, int damage_caused,int score, int id) {
         this.nik = nik;
         this.frag = frag;
         this.death = death;
         this.damage_caused = damage_caused;
         this.score = score;
+        this.id = id;
+
     }
 
     @Override

@@ -17,6 +17,7 @@ import com.tanks_2d.AudioEngine.AudioEngine;
 import com.tanks_2d.ClientNetWork.MainClient;
 import com.tanks_2d.MainGame;
 import com.tanks_2d.Units.ListPlayers;
+import com.tanks_2d.Units.Tanks.OpponentsTanks;
 
 import java.util.ArrayList;
 
@@ -276,7 +277,7 @@ public class PauseScreen implements Screen {
     }
 
 
-    public static void parser_result() {
+    public static  void parser_result() {
         PauseScreen.getDataPlyerStatistics().clear();
         String fs = PauseScreen.getGame_statistics_players();
         PauseScreen.getGame_statistics_players();
@@ -294,10 +295,7 @@ public class PauseScreen implements Screen {
             int score = Integer.valueOf(p[4]);
             int id = Integer.valueOf(p[5]);
 
-            int coomand;
-            boolean isYou;
-
-            PauseScreen.getDataPlyerStatistics().add(new DataPlyerStatistic(nik, frags, deth, hp_n, score));
+            PauseScreen.getDataPlyerStatistics().add(new DataPlyerStatistic(nik, frags, deth, hp_n, score , id));
 
 
         }
