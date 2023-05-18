@@ -25,7 +25,9 @@ public class PlayerStatistics {
         String token = ListPlayers.getListPlayers().get(id_player).getTokken();
         if(list_static.containsKey(token)) return list_static.get(token);
         Player_statistics ps = new Player_statistics();
+        ps.tokken = token;
         ps.name = ListPlayers.getListPlayers().get(id_player).getNikName();
+        ps.tokken = ListPlayers.getListPlayers().get(id_player).tokken;
         list_static.put(token,ps);
         return ps;
     }

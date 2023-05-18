@@ -16,6 +16,7 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.tanks_2d.AudioEngine.AudioEngine;
 import com.tanks_2d.ClientNetWork.MainClient;
 import com.tanks_2d.MainGame;
+import com.tanks_2d.Units.ListPlayers;
 
 import java.util.ArrayList;
 
@@ -151,11 +152,11 @@ public class PauseScreen implements Screen {
         textFont.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         textFont.setUseIntegerPositions(true);
 
-        textFont.draw(batch, "nik", 150, 1050);
-        textFont.draw(batch, "frag", 450, 1050);
-        textFont.draw(batch, "death", 700, 1050);
-        textFont.draw(batch, "d_c", 1100, 1050);
-        textFont.draw(batch, "score", 1380, 1050);
+        textFont.draw(batch, "Player", 70, 1050);
+        textFont.draw(batch, "F", 700, 1050);
+        textFont.draw(batch, "D", 900, 1050);
+        textFont.draw(batch, "dmc", 1200, 1050);
+        textFont.draw(batch, "score", 1480, 1050);
 
         DataPlyerStatistic p;
         for (int i = 0; i < PauseScreen.dataPlyerStatistics.size(); i++) {
@@ -165,14 +166,14 @@ public class PauseScreen implements Screen {
 
             textFont.getColor().a =  getAlpha();
             ///textFont.draw(batch, convertStringLeft(PauseScreen.dataPlyerStatistics.get(i).nik, 3) + " " + PauseScreen.dataPlyerStatistics.get(i).frag + "  " + PauseScreen.dataPlyerStatistics.get(i).death + "  " + PauseScreen.dataPlyerStatistics.get(i).damage_caused + " " + PauseScreen.dataPlyerStatistics.get(i).score, 400, 1000 - (60 * i));
-
+            //mainGame.getGamePlayScreen().getTanksOther().getTankForID()
             int y = 920 - (60 * i);
             textFont.draw(batch, (i+1) + ".", 70, y);
-            textFont.draw(batch, convertStringLeft(p.nik, 3), 150, y);
-            textFont.draw(batch, String.valueOf(p.frag), 600, y);
-            textFont.draw(batch, String.valueOf(p.death), 800, y);
-            textFont.draw(batch, String.valueOf(p.damage_caused), 1100, y);
-            textFont.draw(batch, String.valueOf(p.score), 1380, y);
+            textFont.draw(batch, convertStringLeft(p.nik, 10), 150, y);
+            textFont.draw(batch, String.valueOf(p.frag), 700, y);
+            textFont.draw(batch, String.valueOf(p.death), 900, y);
+            textFont.draw(batch, String.valueOf(p.damage_caused), 1200, y);
+            textFont.draw(batch, String.valueOf(p.score), 1480, y);
 
 
         }
