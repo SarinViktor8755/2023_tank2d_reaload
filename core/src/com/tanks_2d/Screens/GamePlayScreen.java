@@ -221,8 +221,9 @@ public class GamePlayScreen implements Screen {
 
        // this.cameraGame.getCamera().update();
         this.batch.setProjectionMatrix(cameraGame.getCamera().combined);
-
         this.cameraGame.getCamera().update();
+
+
         this.batch.begin();
         try {
             //  System.out.println("rander");

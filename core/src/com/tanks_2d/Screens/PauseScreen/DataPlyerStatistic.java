@@ -8,6 +8,7 @@ public class DataPlyerStatistic {
     int score;
 
     int id;
+    int coomand;
 
     public DataPlyerStatistic(String nik, int frag, int death, int damage_caused,int score, int id) {
         this.nik = nik;
@@ -16,6 +17,7 @@ public class DataPlyerStatistic {
         this.damage_caused = damage_caused;
         this.score = score;
         this.id = id;
+
 
     }
 
