@@ -14,10 +14,12 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.tanks_2d.AudioEngine.AudioEngine;
+import com.tanks_2d.ClientNetWork.Heading_type;
 import com.tanks_2d.ClientNetWork.MainClient;
 import com.tanks_2d.MainGame;
 import com.tanks_2d.Units.ListPlayers;
 import com.tanks_2d.Units.Tanks.OpponentsTanks;
+import com.tanks_2d.Units.Tanks.Tank;
 
 import java.util.ArrayList;
 
@@ -137,18 +139,30 @@ public class PauseScreen implements Screen {
         DataPlyerStatistic p;
         for (int i = 0; i < PauseScreen.dataPlyerStatistics.size(); i++) {
 
-           // if(MathUtils.randomBoolean()) textFont.setColor(Color.BLUE); else
+            // if(MathUtils.randomBoolean()) textFont.setColor(Color.BLUE); else
 
 
-                textFont.setColor(Color.RED);
+            textFont.setColor(Color.RED);
             p = PauseScreen.dataPlyerStatistics.get(i);
 
-            textFont.getColor().a =  getAlpha();
+            //textFont.getColor().a = getAlpha();
             ///textFont.draw(batch, convertStringLeft(PauseScreen.dataPlyerStatistics.get(i).nik, 3) + " " + PauseScreen.dataPlyerStatistics.get(i).frag + "  " + PauseScreen.dataPlyerStatistics.get(i).death + "  " + PauseScreen.dataPlyerStatistics.get(i).damage_caused + " " + PauseScreen.dataPlyerStatistics.get(i).score, 400, 1000 - (60 * i));
             //mainGame.getGamePlayScreen().getTanksOther().getTankForID()
-            int y = 283 - (18 * i);
+            int y = 283 - (20 * i);
+            try {
+                int com = mainGame.getGamePlayScreen().getTanksOther().getTankForID(p.id).command;
+                if (com == Heading_type.BLUE_COMMAND) textFont.setColor(0, 0, 1, getAlpha());
+                if (com == Heading_type.RED_COMMAND) textFont.setColor(1, 0, 0, getAlpha());
+            } catch (NullPointerException e) {
+                textFont.setColor(1, 1, 1, getAlpha());
+                textFont.draw(batch,  ">", 5, y);
+                int com = Tank.getMy_Command();
+                if (com == Heading_type.BLUE_COMMAND) textFont.setColor(0, 0, 1, getAlpha());
+                if (com == Heading_type.RED_COMMAND) textFont.setColor(1, 0, 0, getAlpha());
+            }
 
-            textFont.draw(batch, (i+1) + ".", 23, y);
+
+            textFont.draw(batch, (i + 1) + ".", 19, y);
             textFont.draw(batch, convertStringLeft(p.nik, 10), 46, y);
             textFont.draw(batch, String.valueOf(p.frag), 230, y);
             textFont.draw(batch, String.valueOf(p.death), 290, y);
@@ -176,7 +190,7 @@ public class PauseScreen implements Screen {
     private String convertStringLeft(String s, int length) { // установить длинну строки орентация слева
 //        try {
         String result = s + "                                                                                           .";
-     //   System.out.println(result);
+        //   System.out.println(result);
         result = result.substring(0, length);
 //        System.out.println(result.length());
 //        System.out.println(result);
@@ -256,7 +270,7 @@ public class PauseScreen implements Screen {
     }
 
 
-    public static  void parser_result() {
+    public static void parser_result() {
         PauseScreen.getDataPlyerStatistics().clear();
         String fs = PauseScreen.getGame_statistics_players();
         PauseScreen.getGame_statistics_players();
@@ -273,8 +287,6 @@ public class PauseScreen implements Screen {
             int hp_n = Integer.valueOf(p[3]);
             int score = Integer.valueOf(p[4]);
             int id = Integer.valueOf(p[5]);
-            
-
 
 
             PauseScreen.getDataPlyerStatistics().add(new DataPlyerStatistic(nik, frags, deth, hp_n, score, id));
