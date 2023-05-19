@@ -295,9 +295,8 @@ public class PauseScreen implements Screen {
             int score = Integer.valueOf(p[4]);
             int id = Integer.valueOf(p[5]);
 
+
             PauseScreen.getDataPlyerStatistics().add(new DataPlyerStatistic(nik, frags, deth, hp_n, score , id));
-
-
         }
 
     }
