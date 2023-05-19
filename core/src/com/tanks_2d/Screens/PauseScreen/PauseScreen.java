@@ -14,10 +14,12 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.tanks_2d.AudioEngine.AudioEngine;
+import com.tanks_2d.ClientNetWork.Heading_type;
 import com.tanks_2d.ClientNetWork.MainClient;
 import com.tanks_2d.MainGame;
 import com.tanks_2d.Units.ListPlayers;
 import com.tanks_2d.Units.Tanks.OpponentsTanks;
+import com.tanks_2d.Units.Tanks.Tank;
 
 import java.util.ArrayList;
 
@@ -161,20 +163,22 @@ public class PauseScreen implements Screen {
 
         DataPlyerStatistic p;
         for (int i = 0; i < PauseScreen.dataPlyerStatistics.size(); i++) {
-
-            if(MathUtils.randomBoolean()) textFont.setColor(Color.BLUE); else  textFont.setColor(Color.RED);
+//            if (MathUtils.randomBoolean()) textFont.setColor(Color.BLUE);
+//            else textFont.setColor(Color.RED);
             p = PauseScreen.dataPlyerStatistics.get(i);
 
-            textFont.getColor().a =  getAlpha();
-            ///textFont.draw(batch, convertStringLeft(PauseScreen.dataPlyerStatistics.get(i).nik, 3) + " " + PauseScreen.dataPlyerStatistics.get(i).frag + "  " + PauseScreen.dataPlyerStatistics.get(i).death + "  " + PauseScreen.dataPlyerStatistics.get(i).damage_caused + " " + PauseScreen.dataPlyerStatistics.get(i).score, 400, 1000 - (60 * i));
-            //mainGame.getGamePlayScreen().getTanksOther().getTankForID()
+            brush_bath_for_command(p);
+
+
             int y = 920 - (60 * i);
-            textFont.draw(batch, (i+1) + ".", 70, y);
+            textFont.draw(batch, (i + 1) + ".", 70, y);
             textFont.draw(batch, convertStringLeft(p.nik, 10), 150, y);
             textFont.draw(batch, String.valueOf(p.frag), 700, y);
             textFont.draw(batch, String.valueOf(p.death), 900, y);
             textFont.draw(batch, String.valueOf(p.damage_caused), 1200, y);
             textFont.draw(batch, String.valueOf(p.score), 1480, y);
+
+
         }
 
 
@@ -185,6 +189,17 @@ public class PauseScreen implements Screen {
         // stage.draw();
         // System.out.println(timeInScreen);
         //if(timeInScreen < 0) mainGame.goGameForPause();
+    }
+
+
+    private void brush_bath_for_command(DataPlyerStatistic p) {
+        int command;
+        batch.setColor(1, 1, 1, 1);
+        if (mainGame.getMainClient().getClient().getID() == p.id) command = Tank.getMy_Command();
+        else
+            command = mainGame.getGamePlayScreen().getTanksOther().getTankForID(p.id).command;
+        if (Heading_type.RED_COMMAND == command) batch.setColor(1, 0, 0, getAlpha());
+        if (Heading_type.BLUE_COMMAND == command) batch.setColor(0, 0, 1, getAlpha());
     }
 
     private String convertStringCen(String s, int length) {
@@ -277,7 +292,7 @@ public class PauseScreen implements Screen {
     }
 
 
-    public static  void parser_result() {
+    public static void parser_result() {
         PauseScreen.getDataPlyerStatistics().clear();
         String fs = PauseScreen.getGame_statistics_players();
         PauseScreen.getGame_statistics_players();
@@ -296,7 +311,7 @@ public class PauseScreen implements Screen {
             int id = Integer.valueOf(p[5]);
 
 
-            PauseScreen.getDataPlyerStatistics().add(new DataPlyerStatistic(nik, frags, deth, hp_n, score , id));
+            PauseScreen.getDataPlyerStatistics().add(new DataPlyerStatistic(nik, frags, deth, hp_n, score, id));
         }
 
     }
