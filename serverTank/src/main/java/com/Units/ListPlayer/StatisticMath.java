@@ -90,7 +90,7 @@ public class StatisticMath {   // класс дял подчета количе�
                 size_bot_player++;// количество БОТОВ играков ___ НЕ РЕАЛЬНЫХ играков
             }
         }
-        StatisticMath.sttistic[0] = size_live_player;
+        StatisticMath.sttistic[0] = size_live_player; // живые игроки
         StatisticMath.sttistic[1] = size_bot_player;
         StatisticMath.sttistic[2] = blue_size;
         StatisticMath.sttistic[3] = red_size;

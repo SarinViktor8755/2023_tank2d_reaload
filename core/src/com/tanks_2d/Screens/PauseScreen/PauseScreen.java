@@ -161,8 +161,8 @@ public class PauseScreen implements Screen {
                 if (com == Heading_type.RED_COMMAND) textFont.setColor(1, 0, 0, getAlpha());
             }
 
+            if(i<10)textFont.draw(batch, (i + 1) + ".", 19, y); else textFont.draw(batch, (i + 1) + ".", 16, y);
 
-            textFont.draw(batch, (i + 1) + ".", 19, y);
             textFont.draw(batch, convertStringLeft(p.nik, 10), 46, y);
             textFont.draw(batch, String.valueOf(p.frag), 230, y);
             textFont.draw(batch, String.valueOf(p.death), 290, y);

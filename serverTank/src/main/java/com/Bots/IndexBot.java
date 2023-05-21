@@ -284,7 +284,10 @@ public class IndexBot extends Thread {
     public void updateCountBot(int lPlayers, int target_plaers) {
 
         if (StatisticMath.getPlayersSize() < target_plaers) addBot();
-        if (StatisticMath.getPlayersSize() > target_plaers + 1) remove_extra_bot();
+        if(StatisticMath.getBlueSize() < StatisticMath.getRedSize())addBot();
+        if(StatisticMath.getBlueSize() > StatisticMath.getRedSize())addBot();
+
+        //if (StatisticMath.getPlayersSize() > target_plaers + 1) remove_extra_bot();
 
         //if (gs.lp.get_activ_player_bots() == target_plaers) return;
         //     if (gs.lp.get_activ_player_bots() < target_plaers) addBot();
