@@ -108,7 +108,8 @@ public class MainGame {
                 try {
                     while (true) {
                         thred50_Live = true;
-                        //    if(MathUtils.randomBoolean(.05f)) System.out.println(":::: 50");
+                        //    if(MathUtils.randomBoolean(.05f))
+                    //    System.out.println(":::: 50 - - - - ");
                         //  System.out.println(":::: 50");
                         if (gameServer.isServerLivePlayer()) Thread.sleep(timer_tread_50);
                         else Thread.sleep(450);
@@ -166,7 +167,8 @@ public class MainGame {
                     while (true) {
                         thred25_Live = true;
 
-                        if(MathUtils.randomBoolean(.005f)) System.out.println(":::: 25");
+                       // if(MathUtils.randomBoolean(.005f))
+                        //    System.out.println(":::: 25");
 
                         /// сон потока
                         if (gameServer.isServerLivePlayer()) Thread.sleep(timer_tread_25);
@@ -210,7 +212,7 @@ public class MainGame {
                         //      System.out.println(":::: 600");
                         Thread.sleep(600);
                         // System.out.println("600");
-                        System.out.println("50LIVE " + thred50_Live + "   " + "25LIVE " + thred25_Live);
+                      //  System.out.println("50LIVE " + thred50_Live + "   " + "25LIVE " + thred25_Live);
 
                         thred25_Live = false;
                         thred50_Live = false;

@@ -68,7 +68,7 @@ public class NetworkPacketStock {
         Network.GivePlayerParameters givePlayerParameters = new Network.GivePlayerParameters();
         givePlayerParameters.nomerPlayer = idPlayer;
         givePlayerParameters.nik = NikName.getNikName();
-        System.out.println("запорс параметра игрока");
+        System.out.println("запорс параметра игрока " + idPlayer);
         client.sendTCP(givePlayerParameters);
     }
 

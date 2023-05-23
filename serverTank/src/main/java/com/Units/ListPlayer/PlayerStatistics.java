@@ -2,13 +2,14 @@ package main.java.com.Units.ListPlayer;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
+
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class PlayerStatistics {
-    static HashMap<String, Player_statistics> list_static = new HashMap<>();
+    static ConcurrentHashMap<String, Player_statistics> list_static = new ConcurrentHashMap<>();
 
 
 //    public void addPlayer(int id_player, Player player){
@@ -88,11 +89,19 @@ public class PlayerStatistics {
 //        while (itr.hasNext()) {
 //            resuld_bilder.append("<p>::" + itr.next().getValue().toStringForClient());
 //        }
+        clearListStatic();
         return resuld_bilder.toString();
     }
 
     static public void clearListStatic() {
         PlayerStatistics.list_static.clear();
+//
+//        Iterator<Map.Entry<String, Player_statistics>> itr = list_static.entrySet().iterator();
+//        while (itr.hasNext()) {
+//            Map.Entry<String, Player_statistics> tank = itr.next();
+//            list_static.remove(tank.getKey());
+//        }
+//        PlayerStatistics.list_static.clear();
     }
 
 }

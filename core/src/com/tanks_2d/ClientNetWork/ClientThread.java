@@ -2,6 +2,7 @@ package com.tanks_2d.ClientNetWork;
 
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryonet.Client;
+import com.esotericsoftware.kryonet.KryoNetException;
 import com.tanks_2d.ClientNetWork.VoiceChat.VoiceChatClient;
 
 import java.io.IOException;
@@ -37,10 +38,13 @@ public class ClientThread extends Thread {
 
     @Override
     public void run() {
+        try {
+
+            try {
         System.out.println("Hello, client!");
         client.run();
         Network.register(client);
-        try {
+
             client.connect(5000, Network.host, Network.tcpPort, Network.udpPort);
           //  voiceChatClient = new VoiceChatClient(client.getKryo());
           //  voiceChatClient.addReceiver(client);
@@ -52,6 +56,10 @@ public class ClientThread extends Thread {
          //   voiceChatClient.addReceiver(client);
             // Server communication after connection can go here, or in Listener#connected().
             //    System.out.println("1111");
+
+        }catch (KryoNetException e){
+                e.printStackTrace();
+            }
         } catch (IOException ex) {
             //  ex.printStackTrace();
         }

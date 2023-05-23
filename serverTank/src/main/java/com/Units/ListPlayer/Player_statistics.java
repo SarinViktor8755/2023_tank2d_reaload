@@ -43,19 +43,25 @@ public class Player_statistics implements Comparable<Player_statistics> {
 //        final int length_name = 12;
 //        String name_delta = name;
 //        if (name.length() >= length_name) name_delta = name.substring(0, length_name);
-        return name + "<_<nn " + fargs + " " + death + " " + damage_done_in_hp + " " + count_the_player_game_points()  + " " + this.id;
+        return name + "<_<nn " + fargs + " " + death + " " + damage_done_in_hp + " " + count_the_player_game_points() + " " + this.id;
     }
 
     private int count_the_player_game_points() {
         this.score = (fargs * 500) + (damage_done_in_hp) - (death * 200);
-        if(score < 0) this.score = 0;
+        if (score < 0) this.score = 0;
         return score;
     }
 
     @Override
     public int compareTo(Player_statistics o) {
-        if (this.count_the_player_game_points() >= o.count_the_player_game_points()) return -1;
-        else return 1;
+        int r = 0;
+        if (this.count_the_player_game_points() >= o.count_the_player_game_points()) r = -1;
+        else r = 1;
+
+        if (this.count_the_player_game_points() == o.count_the_player_game_points())
+            if (this.damage_done_in_hp >= o.damage_done_in_hp) r = -1;
+            else r = 1;
+        return r;
     }
 
 
