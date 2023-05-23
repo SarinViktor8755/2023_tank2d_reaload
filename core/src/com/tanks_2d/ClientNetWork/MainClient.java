@@ -14,8 +14,6 @@ import java.util.HashMap;
 import java.util.TreeMap;
 
 
-
-
 public class MainClient {
     public float aplphaConnect;
     private Client client;   //клиент
@@ -119,24 +117,25 @@ public class MainClient {
             frameUpdates.put(pp.nom, true);
             // System.out.println("pp.nom  " + pp.nom + "   " +pp.xp);
             //   System.out.println(pp.nom + "x y " + pp.xp + " " + pp.yp );
-            if (pp.nom == client.getID())  System.out.println("!!!!!!!!!!!!!______!!!MYYYYYYYYYYYYYYYYYYYYYY");
+            if (pp.nom == client.getID())
+                System.out.println("!!!!!!!!!!!!!______!!!MYYYYYYYYYYYYYYYYYYYYYY");
             if (pp.nom == client.getID()) return; // перить они НЕ должны приходить
 
 
             // System.out.println(mg.getGamePlayScreen().getTanksOther().get);
             try {
                 if (mg.isMainMenuScreen()) return;
-               // OpponentsTanks tank = mg.getGamePlayScreen().getTanksOther().getTankForID(pp.nom);
-              //  System.out.println(tank);
+                // OpponentsTanks tank = mg.getGamePlayScreen().getTanksOther().getTankForID(pp.nom);
+                //  System.out.println(tank);
 
                 if (mg.getGamePlayScreen().getTanksOther().getTankForID(pp.nom) == null) {
-                   // System.out.println("NET POLSOVATELY");
-                    if(MathUtils.randomBoolean(.01f))
-                   networkPacketStock.toSendMyParPlayer(pp.nom);
+                    // System.out.println("NET POLSOVATELY");
+                    if (MathUtils.randomBoolean(.01f))
+                        networkPacketStock.toSendMyParPlayer(pp.nom);
 
 
-                }else
-                mg.getGamePlayScreen().getTanksOther().setTankPosition(pp, mg.getMainClient().frameUpdates.get(pp.nom));
+                } else
+                    mg.getGamePlayScreen().getTanksOther().setTankPosition(pp, mg.getMainClient().frameUpdates.get(pp.nom));
             } catch (NullPointerException e) {
                 System.out.println("NET POLSOVATELY");
                 //   mg.getGamePlayScreen().getTanksOther().createOponent(-10_000,-10_000,pp.nom,0);

@@ -176,6 +176,7 @@ public class IndexMap {
 
                 float min;
 
+
                 float x1 = Math.abs(pos.x - rectangle.getPositionWH().x);
                 float x2 = Math.abs(pos.x - rectangle.getPosition().x);
 

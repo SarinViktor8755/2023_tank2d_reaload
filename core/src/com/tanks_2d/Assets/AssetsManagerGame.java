@@ -128,7 +128,7 @@ public class AssetsManagerGame {
         assets.put("sound/READY2A.ogg", Sound.class);
 
         assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
-        assets.put("map/field/index.tmx", TiledMap.class);
+
 
         assets.put("fire.png", Texture.class);
         assets.put("fonts/font.fnt", BitmapFont.class);
@@ -147,6 +147,8 @@ public class AssetsManagerGame {
         assets.put("map/field/index.tmx", TiledMap.class);
         assets.put("map/desert/index.tmx", TiledMap.class);
         assets.put("map/fourth/index.tmx", TiledMap.class);
+        assets.put("map/forest_1/index.tmx", TiledMap.class);
+
 //        assetManager.load("map/field/index.tmx", TiledMap.class);
 //        assetManager.load("map/desert/index.tmx", TiledMap.class);
 

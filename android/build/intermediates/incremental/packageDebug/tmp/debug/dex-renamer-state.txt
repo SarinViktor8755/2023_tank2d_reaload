@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 #Tue May 23 21:45:58 GMT+06:00 2023
 base.0=C\:\\game_dev\\2023_tank2d_reaload\\android\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+=======
+#Tue May 23 10:49:52 GMT+06:00 2023
+base.0=C\:\\game_dev\\tanks_reload\\android\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+>>>>>>> bd80d7dff3ccf8251f28352dba9c0beff9b8fae6
 renamed.0=classes.dex
 path.0=classes.dex

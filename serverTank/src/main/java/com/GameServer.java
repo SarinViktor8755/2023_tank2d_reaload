@@ -203,6 +203,7 @@ public class GameServer {
         } else {
             stockMessOut.p1 = Heading_type.PLAY_GAME;
             stockMessOut.textM = "";
+            PlayerStatistics.clearListStatic();
         }
         stockMessOut.p2 = time;
 

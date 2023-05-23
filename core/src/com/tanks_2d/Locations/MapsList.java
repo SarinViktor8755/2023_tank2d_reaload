@@ -13,6 +13,7 @@ public class MapsList {
         mapsList.add("desert");
         mapsList.add("wasteland");
         mapsList.add("fourth");
+        mapsList.add("forest_1");
 
     }
 
@@ -26,6 +27,7 @@ public class MapsList {
         ml = new ArrayList<String>();
         ml.add("field");
         ml.add("desert");
+        ml.add("forest_1");
         ml.add("wasteland");
         ml.add("fourth");
         for (; ; ) {
