@@ -271,12 +271,14 @@ public class MenuScreen implements Screen {
         batch.setColor(1 - timerStartGame, 1 - timerStartGame, 1, 1);
 
         batch.draw(wallpaper, viewport.getScreenX(), viewport.getScreenY() - ((Interpolation.bounce.apply((MathUtils.sin(timeInScreen) + 1) / 2) * 10)));
-        batch.draw(logo, viewport.getScreenX(), viewport.getScreenY() + 14 + ((MathUtils.cos(timeInScreen * 3) + 1) / 2) * 20);
 
         if (!mainClient.getClient().isConnected()) {
             //batch.setColor(1 - timerStartGame, 1 - timerStartGame, 1,(MathUtils.sin(timeInScreen) +.5f));
-            batch.draw(disconnect, viewport.getScreenX(), viewport.getScreenY() + ((MathUtils.sin(timeInScreen) + 1) / 2) * 20, 50, 50);
+            batch.draw(disconnect, viewport.getScreenX() +50, 60 + viewport.getScreenY() + ((MathUtils.sin(timeInScreen) + 1) / 2) * 20, 150, 150);
         }
+        batch.draw(logo, viewport.getScreenX(), viewport.getScreenY() + 14 + ((MathUtils.cos(timeInScreen * 3) + 1) / 2) * 20);
+
+
         this.batch.end();
         stageMenu.draw();
 
