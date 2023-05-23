@@ -147,6 +147,7 @@ public class AssetsManagerGame {
         assets.put("map/field/index.tmx", TiledMap.class);
         assets.put("map/desert/index.tmx", TiledMap.class);
         assets.put("map/fourth/index.tmx", TiledMap.class);
+        assets.put("map/forest_1/index.tmx", TiledMap.class);
 
 //        assetManager.load("map/field/index.tmx", TiledMap.class);
 //        assetManager.load("map/desert/index.tmx", TiledMap.class);
