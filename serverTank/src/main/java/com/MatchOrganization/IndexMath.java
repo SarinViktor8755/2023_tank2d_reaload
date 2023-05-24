@@ -29,7 +29,7 @@ public class IndexMath {
     private final static int DEFOULT_SCORE_RESPOWN = 150;
     private static int SCORE_RESPOWN = 80;
 
-    private static int WINNING_NUMBER_OF_POINTS = 1;
+    private static int WINNING_NUMBER_OF_POINTS = 3;
     private boolean pause = false; // протсо флаг для проверки из другова класса - что пора вызвать паузу
 
 
