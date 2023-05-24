@@ -91,13 +91,14 @@ public class AudioEngine {
 
 
     private static float countVolmeDistantion(float x, float y, float x1, float y1) {
-        tempV.set(x, y);
+
         float distanc = tempV.dst2(x1, y1);
         distanc = MathUtils.map(0, 250_000, 1, 0, distanc);
         return distanc;
     }
 
     public void pley_fight_ad_sound() {
+        if(!AudioEngine.SondOn)
         if(!AudioEngine.SondOn) return;
         if (isPause()) return;
         this.fight.play();

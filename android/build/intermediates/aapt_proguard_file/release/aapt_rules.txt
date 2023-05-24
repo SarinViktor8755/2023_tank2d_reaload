@@ -1,1 +1,0 @@
--keep class com.tanks_2d.AndroidLauncher { <init>(); }

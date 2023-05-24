@@ -100,10 +100,10 @@ public class PauseScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        System.out.println(viewport.getScreenWidth());
-        System.out.println(viewport.getWorldWidth());
-        System.out.println(viewport.getScreenX());
-        System.out.println();
+//        System.out.println(viewport.getScreenWidth());
+//        System.out.println(viewport.getWorldWidth());
+//        System.out.println(viewport.getScreenX());
+        //System.out.println();
         update();
 
 

@@ -12,6 +12,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -50,6 +51,7 @@ public class MenuScreen implements Screen {
     private boolean startgameSP; // флаг старта диночной игры
 
     public Label statusConnetct;
+
 //    public Label singelGame;
 
     //////////////
@@ -57,6 +59,8 @@ public class MenuScreen implements Screen {
     private Skin skinMenu;
 
     TextButton textButton;
+    CheckBox checkBoxMusic;
+    CheckBox checkBoxSound;
     //  TextButton singelGame;
 
     private boolean button_start_click;
@@ -109,26 +113,20 @@ public class MenuScreen implements Screen {
         textField.setText(NikName.getNikName());
 
         statusConnetct = new Label("", skinMenu);
-        statusConnetct.setPosition(350, 170);
-        // statusConnetct.setColor(Color.DARK_GRAY);
+        statusConnetct.setPosition(350, 100);
         statusConnetct.setFontScale(.6f);
-
-//        singelGame = new Label("single player",skinMenu);
-//        singelGame.setPosition(340,170);
-//        singelGame.setColor(Color.DARK_GRAY);
-//        singelGame.setFontScale(.6f);
-
-        //  textField.setFillParent(true);
-
-
-        //    System.out.println(viewport.getRightGutterX());
+        
 
         textButton = new TextButton("Play Game", skinMenu);
-        //  singelGame = new TextButton("Singel game", skinMenu);
-        ///System.out.println(textField.getText());
+        checkBoxMusic = new CheckBox("  Music ", skinMenu);
+        checkBoxSound = new CheckBox("  Sound", skinMenu);
 
-        textButton.setX(270);
-        textButton.setY(80);
+        textButton.setPosition(350,50);
+/////////////////////////////////////////////
+        checkBoxMusic.setPosition(350, 250);
+        checkBoxSound.setPosition(350, 280);
+
+
         textButton.addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -222,6 +220,9 @@ public class MenuScreen implements Screen {
 
         stageMenu.addActor(textButton);
         stageMenu.addActor(textField);
+        stageMenu.addActor(checkBoxMusic);
+        stageMenu.addActor(checkBoxSound);
+
         //  stageMenu.addActor(singelGame);
         stageMenu.addActor(statusConnetct);
 

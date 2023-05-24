@@ -1,8 +1,0 @@
-com.tanks_2d.android-pngs-0 C:\game_dev\tanks_reload\android\build\generated\res\pngs\debug
-com.tanks_2d.android-resValues-1 C:\game_dev\tanks_reload\android\build\generated\res\resValues\debug
-com.tanks_2d.android-rs-2 C:\game_dev\tanks_reload\android\build\generated\res\rs\debug
-com.tanks_2d.android-mergeDebugResources-3 C:\game_dev\tanks_reload\android\build\intermediates\incremental\debug\mergeDebugResources\merged.dir
-com.tanks_2d.android-mergeDebugResources-4 C:\game_dev\tanks_reload\android\build\intermediates\incremental\debug\mergeDebugResources\stripped.dir
-com.tanks_2d.android-merged_res-5 C:\game_dev\tanks_reload\android\build\intermediates\merged_res\debug
-com.tanks_2d.android-android-6 C:\game_dev\tanks_reload\android\res
-com.tanks_2d.android-debug-7 C:\game_dev\tanks_reload\android\src\debug\res
