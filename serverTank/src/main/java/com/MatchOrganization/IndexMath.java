@@ -157,6 +157,12 @@ public class IndexMath {
 
     public void respon_math() {
         SCORE_RESPOWN--;
+        ////////////
+        if(StatisticMath.getLiveBlueSize() > StatisticMath.getLiveRedSize()) blue_team_score_math++;
+        if(StatisticMath.getLiveBlueSize() < StatisticMath.getLiveRedSize()) red_team_score_math++;
+        ////////////
+
+
         //System.out.println(SCORE_RESPOWN);
         if (SCORE_RESPOWN > 0) return;
 
@@ -165,6 +171,8 @@ public class IndexMath {
         //System.out.println("RESTART MATH");
         SCORE_RESPOWN = DEFOULT_SCORE_RESPOWN;
     }
+
+
 
     public void respon_math(int comand) { // если какая то команда победила
         SCORE_RESPOWN--;
