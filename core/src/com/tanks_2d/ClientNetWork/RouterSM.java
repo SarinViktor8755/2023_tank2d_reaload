@@ -205,7 +205,7 @@ public class RouterSM {
     }
 
     private void mainMenuParametors(float p) {
-        System.out.println("--@@@@------   " + p);
+    //    System.out.println("--@@@@------   " + p);
         // if(mainGame.isMainMenuScreen()) return;
         if (p == Heading_type.PAUSE_GAME) {
             MainGame.setFlagChangeScreen((byte) MainGame.STATUS_GAME_PAUSE);
@@ -223,9 +223,11 @@ public class RouterSM {
         float stHp = mainGame.getGamePlayScreen().getTank().getHp() - sm.p3;
         if(stHp > 0) AudioEngine.Vibration(stHp * 4);
         mainGame.getGamePlayScreen().getTank().setHp((int) sm.p3);
+
         //mainGame.getGamePlayScreen().getTank().set((int) sm.p4);
         if (!mainGame.getGamePlayScreen().getTank().isLive()) {
             mainGame.getGamePlayScreen().getPc().addAnimationDeath(mainGame.getGamePlayScreen().getTank().getPosition().x, mainGame.getGamePlayScreen().getTank().getPosition().y);
         }
+        else mainGame.getGamePlayScreen().getAudioEngine().pley_alarm_hit();
     }
 }
