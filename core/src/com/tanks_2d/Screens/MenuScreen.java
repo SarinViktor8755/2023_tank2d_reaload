@@ -57,6 +57,7 @@ public class MenuScreen implements Screen {
     //////////////
     private Stage stageMenu;
     private Skin skinMenu;
+    private Skin textEditer;
 
     TextButton textButton;
     CheckBox checkBoxMusic;
@@ -104,27 +105,29 @@ public class MenuScreen implements Screen {
 
         stageMenu = new Stage(viewport);
 
-        skinMenu = mainGame.getAMG().get("skin/uiskin.json");
+        skinMenu = mainGame.getAMG().get("skin/comic-ui.json");
+        textEditer = mainGame.getAMG().get("skin/uiskin.json");
 
-        final TextField textField = new TextField(limit, skinMenu);
+        final TextField textField = new TextField(limit, textEditer);
 
         textField.setMaxLength(20);
+        textField.setWidth(280);
         textField.setPosition(20, 250);
         textField.setText(NikName.getNikName());
 
-        statusConnetct = new Label("", skinMenu);
-        statusConnetct.setPosition(350, 100);
-        statusConnetct.setFontScale(.6f);
-        
+        statusConnetct = new Label("", textEditer);
+        statusConnetct.setPosition(160, 120);
+        statusConnetct.setFontScale(1.2f);
+
 
         textButton = new TextButton("Play Game", skinMenu);
         checkBoxMusic = new CheckBox("  Music ", skinMenu);
         checkBoxSound = new CheckBox("  Sound", skinMenu);
 
-        textButton.setPosition(350,50);
+        textButton.setPosition(300,50);
 /////////////////////////////////////////////
-        checkBoxMusic.setPosition(350, 250);
-        checkBoxSound.setPosition(350, 280);
+        checkBoxMusic.setPosition(350, 180);
+        checkBoxSound.setPosition(350, 240);
 
 
         textButton.addListener(new InputListener() {

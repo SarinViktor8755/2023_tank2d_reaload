@@ -47,6 +47,7 @@ public class AssetsManagerGame {
         assets.put("menuAsset/logo.png", Texture.class);
         assets.put("menuAsset/disconct.png", Texture.class);
 
+        assets.put("skin/comic-ui.json", Skin.class);
         assets.put("skin/uiskin.json", Skin.class);
 
         loadedAseets();
@@ -67,6 +68,7 @@ public class AssetsManagerGame {
         assets.put("menuAsset/logo.png", Texture.class);
         assets.put("menuAsset/disconct.png", Texture.class);
 
+        assets.put("skin/comic-ui.json", Skin.class);
         assets.put("skin/uiskin.json", Skin.class);
         //GdxNativesLoader.load();
         assets.put("pause_screen/bg.png", Texture.class);
