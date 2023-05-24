@@ -84,6 +84,35 @@ public class IndexBot extends Thread {
         StatisticMath.setTrue();
     }
 
+
+    private void addBot(int tiam) {
+        System.out.println("Add_bot");
+        int command = gs.getMainGame().getIndexMath().getCommand();
+        Player p = new Player(NOM_ID_BOT, tiam,true);
+        //     System.out.println(command);
+
+        p.setHp(100);
+        p.setNikName(getNikNameGen());
+
+        NOM_ID_BOT--;
+        //    System.out.println("add_bot+ : " + NOM_ID_BOT + "  " + p.getCommand());
+
+        gs.getLp().addPlayer(p); // добавляем в базу играков
+
+        DBBot bot = new DBBot(p.getId());
+        dbBots.put(p.getId(), bot);
+        //  p.setCommand(gs.getMainGame().getIndexMath().getCommand());
+
+        if (p.getCommand() == Heading_type.RED_COMMAND)
+            p.setPosition(gs.getMainGame().getMapSpace().getRasp2());
+        else p.setPosition(gs.getMainGame().getMapSpace().getRasp1());
+        //  p.setPosition(MathUtils.random(200, 1100), MathUtils.random(200, 1100));
+        StatisticMath.setTrue();
+
+
+
+    }
+
     public void updaeteBot(float deltaTime) {
         if(MainGame.isPause()) return;
         if(!gs.isServerLivePlayer()) return;
@@ -284,8 +313,8 @@ public class IndexBot extends Thread {
     public void updateCountBot(int lPlayers, int target_plaers) {
 
         if (StatisticMath.getPlayersSize() < target_plaers) addBot();
-        if(StatisticMath.getBlueSize() < StatisticMath.getRedSize())addBot();
-        if(StatisticMath.getBlueSize() > StatisticMath.getRedSize())addBot();
+        if(StatisticMath.getBlueSize() < StatisticMath.getRedSize())addBot(Heading_type.BLUE_COMMAND);
+        if(StatisticMath.getBlueSize() > StatisticMath.getRedSize())addBot(Heading_type.RED_COMMAND);
 
         //if (StatisticMath.getPlayersSize() > target_plaers + 1) remove_extra_bot();
 
@@ -293,7 +322,7 @@ public class IndexBot extends Thread {
         //     if (gs.lp.get_activ_player_bots() < target_plaers) addBot();
         // else delBot();
 
-        //    if(gs.lp.get_activ_player_bots() > target_plaers) delateBot();
+        //if(gs.lp.getSize_list_player_in_game() > target_plaers) delateBot();
     }
 
 

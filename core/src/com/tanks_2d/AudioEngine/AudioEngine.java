@@ -12,6 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 
 public class AudioEngine {
+    Sound hi_warning;
     Sound pip1;
     MainGame mainGaming;
     ConcurrentHashMap<Integer, Float> stepCounter;
@@ -59,6 +60,7 @@ public class AudioEngine {
         pip1 = mainGaming.getAMG().get("sound/pip1.ogg", Sound.class);
         music_pause = mainGaming.getAMG().get("pause_screen/pm.ogg", Sound.class);
         explosion = mainGaming.getAMG().get("sound/explode4.ogg", Sound.class);
+        hi_warning = mainGaming.getAMG().get("sound/aviatsionnyiy.ogg", Sound.class);
 
 
     }
@@ -268,6 +270,6 @@ public class AudioEngine {
     public void pley_alarm_hit() {
         if(!AudioEngine.SondOn) return;
         if (isPause()) return;
-        this.pip.play();
+        this.hi_warning.play();
     }
 }

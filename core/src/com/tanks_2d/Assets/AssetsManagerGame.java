@@ -89,6 +89,9 @@ public class AssetsManagerGame {
         assets.put("sound/pip1.ogg", Sound.class);
         assets.put("sound/bash.ogg", Sound.class);
         assets.put("pause_screen/pm.ogg", Sound.class);
+        assets.put("sound/aviatsionnyiy.ogg", Sound.class);
+
+
 
         //  assets.put("badlogic.png", Texture.class);
         assets.put("target.png", Texture.class);
