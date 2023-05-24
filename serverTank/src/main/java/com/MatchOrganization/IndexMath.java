@@ -29,16 +29,15 @@ public class IndexMath {
     private final static int DEFOULT_SCORE_RESPOWN = 150;
     private static int SCORE_RESPOWN = 80;
 
-    private static int WINNING_NUMBER_OF_POINTS = 3;
+    private static int WINNING_NUMBER_OF_POINTS = 1;
     private boolean pause = false; // протсо флаг для проверки из другова класса - что пора вызвать паузу
-
 
 
     public void updateMath(float dt, ListPlayers listPlayers, boolean pause_game) {
         if (!pause_game) this.realTimeMath += dt;
         this.listPlayers = listPlayers;
         this.restartMath(this.realTimeMath);
-       // if (pause_game) System.out.println("PAUSE game " + this.realTimeMath);
+        // if (pause_game) System.out.println("PAUSE game " + this.realTimeMath);
     }
 
 
@@ -123,12 +122,10 @@ public class IndexMath {
     private void restartMath(float mathTime) { // рестарт матч или конец матча
         ///    if(MathUtils.randomBoolean(.001f))
 
-        if (mathTime < 5000) return;
-        if (mathTime > MATH_LENGHT) {
-
+        if (mathTime < 5000) return;/// если время сатча меньше 5 сек ничего не делать )))
+        if (mathTime > MATH_LENGHT) { /// если время бльше времени матча контрольного - перезагрузитьматч
             respon_math();
-
-        }/////////////
+        }///////////// я не опнимаю что туту написано
         if (red_team_score_math >= WINNING_NUMBER_OF_POINTS) {
             setPause(true);
             return;
@@ -158,20 +155,27 @@ public class IndexMath {
     public void respon_math() {
         SCORE_RESPOWN--;
         ////////////
-        if(StatisticMath.getLiveBlueSize() > StatisticMath.getLiveRedSize()) blue_team_score_math++;
-        if(StatisticMath.getLiveBlueSize() < StatisticMath.getLiveRedSize()) red_team_score_math++;
+        ////////////
+        if (StatisticMath.getLiveBlueSize() > StatisticMath.getLiveRedSize())
+            blue_team_score_math++;
+        else if (StatisticMath.getLiveBlueSize() < StatisticMath.getLiveRedSize())
+            red_team_score_math++;
+        ////////////
         ////////////
 
 
         //System.out.println(SCORE_RESPOWN);
         if (SCORE_RESPOWN > 0) return;
+        end_math();
 
+    }
+
+    private void end_math(){
         listPlayers.respownAllPlaers();
         realTimeMath = 0;
         //System.out.println("RESTART MATH");
         SCORE_RESPOWN = DEFOULT_SCORE_RESPOWN;
     }
-
 
 
     public void respon_math(int comand) { // если какая то команда победила
@@ -186,7 +190,6 @@ public class IndexMath {
         if ((blue_team_score_math >= WINNING_NUMBER_OF_POINTS) || (red_team_score_math >= WINNING_NUMBER_OF_POINTS)) {
             send_pause_game();
         }
-
 
 
         /////////////
