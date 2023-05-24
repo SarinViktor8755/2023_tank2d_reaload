@@ -126,14 +126,22 @@ public class IndexMath {
         if (mathTime > MATH_LENGHT) { /// если время бльше времени матча контрольного - перезагрузитьматч
             respon_math();
         }///////////// я не опнимаю что туту написано
-        if (red_team_score_math >= WINNING_NUMBER_OF_POINTS) {
-            setPause(true);
-            return;
-        }
-        if (blue_team_score_math >= WINNING_NUMBER_OF_POINTS) {
+//        if (red_team_score_math >= WINNING_NUMBER_OF_POINTS) {
+//            setPause(true);
+//            return;
+//        }
+//        if (blue_team_score_math >= WINNING_NUMBER_OF_POINTS) {
+//            blue_team_score_math = 0;
+//            red_team_score_math = 0;
+//
+//        }
+        //////////////////
+        if ((red_team_score_math >= WINNING_NUMBER_OF_POINTS) || (blue_team_score_math >= WINNING_NUMBER_OF_POINTS)
+        ) {
             blue_team_score_math = 0;
             red_team_score_math = 0;
-
+            setPause(true);
+            return;
         }
 
         ///////////////////////
@@ -170,7 +178,7 @@ public class IndexMath {
 
     }
 
-    private void end_math(){
+    private void end_math() {
         listPlayers.respownAllPlaers();
         realTimeMath = 0;
         //System.out.println("RESTART MATH");
