@@ -137,8 +137,10 @@ public class PauseScreen implements Screen {
         textFont.draw(batch, "score", 430, 310);
 
         DataPlyerStatistic p;
-        for (int i = 0; i < PauseScreen.dataPlyerStatistics.size(); i++) {
 
+        int n;
+        for (int i = 0; i < PauseScreen.dataPlyerStatistics.size(); i++) {
+            n = 0;
             // if(MathUtils.randomBoolean()) textFont.setColor(Color.BLUE); else
 
 
@@ -148,26 +150,33 @@ public class PauseScreen implements Screen {
             //textFont.getColor().a = getAlpha();
             ///textFont.draw(batch, convertStringLeft(PauseScreen.dataPlyerStatistics.get(i).nik, 3) + " " + PauseScreen.dataPlyerStatistics.get(i).frag + "  " + PauseScreen.dataPlyerStatistics.get(i).death + "  " + PauseScreen.dataPlyerStatistics.get(i).damage_caused + " " + PauseScreen.dataPlyerStatistics.get(i).score, 400, 1000 - (60 * i));
             //mainGame.getGamePlayScreen().getTanksOther().getTankForID()
+            n++;
             int y = 283 - (20 * i);
             try {
+
                 int com = mainGame.getGamePlayScreen().getTanksOther().getTankForID(p.id).command;
                 if (com == Heading_type.BLUE_COMMAND) textFont.setColor(0, 0, 1, getAlpha());
                 if (com == Heading_type.RED_COMMAND) textFont.setColor(1, 0, 0, getAlpha());
             } catch (NullPointerException e) {
+                if (p.id != mainClient.getClient().getID()) {
+                    n--;
+                    continue;
+                }
                 textFont.setColor(1, 1, 1, getAlpha());
-                textFont.draw(batch,  ">", 5, y);
+                textFont.draw(batch, ">", 5, y);
                 int com = Tank.getMy_Command();
                 if (com == Heading_type.BLUE_COMMAND) textFont.setColor(0, 0, 1, getAlpha());
                 if (com == Heading_type.RED_COMMAND) textFont.setColor(1, 0, 0, getAlpha());
             }
-
-            if(i<10)textFont.draw(batch, (i + 1) + ".", 19, y); else textFont.draw(batch, (i + 1) + ".", 16, y);
+            if (n < 10) textFont.draw(batch, (i+ 1) + ".", 19, y);
+            else textFont.draw(batch, (i + 1) + ".", 16, y);
 
             textFont.draw(batch, convertStringLeft(p.nik, 10), 46, y);
             textFont.draw(batch, String.valueOf(p.frag), 230, y);
             textFont.draw(batch, String.valueOf(p.death), 290, y);
             textFont.draw(batch, String.valueOf(p.damage_caused), 350, y);
             textFont.draw(batch, String.valueOf(p.score), 430, y);
+
         }
 
 
