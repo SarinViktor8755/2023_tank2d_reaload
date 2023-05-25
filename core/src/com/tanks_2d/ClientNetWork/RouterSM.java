@@ -232,7 +232,7 @@ public class RouterSM {
             mainGame.getGamePlayScreen().getPc().addAnimationDeath(mainGame.getGamePlayScreen().getTank().getPosition().x, mainGame.getGamePlayScreen().getTank().getPosition().y);
         } else {
             mainGame.getGamePlayScreen().getAudioEngine().pley_alarm_hit();
-            mainGame.getGamePlayScreen().getS().minus(sm.p3);
+            mainGame.getGamePlayScreen().getS().minus(100 - mainGame.getGamePlayScreen().getTank().getHp());
         }
 
     }
