@@ -27,6 +27,7 @@ import com.tanks_2d.Locations.GameSpace;
 import com.tanks_2d.MainGame;
 import com.tanks_2d.Units.NikName;
 import com.tanks_2d.Units.Tanks.Tank;
+import com.tanks_2d.shaders.Shaders;
 
 import java.io.IOException;
 
@@ -237,10 +238,13 @@ public class MenuScreen implements Screen {
     public void show() {
         mainGame.audioEngine.stopSoundOfTracks();
         mainGame.audioEngine.playMusicPaseMenu();
+        Shaders s = new Shaders(batch);
+
     }
 
     @Override
     public void render(float delta) {
+        new Shaders(batch);
         //    System.out.println(RouterSM.map_math);
 //        System.out.println(viewport.getWorldHeight());
 //        System.out.println(viewport.getScreenHeight());
@@ -285,6 +289,7 @@ public class MenuScreen implements Screen {
 
         this.batch.end();
         stageMenu.draw();
+        stageMenu.getRoot().setColor(1,1,1,1 - timerStartGame);
 
 
     }
