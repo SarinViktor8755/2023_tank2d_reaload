@@ -1,5 +1,6 @@
 package com.tanks_2d.shaders;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 
@@ -11,7 +12,10 @@ public class Shaders {
     public Shaders(SpriteBatch spriteBatch) {
         this.spriteBatch = spriteBatch;
         ShaderProgram.pedantic = false;
-        shader = new ShaderProgram(nigVR,nigFR);
+//Загрузка из файлов
+        shader = new ShaderProgram(Gdx.files.internal("shaders/default.vert"), Gdx.files.internal("shaders/default.frag"));
+//Загрузка из строк vertexShader и fragmentShader это String в котором хранится код шейдеров
+
         if (!shader.isCompiled()) {
             System.err.println(shader.getLog());
             System.exit(0);
@@ -59,8 +63,6 @@ public class Shaders {
             "    // gl_Position это окончательная позиция вершины \n" +
             "    gl_Position =  u_projTrans * a_position; \n" +
             "}";
-
-
 
 
 }
