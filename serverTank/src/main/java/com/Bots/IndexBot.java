@@ -62,7 +62,7 @@ public class IndexBot extends Thread {
 
         System.out.println("Add_bot");
         int command = gs.getMainGame().getIndexMath().getCommand();
-        Player p = new Player(NOM_ID_BOT, command,true);
+        Player p = new Player(NOM_ID_BOT, command, true);
         //     System.out.println(command);
 
         p.setHp(100);
@@ -88,7 +88,7 @@ public class IndexBot extends Thread {
     private void addBot(int tiam) {
         System.out.println("Add_bot");
         int command = gs.getMainGame().getIndexMath().getCommand();
-        Player p = new Player(NOM_ID_BOT, tiam,true);
+        Player p = new Player(NOM_ID_BOT, tiam, true);
         //     System.out.println(command);
 
         p.setHp(100);
@@ -110,12 +110,11 @@ public class IndexBot extends Thread {
         StatisticMath.setTrue();
 
 
-
     }
 
     public void updaeteBot(float deltaTime) {
-        if(MainGame.isPause()) return;
-        if(!gs.isServerLivePlayer()) return;
+        if (MainGame.isPause()) return;
+        if (!gs.isServerLivePlayer()) return;
         //  if(MainGame.isPause()) return;
 
         actionBot(deltaTime);
@@ -312,9 +311,33 @@ public class IndexBot extends Thread {
 
     public void updateCountBot(int lPlayers, int target_plaers) {
 
-        if (StatisticMath.getPlayersSize() < target_plaers) addBot();
-        if(StatisticMath.getBlueSize() < StatisticMath.getRedSize())addBot(Heading_type.BLUE_COMMAND);
-        if(StatisticMath.getBlueSize() > StatisticMath.getRedSize())addBot(Heading_type.RED_COMMAND);
+        if(StatisticMath.getPlayersSize() < target_plaers) addBot();
+        if(StatisticMath.getPlayersSize() >= target_plaers + 10) return;
+        if (StatisticMath.getBlueSize() != StatisticMath.getRedSize()) addBot();
+
+//        if (StatisticMath.getPlayersSize() < target_plaers) addBot();
+//        if (StatisticMath.getBlueSize() < StatisticMath.getRedSize())
+//            addBot(Heading_type.BLUE_COMMAND);
+//        if (StatisticMath.getBlueSize() > StatisticMath.getRedSize())
+////            addBot(Heading_type.RED_COMMAND);
+//        if ((target_plaers + 6) <= StatisticMath.getPlayersSize()) return;
+//
+////        if (StatisticMath.getBlueSize() < StatisticMath.getRedSize())
+////            addBot(Heading_type.BLUE_COMMAND);
+////        else if (StatisticMath.getBlueSize() > StatisticMath.getRedSize())
+////            addBot(Heading_type.RED_COMMAND);
+//        else addBot();
+//
+//
+//        if (StatisticMath.getPlayersSize() < target_plaers) {
+//
+//            if (StatisticMath.getBlueSize() < StatisticMath.getRedSize())
+//                addBot(Heading_type.BLUE_COMMAND);
+//            else if (StatisticMath.getBlueSize() > StatisticMath.getRedSize())
+//                addBot(Heading_type.RED_COMMAND);
+//            else addBot();
+//
+//        }
 
         //if (StatisticMath.getPlayersSize() > target_plaers + 1) remove_extra_bot();
 
@@ -350,40 +373,43 @@ public class IndexBot extends Thread {
     }
 
 
-    private void remove_extra_bot(){
-      //  if(MathUtils.randomBoolean(.99f)) return;
+    private void remove_extra_bot() {
+        //  if(MathUtils.randomBoolean(.99f)) return;
         System.out.println("delete");
         int random_id = gs.lp.getIdRandomBot();
-        if(random_id == 99) return;
+        if (random_id == 99) return;
         delateBot(random_id);
-        System.out.println(random_id+"   del");
+        System.out.println(random_id + "   del");
 
         ///////////////////////
 
         int target_comand = 0;
-        if(StatisticMath.getBlueSize() > StatisticMath.getRedSize()) target_comand = Heading_type.BLUE_COMMAND;
-        if(StatisticMath.getBlueSize() < StatisticMath.getRedSize()) target_comand = Heading_type.RED_COMMAND;
-        if(target_comand == 0) return;
+        if (StatisticMath.getBlueSize() > StatisticMath.getRedSize())
+            target_comand = Heading_type.BLUE_COMMAND;
+        if (StatisticMath.getBlueSize() < StatisticMath.getRedSize())
+            target_comand = Heading_type.RED_COMMAND;
+        if (target_comand == 0) return;
 
     }
 
-    public void clearAllBot(){ /// чистить всех ботов - это для меню
+    public void clearAllBot() { /// чистить всех ботов - это для меню
         System.out.println("clearAllBot");
         for (Map.Entry<Integer, Player> entry : gs.lp.getPlayers().entrySet()) {
             //  System.out.println("ID =  " + entry.getKey() + " День недели = " + entry.getValue());
-            if(!isBot(entry.getValue())) continue;
+            if (!isBot(entry.getValue())) continue;
             System.out.println(entry.getValue().getId());
 
             int id = entry.getValue().getId();
             gs.lp.remove_player(id);
             dbBots.remove(id);
-          //  gs.send_DISCONECT_PLAYER(id);
+            //  gs.send_DISCONECT_PLAYER(id);
         }
 
     }
 
-    private boolean isBot(Player p){
-        if(p.getId()<-99) return true; return false;
+    private boolean isBot(Player p) {
+        if (p.getId() < -99) return true;
+        return false;
     }
 
     private void delateBot(int id) { // дописать нужно с какой команды удалять ))

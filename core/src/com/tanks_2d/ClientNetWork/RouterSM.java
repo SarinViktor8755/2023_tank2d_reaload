@@ -228,10 +228,11 @@ public class RouterSM {
 
         //mainGame.getGamePlayScreen().getTank().set((int) sm.p4);
         if (!mainGame.getGamePlayScreen().getTank().isLive()) {
+            mainGame.getGamePlayScreen().getS().minus(80);
             mainGame.getGamePlayScreen().getPc().addAnimationDeath(mainGame.getGamePlayScreen().getTank().getPosition().x, mainGame.getGamePlayScreen().getTank().getPosition().y);
         } else {
             mainGame.getGamePlayScreen().getAudioEngine().pley_alarm_hit();
-            mainGame.getGamePlayScreen().getS().minus();
+            mainGame.getGamePlayScreen().getS().minus(sm.p3);
         }
 
     }
