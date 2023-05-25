@@ -3,9 +3,11 @@ package com.tanks_2d.shaders;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
+import com.badlogic.gdx.math.MathUtils;
 
 public class Shaders {
 
+    private float timer;
     private SpriteBatch spriteBatch;
     private ShaderProgram shader;
 
@@ -64,5 +66,20 @@ public class Shaders {
             "    gl_Position =  u_projTrans * a_position; \n" +
             "}";
 
+
+    public ShaderProgram getShader() {
+        return shader;
+    }
+
+    public void updateShader() {
+        getShader().setUniformf("colors", timer);
+        timer += Gdx.graphics.getDeltaTime() / 3;
+        timer = (float) MathUtils.clamp(timer, -0.5, 0);
+     //   System.out.println(timer);
+    }
+
+    public void minus() {
+        this.timer = -0.5f;
+    }
 
 }

@@ -238,13 +238,13 @@ public class MenuScreen implements Screen {
     public void show() {
         mainGame.audioEngine.stopSoundOfTracks();
         mainGame.audioEngine.playMusicPaseMenu();
-        Shaders s = new Shaders(batch);
+        //Shaders s = new Shaders(batch);
 
     }
 
     @Override
     public void render(float delta) {
-        new Shaders(batch);
+       // new Shaders(batch);
         //    System.out.println(RouterSM.map_math);
 //        System.out.println(viewport.getWorldHeight());
 //        System.out.println(viewport.getScreenHeight());

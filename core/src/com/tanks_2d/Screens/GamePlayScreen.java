@@ -30,6 +30,7 @@ import com.tanks_2d.Units.Tanks.Tank;
 import com.tanks_2d.Units.Tanks.TanksOther;
 import com.tanks_2d.MainGame;
 import com.tanks_2d.Units.Tanks.TanksOther;
+import com.tanks_2d.shaders.Shaders;
 
 import java.io.IOException;
 import java.util.ConcurrentModificationException;
@@ -55,6 +56,8 @@ public class GamePlayScreen implements Screen {
     private int live_red_command;
 
     private TanksOther tanksOther;
+
+    Shaders s;
 
     ShaderProgram shader;
 
@@ -116,6 +119,7 @@ public class GamePlayScreen implements Screen {
     @Override
     public void show() {
         controller.getDirectionMovement().set(0, 0);
+        s = new Shaders(batch);
     }
 
     public AudioEngine getAudioEngine() {
@@ -123,6 +127,8 @@ public class GamePlayScreen implements Screen {
     }
 
     public void update() {
+        s.updateShader();
+       // if(MathUtils.randomBoolean(.005f)) {s.minus();}
 //        if(MathUtils.randomBoolean(.005f)){
 //            System.out.println("goMenuForPause");
 //            mainGame.goMenuForPause();
@@ -398,5 +404,7 @@ public class GamePlayScreen implements Screen {
         this.score_blue_command = score_blue_command;
     }
 
-
+    public Shaders getS() {
+        return s;
+    }
 }

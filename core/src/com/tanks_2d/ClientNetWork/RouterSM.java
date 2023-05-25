@@ -34,7 +34,7 @@ public class RouterSM {
     }
 
     public void routeSM(Network.StockMessOut sm) throws NullPointerException {
-         System.out.println("-->>> in :: " + sm);
+        System.out.println("-->>> in :: " + sm);
         if (Heading_type.MY_SHOT == sm.tip) {
             try {
                 //   System.out.println(mainGame.getGamePlayScreen() + "!!!!!!!!!!!!!!!!!!!!!");
@@ -56,7 +56,7 @@ public class RouterSM {
             mainGame.getGamePlayScreen().getController().setLive_score_red((int) sm.p2);
             mainGame.getGamePlayScreen().getController().setLive_score_blue((int) sm.p1);
 
-            System.out.println(sm.p1 + "            "+ sm.p2);
+            System.out.println(sm.p1 + "            " + sm.p2);
 
             mainGame.getGamePlayScreen().getController().setTime_in_game(sm.p3 / 1000);  // переделать на время матча
 //            mainGame.getGamePlayScreen().setLive_red_command((int) sm.p4);
@@ -86,7 +86,8 @@ public class RouterSM {
                 // тут адо забрать статстику матча и распарсить ее
 
             }
-             if(sm.p1 == Heading_type.PLAY_GAME) MainGame.setFlagChangeScreen((byte) MainGame.STATUS_GAME_GAMEPLAY);
+            if (sm.p1 == Heading_type.PLAY_GAME)
+                MainGame.setFlagChangeScreen((byte) MainGame.STATUS_GAME_GAMEPLAY);
         }
 
 
@@ -100,7 +101,7 @@ public class RouterSM {
             mainGame.getGamePlayScreen().getTanksOther().send_all_layer_live_100_hp();
             /// ока сделаем что бы клиент сам определял место респауна, если что - поменяем на то что бы сервер определял ,
             mainGame.getGamePlayScreen().getTank().setHp(100);
-           // mainGame.getGamePlayScreen().getTank().respownTank((int) sm.p4);
+            // mainGame.getGamePlayScreen().getTank().respownTank((int) sm.p4);
             mainGame.getGamePlayScreen().getTank().respownTank();
 
             mainGame.getGamePlayScreen().getController().setTime_in_game(0);
@@ -150,7 +151,8 @@ public class RouterSM {
                     saveParametrsMyTank(sm);
                 } else {   // чужие танки  - получают урон
                     // если игрока не будет создать нового
-                    if(!mainGame.getGamePlayScreen().getTanksOther().getExists((int) sm.p1)) mainGame.getGamePlayScreen().getTanksOther().createOponent(-1000, -1000,(int) sm.p1,0);
+                    if (!mainGame.getGamePlayScreen().getTanksOther().getExists((int) sm.p1))
+                        mainGame.getGamePlayScreen().getTanksOther().createOponent(-1000, -1000, (int) sm.p1, 0);
                     OpponentsTanks ot = mainGame.getGamePlayScreen().getTanksOther().getTankForID((int) sm.p1);
                     //    System.out.println(opponentsTanks);
                     // opponentsTanks = new OpponentsTanks();
@@ -162,10 +164,10 @@ public class RouterSM {
                     if (!ot.isLive()) {
                         if (mainGame.getGamePlayScreen().getTimeInGame() < 1) return;
 
-                    //    System.out.println("!!::  "+ot.hp + "  "+ ot.getNikPlayer());
+                        //    System.out.println("!!::  "+ot.hp + "  "+ ot.getNikPlayer());
 
-                      //  System.out.println(sm + "   ---!!!!");
-                       // if(sm.p1 == Tank.getMy_Command()) mainGame.getGamePlayScreen().getController().addFrag();
+                        //  System.out.println(sm + "   ---!!!!");
+                        // if(sm.p1 == Tank.getMy_Command()) mainGame.getGamePlayScreen().getController().addFrag();
                         mainGame.getGamePlayScreen().getPc().addAnimationDeath(ot.getPosition().x, ot.getPosition().y);
 
 
@@ -175,7 +177,7 @@ public class RouterSM {
                 }
 
             } catch (NullPointerException e) {
-                      e.printStackTrace();
+                e.printStackTrace();
                 //  System.out.println("1");
 //                Tank myTank = mainGame.getGamePlayScreen().getTank();
 //                myTank.setHp((int) sm.p3);
@@ -205,7 +207,7 @@ public class RouterSM {
     }
 
     private void mainMenuParametors(float p) {
-    //    System.out.println("--@@@@------   " + p);
+        //    System.out.println("--@@@@------   " + p);
         // if(mainGame.isMainMenuScreen()) return;
         if (p == Heading_type.PAUSE_GAME) {
             MainGame.setFlagChangeScreen((byte) MainGame.STATUS_GAME_PAUSE);
@@ -221,13 +223,16 @@ public class RouterSM {
 
     private void saveParametrsMyTank(Network.StockMessOut sm) {
         float stHp = mainGame.getGamePlayScreen().getTank().getHp() - sm.p3;
-        if(stHp > 0) AudioEngine.Vibration(stHp * 4);
+        if (stHp > 0) AudioEngine.Vibration(stHp * 4);
         mainGame.getGamePlayScreen().getTank().setHp((int) sm.p3);
 
         //mainGame.getGamePlayScreen().getTank().set((int) sm.p4);
         if (!mainGame.getGamePlayScreen().getTank().isLive()) {
             mainGame.getGamePlayScreen().getPc().addAnimationDeath(mainGame.getGamePlayScreen().getTank().getPosition().x, mainGame.getGamePlayScreen().getTank().getPosition().y);
+        } else {
+            mainGame.getGamePlayScreen().getAudioEngine().pley_alarm_hit();
+            mainGame.getGamePlayScreen().getS().minus();
         }
-        else mainGame.getGamePlayScreen().getAudioEngine().pley_alarm_hit();
+
     }
 }
