@@ -25,7 +25,7 @@ public class Bullet implements Pool.Poolable {
         this.direction.set(BULLET_SPEED, 0);
         nom = 0;
         timeLife = 0;
-        System.out.println("Bullet is reset");
+        //System.out.println("Bullet is reset");
     }
 
     // метод, который мы можем вызвать для обновления нашей логики маркеров

@@ -155,7 +155,7 @@ public class StatisticMath {   // класс дял подчета количе�
         for (int i = 0; i < sttistic.length; i++) {
             System.out.print(sttistic[i] + "  ");
         }
-        System.out.println();
+        //System.out.println();
     }
 
     ///////////
