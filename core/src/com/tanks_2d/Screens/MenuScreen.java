@@ -27,12 +27,15 @@ import com.tanks_2d.Locations.GameSpace;
 import com.tanks_2d.MainGame;
 import com.tanks_2d.Units.NikName;
 import com.tanks_2d.Units.Tanks.Tank;
+import com.tanks_2d.shaders.ShaderFilm;
 import com.tanks_2d.shaders.Shaders;
 
 import java.io.IOException;
 
 
 public class MenuScreen implements Screen {
+
+   // ShaderFilm shaderFilm;
     private MainGame mainGame;
 
     private SpriteBatch batch;
@@ -238,6 +241,7 @@ public class MenuScreen implements Screen {
     public void show() {
         mainGame.audioEngine.stopSoundOfTracks();
         mainGame.audioEngine.playMusicPaseMenu();
+  //      shaderFilm = new ShaderFilm();
         //Shaders s = new Shaders(batch);
 
     }
@@ -250,6 +254,11 @@ public class MenuScreen implements Screen {
 //        System.out.println(viewport.getScreenHeight());
 //        System.out.println();
      //   mainGame.audioEngine.stopSoundOfTracks();
+
+
+//        shaderFilm.setGrayScaleExtraAmount(MathUtils.random(0,.5f));
+//        shaderFilm.start(.2f);
+//        batch.setShader(shaderFilm);
 
         check_screen_flag();
         upDateScreen();
@@ -301,6 +310,9 @@ public class MenuScreen implements Screen {
     }
 
     private void upDateScreen() {
+
+
+
         mainClient.checkConnect(Heading_type.IN_MENU); // проверяет на коннект переподключется
 
         // System.out.println("!!!" + mainClient.getClient().isConnected() + " ___ isOnLine" + mainGame.getMainClient().isOnLine());
