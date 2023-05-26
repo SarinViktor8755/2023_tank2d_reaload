@@ -383,7 +383,7 @@ public class Controller {
         feature = gamePlayScreen.getAMG().get("treck_bar1.png", Texture.class);
 
 
-        banner = new Banner(gsp.getBatch(), gsp.getAudioEngine(), fith,victory,failed,track);
+        banner = new Banner(gsp.getBatch(), gsp.getAudioEngine(), fith, victory, failed, track);
     }
 
     public boolean isButtonChangingOpponent() {
@@ -568,7 +568,7 @@ public class Controller {
 
     private String format_time(int time) {// орматировтаь время под часы игры
         int time_minus = 120 - time;
-        if(time_minus < 0) time_minus = 0;
+        if (time_minus < 0) time_minus = 0;
         int min = time_minus / 60 % 60,
                 sec = time_minus / 1 % 60;
         return String.format("%02d:%02d", min, sec);
@@ -633,16 +633,20 @@ public class Controller {
             if (fr < 1) {
                 Controller.finalAd = false;
 
-             //   System.out.println("BLUE WIN");
-           //     gamePlayScreen.getController().addBannerFeiath();
-                if(Tank.getMy_Command()== Heading_type.RED_COMMAND) gamePlayScreen.getController().addBannerLOUSER();else
-                if(Tank.getMy_Command()== Heading_type.BLUE_COMMAND) gamePlayScreen.getController().addBannerWiner();
+                //   System.out.println("BLUE WIN");
+                //     gamePlayScreen.getController().addBannerFeiath();
+                if (Tank.getMy_Command() == Heading_type.RED_COMMAND)
+                    gamePlayScreen.getController().addBannerLOUSER();
+                else if (Tank.getMy_Command() == Heading_type.BLUE_COMMAND)
+                    gamePlayScreen.getController().addBannerWiner();
             }
             if (fb < 1) {
                 Controller.finalAd = false;
-             //   System.out.println("RED WIN");
-                if(Tank.getMy_Command()== Heading_type.RED_COMMAND) gamePlayScreen.getController().addBannerWiner();else
-                if(Tank.getMy_Command()== Heading_type.BLUE_COMMAND) gamePlayScreen.getController().addBannerLOUSER();
+                //   System.out.println("RED WIN");
+                if (Tank.getMy_Command() == Heading_type.RED_COMMAND)
+                    gamePlayScreen.getController().addBannerWiner();
+                else if (Tank.getMy_Command() == Heading_type.BLUE_COMMAND)
+                    gamePlayScreen.getController().addBannerLOUSER();
             }
         }
 
