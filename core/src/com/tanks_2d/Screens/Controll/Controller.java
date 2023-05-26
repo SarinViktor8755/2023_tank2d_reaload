@@ -568,6 +568,7 @@ public class Controller {
 
     private String format_time(int time) {// орматировтаь время под часы игры
         int time_minus = 120 - time;
+        if(time_minus < 0) time_minus = 0;
         int min = time_minus / 60 % 60,
                 sec = time_minus / 1 % 60;
         return String.format("%02d:%02d", min, sec);

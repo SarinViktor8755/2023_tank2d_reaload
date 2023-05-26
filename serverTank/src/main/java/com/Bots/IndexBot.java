@@ -325,7 +325,7 @@ public class IndexBot extends Thread {
 
 
 
-        ..    gs.getMainGame().check_pause_game();
+        //    gs.getMainGame().check_pause_game();
 //        if (MathUtils.randomBoolean(.01f)) {
 //            if (StatisticMath.getBlueSize() < StatisticMath.getRedSize())
 //                delateBotCommand(Heading_type.RED_COMMAND);
@@ -333,7 +333,7 @@ public class IndexBot extends Thread {
 //                delateBotCommand(Heading_type.BLUE_COMMAND);
 //        }
 
-        if (MathUtils.randomBoolean(.1f)) {
+        if (MathUtils.randomBoolean()) {
 
             if (StatisticMath.getBlueSize() > StatisticMath.getRedSize())
                 addBot(Heading_type.RED_COMMAND);
