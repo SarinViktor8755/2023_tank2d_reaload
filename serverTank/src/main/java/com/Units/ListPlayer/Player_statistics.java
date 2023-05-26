@@ -25,8 +25,6 @@ public class Player_statistics implements Comparable<Player_statistics> {
         this.name = null;
         this.damage_done_in_hp = 0;
         this.score = 0;
-
-
     }
 
 
@@ -64,5 +62,7 @@ public class Player_statistics implements Comparable<Player_statistics> {
         return r;
     }
 
-
+    public void setName(String name) {
+        this.name = name;
+    }
 }

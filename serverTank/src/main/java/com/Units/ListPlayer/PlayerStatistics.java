@@ -40,6 +40,15 @@ public class PlayerStatistics {
         ps.death++;
     }
 
+
+    public void delDeath(int id_player) { // добавить смерть
+       // Player_statistics ps = getPlayer(id_player);
+        list_static.remove(id_player);
+      //  ps.death++;
+    }
+
+
+
     public void add_damage_done_in_hp(int id_player, int damage) { // добавить смерть
         Player_statistics ps = getPlayer(id_player);
         ps.damage_done_in_hp += damage;
@@ -103,6 +112,8 @@ public class PlayerStatistics {
 //        }
 //        PlayerStatistics.list_static.clear();
     }
+
+
 
 }
 

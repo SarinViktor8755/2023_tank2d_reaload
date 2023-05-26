@@ -139,12 +139,15 @@ public class Tank {
     public void respownTank() {
         hp = 100;
         time_life = 0;
+        my_Command = generateCommand();
         if (my_Command == Heading_type.BLUE_COMMAND) position.set(point_respown_blue);
         if (my_Command == Heading_type.RED_COMMAND) position.set(point_respown_red);
         position.set(position.x, position.y);
         position.x += MathUtils.random(-100, 100);
         position.y += MathUtils.random(-100, 100);
         banner_feith = true;
+
+        gsp.getMainGame().getMainClient().getNetworkPacketStock().toSendMyNik();
 
 
         //   controller.addBannerFeiath();

@@ -5,6 +5,7 @@ import static com.tanks_2d.ClientNetWork.Network.register;
 
 import com.badlogic.gdx.math.MathUtils;
 import com.esotericsoftware.kryonet.Server;
+import com.tanks_2d.ClientNetWork.Heading_type;
 import com.tanks_2d.ClientNetWork.Network;
 import com.tanks_2d.Locations.MapsList;
 
@@ -58,6 +59,11 @@ public class MainGame {
         System.out.println("startPauseTimer");
         indexMath.setPause(false);
 
+//
+//            if (StatisticMath.getBlueSize() < StatisticMath.getRedSize())
+//                delateBotCommand(Heading_type.RED_COMMAND);
+//            if (StatisticMath.getBlueSize() > StatisticMath.getRedSize())
+//                delateBotCommand(Heading_type.BLUE_COMMAND);
 
         // что то ещу нжно для рестарта матча
        // indexMath.set() = 0;

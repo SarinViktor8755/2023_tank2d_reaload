@@ -8,6 +8,7 @@ import com.tanks_2d.ClientNetWork.Network;
 
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -60,7 +61,7 @@ public class IndexBot extends Thread {
 
     private void addBot() {
 
-        System.out.println("Add_bot");
+
         int command = gs.getMainGame().getIndexMath().getCommand();
         Player p = new Player(NOM_ID_BOT, command, true);
         //     System.out.println(command);
@@ -82,6 +83,8 @@ public class IndexBot extends Thread {
         else p.setPosition(gs.getMainGame().getMapSpace().getRasp1());
         //  p.setPosition(MathUtils.random(200, 1100), MathUtils.random(200, 1100));
         StatisticMath.setTrue();
+
+        System.out.println(p.getId() + " Add_bot " + p.getCommand() + " " + p.getNikName());
     }
 
 
@@ -311,9 +314,40 @@ public class IndexBot extends Thread {
 
     public void updateCountBot(int lPlayers, int target_plaers) {
 
-        if(StatisticMath.getPlayersSize() < target_plaers) addBot();
-        if(StatisticMath.getPlayersSize() >= target_plaers + 10) return;
-        if (StatisticMath.getBlueSize() != StatisticMath.getRedSize()) addBot();
+  //      if (MathUtils.randomBoolean(.05f)) delateBotCommand(Heading_type.BLUE_COMMAND);
+
+//        if (StatisticMath.getPlayersSize() < target_plaers) addBot();
+//        if (StatisticMath.getPlayersSize() >= target_plaers + 10) return;
+//        if (StatisticMath.getBlueSize() != StatisticMath.getRedSize()) addBot();
+
+
+        if (StatisticMath.getPlayersSize() < target_plaers) addBot();
+
+
+
+        ..    gs.getMainGame().check_pause_game();
+//        if (MathUtils.randomBoolean(.01f)) {
+//            if (StatisticMath.getBlueSize() < StatisticMath.getRedSize())
+//                delateBotCommand(Heading_type.RED_COMMAND);
+//            if (StatisticMath.getBlueSize() > StatisticMath.getRedSize())
+//                delateBotCommand(Heading_type.BLUE_COMMAND);
+//        }
+
+        if (MathUtils.randomBoolean(.1f)) {
+
+            if (StatisticMath.getBlueSize() > StatisticMath.getRedSize())
+                addBot(Heading_type.RED_COMMAND);
+            if (StatisticMath.getBlueSize() < StatisticMath.getRedSize())
+                addBot(Heading_type.BLUE_COMMAND);
+        }
+
+
+
+
+//
+//
+//        if (StatisticMath.getBlueSize() != StatisticMath.getRedSize()) addBot();
+
 
 //        if (StatisticMath.getPlayersSize() < target_plaers) addBot();
 //        if (StatisticMath.getBlueSize() < StatisticMath.getRedSize())
@@ -339,14 +373,14 @@ public class IndexBot extends Thread {
 //
 //        }
 
-        //if (StatisticMath.getPlayersSize() > target_plaers + 1) remove_extra_bot();
+    //if (StatisticMath.getPlayersSize() > target_plaers + 1) remove_extra_bot();
 
-        //if (gs.lp.get_activ_player_bots() == target_plaers) return;
-        //     if (gs.lp.get_activ_player_bots() < target_plaers) addBot();
-        // else delBot();
+    //if (gs.lp.get_activ_player_bots() == target_plaers) return;
+    //     if (gs.lp.get_activ_player_bots() < target_plaers) addBot();
+    // else delBot();
 
-        //if(gs.lp.getSize_list_player_in_game() > target_plaers) delateBot();
-    }
+    //if(gs.lp.getSize_list_player_in_game() > target_plaers) delateBot();
+}
 
 
     public static void botShoot(int id) { /// выстрел LAVEL_1
@@ -412,54 +446,35 @@ public class IndexBot extends Thread {
         return false;
     }
 
+
+    public boolean delateBotCommand(int command) { // удалить бота с определеннйо команды
+
+        HashMap<Integer, Player> lp = gs.getLp().getPlayers();
+        for (Integer key : lp.keySet()) {
+            System.out.println(lp.get(key));
+            if (lp.get(key).getCommand() == command) {
+                delateBot(key);
+                System.out.println("delate_bot " + key);
+                return true;
+            }
+        }
+        return false;
+    }
+
     private void delateBot(int id) { // дописать нужно с какой команды удалять ))
 
-        gs.send_DISCONECT_PLAYER(id);
         gs.lp.remove_player(id);
         dbBots.remove(id);
+        gs.send_DISCONECT_PLAYER(id);
+        StatisticMath.playerStatistics.delDeath(id);
         //System.out.println();
-
-////        Integer firstKey = dbBots.keySet().iterator().next();
-////        System.out.println("delete");
-////        gs.lp.remove_player(firstKey);
-////        dbBots.remove(firstKey);
-////        gs.send_DISCONECT_PLAYER(firstKey);
-//        if (gs.lp.getBlue_size() <1) return;
-//    //    System.out.println("DELETA BOT");
-//        int target_conmand;
-//       // if()
-//        if (gs.lp.getRed_size() < gs.lp.getBlue_size()) {
-//            // System.out.println("RED_COMMAND");
-//            target_conmand = Heading_type.BLUE_COMMAND;
-//        }else
-//        if (gs.lp.getBlue_size() < gs.lp.getRed_size()) {
-//            //System.out.println("BLUE COMAND");
-//            target_conmand = Heading_type.RED_COMMAND;
-//        }else
-//        if (MathUtils.randomBoolean()) target_conmand = Heading_type.RED_COMMAND;
-//        else target_conmand = Heading_type.BLUE_COMMAND;
-//
-//        Iterator<Map.Entry<Integer, DBBot>> inter_bot = dbBots.entrySet().iterator();
-//        Player p;
-//        while (inter_bot.hasNext()) {
-//            Map.Entry<Integer, DBBot> bot = inter_bot.next();
-//            p = gs.lp.getPlayerForId(bot.getKey());
-//            if(p.getCommand()== target_conmand);
-//            {
-//                int id = bot.getKey();
-//                System.out.println("DELATE: " + id);
-//                gs.send_DISCONECT_PLAYER(id);
-//                gs.lp.remove_player(id);
-//                dbBots.remove(id);
-//
-//            }
-//
-//        }
 
     }
 
+    private static ArrayList<String> names_repiad = new ArrayList<>();
 
     static String getNikNameGen() {
+        String result = "N";
         ArrayList<String> names = new ArrayList<>();
         names.add("Bubba");
         names.add("Honey");
@@ -535,8 +550,21 @@ public class IndexBot extends Thread {
         names.add("Sexy");
         names.add("McDreamy");
         names.add("ALEKSIZE");
-        return names.get(MathUtils.random(names.size() - 1)) + "@Bot";
+
+
+        for (; ; ) {
+            if (IndexBot.names_repiad.size() >= names.size() - 5) IndexBot.names_repiad.clear();
+            result = names.get(MathUtils.random(names.size() - 1)) + "@Bot";
+
+            if (IndexBot.names_repiad.indexOf(result) == -1) {
+                IndexBot.names_repiad.add(result);
+                return result;
+            }
+
+        }
+
     }
+
 
     ////////////////////////
     private Vector2 get_stickSlipy(Player p, float length) { // взять палочку для просмотра местности

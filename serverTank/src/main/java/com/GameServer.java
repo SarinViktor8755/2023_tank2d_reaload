@@ -93,6 +93,9 @@ public class GameServer {
                                            lp.getPlayerForId(connection.getID()).setRotTower(pp.roy_tower);
                                            return;
                                        } catch (NullPointerException e) {
+                                           System.out.println("------------------ _______________________");
+                                           System.out.println(connection.getID());
+                                           System.out.println(lp);
                                            e.printStackTrace();
                                            return;
                                        }
