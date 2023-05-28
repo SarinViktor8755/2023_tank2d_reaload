@@ -316,35 +316,18 @@ public class IndexBot extends Thread {
 
 
     public void updateCountBot(int lPlayers, int target_plaers) {
-
-        //      if (MathUtils.randomBoolean(.05f)) delateBotCommand(Heading_type.BLUE_COMMAND);
-
-//        if (StatisticMath.getPlayersSize() < target_plaers) addBot();
-//        if (StatisticMath.getPlayersSize() >= target_plaers + 10) return;
-//        if (StatisticMath.getBlueSize() != StatisticMath.getRedSize()) addBot();
-
-
-//
-//        if(gs.getMainGame().getIndexMath().isPause()){
-//           if(StatisticMath.getPlayersSize() > target_plaers  + 3){
-//               gs.lp.clearAllBots();
-//               dbBots.clear();
-//
-//               StatisticMath.playerStatistics.clear();
-//           }
-//        }
-
-
-        //    gs.getMainGame().check_pause_game();
-//        if (MathUtils.randomBoolean(.01f)) {
-//            if (StatisticMath.getBlueSize() < StatisticMath.getRedSize())
-//                delateBotCommand(Heading_type.RED_COMMAND);
-//            if (StatisticMath.getBlueSize() > StatisticMath.getRedSize())
-//                delateBotCommand(Heading_type.BLUE_COMMAND);
-//        }
-/////////////
-
+        //////////////////////////добавленеи для цели
         if (StatisticMath.getPlayersSize() < target_plaers) addBot();
+        //////////////////////////добавленеи для баланса
+        adding_bot_balance();
+        //////////////////////////удалене  для баланса
+        delate_bot_balance();
+
+
+    }
+
+
+    private void  adding_bot_balance(){
         if (MathUtils.randomBoolean()) {
             if (StatisticMath.getBlueSize() != StatisticMath.getRedSize()) {
                 //добавить пересчет статистики
@@ -359,51 +342,12 @@ public class IndexBot extends Thread {
             }
 
         }
+    }
+
+    private void  delate_bot_balance(){
 
 
-//                addBot(Heading_type.RED_COMMAND);
 
-
-//            if (StatisticMath.getBlueSize() < StatisticMath.getRedSize())
-//                addBot(Heading_type.BLUE_COMMAND);
-
-
-//
-//
-//        if (StatisticMath.getBlueSize() != StatisticMath.getRedSize()) addBot();
-
-
-//        if (StatisticMath.getPlayersSize() < target_plaers) addBot();
-//        if (StatisticMath.getBlueSize() < StatisticMath.getRedSize())
-//            addBot(Heading_type.BLUE_COMMAND);
-//        if (StatisticMath.getBlueSize() > StatisticMath.getRedSize())
-////            addBot(Heading_type.RED_COMMAND);
-//        if ((target_plaers + 6) <= StatisticMath.getPlayersSize()) return;
-//
-////        if (StatisticMath.getBlueSize() < StatisticMath.getRedSize())
-////            addBot(Heading_type.BLUE_COMMAND);
-////        else if (StatisticMath.getBlueSize() > StatisticMath.getRedSize())
-////            addBot(Heading_type.RED_COMMAND);
-//        else addBot();
-//
-//
-//        if (StatisticMath.getPlayersSize() < target_plaers) {
-//
-//            if (StatisticMath.getBlueSize() < StatisticMath.getRedSize())
-//                addBot(Heading_type.BLUE_COMMAND);
-//            else if (StatisticMath.getBlueSize() > StatisticMath.getRedSize())
-//                addBot(Heading_type.RED_COMMAND);
-//            else addBot();
-//
-//        }
-
-        //if (StatisticMath.getPlayersSize() > target_plaers + 1) remove_extra_bot();
-
-        //if (gs.lp.get_activ_player_bots() == target_plaers) return;
-        //     if (gs.lp.get_activ_player_bots() < target_plaers) addBot();
-        // else delBot();
-
-        //if(gs.lp.getSize_list_player_in_game() > target_plaers) delateBot();
     }
 
 
