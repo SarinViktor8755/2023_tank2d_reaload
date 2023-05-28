@@ -68,6 +68,8 @@ public class ListPlayers {
         statisticMath = new StatisticMath(this);
     }
 
+
+
     public boolean there_is_player(int id) {
         if (getPlayerForId(id) == null) return false;
         else return true;

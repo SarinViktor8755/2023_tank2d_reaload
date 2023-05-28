@@ -169,7 +169,7 @@ public class IndexBot extends Thread {
                 moveBot(deltaTime, tank, p, gs.getLp());
             } catch (ConcurrentModificationException e) {
                 e.printStackTrace();
-            }catch (NullPointerException e){
+            } catch (NullPointerException e) {
                 e.printStackTrace();
             }
         }
@@ -317,30 +317,22 @@ public class IndexBot extends Thread {
 
     public void updateCountBot(int lPlayers, int target_plaers) {
 
-  //      if (MathUtils.randomBoolean(.05f)) delateBotCommand(Heading_type.BLUE_COMMAND);
+        //      if (MathUtils.randomBoolean(.05f)) delateBotCommand(Heading_type.BLUE_COMMAND);
 
 //        if (StatisticMath.getPlayersSize() < target_plaers) addBot();
 //        if (StatisticMath.getPlayersSize() >= target_plaers + 10) return;
 //        if (StatisticMath.getBlueSize() != StatisticMath.getRedSize()) addBot();
 
 
-        if (StatisticMath.getPlayersSize() < target_plaers) addBot();
-
-
-
-
-
-
-
-        if(gs.getMainGame().getIndexMath().isPause()){
-           if(StatisticMath.getPlayersSize() > target_plaers  + 3){
-               gs.lp.clearAllBots();
-               dbBots.clear();
-
-               StatisticMath.playerStatistics.clear();
-           }
-        }
-
+//
+//        if(gs.getMainGame().getIndexMath().isPause()){
+//           if(StatisticMath.getPlayersSize() > target_plaers  + 3){
+//               gs.lp.clearAllBots();
+//               dbBots.clear();
+//
+//               StatisticMath.playerStatistics.clear();
+//           }
+//        }
 
 
         //    gs.getMainGame().check_pause_game();
@@ -351,22 +343,27 @@ public class IndexBot extends Thread {
 //                delateBotCommand(Heading_type.BLUE_COMMAND);
 //        }
 /////////////
-        if (MathUtils.randomBoolean(.05f)) {
-     //       addBot();
-//
+
+        if (StatisticMath.getPlayersSize() <= target_plaers) addBot();
+        if (MathUtils.randomBoolean()) {
             if (StatisticMath.getBlueSize() != StatisticMath.getRedSize()) {
                 //добавить пересчет статистики
-                addBot();
 
+                gs.getLp().getStatisticMath().counting_p();
+                if (StatisticMath.getBlueSize() != StatisticMath.getRedSize()) {
+                    System.out.println("Balans");
+                    addBot();
+                    gs.getLp().getStatisticMath().counting_p();
+                    System.out.println("B:"+StatisticMath.getBlueSize() + "   R:"+ StatisticMath.getRedSize());
+                }
             }
+
+        }
 //                addBot(Heading_type.RED_COMMAND);
 
 
 //            if (StatisticMath.getBlueSize() < StatisticMath.getRedSize())
 //                addBot(Heading_type.BLUE_COMMAND);
-        }
-
-
 
 
 //
@@ -398,14 +395,14 @@ public class IndexBot extends Thread {
 //
 //        }
 
-    //if (StatisticMath.getPlayersSize() > target_plaers + 1) remove_extra_bot();
+        //if (StatisticMath.getPlayersSize() > target_plaers + 1) remove_extra_bot();
 
-    //if (gs.lp.get_activ_player_bots() == target_plaers) return;
-    //     if (gs.lp.get_activ_player_bots() < target_plaers) addBot();
-    // else delBot();
+        //if (gs.lp.get_activ_player_bots() == target_plaers) return;
+        //     if (gs.lp.get_activ_player_bots() < target_plaers) addBot();
+        // else delBot();
 
-    //if(gs.lp.getSize_list_player_in_game() > target_plaers) delateBot();
-}
+        //if(gs.lp.getSize_list_player_in_game() > target_plaers) delateBot();
+    }
 
 
     public static void botShoot(int id) { /// выстрел LAVEL_1
