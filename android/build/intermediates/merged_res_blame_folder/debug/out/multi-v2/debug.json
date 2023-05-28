@@ -4,7 +4,7 @@
             "outputFile": "com.tanks_2d.android-merged_res-5:/values_values.arsc.flat",
             "map": [
                 {
-                    "source": "C:\\game_dev\\2023_tank2d_reaload\\android\\res\\values\\color.xml",
+                    "source": "E:\\game_dev\\tanks\\android\\res\\values\\color.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\game_dev\\2023_tank2d_reaload\\android\\res\\values\\strings.xml",
+                    "source": "E:\\game_dev\\tanks\\android\\res\\values\\strings.xml",
                     "from": {
                         "startLines": "3",
                         "startColumns": "4",
