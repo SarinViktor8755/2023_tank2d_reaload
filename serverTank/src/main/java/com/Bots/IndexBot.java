@@ -352,10 +352,16 @@ public class IndexBot extends Thread {
 //        }
 /////////////
         if (MathUtils.randomBoolean(.05f)) {
-            addBot();
+     //       addBot();
 //
-            if (StatisticMath.getBlueSize() != StatisticMath.getRedSize())  addBot();
+            if (StatisticMath.getBlueSize() != StatisticMath.getRedSize()) {
+                //добавить пересчет статистики
+                addBot();
+
+            }
 //                addBot(Heading_type.RED_COMMAND);
+
+
 //            if (StatisticMath.getBlueSize() < StatisticMath.getRedSize())
 //                addBot(Heading_type.BLUE_COMMAND);
         }
