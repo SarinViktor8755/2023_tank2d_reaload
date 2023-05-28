@@ -34,6 +34,11 @@ public class PlayerStatistics {
         return ps;
     }
 
+
+    public void clear() { // добавить смерть
+        this.list_static.clear();
+
+    }
     ////////////////////////
     public void addDeath(int id_player) { // добавить смерть
         Player_statistics ps = getPlayer(id_player);
@@ -90,7 +95,7 @@ public class PlayerStatistics {
         ///////
         for (int i = 0; i < comparator.size(); i++) {
             //  System.out.println(comparator.get(i));
-            if (i > 14) break;
+          //  if (i > 14) break;
             resuld_bilder.append("<p>::" + comparator.get(i).toStringForClient());
 
         }

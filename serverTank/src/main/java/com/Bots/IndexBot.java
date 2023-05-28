@@ -168,6 +168,8 @@ public class IndexBot extends Thread {
                 moveBot(deltaTime, tank, p, gs.getLp());
             } catch (ConcurrentModificationException e) {
                 e.printStackTrace();
+            }catch (NullPointerException e){
+                e.printStackTrace();
             }
         }
 
@@ -325,6 +327,21 @@ public class IndexBot extends Thread {
 
 
 
+
+
+
+
+        if(gs.getMainGame().getIndexMath().isPause()){
+           if(StatisticMath.getPlayersSize() > target_plaers  + 3){
+               gs.lp.clearAllBots();
+               dbBots.clear();
+
+               StatisticMath.playerStatistics.clear();
+           }
+        }
+
+
+
         //    gs.getMainGame().check_pause_game();
 //        if (MathUtils.randomBoolean(.01f)) {
 //            if (StatisticMath.getBlueSize() < StatisticMath.getRedSize())
@@ -332,8 +349,8 @@ public class IndexBot extends Thread {
 //            if (StatisticMath.getBlueSize() > StatisticMath.getRedSize())
 //                delateBotCommand(Heading_type.BLUE_COMMAND);
 //        }
-
-        if (MathUtils.randomBoolean()) {
+/////////////
+        if (MathUtils.randomBoolean(.05f)) {
 
             if (StatisticMath.getBlueSize() > StatisticMath.getRedSize())
                 addBot(Heading_type.RED_COMMAND);
@@ -462,7 +479,6 @@ public class IndexBot extends Thread {
     }
 
     private void delateBot(int id) { // дописать нужно с какой команды удалять ))
-
         gs.lp.remove_player(id);
         dbBots.remove(id);
         gs.send_DISCONECT_PLAYER(id);

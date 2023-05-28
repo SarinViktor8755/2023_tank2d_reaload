@@ -73,7 +73,7 @@ public class Shaders {
     public void updateShader() {
         
         getShader().setUniformf("colors", timer);
-        timer += Gdx.graphics.getDeltaTime() / 3;
+        timer += Gdx.graphics.getDeltaTime();
        // timer = (float) MathUtils.clamp(timer, -0.5, 0);
         if(timer > 0) timer = 0;
        // if(timer < -3) timer = -3;
@@ -81,7 +81,8 @@ public class Shaders {
     }
 
     public void minus(float p3) {
-        this.timer =this.timer -(p3/100);
+        this.timer =this.timer -(p3/50);
+        if(this.timer < -1.5) this.timer = -1.5f;
     }
 
 }

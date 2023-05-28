@@ -168,8 +168,8 @@ public class PauseScreen implements Screen {
                 if (com == Heading_type.BLUE_COMMAND) textFont.setColor(0, 0, 1, getAlpha());
                 if (com == Heading_type.RED_COMMAND) textFont.setColor(1, 0, 0, getAlpha());
             }
-            if (n < 10) textFont.draw(batch, (i+ 1) + ".", 19, y);
-            else textFont.draw(batch, (i + 1) + ".", 16, y);
+            if (n < 10) textFont.draw(batch, (i + 1) + ".", 20, y);
+            else textFont.draw(batch, (i + 1) + ".", 14, y);
 
             textFont.draw(batch, convertStringLeft(p.nik, 10), 46, y);
             textFont.draw(batch, String.valueOf(p.frag), 230, y);
@@ -280,29 +280,34 @@ public class PauseScreen implements Screen {
 
 
     public static void parser_result() {
-        PauseScreen.getDataPlyerStatistics().clear();
-        String fs = PauseScreen.getGame_statistics_players();
-        PauseScreen.getGame_statistics_players();
-        //System.out.println(PauseScreen.getDataPlyerStatistics());
-        String[] parts = fs.split("<p>::");
-        for (int i = 0; i < parts.length; i++) {
-            int index = parts[i].indexOf("<_<nn");
-            if (index == -1) continue;
-            String nik = parts[i].substring(0, index);
-
-            String[] p = parts[i].substring(index).split(" ");
-            int frags = Integer.valueOf(p[1]);
-            int deth = Integer.valueOf(p[2]);
-            int hp_n = Integer.valueOf(p[3]);
-            int score = Integer.valueOf(p[4]);
-            int id = Integer.valueOf(p[5]);
+        try {
 
 
-            PauseScreen.getDataPlyerStatistics().add(new DataPlyerStatistic(nik, frags, deth, hp_n, score, id));
+            PauseScreen.getDataPlyerStatistics().clear();
+            String fs = PauseScreen.getGame_statistics_players();
+            PauseScreen.getGame_statistics_players();
+            //System.out.println(PauseScreen.getDataPlyerStatistics());
+            String[] parts = fs.split("<p>::");
+            for (int i = 0; i < parts.length; i++) {
+                int index = parts[i].indexOf("<_<nn");
+                if (index == -1) continue;
+                String nik = parts[i].substring(0, index);
+
+                String[] p = parts[i].substring(index).split(" ");
+                int frags = Integer.valueOf(p[1]);
+                int deth = Integer.valueOf(p[2]);
+                int hp_n = Integer.valueOf(p[3]);
+                int score = Integer.valueOf(p[4]);
+                int id = Integer.valueOf(p[5]);
 
 
+                PauseScreen.getDataPlyerStatistics().add(new DataPlyerStatistic(nik, frags, deth, hp_n, score, id));
+
+
+            }
+        } catch (StringIndexOutOfBoundsException e) {
+            e.printStackTrace();
         }
-
     }
 
     public static ArrayList<DataPlyerStatistic> getDataPlyerStatistics() {
