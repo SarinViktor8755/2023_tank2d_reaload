@@ -345,7 +345,22 @@ public class IndexBot extends Thread {
     }
 
     private void delate_bot_balance() {
+        if (StatisticMath.getPlayersSize() <= MainGame.targetPlayer) return;
+        if (StatisticMath.getBlueSize() != StatisticMath.getRedSize()) {
+            HashMap<Integer, Player> lp = gs.getLp().getPlayers();
+            int command;
+            for (Integer key : lp.keySet()) {
+                System.out.println(lp.get(key));
+                command = Heading_type.BLUE_COMMAND;
+                if (StatisticMath.getBlueSize() < StatisticMath.getRedSize())
+                    command = Heading_type.RED_COMMAND;
+                if (lp.get(key).getCommand() == command) {
+                    delateBot(key);
+                    System.out.println("delate_bot " + key);
 
+                }
+            }
+        }
 
     }
 
@@ -432,7 +447,7 @@ public class IndexBot extends Thread {
         gs.lp.disconect(id);
         dbBots.remove(id);
         gs.send_DISCONECT_PLAYER(id);
-        StatisticMath.playerStatistics.delDeath(id);
+        //  StatisticMath.playerStatistics.delDeath(id);
         //System.out.println();
 
     }
