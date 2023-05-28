@@ -15,6 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import main.java.com.GameServer;
 import main.java.com.MainGame;
+import main.java.com.Service;
 import main.java.com.Units.ListPlayer.ListPlayers;
 import main.java.com.Units.ListPlayer.Player;
 import main.java.com.Units.ListPlayer.StatisticMath;
@@ -84,7 +85,7 @@ public class IndexBot extends Thread {
         //  p.setPosition(MathUtils.random(200, 1100), MathUtils.random(200, 1100));
         StatisticMath.setTrue();
 
-        System.out.println(p.getId() + " Add_bot " + p.getCommand() + " " + p.getNikName());
+        System.out.println(p.getId() + " Add_bot " + Service.getComandFoeNomber(p.getCommand()) + " " + p.getNikName());
     }
 
 
@@ -351,11 +352,12 @@ public class IndexBot extends Thread {
 //        }
 /////////////
         if (MathUtils.randomBoolean(.05f)) {
-
-            if (StatisticMath.getBlueSize() > StatisticMath.getRedSize())
-                addBot(Heading_type.RED_COMMAND);
-            if (StatisticMath.getBlueSize() < StatisticMath.getRedSize())
-                addBot(Heading_type.BLUE_COMMAND);
+            addBot();
+//
+            if (StatisticMath.getBlueSize() != StatisticMath.getRedSize())  addBot();
+//                addBot(Heading_type.RED_COMMAND);
+//            if (StatisticMath.getBlueSize() < StatisticMath.getRedSize())
+//                addBot(Heading_type.BLUE_COMMAND);
         }
 
 
