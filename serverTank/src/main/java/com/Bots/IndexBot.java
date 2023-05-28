@@ -327,7 +327,7 @@ public class IndexBot extends Thread {
     }
 
 
-    private void  adding_bot_balance(){
+    private void adding_bot_balance() {
         if (MathUtils.randomBoolean()) {
             if (StatisticMath.getBlueSize() != StatisticMath.getRedSize()) {
                 //добавить пересчет статистики
@@ -337,15 +337,14 @@ public class IndexBot extends Thread {
                     System.out.println("Balans");
                     addBot();
                     gs.getLp().getStatisticMath().counting_p();
-                    System.out.println("B:"+StatisticMath.getBlueSize() + "   R:"+ StatisticMath.getRedSize());
+                    System.out.println("B:" + StatisticMath.getBlueSize() + "   R:" + StatisticMath.getRedSize());
                 }
             }
 
         }
     }
 
-    private void  delate_bot_balance(){
-
+    private void delate_bot_balance() {
 
 
     }
