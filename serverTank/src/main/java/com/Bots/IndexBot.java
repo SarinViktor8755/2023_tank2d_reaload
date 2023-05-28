@@ -344,7 +344,7 @@ public class IndexBot extends Thread {
 //        }
 /////////////
 
-        if (StatisticMath.getPlayersSize() <= target_plaers) addBot();
+        if (StatisticMath.getPlayersSize() < target_plaers) addBot();
         if (MathUtils.randomBoolean()) {
             if (StatisticMath.getBlueSize() != StatisticMath.getRedSize()) {
                 //добавить пересчет статистики
@@ -359,6 +359,8 @@ public class IndexBot extends Thread {
             }
 
         }
+
+
 //                addBot(Heading_type.RED_COMMAND);
 
 
@@ -484,7 +486,7 @@ public class IndexBot extends Thread {
     }
 
     private void delateBot(int id) { // дописать нужно с какой команды удалять ))
-        gs.lp.remove_player(id);
+        gs.lp.disconect(id);
         dbBots.remove(id);
         gs.send_DISCONECT_PLAYER(id);
         StatisticMath.playerStatistics.delDeath(id);

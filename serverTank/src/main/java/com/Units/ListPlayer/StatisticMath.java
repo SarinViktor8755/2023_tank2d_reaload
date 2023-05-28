@@ -14,7 +14,7 @@ public class StatisticMath {   // класс дял подчета количе�
     private ListPlayers lp;
 
     private static int sttistic[] = new int[6];
-    //private static HashMap<String,PlayerStatic> table = new HashMap();
+
 
     public static PlayerStatistics playerStatistics = new PlayerStatistics();
 

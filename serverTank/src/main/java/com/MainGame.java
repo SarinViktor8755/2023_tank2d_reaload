@@ -75,7 +75,6 @@ public class MainGame {
 
     public MainGame(GameServer gameServer, int targetPlayer) {
         MainGame.pause_math = -1;
-
         MainGame.targetPlayer = targetPlayer;
         this.gameServer = gameServer;
         this.bullets = new IndexBullets(this.gameServer);
@@ -83,10 +82,8 @@ public class MainGame {
         startSecondaryThread_50();
         startSecondaryThread_25();
         startSecondaryThread_600();
-
         indexMath = new IndexMath();
-
-
+        System.out.println(MainGame.targetPlayer);
     }
 
 

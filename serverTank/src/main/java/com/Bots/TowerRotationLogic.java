@@ -10,7 +10,7 @@ import main.java.com.Units.ListPlayer.ListPlayers;
 import main.java.com.Units.ListPlayer.Player;
 
 public class TowerRotationLogic { /// поворот любой башни ЛОГИКА - входит в класс танка одного
-    private HashMap<Integer, OpponentsTanks> listOpponents;
+   // private HashMap<Integer, OpponentsTanks> listOpponents;
 
 
     private boolean rotation; // вращение
