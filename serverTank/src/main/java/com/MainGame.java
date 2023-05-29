@@ -54,20 +54,9 @@ public class MainGame {
         if(!indexMath.isPause()) return;
          gameServer.send_Chang_screen(true,PAUSE_TIME);
 
-
         pause_math = PAUSE_TIME;
         System.out.println("startPauseTimer");
         indexMath.setPause(false);
-
-//
-//            if (StatisticMath.getBlueSize() < StatisticMath.getRedSize())
-//                delateBotCommand(Heading_type.RED_COMMAND);
-//            if (StatisticMath.getBlueSize() > StatisticMath.getRedSize())
-//                delateBotCommand(Heading_type.BLUE_COMMAND);
-
-        // что то ещу нжно для рестарта матча
-       // indexMath.set() = 0;
-
 
     }
 

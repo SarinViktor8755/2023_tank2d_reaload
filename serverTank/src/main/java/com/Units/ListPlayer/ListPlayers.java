@@ -80,6 +80,8 @@ public class ListPlayers {
     }
 
     public boolean disconect(int id) {
+
+        getPlayerForId(id).pos.x = -100000;
         basket.add(getPlayerForId(id));
         players.remove(id);
         return true;

@@ -144,7 +144,6 @@ public class IndexMath {
             return;
         }
 
-        ///////////////////////
         if (StatisticMath.getLiveBlueSize() < 1) {
             respon_math(1);
         }

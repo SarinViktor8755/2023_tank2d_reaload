@@ -52,7 +52,11 @@ public class StatisticMath {   // класс дял подчета количе�
     }
 
     public synchronized StatisticMath counting_p() { // посчитать статичтику
-       // System.out.println(playerStatistics.getStatistigString());
+        System.out.println("PEREERSHET STATISTICI");
+        System.out.println("    LiveBlue " + StatisticMath.getLiveBlueSize() + "    LiveRed " + StatisticMath.getLiveRedSize());
+        System.out.println("    getRedSize " + StatisticMath.getRedSize() + "    getBlueSize " + StatisticMath.getBlueSize());
+        ///////////////////////
+        // System.out.println(playerStatistics.getStatistigString());
         if (!key_recalculate_statistics) return this;
         //System.out.println("counting_p  " + lp.getSize());
 
