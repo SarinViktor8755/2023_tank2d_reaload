@@ -321,8 +321,8 @@ public class IndexBot extends Thread {
         //////////////////////////добавленеи для баланса
         adding_bot_balance();
         //////////////////////////удалене  для баланса
-        delate_bot_balance();
-
+         delate_bot_balance();
+      //  if (MathUtils.randomBoolean(.5f)) delate_bot_balance(Heading_type.RED_COMMAND);
 
     }
 
@@ -349,20 +349,77 @@ public class IndexBot extends Thread {
         if (StatisticMath.getBlueSize() != StatisticMath.getRedSize()) {
             HashMap<Integer, Player> lp = gs.getLp().getPlayers();
             int command;
-            for (Integer key : lp.keySet()) {
-                System.out.println(lp.get(key));
+            Iterator<Map.Entry<Integer, Player>> iterator = lp.entrySet().iterator();
+            while (iterator.hasNext()) {
+                Map.Entry<Integer, Player> p = iterator.next();
                 command = Heading_type.BLUE_COMMAND;
                 if (StatisticMath.getBlueSize() < StatisticMath.getRedSize())
                     command = Heading_type.RED_COMMAND;
-                if (lp.get(key).getCommand() == command) {
-                    delateBot(key);
-                    System.out.println("delate_bot " + key);
-
+                if (p.getValue().getCommand() != command) {
+                    delateBot(p.getKey());
+                    System.out.println("DELATE : " + p.getKey() + "   " + p.getValue().getCommand());
+                    return;
                 }
-            }
-        }
 
+            }
+
+
+//            for (Integer key : lp.keySet()) {
+//                System.out.println(lp.get(key));
+//                command = Heading_type.BLUE_COMMAND;
+//                if (StatisticMath.getBlueSize() < StatisticMath.getRedSize())
+//                    command = Heading_type.RED_COMMAND;
+//                if (lp.get(key).getCommand() == command) {
+//                    delateBot(key);
+//                    System.out.println("delate_bot " + key);
+//
+//                }
+//            }
+
+
+        }
     }
+
+    private void delate_bot_balance(int commandD) {
+//        if (StatisticMath.getPlayersSize() <= MainGame.targetPlayer) return;
+//        if (StatisticMath.getBlueSize() != StatisticMath.getRedSize()) {
+            HashMap<Integer, Player> lp = gs.getLp().getPlayers();
+            int command = commandD;
+            System.out.println("del");
+            Iterator<Map.Entry<Integer, Player>> iterator = lp.entrySet().iterator();
+            while (iterator.hasNext()) {
+                Map.Entry<Integer, Player> p = iterator.next();
+                command = commandD;
+                //   if (StatisticMath.getBlueSize() < StatisticMath.getRedSize())command = Heading_type.RED_COMMAND;
+                try {
+                    if (p.getValue().getCommand() != command) {
+
+                    delateBot(p.getKey());
+                    System.out.println("DELATE : " + p.getKey() + "   " + p.getValue().getCommand());
+                    return;
+                }
+
+                }catch (NullPointerException e){e.printStackTrace();}
+
+            }}
+
+
+//            for (Integer key : lp.keySet()) {
+//                System.out.println(lp.get(key));
+//                command = Heading_type.BLUE_COMMAND;
+//                if (StatisticMath.getBlueSize() < StatisticMath.getRedSize())
+//                    command = Heading_type.RED_COMMAND;
+//                if (lp.get(key).getCommand() == command) {
+//                    delateBot(key);
+//                    System.out.println("delate_bot " + key);
+//
+//                }
+//            }
+
+
+//        }
+//    }
+    ////////////////////////////////////////////
 
 
     public static void botShoot(int id) { /// выстрел LAVEL_1
