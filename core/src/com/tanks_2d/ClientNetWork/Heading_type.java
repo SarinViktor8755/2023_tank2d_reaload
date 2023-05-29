@@ -78,7 +78,7 @@ public class Heading_type {
         domen.put(48, "DEATH_TANK");
 
         domen.put(49, "RESPOWN_TANK_PLAYER");
-        domen.put(11, "DISCONECT_PLAYER");
+
 
         domen.put(49, "CHANGE_THE_SCREEN");
 

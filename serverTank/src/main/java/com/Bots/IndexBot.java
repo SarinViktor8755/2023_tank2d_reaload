@@ -321,7 +321,7 @@ public class IndexBot extends Thread {
         //////////////////////////добавленеи для баланса
         adding_bot_balance();
         //////////////////////////удалене  для баланса
-         delate_bot_balance();
+      //  delate_bot_balance();
       //  if (MathUtils.randomBoolean(.5f)) delate_bot_balance(Heading_type.RED_COMMAND);
 
     }
@@ -345,7 +345,7 @@ public class IndexBot extends Thread {
     }
 
     private void delate_bot_balance() {
-        if (StatisticMath.getPlayersSize() <= MainGame.targetPlayer) return;
+        if (StatisticMath.getPlayersSize()  > MainGame.targetPlayer - 2)
         if (StatisticMath.getBlueSize() != StatisticMath.getRedSize()) {
             HashMap<Integer, Player> lp = gs.getLp().getPlayers();
             int command;
@@ -358,6 +358,8 @@ public class IndexBot extends Thread {
                 if (p.getValue().getCommand() != command) {
                     delateBot(p.getKey());
                     System.out.println("DELATE : " + p.getKey() + "   " + p.getValue().getCommand());
+                    System.out.println("B:" + StatisticMath.getBlueSize() + "   R:" + StatisticMath.getRedSize());
+
                     return;
                 }
 

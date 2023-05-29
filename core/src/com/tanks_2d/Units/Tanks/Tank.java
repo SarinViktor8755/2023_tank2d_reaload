@@ -16,7 +16,7 @@ import com.tanks_2d.Screens.GamePlayScreen;
 public class Tank {
     static final Vector2 DEATH_VECTOR = new Vector2(-1111, -1111);
 
-
+    static int rt = 0;
     GamePlayScreen gsp;
 
     //Корпус
@@ -40,7 +40,7 @@ public class Tank {
 
     float deltaSled;
     Vector2 deltaSledVec;
-    static Integer my_Command = generateCommand(); // по умолчанию 1 красня команда временно
+    static Integer my_Command = -1; // по умолчанию -1  ytnhfkmyzf rjvfylf
 
     final float SPEED = SPEED_MOVE_TANKS;
     final float SPEED_ROTATION = 180f;
@@ -108,15 +108,14 @@ public class Tank {
         tr = new TowerRotation(direction, direction_tower, position, gsp.getTanksOther().listOpponents, getMy_Command());
         targetCoordinat = new Vector2(0, 0);
 
-
         //  gsp.getCameraGame().createNewTargetDeathRhim(gsp.getTanksOther().getRandomPlayer());
 
         this.point_respown_blue.set(gsp.getGameSpace().getRasp1());
         this.point_respown_red.set(gsp.getGameSpace().getRasp2());
 
-
         if (my_Command == Heading_type.RED_COMMAND) position.set(point_respown_red);
         if (my_Command == Heading_type.BLUE_COMMAND) position.set(point_respown_blue);
+
         position.x += MathUtils.random(-100, 100);
         position.y += MathUtils.random(-100, 100);
         deltaSledVec.set(this.getPosition());
@@ -137,9 +136,14 @@ public class Tank {
     }
 
     public void respownTank() {
+        rt++;
+        System.out.println(rt + "   RT_TANK");
+        //// debug
+        gsp.getMainGame().getMainClient().getNetworkPacketStock().toSendMyNik();
         hp = 100;
         time_life = 0;
-        my_Command = generateCommand();
+        if (my_Command == -1) my_Command = generateCommand();
+
         if (my_Command == Heading_type.BLUE_COMMAND) position.set(point_respown_blue);
         if (my_Command == Heading_type.RED_COMMAND) position.set(point_respown_red);
         position.set(position.x, position.y);
@@ -147,7 +151,7 @@ public class Tank {
         position.y += MathUtils.random(-100, 100);
         banner_feith = true;
 
-        gsp.getMainGame().getMainClient().getNetworkPacketStock().toSendMyNik();
+
 
 
         //   controller.addBannerFeiath();
@@ -248,7 +252,6 @@ public class Tank {
         }
 
 
-
         /////////////////////////////////////////////////////////
 
         //  System.out.println(direction.len2());
@@ -270,7 +273,7 @@ public class Tank {
     private void send_my_coordinat() {
         //  System.out.println(getPosition());
         //   ServiceClient.sendMuCoordinat(getPosition().x, getPosition().y, getTr().getAnTower(), gsp.getMainGame().getMainClient().getClient());
-        gsp.getMainGame().getMainClient().getNetworkPacketStock().sendMuCoordinat(position.x,position.y,getTr().getAnTower());
+        gsp.getMainGame().getMainClient().getNetworkPacketStock().sendMuCoordinat(position.x, position.y, getTr().getAnTower());
     }
 
 
@@ -346,7 +349,7 @@ public class Tank {
         //   if (MathUtils.randomBoolean(0.2f)) command = MathUtils.random(0, 3);
 
 
-        sb.setColor(0,0,0,.5f);
+        sb.setColor(0, 0, 0, .5f);
         sb.draw(body,  // тень тела
                 position.x - 17, position.y - 17,
                 20, 20,
@@ -378,8 +381,7 @@ public class Tank {
                 true, false);
 
 
-
-        sb.setColor(0,0,0,.5f);
+        sb.setColor(0, 0, 0, .5f);
         sb.draw(towers,
                 position.x - 16, position.y - 16,
                 16, 16,
@@ -399,8 +401,6 @@ public class Tank {
                 0, 0,
                 img.getWidth(), img.getHeight(),
                 false, false);
-
-
 
 
         // System.out.println(this.tr.getNomTarget());
@@ -480,7 +480,7 @@ public class Tank {
 
     public void setHp(int hp) {
         this.hp = hp;
-        if(!isLive()) System.out.println("Ты мертв!!!!!!!!!!!!!!!!!!!!!!!");
+        if (!isLive()) System.out.println("Ты мертв!!!!!!!!!!!!!!!!!!!!!!!");
     }
 
     public boolean isLive() {

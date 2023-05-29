@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import main.java.com.GameServer;
+
 public class PlayerStatistics {
     static ConcurrentHashMap<String, Player_statistics> list_static = new ConcurrentHashMap<>();
 
@@ -96,13 +98,17 @@ public class PlayerStatistics {
         for (int i = 0; i < comparator.size(); i++) {
             //  System.out.println(comparator.get(i));
           //  if (i > 14) break;
-            resuld_bilder.append("<p>::" + comparator.get(i).toStringForClient());
+
+            if(ListPlayers.getListPlayers().containsKey(comparator.get(i).id) )
+          //  ListPlayers.getListPlayers().get(i).status
+        resuld_bilder.append("<p>::" + comparator.get(i).toStringForClient());
 
         }
 //        Iterator<Map.Entry<String, Player_statistics>> itr = list_static.entrySet().iterator();
 //        while (itr.hasNext()) {
 //            resuld_bilder.append("<p>::" + itr.next().getValue().toStringForClient());
 //        }
+        System.out.println(resuld_bilder);
         clearListStatic();
         return resuld_bilder.toString();
     }
