@@ -80,7 +80,6 @@ public class ListPlayers {
     }
 
     public boolean disconect(int id) {
-
         getPlayerForId(id).pos.x = -100000;
         basket.add(getPlayerForId(id));
         players.remove(id);
@@ -673,6 +672,12 @@ public class ListPlayers {
         if (p.getId() < -99) return true;
         return false;
     }
+
+
+    public boolean isExists(int key) {
+        return getListPlayers().containsKey(key);
+    }
+
 
     public void print_list_player() {
         System.out.println("^^^^^^^^^^^^^^^^^LP^^^^^^^^^^^^^^^^^^^^^");

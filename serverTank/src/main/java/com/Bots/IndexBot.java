@@ -145,6 +145,11 @@ public class IndexBot extends Thread {
                 Map.Entry<Integer, DBBot> entry = entries.next();
                 DBBot tank = entry.getValue();
 
+                if(!gs.lp.isExists(tank.getId())) {
+                    dbBots.remove(tank.getId());
+                    continue;
+
+                }
                 Player p = gs.getLp().getPlayerForId(tank.getId());
                 if (!p.isLive()) {
                     p.setPosition(-100_000, -100_000);
@@ -171,6 +176,8 @@ public class IndexBot extends Thread {
                 e.printStackTrace();
             } catch (NullPointerException e) {
                 e.printStackTrace();
+
+
             }
         }
 
@@ -344,6 +351,7 @@ public class IndexBot extends Thread {
         }
     }
 
+
     private void delate_bot_balance() {
         if (StatisticMath.getPlayersSize()  > MainGame.targetPlayer + 2)
         if (StatisticMath.getBlueSize() != StatisticMath.getRedSize()) {
@@ -359,7 +367,7 @@ public class IndexBot extends Thread {
                 if (StatisticMath.getBlueSize() > StatisticMath.getRedSize())
                     command = Heading_type.BLUE_COMMAND;
 
-                if (p.getValue().getCommand() != command) {
+                if (p.getValue().getCommand() == command) {
                     delateBot(p.getKey());
                     System.out.println("DELATE : " + p.getKey() + "   " + p.getValue().getCommand());
                     System.out.println("B:" + StatisticMath.getBlueSize() + "   R:" + StatisticMath.getRedSize());
@@ -508,7 +516,7 @@ public class IndexBot extends Thread {
 
     private void delateBot(int id) { // дописать нужно с какой команды удалять ))
         gs.lp.disconect(id);
-        dbBots.remove(id);
+        // dbBots.remove(id);
         gs.send_DISCONECT_PLAYER(id);
         //  StatisticMath.playerStatistics.delDeath(id);
         //System.out.println();

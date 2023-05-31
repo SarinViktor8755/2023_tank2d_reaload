@@ -1,5 +1,7 @@
 package main.java.com.Units.ListPlayer;
 
+
+
 import com.tanks_2d.ClientNetWork.Heading_type;
 
 import java.util.HashMap;
@@ -50,6 +52,7 @@ public class StatisticMath {   // класс дял подчета количе�
     public static void setTrue() {
         key_recalculate_statistics = true;
     }
+
 
     public synchronized StatisticMath counting_p() { // посчитать статичтику
         System.out.println("PEREERSHET STATISTICI");
