@@ -55,6 +55,10 @@ public class Heading_type {
     public static final int SPEED_BULLET = 400;
     public static final int SPEED_MOVE_TANKS = 120;
 
+//    public static final int IN_MENU = -999;
+    public static final int CLICK_BOTON_START = -998;
+//    public static final int DEATH_PLAYER = -997;
+
     static public String getDomenTip(int tip) {
         domen.put(1, "MY_TOKKEN");
 

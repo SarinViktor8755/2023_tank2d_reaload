@@ -3,7 +3,7 @@ package main.java.com.Units.ListPlayer;
 public class Player_statistics implements Comparable<Player_statistics> {
     public int fargs; // фраги игрока
     public int death;  // смерти игрока
-    String name;  // nik игрока
+    public String name;  // nik игрока
     public int damage_done_in_hp;  // нанесенный урон в хп
     String tokken;  // nik игрока
     public int score; // очки игрока
@@ -34,6 +34,10 @@ public class Player_statistics implements Comparable<Player_statistics> {
                 "fargs=" + fargs +
                 ", death=" + death +
                 ", name='" + name + '\'' +
+                ", damage_done_in_hp=" + damage_done_in_hp +
+                ", tokken='" + tokken + '\'' +
+                ", score=" + score +
+                ", id=" + id +
                 '}';
     }
 
@@ -45,7 +49,7 @@ public class Player_statistics implements Comparable<Player_statistics> {
     }
 
     private int count_the_player_game_points() {
-        this.score = (fargs * 500) + (damage_done_in_hp) - (death * 200);
+        this.score = (fargs * 500) + (damage_done_in_hp * 2) - (death * 200); // подсчет очков
         if (score < 0) this.score = 0;
         return score;
     }

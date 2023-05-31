@@ -5,10 +5,8 @@ import static main.java.com.Units.ListPlayer.StatisticMath.playerStatistics;
 import com.badlogic.gdx.math.Vector2;
 import com.tanks_2d.ClientNetWork.Heading_type;
 import com.tanks_2d.ClientNetWork.Network;
-import com.tanks_2d.Locations.GameSpace;
 
 import main.java.com.Units.ListPlayer.Player;
-import main.java.com.Units.ListPlayer.StatusPlayer;
 
 public class RouterMassege {
 
@@ -39,7 +37,7 @@ public class RouterMassege {
             playerStatistics.set_nikname(id_coonect, sm.textM);
             gameServer.lp.getPlayerForId(id_coonect).setCommand((int)sm.p1);
             gameServer.lp.getPlayerForId(id_coonect).setHp(100);
-            gameServer.lp.getPlayerForId(id_coonect).setStatus(StatusPlayer.CLICK_BOTON_START);
+            gameServer.lp.getPlayerForId(id_coonect).setStatus(Heading_type.CLICK_BOTON_START);
             return;
         }
         if (Heading_type.MY_TOKKEN == sm.tip) {

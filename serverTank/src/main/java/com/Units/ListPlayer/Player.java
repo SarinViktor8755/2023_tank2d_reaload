@@ -24,9 +24,9 @@ public class Player {
         hp = 100;
         this.command = 0;
         nikName = Heading_type.DEFULT_NAME; // от куда он берется - это не понятно
-        pos = new Vector2(StatusPlayer.IN_MENU, StatusPlayer.IN_MENU); // если -999 - знаит ненажал кнопчку старт 998 нажал -y это счетчик на время смерти ))
+        pos = new Vector2(Heading_type.IN_MENU, Heading_type.IN_MENU); // если -999 - знаит ненажал кнопчку старт 998 нажал -y это счетчик на время смерти ))
         body_rotation = new Vector2(1, 1);
-        status = StatusPlayer.IN_MENU;
+        status = Heading_type.IN_MENU;
 //        if (id < -99) {
 //            System.out.println(
 //                    "create " + id + "  " + getNikName());
@@ -39,9 +39,9 @@ public class Player {
         hp = 100;
         this.command = command;
         nikName = Heading_type.DEFULT_NAME; // от куда он берется - это не понятно
-        pos = new Vector2(StatusPlayer.IN_MENU, StatusPlayer.IN_MENU); // если -999 - знаит ненажал кнопчку старт 998 нажал -y это счетчик на время смерти ))
+        pos = new Vector2(Heading_type.IN_MENU, Heading_type.IN_MENU); // если -999 - знаит ненажал кнопчку старт 998 нажал -y это счетчик на время смерти ))
         body_rotation = new Vector2(1, 1);
-        status = StatusPlayer.IN_MENU;
+        status = Heading_type.IN_MENU;
         this.tokken = tokken;
 
 
@@ -57,9 +57,9 @@ public class Player {
         hp = -1;
         this.command = command;
         nikName = Heading_type.DEFULT_NAME; // от куда он берется - это не понятно
-        pos = new Vector2(StatusPlayer.IN_MENU, StatusPlayer.IN_MENU); // если -999 - знаит ненажал кнопчку старт 998 нажал -y это счетчик на время смерти ))
+        pos = new Vector2(Heading_type.IN_MENU, Heading_type.IN_MENU); // если -999 - знаит ненажал кнопчку старт 998 нажал -y это счетчик на время смерти ))
         body_rotation = new Vector2(1, 1);
-        status = StatusPlayer.IN_MENU;
+        status = Heading_type.IN_MENU;
         tokken = id+":bot_";
 //        if (id < -99) {
 //            System.out.println(
@@ -203,7 +203,7 @@ public class Player {
         if (id > -99) return true;
         if (status == Heading_type.DISCONECT_PLAYER) return false;
         //  if (status == Heading_type.DISCONECT_PLAYER) return false;
-        if (pos.x == StatusPlayer.IN_MENU) return false;
+        if (pos.x == Heading_type.IN_MENU) return false;
         //  if (pos.x == StatusPlayer.IN_MENU) return false;
         if (nikName.equals(Heading_type.DEFULT_NAME)) return false;
 
