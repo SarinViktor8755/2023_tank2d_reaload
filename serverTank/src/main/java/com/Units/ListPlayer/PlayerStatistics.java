@@ -45,6 +45,7 @@ public class PlayerStatistics {
     public void addDeath(int id_player) { // добавить смерть
         Player_statistics ps = getPlayer(id_player);
         ps.death++;
+        ps.command = ListPlayers.getListPlayers().get(id_player).getCommand();
     }
 
 
@@ -60,17 +61,24 @@ public class PlayerStatistics {
         Player_statistics ps = getPlayer(id_player);
         ps.damage_done_in_hp += damage;
         ps.name = ListPlayers.getListPlayers().get(id_player).getNikName();
+        ps.command = ListPlayers.getListPlayers().get(id_player).getCommand();
     }
 
     public void addFrag(int id_player) { // добавить фраг
         Player_statistics ps = getPlayer(id_player);
         ps.fargs++;
         ps.name = ListPlayers.getListPlayers().get(id_player).getNikName();
+        ps.command = ListPlayers.getListPlayers().get(id_player).getCommand();
     }
 
     public void set_nikname(int id_player, String nik_name) { // записать имя
         Player_statistics ps = getPlayer(id_player);
         ps.name = nik_name;
+    }
+
+    public void set_сщььфтв(int id_player, int command) { // записать команды
+        Player_statistics ps = getPlayer(id_player);
+        ps.command = command;
     }
     /////////////////////////
 

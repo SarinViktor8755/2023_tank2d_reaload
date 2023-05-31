@@ -164,9 +164,10 @@ public class PauseScreen implements Screen {
                 }
                 textFont.setColor(1, 1, 1, getAlpha());
                 textFont.draw(batch, ">", 5, y);
-                int com = Tank.getMy_Command();
+                int com = p.coomand;
                 if (com == Heading_type.BLUE_COMMAND) textFont.setColor(0, 0, 1, getAlpha());
                 if (com == Heading_type.RED_COMMAND) textFont.setColor(1, 0, 0, getAlpha());
+                
             }
             if (n < 10) textFont.draw(batch, (i + 1) + ".", 20, y);
             else textFont.draw(batch, (i + 1) + ".", 14, y);
@@ -187,6 +188,34 @@ public class PauseScreen implements Screen {
         // stage.draw();
         // System.out.println(timeInScreen);
         //if(timeInScreen < 0) mainGame.goGameForPause();
+    }
+
+
+    public static void parser_result() {
+        try {
+            PauseScreen.getDataPlyerStatistics().clear();
+            String fs = PauseScreen.getGame_statistics_players();
+            PauseScreen.getGame_statistics_players();
+            //System.out.println(PauseScreen.getDataPlyerStatistics());
+            String[] parts = fs.split("<p>::");
+            for (int i = 0; i < parts.length; i++) {
+                int index = parts[i].indexOf("<_<nn");
+                if (index == -1) continue;
+                String nik = parts[i].substring(0, index);
+
+                String[] p = parts[i].substring(index).split(" ");
+                int frags = Integer.valueOf(p[1]);
+                int deth = Integer.valueOf(p[2]);
+                int hp_n = Integer.valueOf(p[3]);
+                int score = Integer.valueOf(p[4]);
+                int id = Integer.valueOf(p[5]);
+                int command = Integer.valueOf(p[5]);
+
+                PauseScreen.getDataPlyerStatistics().add(new DataPlyerStatistic(nik, frags, deth, hp_n, score, id,command));
+            }
+        } catch (StringIndexOutOfBoundsException e) {
+            e.printStackTrace();
+        }
     }
 
     private String convertStringCen(String s, int length) {
@@ -279,36 +308,7 @@ public class PauseScreen implements Screen {
     }
 
 
-    public static void parser_result() {
-        try {
 
-
-            PauseScreen.getDataPlyerStatistics().clear();
-            String fs = PauseScreen.getGame_statistics_players();
-            PauseScreen.getGame_statistics_players();
-            //System.out.println(PauseScreen.getDataPlyerStatistics());
-            String[] parts = fs.split("<p>::");
-            for (int i = 0; i < parts.length; i++) {
-                int index = parts[i].indexOf("<_<nn");
-                if (index == -1) continue;
-                String nik = parts[i].substring(0, index);
-
-                String[] p = parts[i].substring(index).split(" ");
-                int frags = Integer.valueOf(p[1]);
-                int deth = Integer.valueOf(p[2]);
-                int hp_n = Integer.valueOf(p[3]);
-                int score = Integer.valueOf(p[4]);
-                int id = Integer.valueOf(p[5]);
-
-
-                PauseScreen.getDataPlyerStatistics().add(new DataPlyerStatistic(nik, frags, deth, hp_n, score, id));
-
-
-            }
-        } catch (StringIndexOutOfBoundsException e) {
-            e.printStackTrace();
-        }
-    }
 
     public static ArrayList<DataPlyerStatistic> getDataPlyerStatistics() {
         return dataPlyerStatistics;

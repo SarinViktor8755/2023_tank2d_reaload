@@ -7,7 +7,7 @@ public class Player_statistics implements Comparable<Player_statistics> {
     public int damage_done_in_hp;  // нанесенный урон в хп
     String tokken;  // nik игрока
     public int score; // очки игрока
-
+    public int command;
     public int id;
 
     public Player_statistics(String name) {
@@ -25,6 +25,7 @@ public class Player_statistics implements Comparable<Player_statistics> {
         this.name = null;
         this.damage_done_in_hp = 0;
         this.score = 0;
+        this.command = 0;
     }
 
 
@@ -45,7 +46,7 @@ public class Player_statistics implements Comparable<Player_statistics> {
 //        final int length_name = 12;
 //        String name_delta = name;
 //        if (name.length() >= length_name) name_delta = name.substring(0, length_name);
-        return name + "<_<nn " + fargs + " " + death + " " + damage_done_in_hp + " " + count_the_player_game_points() + " " + this.id;
+        return name + "<_<nn " + fargs + " " + death + " " + damage_done_in_hp + " " + count_the_player_game_points() + " " + this.id+ " " + this.command;
     }
 
     private int count_the_player_game_points() {
