@@ -27,7 +27,7 @@ public class RouterMassege {
             gameServer.getLp().getPlayerForId(id_coonect).setCommand(comand);
             playerStatistics.set_comand(id_coonect,(int) comand);
 
-            System.out.println(comand + "                 ----------------------");
+            //System.out.println(comand + "                 ----------------------");
 
             // gameServer.getLp().delete_by_toiken(sm.textM);
            // gameServer.getLp().addPlayer(new Player(id_coonect,(int)sm.p1,sm.textM));

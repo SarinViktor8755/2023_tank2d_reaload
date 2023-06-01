@@ -60,8 +60,10 @@ public class StatisticMath {   // класс дял подчета количе�
         System.out.println("PEREERSHET STATISTICI");
         System.out.println("    LiveBlue " + StatisticMath.getLiveBlueSize() + "    LiveRed " + StatisticMath.getLiveRedSize());
         System.out.println("    getRedSize " + StatisticMath.getRedSize() + "    getBlueSize " + StatisticMath.getBlueSize());
-        if(MathUtils.randomBoolean())
-        lp.viewPlayerLivePlayer();
+        if(MathUtils.randomBoolean()) {
+            lp.viewPlayerLivePlayer();
+            lp.viewPlayerBasket();
+        }
         ///////////////////////
         // System.out.println(playerStatistics.getStatistigString());
         if (!key_recalculate_statistics) return this;

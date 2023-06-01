@@ -676,6 +676,7 @@ public class ListPlayers {
     }
 
     public void viewPlayerLivePlayer() {
+        System.out.println("_________List Player");
         Iterator<Map.Entry<Integer, Player>> entries = players.entrySet().iterator();
         while (entries.hasNext()) {
             Map.Entry<Integer, Player> entry = entries.next();
@@ -683,6 +684,14 @@ public class ListPlayers {
             System.out.println(entry.getValue());
 
         }
+    }
+
+    public void viewPlayerBasket() {
+        System.out.println("_________Basket");
+        for (int i = 0; i < basket.size(); i++) {
+            System.out.println(basket.get(i));
+        }
+
     }
 
 
