@@ -69,7 +69,6 @@ public class ListPlayers {
     }
 
 
-
     public boolean there_is_player(int id) {
         if (getPlayerForId(id) == null) return false;
         else return true;
@@ -94,8 +93,6 @@ public class ListPlayers {
         return players.get(id);
 
     }
-
-
 
 
     // public ConcurrentHashMap<String, Integer> getPlayersTokken() {
@@ -676,6 +673,16 @@ public class ListPlayers {
 
     public boolean isExists(int key) {
         return getListPlayers().containsKey(key);
+    }
+
+    public void viewPlayerLivePlayer() {
+        Iterator<Map.Entry<Integer, Player>> entries = players.entrySet().iterator();
+        while (entries.hasNext()) {
+            Map.Entry<Integer, Player> entry = entries.next();
+            if (entry.getValue().id < 0) continue;
+            System.out.println(entry.getValue());
+
+        }
     }
 
 

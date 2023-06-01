@@ -2,6 +2,7 @@ package main.java.com.Units.ListPlayer;
 
 
 
+import com.badlogic.gdx.math.MathUtils;
 import com.tanks_2d.ClientNetWork.Heading_type;
 
 import java.util.HashMap;
@@ -54,10 +55,13 @@ public class StatisticMath {   // класс дял подчета количе�
     }
 
 
+
     public synchronized StatisticMath counting_p() { // посчитать статичтику
         System.out.println("PEREERSHET STATISTICI");
         System.out.println("    LiveBlue " + StatisticMath.getLiveBlueSize() + "    LiveRed " + StatisticMath.getLiveRedSize());
         System.out.println("    getRedSize " + StatisticMath.getRedSize() + "    getBlueSize " + StatisticMath.getBlueSize());
+        if(MathUtils.randomBoolean())
+        lp.viewPlayerLivePlayer();
         ///////////////////////
         // System.out.println(playerStatistics.getStatistigString());
         if (!key_recalculate_statistics) return this;

@@ -166,15 +166,15 @@ public class Player {
     @Override
     public String toString() {
         return
-                "st=" + status +
-                "p=" +  getPositionForPrint() +
-                "br=" + body_rotation +
-                "rt=" + rotTower +
-                "hp=" + hp +
+//                "st=" + status +
+//                "p=" +  getPositionForPrint() +
+//                "br=" + body_rotation +
+//                "rt=" + rotTower +
+//                "hp=" + hp +
                 "c" + command +
                 "id=" + id +
-                "to'" + tokken + '\'' +
-                "nik" + nikName + '\'' +
+                "to  " + tokken + '\'' +
+                "nik " + nikName + '\'' +
                 '|';
     }
 
