@@ -74,9 +74,10 @@ public class PlayerStatistics {
     public void set_nikname(int id_player, String nik_name) { // записать имя
         Player_statistics ps = getPlayer(id_player);
         ps.name = nik_name;
+        ps.command = ListPlayers.getListPlayers().get(id_player).getCommand();
     }
 
-    public void set_сщььфтв(int id_player, int command) { // записать команды
+    public void set_comand(int id_player, int command) { // записать команды
         Player_statistics ps = getPlayer(id_player);
         ps.command = command;
     }

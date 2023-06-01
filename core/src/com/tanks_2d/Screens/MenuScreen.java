@@ -137,6 +137,8 @@ public class MenuScreen implements Screen {
         textButton.addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+
+                if (Tank.getMy_Command() == -1) Tank.setMy_Command(Tank.generateCommand());
                 mainGame.getMainClient().getNetworkPacketStock().toSendButtonStartClick();
 //                if(!mainGame.getMainClient().isConnect()) return false; else {
 //                    try {

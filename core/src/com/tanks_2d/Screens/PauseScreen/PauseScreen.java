@@ -153,7 +153,6 @@ public class PauseScreen implements Screen {
             n++;
             int y = 283 - (20 * i);
             try {
-
                 int com = mainGame.getGamePlayScreen().getTanksOther().getTankForID(p.id).command;
                 if (com == Heading_type.BLUE_COMMAND) textFont.setColor(0, 0, 1, getAlpha());
                 if (com == Heading_type.RED_COMMAND) textFont.setColor(1, 0, 0, getAlpha());
@@ -164,7 +163,7 @@ public class PauseScreen implements Screen {
                 }
                 textFont.setColor(1, 1, 1, getAlpha());
                 textFont.draw(batch, ">", 5, y);
-                int com = p.coomand;
+                int com = Tank.getMy_Command();
                 if (com == Heading_type.BLUE_COMMAND) textFont.setColor(0, 0, 1, getAlpha());
                 if (com == Heading_type.RED_COMMAND) textFont.setColor(1, 0, 0, getAlpha());
                 

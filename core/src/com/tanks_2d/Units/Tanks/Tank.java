@@ -64,6 +64,7 @@ public class Tank {
 //    private Integer nomTarget;
 
     public Tank(GamePlayScreen gsp) {
+        if (my_Command == -1) my_Command = generateCommand();
         banner_feith = true;
         time_life = 0;
         g = 1;
@@ -146,6 +147,7 @@ public class Tank {
 
         if (my_Command == Heading_type.BLUE_COMMAND) position.set(point_respown_blue);
         if (my_Command == Heading_type.RED_COMMAND) position.set(point_respown_red);
+
         position.set(position.x, position.y);
         position.x += MathUtils.random(-100, 100);
         position.y += MathUtils.random(-100, 100);

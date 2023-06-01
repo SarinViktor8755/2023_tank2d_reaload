@@ -91,6 +91,7 @@ public class GameServer {
                                            //  lp.sendToAllPlayerPosition(connection.getID(), (Network.PleyerPosition) object);
                                            lp.getPlayerForId(connection.getID()).setPosition(pp.xp, pp.yp);
                                            lp.getPlayerForId(connection.getID()).setRotTower(pp.roy_tower);
+
                                            return;
                                        } catch (NullPointerException e) {
                                            System.out.println("------------------ _______________________");
