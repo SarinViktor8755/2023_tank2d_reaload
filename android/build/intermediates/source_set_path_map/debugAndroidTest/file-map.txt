@@ -1,0 +1,7 @@
+com.tanks_2d.test.android-androidTest-0 E:\game_dev\tanks\android\build\generated\res\resValues\androidTest\debug
+com.tanks_2d.test.android-androidTest-1 E:\game_dev\tanks\android\build\generated\res\rs\androidTest\debug
+com.tanks_2d.test.android-mergeDebugAndroidTestResources-2 E:\game_dev\tanks\android\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.tanks_2d.test.android-mergeDebugAndroidTestResources-3 E:\game_dev\tanks\android\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.tanks_2d.test.android-merged_res-4 E:\game_dev\tanks\android\build\intermediates\merged_res\debugAndroidTest
+com.tanks_2d.test.android-androidTest-5 E:\game_dev\tanks\android\src\androidTest\res
+com.tanks_2d.test.android-androidTestDebug-6 E:\game_dev\tanks\android\src\androidTestDebug\res

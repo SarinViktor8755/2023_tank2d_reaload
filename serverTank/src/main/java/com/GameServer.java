@@ -90,6 +90,7 @@ public class GameServer {
                                            Network.PleyerPosition pp = (Network.PleyerPosition) object;
                                            //  lp.sendToAllPlayerPosition(connection.getID(), (Network.PleyerPosition) object);
                                            lp.getPlayerForId(connection.getID()).setPosition(pp.xp, pp.yp);
+                                           // d 92 стоке ошибка потом что нет игрока и постоянно срабаывает эксепшен 
                                            lp.getPlayerForId(connection.getID()).setRotTower(pp.roy_tower);
 
                                            return;
