@@ -60,7 +60,10 @@ public class GameServer {
                                @Override
                                public void disconnected(Connection connection) {
                                    try {
-                                       lp.disconect(connection.getID());
+
+                                       Player p = lp.getPlayerForId(connection.getID());
+                                       if(p == null) return;
+                                       lp.disconect(p.getId());
 //                                       lp.getPlayerForId(connection.getID()).setStatus(Heading_type.DISCONECT_PLAYER);
 //                                       lp.getPlayerForId(connection.getID()).setPosition(Player.DISCONECT_SYS_LAYER);
                                        // getLp().getPlayers().remove(connection.getID());
@@ -88,10 +91,12 @@ public class GameServer {
                                    if (object instanceof Network.PleyerPosition) {
                                        try {
                                            Network.PleyerPosition pp = (Network.PleyerPosition) object;
+                                           Player p = lp.getPlayerForId(connection.getID());
+                                           if(p == null) return;
                                            //  lp.sendToAllPlayerPosition(connection.getID(), (Network.PleyerPosition) object);
-                                           lp.getPlayerForId(connection.getID()).setPosition(pp.xp, pp.yp);
+                                           p.setPosition(pp.xp, pp.yp);
                                            // d 92 стоке ошибка потом что нет игрока и постоянно срабаывает эксепшен 
-                                           lp.getPlayerForId(connection.getID()).setRotTower(pp.roy_tower);
+                                           p.setRotTower(pp.roy_tower);
 
                                            return;
                                        } catch (NullPointerException e) {

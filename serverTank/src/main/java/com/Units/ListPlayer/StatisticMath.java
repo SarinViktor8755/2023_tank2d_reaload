@@ -57,9 +57,9 @@ public class StatisticMath {   // класс дял подчета количе�
 
 
     public synchronized StatisticMath counting_p() { // посчитать статичтику
-        System.out.println("PEREERSHET STATISTICI");
-        System.out.println("    LiveBlue " + StatisticMath.getLiveBlueSize() + "    LiveRed " + StatisticMath.getLiveRedSize());
-        System.out.println("    getRedSize " + StatisticMath.getRedSize() + "    getBlueSize " + StatisticMath.getBlueSize());
+//        System.out.println("PEREERSHET STATISTICI");
+//        System.out.println("    LiveBlue " + StatisticMath.getLiveBlueSize() + "    LiveRed " + StatisticMath.getLiveRedSize());
+//        System.out.println("    getRedSize " + StatisticMath.getRedSize() + "    getBlueSize " + StatisticMath.getBlueSize());
         if(MathUtils.randomBoolean()) {
             lp.viewPlayerLivePlayer();
             lp.viewPlayerBasket();

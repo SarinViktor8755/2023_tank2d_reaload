@@ -61,6 +61,7 @@ public class RouterMassege {
                 b_player.setId(id_coonect);
                // ListPlayers.getListPlayers().put(id_coonect,b_player);
                 gameServer.getLp().addPlayer(b_player);
+                gameServer.send_PARAMETERS_PLAYER(b_player);
             }
 
 
