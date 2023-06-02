@@ -10,6 +10,7 @@ import java.util.ConcurrentModificationException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import com.esotericsoftware.kryonet.Connection;
 
@@ -22,9 +23,9 @@ public class ListPlayers {
 
     private int size_list_player_in_game = 0;
 
-    private static HashMap<Integer, Player> players;
+    private static ConcurrentHashMap<Integer, Player> players;
     //private static ArrayList<Player> basket;
-    public static HashMap<String ,Player> basket;
+    public static ConcurrentHashMap<String ,Player> basket;
     //  ConcurrentHashMap<String, Integer> playersTokken; // tooken/ id
 
     GameServer gameServer;
@@ -57,8 +58,8 @@ public class ListPlayers {
     private static Vector2 average_cord = new Vector2(0, 0);
 
     public ListPlayers(GameServer gameServer) {
-        this.basket = new HashMap<>();
-        this.players = new HashMap<Integer, Player>();
+        this.basket = new ConcurrentHashMap<>();
+        this.players = new ConcurrentHashMap<Integer, Player>();
         // this.playersTokken = new ConcurrentHashMap<>();
         this.gameServer = gameServer;
 
@@ -75,7 +76,7 @@ public class ListPlayers {
         else return true;
     }
 
-    public static HashMap<String, Player> getBasket() {
+    public static ConcurrentHashMap<String, Player> getBasket() {
         return basket;
     }
 
@@ -101,7 +102,7 @@ public class ListPlayers {
 //        return playersTokken;
 //    }
 
-    public HashMap<Integer, Player> getPlayers() {
+    public ConcurrentHashMap<Integer, Player> getPlayers() {
         return players;
     }
 
@@ -195,7 +196,7 @@ public class ListPlayers {
         return average_cord;
     }
 
-    public static HashMap<Integer, Player> getListPlayers() {
+    public static ConcurrentHashMap<Integer, Player> getListPlayers() {
         return ListPlayers.players;
     }
 

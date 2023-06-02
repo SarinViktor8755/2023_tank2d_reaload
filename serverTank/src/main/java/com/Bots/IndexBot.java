@@ -355,7 +355,7 @@ public class IndexBot extends Thread {
     private void delate_bot_balance() {
         if (StatisticMath.getPlayersSize()  > MainGame.targetPlayer + 2)
         if (StatisticMath.getBlueSize() != StatisticMath.getRedSize()) {
-            HashMap<Integer, Player> lp = gs.getLp().getPlayers();
+            ConcurrentHashMap<Integer, Player> lp = gs.getLp().getPlayers();
             int command;
             Iterator<Map.Entry<Integer, Player>> iterator = lp.entrySet().iterator();
             while (iterator.hasNext()) {
@@ -397,7 +397,7 @@ public class IndexBot extends Thread {
     private void delate_bot_balance(int commandD) {
 //        if (StatisticMath.getPlayersSize() <= MainGame.targetPlayer) return;
 //        if (StatisticMath.getBlueSize() != StatisticMath.getRedSize()) {
-            HashMap<Integer, Player> lp = gs.getLp().getPlayers();
+        ConcurrentHashMap<Integer, Player> lp = gs.getLp().getPlayers();
             int command = commandD;
             System.out.println("del");
             Iterator<Map.Entry<Integer, Player>> iterator = lp.entrySet().iterator();
@@ -502,7 +502,7 @@ public class IndexBot extends Thread {
 
     public boolean delateBotCommand(int command) { // удалить бота с определеннйо команды
 
-        HashMap<Integer, Player> lp = gs.getLp().getPlayers();
+        ConcurrentHashMap<Integer, Player> lp = gs.getLp().getPlayers();
         for (Integer key : lp.keySet()) {
             System.out.println(lp.get(key));
             if (lp.get(key).getCommand() == command) {
