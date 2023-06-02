@@ -115,7 +115,6 @@ public class PauseScreen implements Screen {
         camera.update();
 
         batch.begin();
-
         batch.setColor(1, 1, 1, getAlpha());
 
         //  System.out.println(mainGame.getScreen());
@@ -130,7 +129,6 @@ public class PauseScreen implements Screen {
         textFont.setUseIntegerPositions(true);
 
         textFont.draw(batch, "Player", 30, 310);
-
         textFont.draw(batch, "F", 230, 310);
         textFont.draw(batch, "D", 290, 310);
         textFont.draw(batch, "dmc", 350, 310);
@@ -141,33 +139,30 @@ public class PauseScreen implements Screen {
         int n;
         for (int i = 0; i < PauseScreen.dataPlyerStatistics.size(); i++) {
             n = 0;
-            // if(MathUtils.randomBoolean()) textFont.setColor(Color.BLUE); else
-
-
-            textFont.setColor(Color.RED);
+            n++;
+            int y = 283 - (20 * i);
+           // textFont.setColor(Color.RED);
             p = PauseScreen.dataPlyerStatistics.get(i);
 
             //textFont.getColor().a = getAlpha();
             ///textFont.draw(batch, convertStringLeft(PauseScreen.dataPlyerStatistics.get(i).nik, 3) + " " + PauseScreen.dataPlyerStatistics.get(i).frag + "  " + PauseScreen.dataPlyerStatistics.get(i).death + "  " + PauseScreen.dataPlyerStatistics.get(i).damage_caused + " " + PauseScreen.dataPlyerStatistics.get(i).score, 400, 1000 - (60 * i));
             //mainGame.getGamePlayScreen().getTanksOther().getTankForID()
-            n++;
-            int y = 283 - (20 * i);
-            try {
-                int com = mainGame.getGamePlayScreen().getTanksOther().getTankForID(p.id).command;
-                if (com == Heading_type.BLUE_COMMAND) textFont.setColor(0, 0, 1, getAlpha());
-                if (com == Heading_type.RED_COMMAND) textFont.setColor(1, 0, 0, getAlpha());
-            } catch (NullPointerException e) {
-                if (p.id != mainClient.getClient().getID()) {
-                    n--;
-                    continue;
+
+
+
+                int com = p.coomand;
+
+
+                if(p.id == mainGame.getMainClient().getClient().getID()) {
+                    textFont.setColor(1, 1, 1, getAlpha());
+                    textFont.draw(batch, ">", 5, y);
+
                 }
-                textFont.setColor(1, 1, 1, getAlpha());
-                textFont.draw(batch, ">", 5, y);
-                int com = Tank.getMy_Command();
+//
                 if (com == Heading_type.BLUE_COMMAND) textFont.setColor(0, 0, 1, getAlpha());
                 if (com == Heading_type.RED_COMMAND) textFont.setColor(1, 0, 0, getAlpha());
                 
-            }
+
             if (n < 10) textFont.draw(batch, (i + 1) + ".", 20, y);
             else textFont.draw(batch, (i + 1) + ".", 14, y);
 
@@ -208,7 +203,7 @@ public class PauseScreen implements Screen {
                 int hp_n = Integer.valueOf(p[3]);
                 int score = Integer.valueOf(p[4]);
                 int id = Integer.valueOf(p[5]);
-                int command = Integer.valueOf(p[5]);
+                int command = Integer.valueOf(p[6]);
 
                 PauseScreen.getDataPlyerStatistics().add(new DataPlyerStatistic(nik, frags, deth, hp_n, score, id,command));
             }
