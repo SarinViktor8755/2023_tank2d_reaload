@@ -23,7 +23,8 @@ public class ListPlayers {
     private int size_list_player_in_game = 0;
 
     private static HashMap<Integer, Player> players;
-    private static ArrayList<Player> basket;
+    //private static ArrayList<Player> basket;
+    public static HashMap<String ,Player> basket;
     //  ConcurrentHashMap<String, Integer> playersTokken; // tooken/ id
 
     GameServer gameServer;
@@ -56,7 +57,7 @@ public class ListPlayers {
     private static Vector2 average_cord = new Vector2(0, 0);
 
     public ListPlayers(GameServer gameServer) {
-        this.basket = new ArrayList<>();
+        this.basket = new HashMap<>();
         this.players = new HashMap<Integer, Player>();
         // this.playersTokken = new ConcurrentHashMap<>();
         this.gameServer = gameServer;
@@ -74,13 +75,14 @@ public class ListPlayers {
         else return true;
     }
 
-    public ArrayList<Player> getBasket() {
+    public static HashMap<String, Player> getBasket() {
         return basket;
     }
 
     public boolean disconect(int id) {
         getPlayerForId(id).pos.x = -100000;
-        basket.add(getPlayerForId(id));
+        Player p = getPlayerForId(id);
+
         players.remove(id);
         return true;
     }
@@ -688,8 +690,12 @@ public class ListPlayers {
 
     public void viewPlayerBasket() {
         System.out.println("_________Basket");
-        for (int i = 0; i < basket.size(); i++) {
-            System.out.println(basket.get(i));
+        Iterator<Map.Entry<String, Player>> entries = basket.entrySet().iterator();
+        while (entries.hasNext()) {
+            Map.Entry<String, Player> entry = entries.next();
+            if (entry.getValue().id < 0) continue;
+            System.out.println(entry.getValue());
+
         }
 
     }
