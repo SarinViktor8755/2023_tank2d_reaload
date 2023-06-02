@@ -214,6 +214,8 @@ public class GameServer {
             stockMessOut.p1 = Heading_type.PLAY_GAME;
             stockMessOut.textM = "";
             PlayerStatistics.clearListStatic();
+            lp.respownAllPlaers();
+
         }
         stockMessOut.p2 = time;
 

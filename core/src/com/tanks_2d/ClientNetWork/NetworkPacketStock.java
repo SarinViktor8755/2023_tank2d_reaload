@@ -87,7 +87,10 @@ public class NetworkPacketStock {
     }
 
     public void toSendButtonStartClick() {
-        if(client.isConnected()) send_package_to_server(Heading_type.BUTTON_STARTGAME, Tank.getMy_Command(), 0, 0, 0, NikName.getNikName());
+        if(client.isConnected()) {
+            toSendMyTokken(); // отправка ника и токкена
+            send_package_to_server(Heading_type.BUTTON_STARTGAME, Tank.getMy_Command(), 0, 0, 0, NikName.getNikName());
+        }
     }
 
     public void toSendMYParameters(int hp) {

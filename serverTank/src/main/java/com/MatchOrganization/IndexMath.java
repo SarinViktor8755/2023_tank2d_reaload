@@ -29,7 +29,7 @@ public class IndexMath {
     private final static int DEFOULT_SCORE_RESPOWN = 150;
     private static int SCORE_RESPOWN = 80;
 
-    private static int WINNING_NUMBER_OF_POINTS = 1;
+    private static int WINNING_NUMBER_OF_POINTS = 2;
     private boolean pause = false; // протсо флаг для проверки из другова класса - что пора вызвать паузу
 
 
@@ -113,7 +113,7 @@ public class IndexMath {
         return blue_team_score_math;
     }
 
-    public static void add_score_team(int team) {
+    public static void add_score_team(int team) { // добавление очков
         if (team == Heading_type.BLUE_COMMAND) add_score_blue_team();
         if (team == Heading_type.RED_COMMAND) add_score_red_team();
         // System.out.println("RED  " + red_team_score + "  BLUE  " + blue_team_score);
@@ -122,7 +122,7 @@ public class IndexMath {
     private void restartMath(float mathTime) { // рестарт матч или конец матча
         ///    if(MathUtils.randomBoolean(.001f))
 
-        if (mathTime < 5000) return;/// если время сатча меньше 5 сек ничего не делать )))
+        if (mathTime < 5_000) return;/// если время сатча меньше 5 сек ничего не делать )))
         if (mathTime > MATH_LENGHT) { /// если время бльше времени матча контрольного - перезагрузитьматч
             respon_math();
         }///////////// я не опнимаю что туту написано
@@ -136,7 +136,7 @@ public class IndexMath {
 //
 //        }
         //////////////////
-        if ((red_team_score_math >= WINNING_NUMBER_OF_POINTS) || (blue_team_score_math >= WINNING_NUMBER_OF_POINTS)
+        if ((red_team_score_math > WINNING_NUMBER_OF_POINTS) || (blue_team_score_math > WINNING_NUMBER_OF_POINTS)
         ) {
             blue_team_score_math = 0;
             red_team_score_math = 0;
