@@ -38,17 +38,15 @@ public class RouterMassege {
 
         if (Heading_type.BUTTON_STARTGAME == sm.tip) { // ответ на кнопку нажать СТАРТ
             gameServer.send_MAP_PARAMETOR(id_coonect);
-            gameServer.lp.getPlayerForId(id_coonect).setNikName(sm.textM);
-            playerStatistics.set_nikname(id_coonect, sm.textM);
-
+            gameServer.lp.getPlayerForId(id_coonect).setNikName(sm.textM);playerStatistics.set_nikname(id_coonect, sm.textM);
             gameServer.lp.getPlayerForId(id_coonect).setCommand((int) sm.p1);
             gameServer.lp.getPlayerForId(id_coonect).setHp(100);
             gameServer.lp.getPlayerForId(id_coonect).setStatus(Heading_type.CLICK_BOTON_START);
             return;
         }
         if (Heading_type.MY_TOKKEN == sm.tip) {
-            gameServer.getLp().delete_by_toiken(sm.textM  + " _____________MY_TOKKEN");
-            //basket_
+//            gameServer.getLp().delete_by_toiken(sm.textM  + " _____________MY_TOKKEN");
+//            //basket_
             Player b_player = ListPlayers.getBasket().get(sm.textM);
             if (b_player == null){
                 Player p = new Player(id_coonect, (int) sm.p1, sm.textM);
