@@ -23,6 +23,7 @@ public class Network {
         kryo.register(StockMessInClient.class);
         kryo.register(GivePlayerParameters.class);
         kryo.register(Frag.class);
+        kryo.register(Register_Package.class);
     }
 
     /////////////////////////////////////
@@ -98,9 +99,22 @@ public class Network {
         }
     }
 
+
+
+
     public static class statusPlayer{ // пакет статусов Live - 1
         int idPlayer;
         byte status;
+    }
+
+
+    public static class Register_Package{
+
+
+        public String nik;
+        public String tokken;
+
+        public Integer command;
     }
 
 }

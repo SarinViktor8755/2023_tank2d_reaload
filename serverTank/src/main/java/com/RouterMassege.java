@@ -79,4 +79,6 @@ public class RouterMassege {
 
 
     }
+
+    private static void register_tokken_player(){}
 }

@@ -82,12 +82,21 @@ public class NetworkPacketStock {
         required_to_send_tooken = true;
     }
 
+
+    public void toSendMyTokkenAndNikName() {
+        Network.Register_Package rp = new Network.Register_Package();
+        rp.tokken = NikName.getTokken();
+        rp.nik = NikName.getNikName();
+        rp.command = Tank.getMy_Command();
+        client.sendTCP(rp);
+    }
+
     public void toSendMyCommand(int command){
         send_package_to_server(Heading_type.MY_COMMAND, command, 0, 0, 0, NikName.getNikName());
     }
 
     public void toSendButtonStartClick() {
-        toSendMyTokken(); // отправка ника и токкена
+        //toSendMyTokken(); // отправка ника и токкена
         if(client.isConnected()) {
 
             send_package_to_server(Heading_type.BUTTON_STARTGAME, Tank.getMy_Command(), 0, 0, 0, NikName.getNikName());

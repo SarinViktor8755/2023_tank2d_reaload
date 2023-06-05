@@ -121,6 +121,32 @@ public class GameServer {
                                        } else send_DISCONECT_PLAYER(connection.getID());
 
                                    }
+
+
+                                   if (object instanceof Network.Register_Package) { //ПЕРЕДКЛАТЬ
+                                       Network.Register_Package rp =  (Network.Register_Package) object;
+                                       String nikname = rp.nik;
+                                       String tokken = rp.tokken;
+                                       int comand = rp.command;
+                                       /////////////////////// тут регистрация пользователя _ это после конекта или плсде старта
+                                       Player b_player = ListPlayers.getBasket().get(tokken);
+                                       if (b_player == null){
+                                           Player p = new Player(connection.getID(), comand, tokken);
+                                           getLp().addPlayer(p);
+                                           ListPlayers.getBasket().put(p.getTokken(),p);
+                                           System.out.println("KORZINA_ADD");
+                                           p.setNikName(nikname);
+                                       }
+                                       else {
+                                           System.out.println("KORZINA_BASKET");
+                                           b_player.setId(connection.getID());
+                                           // ListPlayers.getListPlayers().put(id_coonect,b_player);
+                                           getLp().addPlayer(b_player);
+                                           b_player.setNikName(nikname);
+                                           send_PARAMETERS_PLAYER(b_player);
+                                       }
+
+                                   }
 //                                       //System.out.println(connection.getID() + " ::GivePlayerParameters" + (Network.GivePlayerParameters) object);
 //                                       Network.GivePlayerParameters gpp = (Network.GivePlayerParameters) object;
 //
