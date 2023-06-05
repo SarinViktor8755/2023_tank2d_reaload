@@ -97,6 +97,7 @@ public class NetworkPacketStock {
 
     public void toSendButtonStartClick() {
         //toSendMyTokken(); // отправка ника и токкена
+        toSendMyTokkenAndNikName();
         if(client.isConnected()) {
 
             send_package_to_server(Heading_type.BUTTON_STARTGAME, Tank.getMy_Command(), 0, 0, 0, NikName.getNikName());

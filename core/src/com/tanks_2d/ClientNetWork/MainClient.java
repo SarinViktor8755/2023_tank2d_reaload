@@ -196,7 +196,7 @@ public class MainClient {
         reconectClienNewThred();
         //     System.out.println(NetworkPacketStock.required_to_send_tooken);
        // getNetworkPacketStock().toSendMyTokken(); // отправка ника и токкена
-        getNetworkPacketStock().toSendMyTokkenAndNikName();
+     //   getNetworkPacketStock().toSendMyTokkenAndNikName();
         //   if (!getClient().isConnected()) NetworkPacketStock.required_to_send_tooken = true;
 
 

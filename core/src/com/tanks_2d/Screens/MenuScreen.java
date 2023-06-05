@@ -169,7 +169,7 @@ public class MenuScreen implements Screen {
 
 
                     //mainGame.getMainClient().getNetworkPacketStock().toSendMyNik();
-                    mainGame.getMainClient().getNetworkPacketStock().toSendMyTokkenAndNikName();
+                   // mainGame.getMainClient().getNetworkPacketStock().toSendMyTokkenAndNikName();
 
                 }
                 startgameMP = true;
