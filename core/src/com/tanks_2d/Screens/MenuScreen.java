@@ -35,7 +35,7 @@ import java.io.IOException;
 
 public class MenuScreen implements Screen {
 
-   // ShaderFilm shaderFilm;
+    // ShaderFilm shaderFilm;
     private MainGame mainGame;
 
     private SpriteBatch batch;
@@ -74,10 +74,14 @@ public class MenuScreen implements Screen {
     FloatArray dummyArray = new FloatArray();
     String limit = "";
 
+    private float red_alha;
+
 
     public MenuScreen(final MainGame mainGame) {
         mainGame.getAMG().loadedAseets();
         mainGame.audioEngine = new AudioEngine(mainGame);
+
+        red_alha = 0;
 
         button_start_click = false;
 
@@ -92,7 +96,7 @@ public class MenuScreen implements Screen {
 
         viewport.apply();
 
-       // viewport.apply(true);
+        // viewport.apply(true);
 
         camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0);
         camera.update();
@@ -111,8 +115,10 @@ public class MenuScreen implements Screen {
 
         skinMenu = mainGame.getAMG().get("skin/comic-ui.json");
         textEditer = mainGame.getAMG().get("skin/uiskin.json");
+        //textEditer.getColor("").set(1,1,1,1);
 
         final TextField textField = new TextField(limit, textEditer);
+      //  textField.setColor(1,1,1,1);
 
         textField.setMaxLength(20);
         textField.setWidth(280);
@@ -128,11 +134,12 @@ public class MenuScreen implements Screen {
         checkBoxMusic = new CheckBox("  Music ", skinMenu);
         checkBoxSound = new CheckBox("  Sound", skinMenu);
 
-        textButton.setPosition(300,50);
+        textButton.setPosition(300, 50);
 /////////////////////////////////////////////
         checkBoxMusic.setPosition(350, 180);
+        checkBoxMusic.setChecked(true);
         checkBoxSound.setPosition(350, 240);
-
+        checkBoxSound.setChecked(true);
 
         textButton.addListener(new InputListener() {
             @Override
@@ -169,7 +176,7 @@ public class MenuScreen implements Screen {
 
 
                     //mainGame.getMainClient().getNetworkPacketStock().toSendMyNik();
-                   // mainGame.getMainClient().getNetworkPacketStock().toSendMyTokkenAndNikName();
+                    // mainGame.getMainClient().getNetworkPacketStock().toSendMyTokkenAndNikName();
 
                 }
                 startgameMP = true;
@@ -183,7 +190,7 @@ public class MenuScreen implements Screen {
                     }
                     return false;
                 }
-              //  mainGame.assetsManagerGame.loadAllAsseGame();
+                //  mainGame.assetsManagerGame.loadAllAsseGame();
 
 
                 return true;
@@ -245,19 +252,19 @@ public class MenuScreen implements Screen {
     public void show() {
         mainGame.audioEngine.stopSoundOfTracks();
         mainGame.audioEngine.playMusicPaseMenu();
-  //      shaderFilm = new ShaderFilm();
+        //      shaderFilm = new ShaderFilm();
         //Shaders s = new Shaders(batch);
 
     }
 
     @Override
     public void render(float delta) {
-       // new Shaders(batch);
+        // new Shaders(batch);
         //    System.out.println(RouterSM.map_math);
 //        System.out.println(viewport.getWorldHeight());
 //        System.out.println(viewport.getScreenHeight());
 //        System.out.println();
-     //   mainGame.audioEngine.stopSoundOfTracks();
+        //   mainGame.audioEngine.stopSoundOfTracks();
 
 
 //        shaderFilm.setGrayScaleExtraAmount(MathUtils.random(0,.5f));
@@ -287,35 +294,44 @@ public class MenuScreen implements Screen {
         //batch.draw(wallpaper1,0,0,camera.viewportWidth, camera.viewportHeight,1,2,(int)camera.viewportWidth,(int) camera.viewportHeight,false,false);
         //System.out.println((MathUtils.sin(timeInScreen) + 1)/2);
 
-        batch.setColor(1 - timerStartGame, 1 - timerStartGame, 1, 1);
+        batch.setColor(1 - timerStartGame, 1 - timerStartGame - red_alha, 1 - red_alha, 1);
         batch.draw(wallpaper1, viewport.getScreenX(), viewport.getScreenY() + ((MathUtils.sin(timeInScreen) + 1) / 2) * 20);
         batch.setColor(1 - timerStartGame, 1 - timerStartGame, 1, 1);
-
+        batch.setColor(1 - timerStartGame, 1 - timerStartGame - red_alha/2, 1 - red_alha/2, 1);
         batch.draw(wallpaper, viewport.getScreenX(), viewport.getScreenY() - ((Interpolation.bounce.apply((MathUtils.sin(timeInScreen) + 1) / 2) * 10)));
 
+
+        batch.setColor(1, 1, 1, 1);
         if (!mainClient.getClient().isConnected()) {
             //batch.setColor(1 - timerStartGame, 1 - timerStartGame, 1,(MathUtils.sin(timeInScreen) +.5f));
-            batch.draw(disconnect, viewport.getScreenX() +50, 60 + viewport.getScreenY() + ((MathUtils.sin(timeInScreen) + 1) / 2) * 20, 150, 150);
+            batch.draw(disconnect, viewport.getScreenX() + 50, 60 + viewport.getScreenY() + ((MathUtils.sin(timeInScreen) + 1) / 2) * 20, 150, 150);
         }
+
+
+        for (int i = 0; i < 7; i++) {
+            batch.setColor(1, 1 - (.2f * i), 1, 1 - (.2f * i));
+            batch.draw(logo, viewport.getScreenX(), viewport.getScreenY() + 14 + ((MathUtils.cos((timeInScreen * 3) - (7 * i)) + 1) / 2) * 20);
+
+        }
+        batch.setColor(1, 1, 1, 1);
         batch.draw(logo, viewport.getScreenX(), viewport.getScreenY() + 14 + ((MathUtils.cos(timeInScreen * 3) + 1) / 2) * 20);
 
 
         this.batch.end();
         stageMenu.draw();
-        stageMenu.getRoot().setColor(1,1,1,1 - timerStartGame);
+        stageMenu.getRoot().setColor(1, 1, 1, 1 - timerStartGame);
 
 
     }
 
     private void check_screen_flag() {
         byte screen = MainGame.getFlagChangeScreen();
-        if(screen == Heading_type.PAUSE_GAME) mainGame.goMenuForPause();
+        if (screen == Heading_type.PAUSE_GAME) mainGame.goMenuForPause();
 
     }
 
     private void upDateScreen() {
-
-
+        red_alpha_update();
 
         mainClient.checkConnect(Heading_type.IN_MENU); // проверяет на коннект переподключется
 
@@ -340,8 +356,8 @@ public class MenuScreen implements Screen {
         }
 
         if (startgameMP || startgameSP) {
-           // System.out.println(1-timerStartGame);
-            mainGame.audioEngine.update_volme_pause(1-timerStartGame);
+            // System.out.println(1-timerStartGame);
+            mainGame.audioEngine.update_volme_pause(1 - timerStartGame);
             timerStartGame += Gdx.graphics.getDeltaTime(); // задержка во воремени для анимации
         }
 
@@ -391,11 +407,23 @@ public class MenuScreen implements Screen {
             stageMenu.dispose();
             wallpaper.dispose();
             logo.dispose();
-        }catch (IllegalArgumentException e){}
+        } catch (IllegalArgumentException e) {
+        }
     }
 
     public void setStartgameMP(boolean startgame) {
         this.startgameMP = startgame;
+    }
+
+    private void red_alpha_update() {
+        this.red_alha -= Gdx.graphics.getDeltaTime() / 3;
+        this.red_alha =MathUtils.clamp(red_alha,0,1);
+        if(!mainGame.getMainClient().getClient().isConnected())red_alha =1;
+    }
+
+    public void aplha_add(){
+        if(red_alha > 0 ) return;
+        red_alha += .3f;
     }
 
     public void setStartgameSP(boolean startgame) {
