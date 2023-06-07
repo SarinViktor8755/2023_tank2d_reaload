@@ -38,9 +38,10 @@ public class RouterMassege {
 
         if (Heading_type.BUTTON_STARTGAME == sm.tip) { // ответ на кнопку нажать СТАРТ
             gameServer.send_MAP_PARAMETOR(id_coonect);
-            gameServer.lp.getPlayerForId(id_coonect).setNikName(sm.textM);playerStatistics.set_nikname(id_coonect, sm.textM);
+            gameServer.lp.getPlayerForId(id_coonect).setNikName(sm.textM);
+            playerStatistics.set_nikname(id_coonect, sm.textM);
             gameServer.lp.getPlayerForId(id_coonect).setCommand((int) sm.p1);
-            gameServer.lp.getPlayerForId(id_coonect).setHp(100);
+          //  gameServer.lp.getPlayerForId(id_coonect).setHp(100);
             gameServer.lp.getPlayerForId(id_coonect).setStatus(Heading_type.CLICK_BOTON_START);
             return;
         }
