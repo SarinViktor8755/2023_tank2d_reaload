@@ -100,8 +100,6 @@ public class GameServer {
 
                                            return;
                                        } catch (NullPointerException e) {
-
-
                                            System.out.println("------------------ _______________________");
                                            System.out.println(connection.getID());
                                            System.out.println(lp);

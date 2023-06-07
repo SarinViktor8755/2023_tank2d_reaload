@@ -24,9 +24,6 @@ public class Network {
         kryo.register(GivePlayerParameters.class);
         kryo.register(Frag.class);
         kryo.register(Register_Package.class);
-        kryo.register(GMT.class);
-
-
     }
 
     /////////////////////////////////////
@@ -112,16 +109,12 @@ public class Network {
 
 
     public static class Register_Package{
+
+
         public String nik;
         public String tokken;
 
         public Integer command;
     }
-
-    public static class GMT{
-        byte b;
-    }
-
-
 
 }
