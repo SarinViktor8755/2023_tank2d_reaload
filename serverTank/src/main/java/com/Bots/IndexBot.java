@@ -145,7 +145,7 @@ public class IndexBot extends Thread {
                 Map.Entry<Integer, DBBot> entry = entries.next();
                 DBBot tank = entry.getValue();
 
-                if(!gs.lp.isExists(tank.getId())) {
+                if (!gs.lp.isExists(tank.getId())) {
                     dbBots.remove(tank.getId());
                     continue;
 
@@ -329,8 +329,11 @@ public class IndexBot extends Thread {
         adding_bot_balance();
         //////////////////////////удалене  для баланса
         delate_bot_balance();
-      //  if (MathUtils.randomBoolean(.5f)) delate_bot_balance(Heading_type.RED_COMMAND);
-
+        //  if (MathUtils.randomBoolean(.5f)) delate_bot_balance(Heading_type.RED_COMMAND);
+        if (MathUtils.randomBoolean(.5f)) {
+            if (StatisticMath.getPlayersSize() > (target_plaers + 6))
+                delateBot();
+        }
     }
 
 
@@ -353,29 +356,28 @@ public class IndexBot extends Thread {
 
 
     private void delate_bot_balance() {
-        if (StatisticMath.getPlayersSize()  > MainGame.targetPlayer + 2)
-        if (StatisticMath.getBlueSize() != StatisticMath.getRedSize()) {
-            ConcurrentHashMap<Integer, Player> lp = gs.getLp().getPlayers();
-            int command;
-            Iterator<Map.Entry<Integer, Player>> iterator = lp.entrySet().iterator();
-            while (iterator.hasNext()) {
-                Map.Entry<Integer, Player> p = iterator.next();
-                command = Heading_type.BLUE_COMMAND;
-                if (StatisticMath.getBlueSize() < StatisticMath.getRedSize())
-                    command = Heading_type.RED_COMMAND;
-
-                if (StatisticMath.getBlueSize() > StatisticMath.getRedSize())
+        if (StatisticMath.getPlayersSize() > MainGame.targetPlayer + 2)
+            if (StatisticMath.getBlueSize() != StatisticMath.getRedSize()) {
+                ConcurrentHashMap<Integer, Player> lp = gs.getLp().getPlayers();
+                int command;
+                Iterator<Map.Entry<Integer, Player>> iterator = lp.entrySet().iterator();
+                while (iterator.hasNext()) {
+                    Map.Entry<Integer, Player> p = iterator.next();
                     command = Heading_type.BLUE_COMMAND;
+                    if (StatisticMath.getBlueSize() < StatisticMath.getRedSize())
+                        command = Heading_type.RED_COMMAND;
 
-                if (p.getValue().getCommand() == command) {
-                    delateBot(p.getKey());
-                    System.out.println("DELATE : " + p.getKey() + "   " + p.getValue().getCommand());
-                    System.out.println("B:" + StatisticMath.getBlueSize() + "   R:" + StatisticMath.getRedSize());
+                    if (StatisticMath.getBlueSize() > StatisticMath.getRedSize())
+                        command = Heading_type.BLUE_COMMAND;
 
-                    return;
+                    if (p.getValue().getCommand() == command) {
+                        delateBot(p.getKey());
+                        System.out.println("DELATE : " + p.getKey() + "   " + p.getValue().getCommand());
+                        System.out.println("B:" + StatisticMath.getBlueSize() + "   R:" + StatisticMath.getRedSize());
+                        return;
+                    }
+
                 }
-
-            }
 
 
 //            for (Integer key : lp.keySet()) {
@@ -391,31 +393,34 @@ public class IndexBot extends Thread {
 //            }
 
 
-        }
+            }
     }
 
     private void delate_bot_balance(int commandD) {
 //        if (StatisticMath.getPlayersSize() <= MainGame.targetPlayer) return;
 //        if (StatisticMath.getBlueSize() != StatisticMath.getRedSize()) {
         ConcurrentHashMap<Integer, Player> lp = gs.getLp().getPlayers();
-            int command = commandD;
-            System.out.println("del");
-            Iterator<Map.Entry<Integer, Player>> iterator = lp.entrySet().iterator();
-            while (iterator.hasNext()) {
-                Map.Entry<Integer, Player> p = iterator.next();
-                command = commandD;
-                //   if (StatisticMath.getBlueSize() < StatisticMath.getRedSize())command = Heading_type.RED_COMMAND;
-                try {
-                    if (p.getValue().getCommand() != command) {
+        int command = commandD;
+        System.out.println("del");
+        Iterator<Map.Entry<Integer, Player>> iterator = lp.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<Integer, Player> p = iterator.next();
+            command = commandD;
+            //   if (StatisticMath.getBlueSize() < StatisticMath.getRedSize())command = Heading_type.RED_COMMAND;
+            try {
+                if (p.getValue().getCommand() != command) {
 
                     delateBot(p.getKey());
                     System.out.println("DELATE : " + p.getKey() + "   " + p.getValue().getCommand());
                     return;
                 }
 
-                }catch (NullPointerException e){e.printStackTrace();}
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+            }
 
-            }}
+        }
+    }
 
 
 //            for (Integer key : lp.keySet()) {
@@ -520,6 +525,21 @@ public class IndexBot extends Thread {
         gs.send_DISCONECT_PLAYER(id);
         //  StatisticMath.playerStatistics.delDeath(id);
         //System.out.println();
+
+    }
+
+    private void delateBot() { // дописать нужно с какой команды удалять ))
+        if (gs.lp.getPlayers().size() < 3) return;
+        ConcurrentHashMap<Integer, Player> lp = gs.getLp().getPlayers();
+        for (Integer key : lp.keySet()) {
+            if (key > 0) continue;
+            delateBot(key);
+            System.out.println("DELATE_BOOOOT !!!!!!!!!!!!!!!  " + key);
+            System.out.println();
+            System.out.println();
+            return;
+
+        }
 
     }
 

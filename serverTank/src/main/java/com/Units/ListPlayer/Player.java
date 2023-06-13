@@ -5,6 +5,8 @@ import com.badlogic.gdx.math.Vector2;
 import com.tanks_2d.ClientNetWork.Heading_type;
 import com.tanks_2d.Utils.VectorUtils;
 
+import main.java.com.Service;
+
 public class Player {
 
 
@@ -171,8 +173,8 @@ public class Player {
 //                "br=" + body_rotation +
 //                "rt=" + rotTower +
 //                "hp=" + hp +
-                "c" + command +
-                "id=" + id +
+                "c:" + Service.getComandFoeNomber(command)  +
+                " id= " + id +
                 "to  " + tokken + '\'' +
                 "nik " + nikName + '\'' +
                 '|';
