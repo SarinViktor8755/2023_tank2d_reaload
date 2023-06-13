@@ -1,0 +1,8 @@
+com.tanks_2d.android-pngs-0 E:\game_dev\tanks\android\build\generated\res\pngs\release
+com.tanks_2d.android-resValues-1 E:\game_dev\tanks\android\build\generated\res\resValues\release
+com.tanks_2d.android-rs-2 E:\game_dev\tanks\android\build\generated\res\rs\release
+com.tanks_2d.android-mergeReleaseResources-3 E:\game_dev\tanks\android\build\intermediates\incremental\release\mergeReleaseResources\merged.dir
+com.tanks_2d.android-mergeReleaseResources-4 E:\game_dev\tanks\android\build\intermediates\incremental\release\mergeReleaseResources\stripped.dir
+com.tanks_2d.android-merged_res-5 E:\game_dev\tanks\android\build\intermediates\merged_res\release
+com.tanks_2d.android-android-6 E:\game_dev\tanks\android\res
+com.tanks_2d.android-release-7 E:\game_dev\tanks\android\src\release\res

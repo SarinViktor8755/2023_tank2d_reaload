@@ -92,11 +92,7 @@ public class GameServer {
                                        try {
                                            Network.PleyerPosition pp = (Network.PleyerPosition) object;
                                            Player p = lp.getPlayerForId(connection.getID());
-                                           if(p == null) {
-                                               System.out.println("send_tokken_client_request");
-                                               send_tokken_client_request(connection.getID());
-                                                return;
-                                           }
+                                           if(p == null) return;
                                            //  lp.sendToAllPlayerPosition(connection.getID(), (Network.PleyerPosition) object);
                                            p.setPosition(pp.xp, pp.yp);
                                            // d 92 стоке ошибка потом что нет игрока и постоянно срабаывает эксепшен 
@@ -108,7 +104,6 @@ public class GameServer {
                                            System.out.println(connection.getID());
                                            System.out.println(lp);
                                            e.printStackTrace();
-                                           send_tokken_client_request(connection.getID());
                                            return;
                                        }
                                    }
@@ -177,14 +172,6 @@ public class GameServer {
     }
 
 
-
-
-    public void send_tokken_client_request(int id_connect) { // запрос у клиента тойкена - вы полняется в том случае если клиент нет в лист плеере
-     Network.Register_Package rp  = new Network.Register_Package();
-     this.server.sendToUDP(id_connect,rp);
-
-    }
-
     public void sendSHELL_RUPTURE(float x, float y, int nom, int author) {
         Network.StockMessOut stockMessOut = new Network.StockMessOut();
         stockMessOut.tip = Heading_type.SHELL_RUPTURE;
@@ -200,6 +187,7 @@ public class GameServer {
     public void send_add_frag(int n) {
         Network.Frag f = new Network.Frag();
         this.server.sendToUDP(n, f);
+
     }
 
     public void send_PARAMETERS_PLAYER(int HP, int comant, String nikName, int forIdPlayer, int aboutPlayer) {
