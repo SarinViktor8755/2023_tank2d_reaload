@@ -211,7 +211,7 @@ public class Tank {
             moveMainTank(directionMovementControll, inTuch);
             generatorSled();
             tower_sec(); // работа башни
-            send_my_coordinat(); // передачакоординат
+            send_my_coordinat(); // переда чакоординат
             flashing_tank();
             generatorSmoke();
         } else this.position.set(DEATH_VECTOR);

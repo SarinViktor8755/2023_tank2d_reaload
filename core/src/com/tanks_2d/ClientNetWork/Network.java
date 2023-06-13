@@ -109,8 +109,6 @@ public class Network {
 
 
     public static class Register_Package{
-
-
         public String nik;
         public String tokken;
 
