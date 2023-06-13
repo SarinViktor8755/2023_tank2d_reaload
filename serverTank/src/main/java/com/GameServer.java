@@ -92,7 +92,11 @@ public class GameServer {
                                        try {
                                            Network.PleyerPosition pp = (Network.PleyerPosition) object;
                                            Player p = lp.getPlayerForId(connection.getID());
-                                           if(p == null) return;
+                                           if(p == null) {
+                                               System.out.println("send_tokken_client_request");
+                                               send_tokken_client_request(connection.getID());
+                                                return;
+                                           }
                                            //  lp.sendToAllPlayerPosition(connection.getID(), (Network.PleyerPosition) object);
                                            p.setPosition(pp.xp, pp.yp);
                                            // d 92 стоке ошибка потом что нет игрока и постоянно срабаывает эксепшен 

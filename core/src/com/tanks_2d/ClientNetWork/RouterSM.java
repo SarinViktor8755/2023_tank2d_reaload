@@ -78,6 +78,10 @@ public class RouterSM {
             return;
         }
 
+
+
+
+
         if (Heading_type.CHANGE_THE_SCREEN == sm.tip) {
             //   System.out.println("=+++++++++++++  " + sm.p1);
             if (sm.p1 == Heading_type.PAUSE_GAME) {

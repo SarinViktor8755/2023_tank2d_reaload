@@ -8,6 +8,8 @@ import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 import com.tanks_2d.ClientNetWork.VoiceChat.VoiceChatClient;
 import com.tanks_2d.MainGame;
+import com.tanks_2d.Units.NikName;
+import com.tanks_2d.Units.Tanks.Tank;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -175,6 +177,19 @@ public class MainClient {
             mg.getGamePlayScreen().getController().addFrag();
         }
 
+        if (object instanceof Network.Register_Package) {
+            //  mg.getGamePlayScreen().getController().addFrag();
+//            public void send_tokken_client_request ( int id_connect)
+//            { // запрос у клиента тойкена - вы полняется в том случае если клиент нет в лист плеере
+            Network.Register_Package rp = new Network.Register_Package();
+            rp.tokken = NikName.getTokken();
+            rp.nik = NikName.getNikName();
+            rp.command = Tank.getMy_Command();
+            this.client.sendUDP(rp);
+
+
+        }
+
 
     }
 
@@ -195,8 +210,8 @@ public class MainClient {
         boolean result = true;
         reconectClienNewThred();
         //     System.out.println(NetworkPacketStock.required_to_send_tooken);
-       // getNetworkPacketStock().toSendMyTokken(); // отправка ника и токкена
-     //   getNetworkPacketStock().toSendMyTokkenAndNikName();
+        // getNetworkPacketStock().toSendMyTokken(); // отправка ника и токкена
+        //   getNetworkPacketStock().toSendMyTokkenAndNikName();
         //   if (!getClient().isConnected()) NetworkPacketStock.required_to_send_tooken = true;
 
 
