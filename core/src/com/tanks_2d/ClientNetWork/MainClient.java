@@ -13,7 +13,7 @@ import com.tanks_2d.Units.Tanks.Tank;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.TreeMap;
+
 
 
 public class MainClient {
@@ -29,7 +29,7 @@ public class MainClient {
 
     private VoiceChatClient voiceChatClient;
     private NetworkPacketStock networkPacketStock;
-    public TreeMap<Integer, Network.PleyerPositionNom> otherPlayer;
+    // public TreeMap<Integer, Network.PleyerPositionNom> otherPlayer;
     public HashMap<Integer, Boolean> frameUpdates; //Обновления кадра для играков
 //    public ArrayDeque<PacketModel> inDequePacket; // входящие пакеты для обработки;
 
@@ -71,7 +71,7 @@ public class MainClient {
             System.out.println("An error occurred please try again!");
         }
 
-        otherPlayer = new TreeMap<>();
+     //   otherPlayer = new TreeMap<>();
         onLine = true;
 
         this.networkPacketStock = new NetworkPacketStock(client);
@@ -115,6 +115,7 @@ public class MainClient {
     public void router(Object object) {
         if (!onLine) return;
         if (object instanceof Network.PleyerPositionNom) { // полученеи позиции играков
+            System.out.println("!!!!!!!!!!");
             Network.PleyerPositionNom pp = (Network.PleyerPositionNom) object;
             frameUpdates.put(pp.nom, true);
             // System.out.println("pp.nom  " + pp.nom + "   " +pp.xp);
@@ -173,11 +174,12 @@ public class MainClient {
 
         }
 
-        if (object instanceof Network.Frag) {
-            mg.getGamePlayScreen().getController().addFrag();
-        }
+//        if (object instanceof Network.Frag) {
+//            mg.getGamePlayScreen().getController().addFrag();
+//        }
 
         if (object instanceof Network.Register_Package) {
+            System.out.println("Register_Package");
             //  mg.getGamePlayScreen().getController().addFrag();
 //            public void send_tokken_client_request ( int id_connect)
 //            { // запрос у клиента тойкена - вы полняется в том случае если клиент нет в лист плеере

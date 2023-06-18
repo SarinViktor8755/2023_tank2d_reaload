@@ -36,3 +36,20 @@
    boolean reportFixture(long);
    float   reportRayFixture(long, float, float, float, float, float);
 }
+
+###########
+-keep class com.esotericsoftware.kryo.** {*;}
+-keep class com.esotericsoftware.** {*;}
+-dontwarn android.support.**
+-dontwarn com.badlogic.gdx.backends.android.AndroidFragmentApplication
+
+-dontwarn com.badlogic.gdx.jnigen.BuildTarget*
+
+
+-keepclassmembers class com.badlogic.gdx.backends.android.AndroidInput* {
+   <init>(com.badlogic.gdx.Application, android.content.Context, java.lang.Object, com.badlogic.gdx.backends.android.AndroidApplicationConfiguration);
+}
+ -keep class com.badlogic.**{
+   **[] $VALUES;
+    *;
+}

@@ -99,7 +99,8 @@ public class IndexBullets {
                         player.setStatus(Heading_type.DEATH_TANK);
 
                         IndexMath.add_score_team(player.getCommand());
-                        gameServer.send_add_frag(bullet.getAuthor_bullet());
+
+                        //gameServer.send_add_frag(bullet.getAuthor_bullet()); было возможно ошибка
                         /// отправить сообщение
                         ///////TEST
 

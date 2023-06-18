@@ -184,11 +184,11 @@ public class GameServer {
 
     }
 
-    public void send_add_frag(int n) {
-        Network.Frag f = new Network.Frag();
-        this.server.sendToUDP(n, f);
-
-    }
+//    public void send_add_frag(int n) {
+//        Network.Frag f = new Network.Frag();
+//        this.server.sendToUDP(n, f);
+//
+//    }
 
     public void send_PARAMETERS_PLAYER(int HP, int comant, String nikName, int forIdPlayer, int aboutPlayer) {
         Network.StockMessOut stockMessOut = new Network.StockMessOut();
