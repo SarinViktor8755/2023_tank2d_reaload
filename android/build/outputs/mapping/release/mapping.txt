@@ -3,8 +3,8 @@
 # min_api: 14
 # common_typos_disable
 # {"id":"com.android.tools.r8.mapping","version":"2.0"}
-# pg_map_id: a4055ad
-# pg_map_hash: SHA-256 a4055adc7e5d09c80c649cd17bde82f24def5bf29343ba96d0b39ff12873f428
+# pg_map_id: a473417
+# pg_map_hash: SHA-256 a4734173696d5cfef267aad489a0e2299902f24c1c82c6c99f5f35ce84743db7
 com.tanks_2d.Assets.AssetsManagerGame -> b.a:
     com.badlogic.gdx.assets.AssetManager assetManager -> b
     java.util.HashMap assets -> a
@@ -121,10 +121,9 @@ com.tanks_2d.ClientNetWork.Network$PleyerPositionNom -> d.d$d:
     float yp -> c
     float xp -> b
     int nom -> a
-com.tanks_2d.ClientNetWork.Network$Register_Package -> d.d$e:
-    java.lang.Integer command -> c
-    java.lang.String nik -> a
-    java.lang.String tokken -> b
+com.tanks_2d.ClientNetWork.Network$RegisterUser -> d.d$e:
+    java.lang.String tokken -> a
+    java.lang.Integer command -> b
 com.tanks_2d.ClientNetWork.Network$StockMessInClient -> d.d$f:
 com.tanks_2d.ClientNetWork.Network$StockMessOut -> d.d$g:
     java.lang.String textM -> f

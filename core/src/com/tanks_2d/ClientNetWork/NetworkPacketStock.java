@@ -84,7 +84,7 @@ public class NetworkPacketStock {
 
 
     public void toSendMyTokkenAndNikName() {
-        Network.Register_Package rp = new Network.Register_Package(NikName.getNikName(),NikName.getTokken(),Tank.getMy_Command());
+        Network.RegisterUser rp = new Network.RegisterUser(NikName.getTokken(),Tank.getMy_Command());
 //        rp.tokken = NikName.getTokken();
 //        rp.nik = NikName.getNikName();
 //        rp.command = Tank.getMy_Command();

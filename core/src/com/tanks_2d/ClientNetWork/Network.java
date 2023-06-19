@@ -23,7 +23,7 @@ public class Network {
         kryo.register(StockMessInClient.class);
         kryo.register(GivePlayerParameters.class);
         kryo.register(Frag.class);
-        kryo.register(Register_Package.class);
+        kryo.register(RegisterUser.class);
     }
 
     /////////////////////////////////////
@@ -87,7 +87,7 @@ public class Network {
     }
 
     public static class GivePlayerParameters{   // лиент просит параметры играка )))
-        public  int nomerPlayer;
+        public int nomerPlayer;
         public String nik;
 
         @Override
@@ -106,14 +106,16 @@ public class Network {
     }
 
 
-    public static class Register_Package{
-        public Register_Package(String nik, String tokken, Integer command) {
-            this.nik = nik;
+    public static class RegisterUser{
+
+        public RegisterUser(String tokken, Integer command) {
+        //    this.nik = nik;
             this.tokken = tokken;
             this.command = command;
         }
 
-        public String nik;
+
+        //   public String nik;
         public String tokken;
         public Integer command;
     }
