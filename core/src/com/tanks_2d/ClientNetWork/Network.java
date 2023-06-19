@@ -100,8 +100,6 @@ public class Network {
     }
 
 
-
-
     public static class statusPlayer{ // пакет статусов Live - 1
         int idPlayer;
         byte status;
@@ -109,9 +107,14 @@ public class Network {
 
 
     public static class Register_Package{
+        public Register_Package(String nik, String tokken, Integer command) {
+            this.nik = nik;
+            this.tokken = tokken;
+            this.command = command;
+        }
+
         public String nik;
         public String tokken;
-
         public Integer command;
     }
 
