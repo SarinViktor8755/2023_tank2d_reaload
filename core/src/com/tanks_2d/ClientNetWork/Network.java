@@ -22,7 +22,7 @@ public class Network {
         kryo.register(StockMessOut.class);
         kryo.register(StockMessInClient.class);
         kryo.register(GivePlayerParameters.class);
-     //   kryo.register(Frag.class);
+        kryo.register(Frag.class);
         kryo.register(Register_Package.class);
     }
 
@@ -33,10 +33,9 @@ public class Network {
         public float roy_tower;
     }
 
-//    public static class Frag {   //позиция
-//        int f;
-//
-//    }
+    public static class Frag {   //позиция
+
+    }
 
     public static class PleyerPositionNom {   //ответ позиция с номером
         public int nom;
@@ -44,6 +43,15 @@ public class Network {
         public float yp;
         public float roy_tower;
 
+        @Override
+        public String toString() {
+            return "PleyerPositionNom{" +
+                    "nom=" + nom +
+                    ", xp=" + xp +
+                    ", yp=" + yp +
+                    ", roy_tower=" + roy_tower +
+                    '}';
+        }
     }
 
 
@@ -94,15 +102,16 @@ public class Network {
 
 
 
-//    public static class statusPlayer{ // пакет статусов Live - 1
-//        int idPlayer;
-//        byte status;
-//    }
+    public static class statusPlayer{ // пакет статусов Live - 1
+        int idPlayer;
+        byte status;
+    }
 
 
     public static class Register_Package{
         public String nik;
         public String tokken;
+
         public Integer command;
     }
 

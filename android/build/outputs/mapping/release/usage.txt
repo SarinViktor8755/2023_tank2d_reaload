@@ -19,7 +19,6 @@ com.tanks_2d.CameraGame:
 com.tanks_2d.ClientNetWork.ClientThread:
     public com.esotericsoftware.kryonet.Client getClient()
     public void setClient(com.esotericsoftware.kryonet.Client)
-    public void setVoiceChatClient(com.tanks_2d.ClientNetWork.VoiceChat.VoiceChatClient)
 com.tanks_2d.ClientNetWork.Client_new_Thred
 com.tanks_2d.ClientNetWork.Heading_type:
     public static final int BLUE_COMMAND
@@ -55,7 +54,6 @@ com.tanks_2d.ClientNetWork.Heading_type:
     public void <init>()
 com.tanks_2d.ClientNetWork.MainClient:
     public float aplphaConnect
-    private com.tanks_2d.ClientNetWork.VoiceChat.VoiceChatClient voiceChatClient
     public int getMyIdConnect()
     public boolean isOnLine()
     private void startClient()
@@ -67,6 +65,7 @@ com.tanks_2d.ClientNetWork.Network$StockMessInClient:
     public float p4
     public java.lang.String textM
     public int tip
+com.tanks_2d.ClientNetWork.Network$statusPlayer
 com.tanks_2d.ClientNetWork.Network:
     public static final java.lang.String host
     public static final int tcpPort
@@ -80,14 +79,6 @@ com.tanks_2d.ClientNetWork.PacketModel
 com.tanks_2d.ClientNetWork.RouterSM:
     private void mainMenuParametors(float)
 com.tanks_2d.ClientNetWork.ServiceClient
-com.tanks_2d.ClientNetWork.VoiceChat.VoiceChatClient$1
-com.tanks_2d.ClientNetWork.VoiceChat.VoiceChatClient$2
-com.tanks_2d.ClientNetWork.VoiceChat.VoiceChatClient$3$1
-com.tanks_2d.ClientNetWork.VoiceChat.VoiceChatClient$3
-com.tanks_2d.ClientNetWork.VoiceChat.VoiceChatClient$4
-com.tanks_2d.ClientNetWork.VoiceChat.VoiceChatClient
-com.tanks_2d.ClientNetWork.VoiceChat.VoiceChatServer
-com.tanks_2d.ClientNetWork.VoiceChat.VoiceNetData
 com.tanks_2d.Locations.Collision.BoxCollision:
     com.badlogic.gdx.math.Vector2 get_vector2_from_center(int,int)
 com.tanks_2d.Locations.Collision.CircleCollision:
@@ -197,7 +188,6 @@ com.tanks_2d.Screens.Controll.Banner:
 com.tanks_2d.Screens.Controll.Controller:
     com.badlogic.gdx.graphics.OrthographicCamera cameraGUI
     private com.badlogic.gdx.scenes.scene2d.ui.Label score_blue
-    public void addFrag()
     public com.badlogic.gdx.scenes.scene2d.ui.Label getLive_score_blue()
     public com.badlogic.gdx.scenes.scene2d.ui.Label getLive_score_red()
     public float getTime_in_game()

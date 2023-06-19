@@ -5,13 +5,11 @@ import static com.tanks_2d.ClientNetWork.Network.register;
 import static main.java.com.Units.ListPlayer.StatisticMath.playerStatistics;
 
 import com.badlogic.gdx.math.MathUtils;
-import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.kryonet.Server;
 import com.tanks_2d.ClientNetWork.Heading_type;
 import com.tanks_2d.ClientNetWork.Network;
-import com.tanks_2d.ClientNetWork.VoiceChat.VoiceChatServer;
 import com.tanks_2d.Locations.MapsList;
 import com.tanks_2d.Screens.PauseScreen.PauseScreen;
 
@@ -32,7 +30,7 @@ public class GameServer {
     Server server;
     MainGame mainGame;
     IndexBot indexBot; // количество играков - по нему боты орентируюься сколько их нужно = для автобаласа
-    private VoiceChatServer relay;
+ //   private VoiceChatServer relay;
 
 
     public static boolean break_in_the_game;
@@ -52,7 +50,7 @@ public class GameServer {
         server.start();
         previousStepTime = System.currentTimeMillis();
 ///////////
-        relay = new VoiceChatServer(server.getKryo());
+     //   relay = new VoiceChatServer(server.getKryo());
 ///////////////
         mainGame = new MainGame(this, GameServer.getCountBot(args));
         server.addListener(new Listener() {
@@ -86,7 +84,7 @@ public class GameServer {
                                @Override
                                public void received(Connection connection, Object object) {
 
-                                   relay.relayVoice(connection, object, server);
+                            //       relay.relayVoice(connection, object, server);
                                    ///      System.out.println(server.getConnections().length +"    -------------");
                                    if (object instanceof Network.PleyerPosition) {
                                        try {
@@ -180,6 +178,7 @@ public class GameServer {
         stockMessOut.p3 = nom;
         stockMessOut.p4 = author;
         //stockMessOut.textM = mainGame.gameServer.getLp().getPlayerForId()
+        System.out.println("-->> " + stockMessOut);
         this.sendToAllTCP_in_game(stockMessOut);
 
     }
@@ -199,6 +198,7 @@ public class GameServer {
         stockMessOut.p3 = HP; // номер игрока
         stockMessOut.p4 = HP; // номер игрока
         stockMessOut.textM = nikName; // ник нейм
+        System.out.println("-->> " + stockMessOut);
         this.server.sendToTCP(forIdPlayer, stockMessOut);
 
         //      System.out.println(nikName + ">>>>");
@@ -212,7 +212,7 @@ public class GameServer {
         stockMessOut.p2 = y; // позиция респауна
         stockMessOut.p3 = id; /// ид игрока
 
-
+        System.out.println("-->> " + stockMessOut);
         /// комада игрока - отом исправить мсена команды
         this.server.sendToTCP(id, stockMessOut);
     }
@@ -235,11 +235,13 @@ public class GameServer {
             ///////////
             PauseScreen.setGame_statistics_players(playerStatistics.generating_string_clients());
             stockMessOut.textM = PauseScreen.getGame_statistics_players();
+            System.out.println("-->> " + stockMessOut);
             //PauseScreen.parser_result();
         } else {
             stockMessOut.p1 = Heading_type.PLAY_GAME;
             stockMessOut.textM = "";
             PlayerStatistics.clearListStatic();
+
             lp.respownAllPlaers();
 
         }
@@ -252,6 +254,7 @@ public class GameServer {
         //
         String map = mainGame.getMapSpace().getMap_math();
         mainGame.setMapSpace(new IndexMap(MapsList.getMapForServer(map))); // создаем новую карту
+        System.out.println("-->> " + stockMessOut);
         send_MAP_PARAMETOR();
 
     }
@@ -281,6 +284,7 @@ public class GameServer {
 
 
         //stockMessOut.textM = ///IndexMath. // Номер карты будем делать менедже карт
+        System.out.println("-->> " + stockMessOut);
         this.sendToAllTCP_in_game(stockMessOut);
 
 
@@ -300,6 +304,7 @@ public class GameServer {
         stockMessOut.p3 = p.getHp(); // ХП
         stockMessOut.p4 = p.getCommand(); // номер игрока
         stockMessOut.textM = p.getNikName(); // ник нейм
+        System.out.println("-->> " + stockMessOut);
         this.sendToAllTCP_in_game(stockMessOut);
     }
 
@@ -317,6 +322,7 @@ public class GameServer {
         stockMessOut.p3 = p.getHp(); // ХП
         stockMessOut.p4 = p.getCommand(); // номер игрока
         stockMessOut.textM = p.getNikName(); // ник нейм
+        System.out.println("-->> " + stockMessOut);
         this.sendToAllTCP_in_game(stockMessOut);
     }
 
@@ -329,6 +335,7 @@ public class GameServer {
 //        else stockMessOut.p1 = Heading_type.PLAY_GAME;
 //        if (GameServer.break_in_the_game) stockMessOut.p1 = Heading_type.PAUSE_GAME;
 //        else stockMessOut.p1 = Heading_type.PLAY_GAME;
+        System.out.println("-->> " + stockMessOut);
         this.server.sendToAllTCP(stockMessOut);
 
 
@@ -343,7 +350,7 @@ public class GameServer {
 
         stockMessOut.textM = mainGame.mapSpace.getMap_math();
         PlayerStatistics.clearListStatic();
-
+        System.out.println("-->> " + stockMessOut);
         this.server.sendToTCP(id, stockMessOut);
         System.out.println("!!!!!!!!!!MAP:::");
     }
@@ -393,6 +400,7 @@ public class GameServer {
         Network.StockMessOut stockMessOut = new Network.StockMessOut();
         stockMessOut.tip = Heading_type.DISCONECT_PLAYER;
         stockMessOut.p1 = idPlayer;
+        System.out.println("-->> " + stockMessOut);
         this.sendToAllTCP_in_game(stockMessOut);
     }
 

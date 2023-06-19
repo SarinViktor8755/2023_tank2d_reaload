@@ -461,6 +461,7 @@ public class IndexBot extends Thread {
         sm.tip = Heading_type.MY_SHOT;
 
         gs.getMainGame().getBullets().addBullet(new Vector2(bot.getPosi().x, bot.getPosi().y), velBullet, n, bot.getId());
+        System.out.println("-->> " + sm);
         gs.sendToAllTCP_in_game(sm);
     }
 
