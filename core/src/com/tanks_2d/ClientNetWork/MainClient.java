@@ -182,11 +182,12 @@ public class MainClient {
             //  mg.getGamePlayScreen().getController().addFrag();
 //            public void send_tokken_client_request ( int id_connect)
 //            { // запрос у клиента тойкена - вы полняется в том случае если клиент нет в лист плеере
-            Network.RegisterUser rp = new Network.RegisterUser(NikName.getTokken(),Tank.getMy_Command());
+            Network.RegisterUser rp = new Network.RegisterUser();
+
 //            rp.tokken = NikName.getTokken();
 //            rp.nik = NikName.getNikName();
 //            rp.command = Tank.getMy_Command();
-            this.client.sendUDP(rp);
+            //    this.client.sendUDP(rp);
 
 
         }

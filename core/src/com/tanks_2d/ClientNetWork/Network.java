@@ -76,6 +76,15 @@ public class Network {
         }
     }
 
+    public static class param_mess {   //сообщение из стока
+        public int heandler_mess;
+        public float parm1;
+        public float parm2;
+        public float parm3;
+        public float parm4;
+        public String text_messege;
+    }
+
     public static class StockMessInClient {   //сообщение из стока
         public int tip;
         public float p1;
@@ -108,16 +117,9 @@ public class Network {
 
     public static class RegisterUser{
 
-        public RegisterUser(String tokken, Integer command) {
-        //    this.nik = nik;
-            this.tokken = tokken;
-            this.command = command;
-        }
-
-
         //   public String nik;
         public String tokken;
-        public Integer command;
+     //   public Integer command;
     }
 
 }

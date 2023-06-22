@@ -30,7 +30,7 @@ public class GameServer {
     Server server;
     MainGame mainGame;
     IndexBot indexBot; // количество играков - по нему боты орентируюься сколько их нужно = для автобаласа
- //   private VoiceChatServer relay;
+    //   private VoiceChatServer relay;
 
 
     public static boolean break_in_the_game;
@@ -42,7 +42,7 @@ public class GameServer {
     public GameServer(String[] args, ServerLauncher serverLauncher) throws IOException {
         GameServer.break_in_the_game = false;
 
-        int bufferSize = 10000000; // Recommened value.
+        int bufferSize = 100000000; // Recommened value.
 
         server = new Server(bufferSize, bufferSize);
         register(server);
@@ -50,7 +50,7 @@ public class GameServer {
         server.start();
         previousStepTime = System.currentTimeMillis();
 ///////////
-     //   relay = new VoiceChatServer(server.getKryo());
+        //   relay = new VoiceChatServer(server.getKryo());
 ///////////////
         mainGame = new MainGame(this, GameServer.getCountBot(args));
         server.addListener(new Listener() {
@@ -60,7 +60,7 @@ public class GameServer {
                                    try {
 
                                        Player p = lp.getPlayerForId(connection.getID());
-                                       if(p == null) return;
+                                       if (p == null) return;
                                        lp.disconect(p.getId());
 //                                       lp.getPlayerForId(connection.getID()).setStatus(Heading_type.DISCONECT_PLAYER);
 //                                       lp.getPlayerForId(connection.getID()).setPosition(Player.DISCONECT_SYS_LAYER);
@@ -84,14 +84,14 @@ public class GameServer {
                                @Override
                                public void received(Connection connection, Object object) {
 
-                            //       relay.relayVoice(connection, object, server);
+                                   //       relay.relayVoice(connection, object, server);
                                    ///      System.out.println(server.getConnections().length +"    -------------");
                                    if (object instanceof Network.PleyerPosition) {
                                        try {
                                            Network.PleyerPosition pp = (Network.PleyerPosition) object;
                                            Player p = lp.getPlayerForId(connection.getID());
-                                          // System.out.println("position " + pp.xp);
-                                           if(p == null) return;
+                                           // System.out.println("position " + pp.xp);
+                                           if (p == null) return;
                                            //  lp.sendToAllPlayerPosition(connection.getID(), (Network.PleyerPosition) object);
                                            p.setPosition(pp.xp, pp.yp);
                                            // d 92 стоке ошибка потом что нет игрока и постоянно срабаывает эксепшен 
@@ -123,25 +123,24 @@ public class GameServer {
 
 
                                    if (object instanceof Network.RegisterUser) { //ПЕРЕДКЛАТЬ
-                                       Network.RegisterUser rp =  (Network.RegisterUser) object;
-                                     //  String nikname = rp.nik;
+                                       Network.RegisterUser rp = (Network.RegisterUser) object;
+                                       //  String nikname = rp.nik;
                                        String tokken = rp.tokken;
-                                       int comand = rp.command;
+                                       // int comand = rp.command;
                                        /////////////////////// тут регистрация пользователя _ это после конекта или плсде старта
                                        Player b_player = ListPlayers.getBasket().get(tokken);
-                                       if (b_player == null){
-                                           Player p = new Player(connection.getID(), comand, tokken);
+                                       if (b_player == null) {
+                                           Player p = new Player(connection.getID(), 1, tokken);
                                            getLp().addPlayer(p);
-                                           ListPlayers.getBasket().put(p.getTokken(),p);
+                                           ListPlayers.getBasket().put(p.getTokken(), p);
                                            System.out.println("KORZINA_ADD");
-                                       //    p.setNikName(nikname);
-                                       }
-                                       else {
+                                           //    p.setNikName(nikname);
+                                       } else {
                                            System.out.println("KORZINA_BASKET");
                                            b_player.setId(connection.getID());
                                            // ListPlayers.getListPlayers().put(id_coonect,b_player);
                                            getLp().addPlayer(b_player);
-                                          // b_player.setNikName(nikname);
+                                           // b_player.setNikName(nikname);
                                            send_PARAMETERS_PLAYER(b_player);
                                        }
 

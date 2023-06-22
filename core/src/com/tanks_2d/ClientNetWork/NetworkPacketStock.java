@@ -32,7 +32,7 @@ public class NetworkPacketStock {
     }
 
 
-     public void sendMuCoordinat(float x, float y, int anTower) {
+    public void sendMuCoordinat(float x, float y, int anTower) {
         Network.PleyerPosition pp = new Network.PleyerPosition();
         pp.xp = x;
         pp.yp = y;
@@ -55,11 +55,11 @@ public class NetworkPacketStock {
     }
 
     public void toSendMyShot(float x, float y, float alignShoot) { // мой выстрел
-          send_package_to_server(Heading_type.MY_SHOT, x, y, alignShoot,  (5000 + MathUtils.random(999999) + x - y), null);
+        send_package_to_server(Heading_type.MY_SHOT, x, y, alignShoot, (5000 + MathUtils.random(999999) + x - y), null);
     }
 
     public void toSendMyNik() { // отправляется после каждого респауна матча
-      //  System.out.println("Nik");
+        //  System.out.println("Nik");
         send_package_to_server(Heading_type.MY_NIK, Tank.getMy_Command(), 0, 0, 0, NikName.getNikName());
     }
 
@@ -74,9 +74,12 @@ public class NetworkPacketStock {
 
 
     public void toSendMyTokken() {
-       // System.out.println("required_to_send_tooken " + required_to_send_tooken);
-        if(required_to_send_tooken) return;
-        if(!client.isConnected()){required_to_send_tooken = false; return;}
+        // System.out.println("required_to_send_tooken " + required_to_send_tooken);
+        if (required_to_send_tooken) return;
+        if (!client.isConnected()) {
+            required_to_send_tooken = false;
+            return;
+        }
         //2 - статус игры -- сообщает что игкрок в меню или  в игру - вответиедолжна быть карта Местность
         send_package_to_server(Heading_type.MY_TOKKEN, Tank.getMy_Command(), 0, 0, 0, NikName.getTokken());
         required_to_send_tooken = true;
@@ -84,21 +87,21 @@ public class NetworkPacketStock {
 
 
     public void toSendMyTokkenAndNikName() {
-        Network.RegisterUser rp = new Network.RegisterUser(NikName.getTokken(),Tank.getMy_Command());
-//        rp.tokken = NikName.getTokken();
-//        rp.nik = NikName.getNikName();
-//        rp.command = Tank.getMy_Command();
-   //     client.sendTCP(rp);
+        Network.RegisterUser rp = new Network.RegisterUser();
+        rp.tokken = "ok11111" ;
+        // rp.nik = NikName.getNikName();
+      //  rp.command = Tank.getMy_Command();
+        client.sendTCP(rp);
     }
 
-    public void toSendMyCommand(int command){
+    public void toSendMyCommand(int command) {
         send_package_to_server(Heading_type.MY_COMMAND, command, 0, 0, 0, NikName.getNikName());
     }
 
     public void toSendButtonStartClick() {
         //toSendMyTokken(); // отправка ника и токкена
         toSendMyTokkenAndNikName();
-        if(client.isConnected()) {
+        if (client.isConnected()) {
             send_package_to_server(Heading_type.BUTTON_STARTGAME, Tank.getMy_Command(), 0, 0, 0, NikName.getNikName());
         }
     }

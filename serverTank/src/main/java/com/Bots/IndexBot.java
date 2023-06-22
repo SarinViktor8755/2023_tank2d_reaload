@@ -453,7 +453,7 @@ public class IndexBot extends Thread {
         Vector2 rot = new Vector2(1, 0).setAngleDeg(p.getRotTower()).scl(-30);
         Vector2 smooke = p.getPosi().cpy().sub(rot);
 
-        int n = 5000 + MathUtils.random(99999999);
+        int n = 5000 + MathUtils.random(99000);
         sm.p1 = smooke.x;
         sm.p2 = smooke.y;
         sm.p3 = p.getRotTower();
