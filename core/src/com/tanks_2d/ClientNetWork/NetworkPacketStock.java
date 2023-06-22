@@ -88,7 +88,7 @@ public class NetworkPacketStock {
 //        rp.tokken = NikName.getTokken();
 //        rp.nik = NikName.getNikName();
 //        rp.command = Tank.getMy_Command();
-        client.sendTCP(rp);
+   //     client.sendTCP(rp);
     }
 
     public void toSendMyCommand(int command){

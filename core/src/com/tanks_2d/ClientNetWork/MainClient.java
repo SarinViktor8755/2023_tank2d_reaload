@@ -115,6 +115,7 @@ public class MainClient {
         if (!onLine) return;
         if (object instanceof Network.PleyerPositionNom) { // полученеи позиции играков
             Network.PleyerPositionNom pp = (Network.PleyerPositionNom) object;
+
             frameUpdates.put(pp.nom, true);
             // System.out.println("pp.nom  " + pp.nom + "   " +pp.xp);
             //   System.out.println(pp.nom + "x y " + pp.xp + " " + pp.yp );
@@ -137,6 +138,7 @@ public class MainClient {
 
                 } else
                     mg.getGamePlayScreen().getTanksOther().setTankPosition(pp, mg.getMainClient().frameUpdates.get(pp.nom));
+
             } catch (NullPointerException e) {
                 System.out.println("NET POLSOVATELY");
                 //   mg.getGamePlayScreen().getTanksOther().createOponent(-10_000,-10_000,pp.nom,0);

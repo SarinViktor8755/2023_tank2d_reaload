@@ -90,6 +90,7 @@ public class GameServer {
                                        try {
                                            Network.PleyerPosition pp = (Network.PleyerPosition) object;
                                            Player p = lp.getPlayerForId(connection.getID());
+                                          // System.out.println("position " + pp.xp);
                                            if(p == null) return;
                                            //  lp.sendToAllPlayerPosition(connection.getID(), (Network.PleyerPosition) object);
                                            p.setPosition(pp.xp, pp.yp);
