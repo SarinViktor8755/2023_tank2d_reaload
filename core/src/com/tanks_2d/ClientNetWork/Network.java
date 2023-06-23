@@ -117,9 +117,11 @@ public class Network {
 
     public static class RegisterUser{
 
-        //   public String nik;
-        public String tokken;
-     //   public Integer command;
+     //   public String nik;
+        public String[3] tokken;
+        public String[] param = new String[10];
+
+      //  public Integer command;
     }
 
 }

@@ -26,7 +26,7 @@ public class MainClient {
     private static float coonection = -1; // происходит ли в реале конект или нет
     private static boolean key_coonection = false; // ключ на подключение
 
-   //private VoiceChatClient voiceChatClient;
+    //private VoiceChatClient voiceChatClient;
     private NetworkPacketStock networkPacketStock;
     public TreeMap<Integer, Network.PleyerPositionNom> otherPlayer;
     public HashMap<Integer, Boolean> frameUpdates; //Обновления кадра для играков
@@ -180,86 +180,85 @@ public class MainClient {
         }
 
         if (object instanceof Network.RegisterUser) {
-            //  mg.getGamePlayScreen().getController().addFrag();
+//            mg.getGamePlayScreen().getController().addFrag();
 //            public void send_tokken_client_request ( int id_connect)
 //            { // запрос у клиента тойкена - вы полняется в том случае если клиент нет в лист плеере
-            Network.RegisterUser rp = new Network.RegisterUser();
+                Network.RegisterUser rp = new Network.RegisterUser();
+                rp.tokken = NikName.getTokken();
+//                rp.nik = NikName.getNikName();
+//                rp.command = Tank.getMy_Command();
+                this.client.sendUDP(rp);
 
-//            rp.tokken = NikName.getTokken();
-//            rp.nik = NikName.getNikName();
-//            rp.command = Tank.getMy_Command();
-            //    this.client.sendUDP(rp);
+
+            }
 
 
         }
 
 
-    }
+        public boolean isOnLine () {
+            return true;
+        }
+
+        public void upDateClient () {
+
+        }
+
+        public NetworkPacketStock getNetworkPacketStock () {
+            return this.networkPacketStock;
+        }
+
+        public boolean checkConnect ( int status_game){
+            boolean result = true;
+            reconectClienNewThred();
+            //     System.out.println(NetworkPacketStock.required_to_send_tooken);
+            // getNetworkPacketStock().toSendMyTokken(); // отправка ника и токкена
+            //   getNetworkPacketStock().toSendMyTokkenAndNikName();
+            //   if (!getClient().isConnected()) NetworkPacketStock.required_to_send_tooken = true;
 
 
-    public boolean isOnLine() {
-        return true;
-    }
-
-    public void upDateClient() {
-
-    }
-
-    public NetworkPacketStock getNetworkPacketStock() {
-        return this.networkPacketStock;
-    }
-
-    public boolean checkConnect(int status_game) {
-        boolean result = true;
-        reconectClienNewThred();
-        //     System.out.println(NetworkPacketStock.required_to_send_tooken);
-        // getNetworkPacketStock().toSendMyTokken(); // отправка ника и токкена
-        //   getNetworkPacketStock().toSendMyTokkenAndNikName();
-        //   if (!getClient().isConnected()) NetworkPacketStock.required_to_send_tooken = true;
-
-
-        return result;
-    }
+            return result;
+        }
 
 
 //    public VoiceChatClient getVoiceChatClient() {
 //        return this.clientThread.getVoiceChatClient();
 //    }
 
-    synchronized void reconectClienNewThred() { // выполняется каждые 50 мс
-        //   System.out.println(">>> " + coonection + "  " + key_coonection);
-        coonection -= Gdx.graphics.getDeltaTime();
+        synchronized void reconectClienNewThred () { // выполняется каждые 50 мс
+            //   System.out.println(">>> " + coonection + "  " + key_coonection);
+            coonection -= Gdx.graphics.getDeltaTime();
 
-        if (coonection > 0) return;
-        if (key_coonection) return;
-        if (client.isConnected()) return;
-        key_coonection = true;
-        coonection = 8;
+            if (coonection > 0) return;
+            if (key_coonection) return;
+            if (client.isConnected()) return;
+            key_coonection = true;
+            coonection = 8;
 
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
                     try {
-                        //   System.out.println(">->->->->->-  reconect ///////////");
+                        try {
+                            //   System.out.println(">->->->->->-  reconect ///////////");
 
-                        getClient().reconnect(5000);
-                        NetworkPacketStock.required_to_send_tooken = false;
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                        coonection = 0;
-                    } finally {
-                        key_coonection = false;
+                            getClient().reconnect(5000);
+                            NetworkPacketStock.required_to_send_tooken = false;
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            coonection = 0;
+                        } finally {
+                            key_coonection = false;
+                        }
+
+                    } catch (Exception e) {
+                        //    e.printStackTrace();
+                        System.out.println("not connect");
                     }
-
-                } catch (Exception e) {
-                    //    e.printStackTrace();
-                    System.out.println("not connect");
                 }
-            }
-        }).start();
+            }).start();
+        }
+
+
     }
-
-
-}

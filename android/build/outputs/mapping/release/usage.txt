@@ -203,8 +203,6 @@ com.tanks_2d.Units.Bullets:
 com.tanks_2d.Units.ListPlayers
 com.tanks_2d.Units.NikName:
     public void <init>()
-    private static java.lang.String genirateTokk()
-    public static java.lang.String getTokken()
 com.tanks_2d.Units.Player
 com.tanks_2d.Units.Tanks.BotAdmin
 com.tanks_2d.Units.Tanks.LogikBOT

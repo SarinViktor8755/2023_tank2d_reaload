@@ -124,23 +124,23 @@ public class GameServer {
 
                                    if (object instanceof Network.RegisterUser) { //ПЕРЕДКЛАТЬ
                                        Network.RegisterUser rp = (Network.RegisterUser) object;
-                                       //  String nikname = rp.nik;
+                                   //    String nikname = rp.nik;
                                        String tokken = rp.tokken;
-                                       // int comand = rp.command;
+                                     //  int comand = rp.command;
                                        /////////////////////// тут регистрация пользователя _ это после конекта или плсде старта
                                        Player b_player = ListPlayers.getBasket().get(tokken);
                                        if (b_player == null) {
-                                           Player p = new Player(connection.getID(), 1, tokken);
+                                           Player p = new Player(connection.getID(), 0, tokken);
                                            getLp().addPlayer(p);
                                            ListPlayers.getBasket().put(p.getTokken(), p);
                                            System.out.println("KORZINA_ADD");
-                                           //    p.setNikName(nikname);
+                                       //    p.setNikName(nikname);
                                        } else {
                                            System.out.println("KORZINA_BASKET");
                                            b_player.setId(connection.getID());
-                                           // ListPlayers.getListPlayers().put(id_coonect,b_player);
+                                            ListPlayers.getListPlayers().put(connection.getID(),b_player);
                                            getLp().addPlayer(b_player);
-                                           // b_player.setNikName(nikname);
+                                         //   b_player.setNikName(nikname);
                                            send_PARAMETERS_PLAYER(b_player);
                                        }
 

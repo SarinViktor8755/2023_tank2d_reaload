@@ -3,8 +3,8 @@
 # min_api: 14
 # common_typos_disable
 # {"id":"com.android.tools.r8.mapping","version":"2.0"}
-# pg_map_id: 7e57ef1
-# pg_map_hash: SHA-256 7e57ef1074121284eca08072b7c10804c378892e127121dc80e0f30a852a89e4
+# pg_map_id: 7512e5d
+# pg_map_hash: SHA-256 7512e5d1d43ff4f35c187498044a4b432a76d24942ec3f55c9dc7cec1802d45b
 com.tanks_2d.Assets.AssetsManagerGame -> b.a:
     com.badlogic.gdx.assets.AssetManager assetManager -> b
     java.util.HashMap assets -> a
@@ -622,8 +622,10 @@ com.tanks_2d.Units.Bullets -> m.a:
     com.badlogic.gdx.math.Vector2 removeBullet(int) -> d
     void removeBullet(com.tanks_2d.Units.BulletPool.Bullet) -> e
 com.tanks_2d.Units.NikName -> m.b:
-    java.lang.String getNikName() -> a
-    void setNikName(java.lang.String) -> b
+    java.lang.String genirateTokk() -> a
+    java.lang.String getNikName() -> b
+    java.lang.String getTokken() -> c
+    void setNikName(java.lang.String) -> d
 com.tanks_2d.Units.Tanks.OpponentsTanks -> o.a:
     float SPEED -> j
     float SPEED_ROTATION -> i
