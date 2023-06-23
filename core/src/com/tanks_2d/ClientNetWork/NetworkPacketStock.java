@@ -43,13 +43,20 @@ public class NetworkPacketStock {
 
     private void send_package_to_server(int tip, float p1, float p2, float p3, float p4, String text) //Integer tip, Integer p1, Integer p2, Integer p3, Integer p4, Integer p5, Integer p6, Integer nomer_pley, String textM,
     {
-        Network.StockMessOut pack = new Network.StockMessOut();
-        pack.tip = tip;
-        pack.p1 = p1;
-        pack.p2 = p2;
-        pack.p3 = p3;
-        pack.p4 = p4;
-        pack.textM = text;
+        Network.Param_mess pack = new Network.Param_mess();
+        pack.heandler_mess = 0;
+        pack.parm1 = 1f;
+        pack.parm2 = 2f;
+        pack.parm3 = 3f;
+        pack.parm4 = 4f;
+        pack.text_messege = "";
+
+        pack.heandler_mess = tip;
+        pack.parm1 = p1;
+        pack.parm2 = p2;
+        pack.parm3 = p3;
+        pack.parm4 = p4;
+        pack.text_messege = text;
         client.sendTCP(pack);
         System.out.println("OUT-->>  " + pack);
     }

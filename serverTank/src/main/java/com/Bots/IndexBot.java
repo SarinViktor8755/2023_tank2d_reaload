@@ -446,7 +446,7 @@ public class IndexBot extends Thread {
         Player bot = gs.getLp().getPlayerForId(id);
         Vector2 velBullet = new Vector2(SPEED_BULLET, 0).setAngleDeg(bot.getRotTower());
 
-        Network.StockMessOut sm = new Network.StockMessOut();
+        Network.Param_mess sm = new Network.Param_mess();
 
         //   IndexBot.temp_position_vector_static.setAngleDeg(p.getRotTower());
 
@@ -454,11 +454,11 @@ public class IndexBot extends Thread {
         Vector2 smooke = p.getPosi().cpy().sub(rot);
 
         int n = 5000 + MathUtils.random(99000);
-        sm.p1 = smooke.x;
-        sm.p2 = smooke.y;
-        sm.p3 = p.getRotTower();
-        sm.p4 = n;
-        sm.tip = Heading_type.MY_SHOT;
+        sm.parm1 = smooke.x;
+        sm.parm2 = smooke.y;
+        sm.parm3 = p.getRotTower();
+        sm.parm4 = n;
+        sm.heandler_mess = Heading_type.MY_SHOT;
 
         gs.getMainGame().getBullets().addBullet(new Vector2(bot.getPosi().x, bot.getPosi().y), velBullet, n, bot.getId());
         System.out.println("-->> " + sm);

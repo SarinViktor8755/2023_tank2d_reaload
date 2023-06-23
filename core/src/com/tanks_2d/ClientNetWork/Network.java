@@ -19,7 +19,7 @@ public class Network {
         kryo.register(Integer.class);
         kryo.register(PleyerPosition.class);
         kryo.register(PleyerPositionNom.class);
-        kryo.register(StockMessOut.class);
+        kryo.register(Param_mess.class);
         kryo.register(StockMessInClient.class);
         kryo.register(GivePlayerParameters.class);
         kryo.register(Frag.class);
@@ -55,28 +55,28 @@ public class Network {
     }
 
 
-    public static class StockMessOut {   //сообщение из стока
-        public int tip;
-        public float p1;
-        public float p2;
-        public float p3;
-        public float p4;
-        public String textM;
+//    public static class StockMessOut {   //сообщение из стока
+//        public int tip;
+//        public float p1;
+//        public float p2;
+//        public float p3;
+//        public float p4;
+//        public String textM;
+//
+//        @Override
+//        public String toString() {
+//            return "StockMessOut{" +
+//                    "tip=" + Heading_type.getDomenTip(tip) +
+//                    ", p1=" + p1 +
+//                    ", p2=" + p2 +
+//                    ", p3=" + p3 +
+//                    ", p4=" + p4 +
+//                    ", textM='" + textM + '\'' +
+//                    '}';
+//        }
+//    }
 
-        @Override
-        public String toString() {
-            return "StockMessOut{" +
-                    "tip=" + Heading_type.getDomenTip(tip) +
-                    ", p1=" + p1 +
-                    ", p2=" + p2 +
-                    ", p3=" + p3 +
-                    ", p4=" + p4 +
-                    ", textM='" + textM + '\'' +
-                    '}';
-        }
-    }
-
-    public static class param_mess {   //сообщение из стока
+    public static class Param_mess {   //сообщение из стока
         public int heandler_mess;
         public float parm1;
         public float parm2;

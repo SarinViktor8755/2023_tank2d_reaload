@@ -3,8 +3,8 @@
 # min_api: 14
 # common_typos_disable
 # {"id":"com.android.tools.r8.mapping","version":"2.0"}
-# pg_map_id: 9ef0765
-# pg_map_hash: SHA-256 9ef076555858afacf0a0ccf6495ecc5286f4d628821997959cc27b91e140b1a3
+# pg_map_id: 7e57ef1
+# pg_map_hash: SHA-256 7e57ef1074121284eca08072b7c10804c378892e127121dc80e0f30a852a89e4
 com.tanks_2d.Assets.AssetsManagerGame -> b.a:
     com.badlogic.gdx.assets.AssetManager assetManager -> b
     java.util.HashMap assets -> a
@@ -78,10 +78,7 @@ com.tanks_2d.CameraGame -> a.a:
     void setTargetCamera(com.tanks_2d.Units.Tanks.OpponentsTanks) -> k
 com.tanks_2d.ClientNetWork.ClientThread -> d.a:
     com.esotericsoftware.kryonet.Client client -> a
-com.tanks_2d.ClientNetWork.Heading_type -> d.b:
-    java.util.HashMap domen -> a
-    java.lang.String getDomenTip(int) -> a
-com.tanks_2d.ClientNetWork.MainClient -> d.c:
+com.tanks_2d.ClientNetWork.MainClient -> d.b:
     com.tanks_2d.ClientNetWork.NetworkPacketStock networkPacketStock -> f
     com.tanks_2d.MainGame mg -> c
     java.util.HashMap frameUpdates -> h
@@ -102,36 +99,36 @@ com.tanks_2d.ClientNetWork.MainClient -> d.c:
     void router(java.lang.Object) -> g
     void setMyIdConnect(int) -> h
     void upDateClient() -> i
-com.tanks_2d.ClientNetWork.MainClient$1 -> d.c$a:
+com.tanks_2d.ClientNetWork.MainClient$1 -> d.b$a:
     com.tanks_2d.ClientNetWork.MainClient this$0 -> a
-com.tanks_2d.ClientNetWork.MainClient$2 -> d.c$b:
+com.tanks_2d.ClientNetWork.MainClient$2 -> d.b$b:
     com.tanks_2d.ClientNetWork.MainClient this$0 -> a
-com.tanks_2d.ClientNetWork.Network -> d.d:
+com.tanks_2d.ClientNetWork.Network -> d.c:
     void register(com.esotericsoftware.kryonet.EndPoint) -> a
-com.tanks_2d.ClientNetWork.Network$Frag -> d.d$a:
-com.tanks_2d.ClientNetWork.Network$GivePlayerParameters -> d.d$b:
+com.tanks_2d.ClientNetWork.Network$Frag -> d.c$a:
+com.tanks_2d.ClientNetWork.Network$GivePlayerParameters -> d.c$b:
     java.lang.String nik -> b
     int nomerPlayer -> a
-com.tanks_2d.ClientNetWork.Network$PleyerPosition -> d.d$c:
+com.tanks_2d.ClientNetWork.Network$Param_mess -> d.c$c:
+    java.lang.String text_messege -> f
+    float parm4 -> e
+    float parm3 -> d
+    float parm2 -> c
+    float parm1 -> b
+    int heandler_mess -> a
+com.tanks_2d.ClientNetWork.Network$PleyerPosition -> d.c$d:
     float roy_tower -> c
     float yp -> b
     float xp -> a
-com.tanks_2d.ClientNetWork.Network$PleyerPositionNom -> d.d$d:
+com.tanks_2d.ClientNetWork.Network$PleyerPositionNom -> d.c$e:
     float roy_tower -> d
     float yp -> c
     float xp -> b
     int nom -> a
-com.tanks_2d.ClientNetWork.Network$RegisterUser -> d.d$e:
+com.tanks_2d.ClientNetWork.Network$RegisterUser -> d.c$f:
     java.lang.String tokken -> a
-com.tanks_2d.ClientNetWork.Network$StockMessInClient -> d.d$f:
-com.tanks_2d.ClientNetWork.Network$StockMessOut -> d.d$g:
-    java.lang.String textM -> f
-    float p4 -> e
-    float p3 -> d
-    float p2 -> c
-    float p1 -> b
-    int tip -> a
-com.tanks_2d.ClientNetWork.NetworkPacketStock -> d.e:
+com.tanks_2d.ClientNetWork.Network$StockMessInClient -> d.c$g:
+com.tanks_2d.ClientNetWork.NetworkPacketStock -> d.d:
     com.esotericsoftware.kryonet.Client client -> a
     boolean required_to_send_tooken -> b
     void sendMuCoordinat(float,float,int) -> a
@@ -141,14 +138,14 @@ com.tanks_2d.ClientNetWork.NetworkPacketStock -> d.e:
     void toSendMyParPlayer(int) -> e
     void toSendMyShot(float,float,float) -> f
     void toSendMyTokkenAndNikName() -> g
-com.tanks_2d.ClientNetWork.RouterSM -> d.f:
+com.tanks_2d.ClientNetWork.RouterSM -> d.e:
     com.badlogic.gdx.math.Vector2 position -> c
     com.badlogic.gdx.math.Vector2 positionTemp -> d
     com.tanks_2d.MainGame mainGame -> a
     com.badlogic.gdx.math.Vector2 velocity -> b
     java.lang.String map_math -> e
-    void routeSM(com.tanks_2d.ClientNetWork.Network$StockMessOut) -> a
-    void saveParametrsMyTank(com.tanks_2d.ClientNetWork.Network$StockMessOut) -> b
+    void routeSM(com.tanks_2d.ClientNetWork.Network$Param_mess) -> a
+    void saveParametrsMyTank(com.tanks_2d.ClientNetWork.Network$Param_mess) -> b
 com.tanks_2d.InputProcessor.InputProcessorDesktop -> e.a:
     com.tanks_2d.Screens.GamePlayScreen gps -> a
     com.badlogic.gdx.math.Vector2 velocity -> b

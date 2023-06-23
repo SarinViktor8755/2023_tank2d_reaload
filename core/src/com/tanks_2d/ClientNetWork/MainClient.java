@@ -112,6 +112,7 @@ public class MainClient {
     }
 
     public void router(Object object) {
+        System.out.println("<<in" + object.getClass());
         if (!onLine) return;
         if (object instanceof Network.PleyerPositionNom) { // полученеи позиции играков
             Network.PleyerPositionNom pp = (Network.PleyerPositionNom) object;
@@ -164,10 +165,10 @@ public class MainClient {
             return;
         }
 
-        if (object instanceof Network.StockMessOut) {
+        if (object instanceof Network.Param_mess) {
             //    System.out.println((Network.StockMessOut) object);
             try {
-                routerSM.routeSM((Network.StockMessOut) object);
+                routerSM.routeSM((Network.Param_mess) object);
             } catch (NullPointerException e) {
                 // e.printStackTrace();
             }
