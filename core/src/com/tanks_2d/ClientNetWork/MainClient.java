@@ -185,9 +185,8 @@ public class MainClient {
 //            { // запрос у клиента тойкена - вы полняется в том случае если клиент нет в лист плеере
                 Network.RegisterUser rp = new Network.RegisterUser();
                 rp.tokken = NikName.getTokken();
-//                rp.nik = NikName.getNikName();
-//                rp.command = Tank.getMy_Command();
-                this.client.sendUDP(rp);
+                rp.command = Tank.getMy_Command();
+              //  this.client.sendUDP(rp);
 
 
             }

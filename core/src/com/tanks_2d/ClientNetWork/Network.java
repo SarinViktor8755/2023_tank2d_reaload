@@ -24,6 +24,7 @@ public class Network {
         kryo.register(GivePlayerParameters.class);
         kryo.register(Frag.class);
         kryo.register(RegisterUser.class);
+
     }
 
     /////////////////////////////////////
@@ -116,12 +117,8 @@ public class Network {
 
 
     public static class RegisterUser{
-
-     //   public String nik;
-        public String[3] tokken;
-        public String[] param = new String[10];
-
-      //  public Integer command;
+        public int command;
+        public String tokken;
     }
 
 }

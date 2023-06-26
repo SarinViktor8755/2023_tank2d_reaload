@@ -124,13 +124,13 @@ public class GameServer {
 
                                    if (object instanceof Network.RegisterUser) { //ПЕРЕДКЛАТЬ
                                        Network.RegisterUser rp = (Network.RegisterUser) object;
-                                   //    String nikname = rp.nik;
+                                       String nikname = rp.tokken;
                                        String tokken = rp.tokken;
-                                     //  int comand = rp.command;
+                                        int comand = rp.command;
                                        /////////////////////// тут регистрация пользователя _ это после конекта или плсде старта
                                        Player b_player = ListPlayers.getBasket().get(tokken);
                                        if (b_player == null) {
-                                           Player p = new Player(connection.getID(), 0, tokken);
+                                           Player p = new Player(connection.getID(), comand, tokken);
                                            getLp().addPlayer(p);
                                            ListPlayers.getBasket().put(p.getTokken(), p);
                                            System.out.println("KORZINA_ADD");

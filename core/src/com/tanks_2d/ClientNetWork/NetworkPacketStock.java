@@ -94,10 +94,14 @@ public class NetworkPacketStock {
 
 
     public void toSendMyTokkenAndNikName() {
+        send_param();
+    }
+
+    private void send_param(){
         Network.RegisterUser rp = new Network.RegisterUser();
-        rp.tokken = NikName.getTokken() ;
-//        rp.nik = NikName.getNikName();
-//        rp.command = Tank.getMy_Command();
+        rp.tokken = "2";
+      //  rp.param[1] = NikName.getNikName();
+        rp.command = Tank.getMy_Command();
         client.sendTCP(rp);
     }
 
