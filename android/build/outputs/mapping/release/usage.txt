@@ -16,69 +16,6 @@ com.tanks_2d.CameraGame:
     public void setCamera(com.badlogic.gdx.graphics.OrthographicCamera)
     public void updateCamera()
     public void zoomCamera()
-com.tanks_2d.ClientNetWork.ClientThread:
-    public com.esotericsoftware.kryonet.Client getClient()
-    public void setClient(com.esotericsoftware.kryonet.Client)
-com.tanks_2d.ClientNetWork.Client_new_Thred
-com.tanks_2d.ClientNetWork.Heading_type:
-    public static final int BLUE_COMMAND
-    public static final int BUTTON_STARTGAME
-    public static final int CHANGE_THE_SCREEN
-    public static final int CLICK_BOTON_START
-    public static final int DEATH_TANK
-    public static final java.lang.String DEFULT_NAME
-    public static final int DISCONECT_PLAYER
-    public static final int EXIT_IN_MATH_GAME_PLAYER
-    public static final int HP_PLAYER
-    public static final int IN_GAME
-    public static final int IN_MENU
-    public static final int LIFE_TANK
-    public static final int MY_COMMAND
-    public static final int MY_NIK
-    public static final int MY_PARAMETERS
-    public static final int MY_SHOT
-    public static final int MY_TOKKEN
-    public static final int PARAMETERS_COMMAND
-    public static final int PARAMETERS_MAP
-    public static final int PARAMETERS_MATH
-    public static final int PARAMETERS_PLAYER
-    public static final int PAUSE_GAME
-    public static final int PLAY_GAME
-    public static final int RED_COMMAND
-    public static final int RESPOWN_TANK_PLAYER
-    public static final int SHELL_RUPTURE
-    public static final float SHOT_LIFETIME
-    public static final int SPEED_BULLET
-    public static final int SPEED_MOVE_TANKS
-    public static final int STATUS_GAME
-    public void <init>()
-com.tanks_2d.ClientNetWork.MainClient:
-    public float aplphaConnect
-    public int getMyIdConnect()
-    public boolean isOnLine()
-    private void startClient()
-com.tanks_2d.ClientNetWork.Network$StockMessInClient:
-    java.lang.Integer nomerPlayer
-    public float p1
-    public float p2
-    public float p3
-    public float p4
-    public java.lang.String textM
-    public int tip
-com.tanks_2d.ClientNetWork.Network$statusPlayer
-com.tanks_2d.ClientNetWork.Network:
-    public static final java.lang.String host
-    public static final int tcpPort
-    public static final int udpPort
-    public void <init>()
-com.tanks_2d.ClientNetWork.NetworkPacketStock:
-    public void toSendMYParameters(int)
-    public void toSendMyCommand(int)
-    public void toSendMyTokken()
-com.tanks_2d.ClientNetWork.PacketModel
-com.tanks_2d.ClientNetWork.RouterSM:
-    private void mainMenuParametors(float)
-com.tanks_2d.ClientNetWork.ServiceClient
 com.tanks_2d.Locations.Collision.BoxCollision:
     com.badlogic.gdx.math.Vector2 get_vector2_from_center(int,int)
 com.tanks_2d.Locations.Collision.CircleCollision:
@@ -234,8 +171,6 @@ com.tanks_2d.Units.Bullets:
 com.tanks_2d.Units.ListPlayers
 com.tanks_2d.Units.NikName:
     public void <init>()
-    private static java.lang.String genirateTokk()
-    public static java.lang.String getTokken()
 com.tanks_2d.Units.Player
 com.tanks_2d.Units.Tanks.BotAdmin
 com.tanks_2d.Units.Tanks.LogikBOT

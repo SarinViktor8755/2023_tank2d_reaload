@@ -3,8 +3,8 @@
 # min_api: 14
 # common_typos_disable
 # {"id":"com.android.tools.r8.mapping","version":"2.0"}
-# pg_map_id: 83a493d
-# pg_map_hash: SHA-256 83a493d5a96f2e612acf43e0deb2b821581cf29c9515e6c5c6df6ca3a0ab34f0
+# pg_map_id: 65ee573
+# pg_map_hash: SHA-256 65ee57310dc0bb87fd74bc932f8be1cc0263fa3927400b0edb6eb49a92859c51
 com.tanks_2d.Assets.AssetsManagerGame -> b.a:
     com.badlogic.gdx.assets.AssetManager assetManager -> b
     java.util.HashMap assets -> a
@@ -76,81 +76,10 @@ com.tanks_2d.CameraGame -> a.a:
     void jampCameraToPoint(float,float) -> i
     void moveFloatCameraToPoint(float,float,float) -> j
     void setTargetCamera(com.tanks_2d.Units.Tanks.OpponentsTanks) -> k
-com.tanks_2d.ClientNetWork.ClientThread -> d.a:
-    com.esotericsoftware.kryonet.Client client -> a
-com.tanks_2d.ClientNetWork.Heading_type -> d.b:
-    java.util.HashMap domen -> a
-    java.lang.String getDomenTip(int) -> a
-com.tanks_2d.ClientNetWork.MainClient -> d.c:
-    com.tanks_2d.ClientNetWork.NetworkPacketStock networkPacketStock -> f
-    com.tanks_2d.MainGame mg -> c
-    java.util.HashMap frameUpdates -> h
-    float coonection -> j
-    com.esotericsoftware.kryonet.Client client -> a
-    boolean key_coonection -> k
-    com.tanks_2d.ClientNetWork.ClientThread clientThread -> i
-    int myIdConnect -> d
-    com.tanks_2d.ClientNetWork.RouterSM routerSM -> e
-    boolean onLine -> b
-    java.util.TreeMap otherPlayer -> g
-    float access$002(float) -> a
-    boolean access$102(boolean) -> b
-    boolean checkConnect(int) -> c
-    com.esotericsoftware.kryonet.Client getClient() -> d
-    com.tanks_2d.ClientNetWork.NetworkPacketStock getNetworkPacketStock() -> e
-    void reconectClienNewThred() -> f
-    void router(java.lang.Object) -> g
-    void setMyIdConnect(int) -> h
-    void upDateClient() -> i
-com.tanks_2d.ClientNetWork.MainClient$1 -> d.c$a:
-    com.tanks_2d.ClientNetWork.MainClient this$0 -> a
-com.tanks_2d.ClientNetWork.MainClient$2 -> d.c$b:
-    com.tanks_2d.ClientNetWork.MainClient this$0 -> a
-com.tanks_2d.ClientNetWork.Network -> d.d:
-    void register(com.esotericsoftware.kryonet.EndPoint) -> a
-com.tanks_2d.ClientNetWork.Network$Frag -> d.d$a:
-com.tanks_2d.ClientNetWork.Network$GivePlayerParameters -> d.d$b:
-    java.lang.String nik -> b
-    int nomerPlayer -> a
-com.tanks_2d.ClientNetWork.Network$Param_mess -> d.d$c:
-    java.lang.String text_messege -> f
-    float parm4 -> e
-    float parm3 -> d
-    float parm2 -> c
-    float parm1 -> b
-    int heandler_mess -> a
-com.tanks_2d.ClientNetWork.Network$PleyerPosition -> d.d$d:
-    float roy_tower -> c
-    float yp -> b
-    float xp -> a
-com.tanks_2d.ClientNetWork.Network$PleyerPositionNom -> d.d$e:
-    float roy_tower -> d
-    float yp -> c
-    float xp -> b
-    int nom -> a
-com.tanks_2d.ClientNetWork.Network$StockMessInClient -> d.d$f:
-com.tanks_2d.ClientNetWork.NetworkPacketStock -> d.e:
-    com.esotericsoftware.kryonet.Client client -> a
-    boolean required_to_send_tooken -> b
-    void sendMuCoordinat(float,float,int) -> a
-    void send_package_to_server(int,float,float,float,float,java.lang.String) -> b
-    void send_param() -> c
-    void toSendMyNik() -> d
-    void toSendMyParPlayer(int) -> e
-    void toSendMyShot(float,float,float) -> f
-    void toSendMyTokkenAndNikName() -> g
-com.tanks_2d.ClientNetWork.RouterSM -> d.f:
-    com.badlogic.gdx.math.Vector2 position -> c
-    com.badlogic.gdx.math.Vector2 positionTemp -> d
-    com.tanks_2d.MainGame mainGame -> a
-    com.badlogic.gdx.math.Vector2 velocity -> b
-    java.lang.String map_math -> e
-    void routeSM(com.tanks_2d.ClientNetWork.Network$Param_mess) -> a
-    void saveParametrsMyTank(com.tanks_2d.ClientNetWork.Network$Param_mess) -> b
-com.tanks_2d.InputProcessor.InputProcessorDesktop -> e.a:
+com.tanks_2d.InputProcessor.InputProcessorDesktop -> d.a:
     com.tanks_2d.Screens.GamePlayScreen gps -> a
     com.badlogic.gdx.math.Vector2 velocity -> b
-com.tanks_2d.Locations.Collision.BoxCollision -> g.a:
+com.tanks_2d.Locations.Collision.BoxCollision -> f.a:
     com.badlogic.gdx.math.Vector2 center -> c
     com.badlogic.gdx.math.Vector2 lb -> a
     com.badlogic.gdx.math.Vector2 ru -> b
@@ -158,12 +87,12 @@ com.tanks_2d.Locations.Collision.BoxCollision -> g.a:
     com.badlogic.gdx.math.Vector2 getLb() -> b
     com.badlogic.gdx.math.Vector2 getRu() -> c
     boolean isCollisionTank(com.badlogic.gdx.math.Vector2) -> d
-com.tanks_2d.Locations.Collision.CircleCollision -> g.b:
+com.tanks_2d.Locations.Collision.CircleCollision -> f.b:
     com.badlogic.gdx.math.Vector2 circule -> a
     float getRadiusKV -> c
     float radius -> b
     boolean isCollisionCircle(com.badlogic.gdx.math.Vector2) -> a
-com.tanks_2d.Locations.Collision.MainCollision -> g.c:
+com.tanks_2d.Locations.Collision.MainCollision -> f.c:
     com.tanks_2d.Screens.GamePlayScreen gsp -> a
     com.badlogic.gdx.math.Vector2 tempVector -> b
     java.util.ArrayList circle -> d
@@ -173,8 +102,8 @@ com.tanks_2d.Locations.Collision.MainCollision -> g.c:
     com.badlogic.gdx.math.Vector2 isCircleCircle(com.badlogic.gdx.math.Vector2) -> c
     com.badlogic.gdx.math.Vector2 isCollisionsRectangle(com.badlogic.gdx.math.Vector2) -> d
     void isCollisionsRectangleReturnPosition(com.badlogic.gdx.math.Vector2) -> e
-com.tanks_2d.Locations.Crater -> f.a:
-com.tanks_2d.Locations.GameSpace -> f.b:
+com.tanks_2d.Locations.Crater -> e.a:
+com.tanks_2d.Locations.GameSpace -> e.b:
     com.tanks_2d.Screens.GamePlayScreen gps -> a
     com.badlogic.gdx.maps.tiled.TiledMap map -> e
     int WITH_LOCATION -> h
@@ -201,15 +130,15 @@ com.tanks_2d.Locations.GameSpace -> f.b:
     void loadMap() -> k
     void renderSpace(com.badlogic.gdx.graphics.OrthographicCamera) -> l
     void setMapDesetrt(java.lang.String) -> m
-com.tanks_2d.Locations.MapsList -> f.c:
+com.tanks_2d.Locations.MapsList -> e.c:
     java.util.ArrayList mapsList -> a
-com.tanks_2d.Locations.RadspurenTank -> f.d:
+com.tanks_2d.Locations.RadspurenTank -> e.d:
     float timer -> d
     boolean life -> e
     float aligbDeg -> c
     float yp -> b
     float xp -> a
-com.tanks_2d.Locations.Radspurens -> f.e:
+com.tanks_2d.Locations.Radspurens -> e.e:
     com.badlogic.gdx.graphics.Texture crater -> d
     com.badlogic.gdx.graphics.Texture sled -> c
     java.util.ArrayDeque listRadspurens -> a
@@ -250,7 +179,7 @@ com.tanks_2d.MainGame -> a.b:
     void startPauseScreen() -> o
     void startPauseScreen(float) -> p
     void updateClien() -> q
-com.tanks_2d.ParticleEffect.Explosion_Death -> h.a:
+com.tanks_2d.ParticleEffect.Explosion_Death -> g.a:
     com.badlogic.gdx.math.Vector2 position -> a
     float kefm -> d
     float time_life -> b
@@ -263,7 +192,7 @@ com.tanks_2d.ParticleEffect.Explosion_Death -> h.a:
     void setParameters(float,float) -> f
     void setParameters(float,float,float) -> g
     void update() -> h
-com.tanks_2d.ParticleEffect.Garbage -> h.b:
+com.tanks_2d.ParticleEffect.Garbage -> g.b:
     com.badlogic.gdx.math.Vector2 pos -> a
     com.badlogic.gdx.math.Vector2 velocity -> b
     float temperature -> e
@@ -274,7 +203,7 @@ com.tanks_2d.ParticleEffect.Garbage -> h.b:
     void setParametors(float,float) -> c
     void setParametors(float,float,float,float) -> d
     void upDate() -> e
-com.tanks_2d.ParticleEffect.ParticleCustum -> h.c:
+com.tanks_2d.ParticleEffect.ParticleCustum -> g.c:
     java.util.ArrayDeque smoke_elements -> h
     java.util.ArrayDeque pasricalDeathSmokes -> i
     java.util.ArrayDeque flying_stereo_elements_bases -> j
@@ -315,7 +244,7 @@ com.tanks_2d.ParticleEffect.ParticleCustum -> h.c:
     void rander_point_of_fires(float) -> r
     void rander_smoke_death(com.badlogic.gdx.graphics.g2d.SpriteBatch,float) -> s
     void render(com.badlogic.gdx.graphics.g2d.SpriteBatch) -> t
-com.tanks_2d.ParticleEffect.ParticleSmoke -> h.d:
+com.tanks_2d.ParticleEffect.ParticleSmoke -> g.d:
     com.badlogic.gdx.math.Vector2 velocity -> d
     com.badlogic.gdx.math.Vector2 position -> a
     boolean live -> i
@@ -334,13 +263,13 @@ com.tanks_2d.ParticleEffect.ParticleSmoke -> h.d:
     void setAlpha(float) -> g
     void setParameters(float,float,float,float,float,float,float,float,float,float,float,float,float) -> h
     void update() -> i
-com.tanks_2d.ParticleEffect.PasricalExplosion -> h.e:
+com.tanks_2d.ParticleEffect.PasricalExplosion -> g.e:
     com.badlogic.gdx.math.Vector2 position -> a
     float rot -> e
     float time_life -> d
     float baseScale -> c
     float startTimeMax -> b
-com.tanks_2d.ParticleEffect.PasricalExplosionBigParameter -> h.f:
+com.tanks_2d.ParticleEffect.PasricalExplosionBigParameter -> g.f:
     com.badlogic.gdx.math.Vector2 position -> a
     float baseTimeLife -> g
     float alpha -> e
@@ -348,8 +277,8 @@ com.tanks_2d.ParticleEffect.PasricalExplosionBigParameter -> h.f:
     int par -> f
     float time_life -> c
     float baseScale -> b
-com.tanks_2d.ParticleEffect.Shard -> h.g:
-com.tanks_2d.ParticleEffect.StereoSmoke.Falling_element -> i.a:
+com.tanks_2d.ParticleEffect.Shard -> g.g:
+com.tanks_2d.ParticleEffect.StereoSmoke.Falling_element -> h.a:
     com.badlogic.gdx.graphics.Color color -> e
     float hi -> i
     float wi -> h
@@ -362,7 +291,7 @@ com.tanks_2d.ParticleEffect.StereoSmoke.Falling_element -> i.a:
     boolean checkLimet() -> a
     void rander(float,com.badlogic.gdx.graphics.Camera,com.badlogic.gdx.graphics.g2d.SpriteBatch) -> b
     void update(float,com.badlogic.gdx.graphics.Camera) -> c
-com.tanks_2d.ParticleEffect.StereoSmoke.Flying_stereo_elements_base -> i.b:
+com.tanks_2d.ParticleEffect.StereoSmoke.Flying_stereo_elements_base -> h.b:
     float deltaCamera -> j
     com.badlogic.gdx.graphics.Color color -> f
     float scale -> i
@@ -377,10 +306,10 @@ com.tanks_2d.ParticleEffect.StereoSmoke.Flying_stereo_elements_base -> i.b:
     boolean checkLimet() -> b
     void rander(float,com.badlogic.gdx.graphics.Camera) -> c
     void update(float,com.badlogic.gdx.graphics.Camera) -> d
-com.tanks_2d.ParticleEffect.StereoSmoke.PasricalDeathSmoke -> i.c:
+com.tanks_2d.ParticleEffect.StereoSmoke.PasricalDeathSmoke -> h.c:
     boolean checkLimet() -> a
     void update(float,com.badlogic.gdx.graphics.Camera) -> c
-com.tanks_2d.ParticleEffect.StereoSmoke.Point_of_fire -> i.d:
+com.tanks_2d.ParticleEffect.StereoSmoke.Point_of_fire -> h.d:
     com.badlogic.gdx.graphics.Texture tex -> e
     com.tanks_2d.ParticleEffect.ParticleCustum pc -> f
     float y -> d
@@ -391,9 +320,9 @@ com.tanks_2d.ParticleEffect.StereoSmoke.Point_of_fire -> i.d:
     boolean isLive() -> b
     void setParametors(float,float,float) -> c
     void update(float) -> d
-com.tanks_2d.ParticleEffect.StereoSmoke.Smoke_element -> i.e:
+com.tanks_2d.ParticleEffect.StereoSmoke.Smoke_element -> h.e:
     void update(float,com.badlogic.gdx.graphics.Camera) -> c
-com.tanks_2d.Screens.Controll.Banner -> k.a:
+com.tanks_2d.Screens.Controll.Banner -> j.a:
     com.badlogic.gdx.graphics.Texture failed -> g
     com.badlogic.gdx.graphics.Texture victory -> f
     com.badlogic.gdx.graphics.Texture feature -> e
@@ -409,7 +338,7 @@ com.tanks_2d.Screens.Controll.Banner -> k.a:
     boolean isWorking() -> c
     void rander(com.badlogic.gdx.graphics.g2d.SpriteBatch) -> d
     void update() -> e
-com.tanks_2d.Screens.Controll.Controller -> k.b:
+com.tanks_2d.Screens.Controll.Controller -> j.b:
     com.badlogic.gdx.scenes.scene2d.ui.Label score_red -> q
     com.badlogic.gdx.scenes.scene2d.ui.Label timer -> u
     com.badlogic.gdx.graphics.Texture feature -> z
@@ -478,15 +407,15 @@ com.tanks_2d.Screens.Controll.Controller -> k.b:
     void setContollerOn(boolean) -> x
     void setFb(float) -> y
     void setFr(float) -> z
-com.tanks_2d.Screens.Controll.Controller$1 -> k.b$a:
+com.tanks_2d.Screens.Controll.Controller$1 -> j.b$a:
     com.tanks_2d.Screens.Controll.Controller this$0 -> a
-com.tanks_2d.Screens.Controll.Controller$2 -> k.b$b:
+com.tanks_2d.Screens.Controll.Controller$2 -> j.b$b:
     com.tanks_2d.Screens.Controll.Controller this$0 -> a
-com.tanks_2d.Screens.Controll.Controller$3 -> k.b$c:
+com.tanks_2d.Screens.Controll.Controller$3 -> j.b$c:
     com.tanks_2d.Screens.Controll.Controller this$0 -> a
-com.tanks_2d.Screens.Controll.Controller$4 -> k.b$d:
+com.tanks_2d.Screens.Controll.Controller$4 -> j.b$d:
     com.tanks_2d.Screens.Controll.Controller this$0 -> a
-com.tanks_2d.Screens.GamePlayScreen -> j.a:
+com.tanks_2d.Screens.GamePlayScreen -> i.a:
     int score_red_command -> n
     int live_blue_command -> o
     int score_blue_command -> m
@@ -526,7 +455,7 @@ com.tanks_2d.Screens.GamePlayScreen -> j.a:
     void setLive_red_command(int) -> s
     void startFlashForMainTank() -> t
     void update() -> u
-com.tanks_2d.Screens.MenuScreen -> j.b:
+com.tanks_2d.Screens.MenuScreen -> i.b:
     boolean startgameSP -> m
     float timerStartGame -> k
     float timeInScreen -> j
@@ -558,11 +487,11 @@ com.tanks_2d.Screens.MenuScreen -> j.b:
     void check_screen_flag() -> e
     void red_alpha_update() -> f
     void upDateScreen() -> g
-com.tanks_2d.Screens.MenuScreen$1 -> j.b$a:
+com.tanks_2d.Screens.MenuScreen$1 -> i.b$a:
     com.tanks_2d.MainGame val$mainGame -> a
     com.badlogic.gdx.scenes.scene2d.ui.TextField val$textField -> b
     com.tanks_2d.Screens.MenuScreen this$0 -> c
-com.tanks_2d.Screens.PauseScreen.DataPlyerStatistic -> l.a:
+com.tanks_2d.Screens.PauseScreen.DataPlyerStatistic -> k.a:
     int id -> f
     int coomand -> g
     java.lang.String nik -> a
@@ -570,7 +499,7 @@ com.tanks_2d.Screens.PauseScreen.DataPlyerStatistic -> l.a:
     int score -> e
     int frag -> b
     int death -> c
-com.tanks_2d.Screens.PauseScreen.PauseScreen -> l.b:
+com.tanks_2d.Screens.PauseScreen.PauseScreen -> k.b:
     float final_time -> h
     float timeInScreen -> g
     com.badlogic.gdx.graphics.g2d.BitmapFont textFont -> m
@@ -594,13 +523,13 @@ com.tanks_2d.Screens.PauseScreen.PauseScreen -> l.b:
     void parser_result() -> f
     void setGame_statistics_players(java.lang.String) -> g
     void update() -> h
-com.tanks_2d.Screens.PauseScreen.TableResult -> l.c:
+com.tanks_2d.Screens.PauseScreen.TableResult -> k.c:
     com.badlogic.gdx.scenes.scene2d.ui.Skin skinMenu -> c
     com.badlogic.gdx.scenes.scene2d.ui.Label nameLabel -> d
     com.badlogic.gdx.scenes.scene2d.ui.Table table -> a
     com.badlogic.gdx.scenes.scene2d.Stage stage -> b
     void generate_table() -> a
-com.tanks_2d.Units.BulletPool.Bullet -> n.a:
+com.tanks_2d.Units.BulletPool.Bullet -> m.a:
     com.badlogic.gdx.math.Vector2 position -> a
     com.badlogic.gdx.math.Vector2 direction -> b
     float timeLife -> e
@@ -609,9 +538,9 @@ com.tanks_2d.Units.BulletPool.Bullet -> n.a:
     void fireBullet(float,float,float,float,int,int) -> a
     float getTimeLife() -> b
     void update(float) -> c
-com.tanks_2d.Units.BulletPool.BulletPool -> n.b:
+com.tanks_2d.Units.BulletPool.BulletPool -> m.b:
     com.tanks_2d.Units.BulletPool.Bullet newObject() -> a
-com.tanks_2d.Units.Bullets -> m.a:
+com.tanks_2d.Units.Bullets -> l.a:
     com.tanks_2d.Units.BulletPool.BulletPool bp -> c
     int MAX_distribution_smoke -> d
     com.badlogic.gdx.utils.Array activeBullets -> b
@@ -622,10 +551,12 @@ com.tanks_2d.Units.Bullets -> m.a:
     void randerBullets(float) -> c
     com.badlogic.gdx.math.Vector2 removeBullet(int) -> d
     void removeBullet(com.tanks_2d.Units.BulletPool.Bullet) -> e
-com.tanks_2d.Units.NikName -> m.b:
-    java.lang.String getNikName() -> a
-    void setNikName(java.lang.String) -> b
-com.tanks_2d.Units.Tanks.OpponentsTanks -> o.a:
+com.tanks_2d.Units.NikName -> l.b:
+    java.lang.String genirateTokk() -> a
+    java.lang.String getNikName() -> b
+    java.lang.String getTokken() -> c
+    void setNikName(java.lang.String) -> d
+com.tanks_2d.Units.Tanks.OpponentsTanks -> n.a:
     float SPEED -> j
     float SPEED_ROTATION -> i
     int hp -> m
@@ -652,7 +583,7 @@ com.tanks_2d.Units.Tanks.OpponentsTanks -> o.a:
     boolean isLive() -> i
     void setLive(float) -> j
     void setNikPlayer(java.lang.String) -> k
-com.tanks_2d.Units.Tanks.Tank -> o.b:
+com.tanks_2d.Units.Tanks.Tank -> n.b:
     com.badlogic.gdx.math.Vector2 deltaSledVec -> t
     float g -> B
     com.badlogic.gdx.math.Vector2 DEATH_VECTOR -> E
@@ -715,7 +646,7 @@ com.tanks_2d.Units.Tanks.Tank -> o.b:
     void rotation_the_tower(com.badlogic.gdx.math.Vector2) -> x
     void send_my_coordinat() -> y
     void setHp(int) -> z
-com.tanks_2d.Units.Tanks.TanksOther -> o.c:
+com.tanks_2d.Units.Tanks.TanksOther -> n.c:
     com.badlogic.gdx.math.Vector2 tRotation -> o
     com.badlogic.gdx.math.Vector2 temp -> n
     java.util.HashMap listOpponents -> b
@@ -744,7 +675,7 @@ com.tanks_2d.Units.Tanks.TanksOther -> o.c:
     void send_all_layer_live_100_hp() -> k
     void setTankPosition(com.tanks_2d.ClientNetWork.Network$PleyerPositionNom,java.lang.Boolean) -> l
     void updateColor(com.tanks_2d.Units.Tanks.OpponentsTanks,float) -> m
-com.tanks_2d.Units.Tanks.TowerRotation -> o.d:
+com.tanks_2d.Units.Tanks.TowerRotation -> n.d:
     java.lang.Integer nomTarget -> f
     int myCommand -> j
     boolean rotation -> k
@@ -776,18 +707,18 @@ com.tanks_2d.Units.Tanks.TowerRotation -> o.d:
     void targetDetectionTower(com.badlogic.gdx.math.Vector2) -> p
     void turningTower(float,float) -> q
     void update(float) -> r
-com.tanks_2d.Utils.VectorUtils -> p.a:
+com.tanks_2d.Utils.VectorUtils -> o.a:
     com.badlogic.gdx.math.Vector2 tempVector2 -> a
     com.badlogic.gdx.math.Vector2 tempVector1 -> b
     com.badlogic.gdx.math.Vector3 tempVector3 -> c
     float getLen2(com.badlogic.gdx.math.Vector2,float,float) -> a
     float getLen2(com.badlogic.gdx.math.Vector2,com.badlogic.gdx.math.Vector2) -> b
-com.tanks_2d.shaders.Shaders -> q.a:
+com.tanks_2d.shaders.Shaders -> p.a:
     float timer -> a
     com.badlogic.gdx.graphics.g2d.SpriteBatch spriteBatch -> b
     com.badlogic.gdx.graphics.glutils.ShaderProgram shader -> c
     com.badlogic.gdx.graphics.glutils.ShaderProgram getShader() -> a
     void minus(float) -> b
     void updateShader() -> c
-org.objenesis.instantiator.ObjectInstantiator -> r.a:
-org.objenesis.strategy.InstantiatorStrategy -> s.a:
+org.objenesis.instantiator.ObjectInstantiator -> q.a:
+org.objenesis.strategy.InstantiatorStrategy -> r.a:

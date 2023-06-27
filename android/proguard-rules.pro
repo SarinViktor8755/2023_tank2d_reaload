@@ -23,8 +23,14 @@
 
 -dontwarn com.badlogic.gdx.backends.android.AndroidFragmentApplication
 
+
+
+-keep class com.tanks_2d.ClientNetWork.** { *; }
+#-keep class com.tanks_2d.ClientNetWork.Network.** {*;}
 # Required if using Gdx-Controllers extension
 -keep class com.badlogic.gdx.controllers.android.AndroidControllers
+
+
 
 # Required if using Box2D extension
 -keepclassmembers class com.badlogic.gdx.physics.box2d.World {
@@ -38,30 +44,22 @@
 }
 
 
-###########
-
--keepattributes *Annotation*, InnerClasses
--dontnote kotlinx.serialization.SerializationKt
--keep,includedescriptorclasses class com.tanks_2d.**$$serializer { *; } # <-- change package name to your app's
--keepclassmembers class com.tanks_2d.** { # <-- change package name to your app's
-    *** Companion;
-}
--keepclasseswithmembers class com.tanks_2d.** { # <-- change package name to your app's
-    kotlinx.serialization.KSerializer serializer(...);
-}
-###########
-
 
 -keep class com.esotericsoftware.kryo.** {*;}
 -keep class com.esotericsoftware.** {*;}
+
+
 -dontwarn android.support.**
 -dontwarn com.badlogic.gdx.backends.android.AndroidFragmentApplication
+
+
 
 -dontwarn com.badlogic.gdx.jnigen.BuildTarget*
 
 -keepclassmembers class com.badlogic.gdx.backends.android.AndroidInput* {
    <init>(com.badlogic.gdx.Application, android.content.Context, java.lang.Object, com.badlogic.gdx.backends.android.AndroidApplicationConfiguration);
 }
+-dontoptimize
  -keep class com.badlogic.**{
    **[] $VALUES;
     *;
