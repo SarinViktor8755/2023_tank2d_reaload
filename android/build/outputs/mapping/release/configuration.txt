@@ -169,6 +169,23 @@
 -keepclasseswithmembers class com.tanks_2d.** { # <-- change package name to your app's
     kotlinx.serialization.KSerializer serializer(...);
 }
+###########
+
+
+-keep class com.esotericsoftware.kryo.** {*;}
+-keep class com.esotericsoftware.** {*;}
+-dontwarn android.support.**
+-dontwarn com.badlogic.gdx.backends.android.AndroidFragmentApplication
+
+-dontwarn com.badlogic.gdx.jnigen.BuildTarget*
+
+-keepclassmembers class com.badlogic.gdx.backends.android.AndroidInput* {
+   <init>(com.badlogic.gdx.Application, android.content.Context, java.lang.Object, com.badlogic.gdx.backends.android.AndroidApplicationConfiguration);
+}
+ -keep class com.badlogic.**{
+   **[] $VALUES;
+    *;
+}
 
 
 # End of content from C:\game_dev\tanks_reload\android\proguard-rules.pro

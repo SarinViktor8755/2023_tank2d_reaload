@@ -50,6 +50,8 @@
     kotlinx.serialization.KSerializer serializer(...);
 }
 ###########
+
+
 -keep class com.esotericsoftware.kryo.** {*;}
 -keep class com.esotericsoftware.** {*;}
 -dontwarn android.support.**
