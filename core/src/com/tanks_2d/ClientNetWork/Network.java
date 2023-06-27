@@ -19,12 +19,11 @@ public class Network {
         kryo.register(Integer.class);
         kryo.register(PleyerPosition.class);
         kryo.register(PleyerPositionNom.class);
-        kryo.register(Param_mess.class);
+        kryo.register(StockMessOut.class);
         kryo.register(StockMessInClient.class);
         kryo.register(GivePlayerParameters.class);
-        kryo.register(Frag.class);
-//        kryo.register(RegisterUser.class);
-
+     //   kryo.register(Frag.class);
+        kryo.register(Register_Package.class);
     }
 
     /////////////////////////////////////
@@ -34,9 +33,10 @@ public class Network {
         public float roy_tower;
     }
 
-    public static class Frag {   //позиция
-
-    }
+//    public static class Frag {   //позиция
+//        int f;
+//
+//    }
 
     public static class PleyerPositionNom {   //ответ позиция с номером
         public int nom;
@@ -44,52 +44,26 @@ public class Network {
         public float yp;
         public float roy_tower;
 
-        @Override
-        public String toString() {
-            return "PleyerPositionNom{" +
-                    "nom=" + nom +
-                    ", xp=" + xp +
-                    ", yp=" + yp +
-                    ", roy_tower=" + roy_tower +
-                    '}';
-        }
     }
 
 
-//    public static class StockMessOut {   //сообщение из стока
-//        public int tip;
-//        public float p1;
-//        public float p2;
-//        public float p3;
-//        public float p4;
-//        public String textM;
-//
-//        @Override
-//        public String toString() {
-//            return "StockMessOut{" +
-//                    "tip=" + Heading_type.getDomenTip(tip) +
-//                    ", p1=" + p1 +
-//                    ", p2=" + p2 +
-//                    ", p3=" + p3 +
-//                    ", p4=" + p4 +
-//                    ", textM='" + textM + '\'' +
-//                    '}';
-//        }
-//    }
-
-    public static class Param_mess {   //сообщение из стока
-        public int heandler_mess;
-        public float parm1;
-        public float parm2;
-        public float parm3;
-        public float parm4;
-        public String text_messege;
+    public static class StockMessOut {   //сообщение из стока
+        public int tip;
+        public float p1;
+        public float p2;
+        public float p3;
+        public float p4;
+        public String textM;
 
         @Override
         public String toString() {
-            return "Param_mess{" +
-                    "heandler_mess=" + Heading_type.getDomenTip(heandler_mess) +
-                    ", text_messege='" + text_messege + '\'' +
+            return "StockMessOut{" +
+                    "tip=" + Heading_type.getDomenTip(tip) +
+                    ", p1=" + p1 +
+                    ", p2=" + p2 +
+                    ", p3=" + p3 +
+                    ", p4=" + p4 +
+                    ", textM='" + textM + '\'' +
                     '}';
         }
     }
@@ -105,7 +79,7 @@ public class Network {
     }
 
     public static class GivePlayerParameters{   // лиент просит параметры играка )))
-        public int nomerPlayer;
+        public  int nomerPlayer;
         public String nik;
 
         @Override
@@ -118,15 +92,18 @@ public class Network {
     }
 
 
-    public static class statusPlayer{ // пакет статусов Live - 1
-        int idPlayer;
-        byte status;
-    }
 
 
-//    public static class RegisterUser{
-//        public int command;
-//        public String tokken;
+//    public static class statusPlayer{ // пакет статусов Live - 1
+//        int idPlayer;
+//        byte status;
 //    }
+
+
+    public static class Register_Package{
+        public String nik;
+        public String tokken;
+        public Integer command;
+    }
 
 }

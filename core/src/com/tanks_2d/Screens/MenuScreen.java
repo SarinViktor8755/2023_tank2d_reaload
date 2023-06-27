@@ -307,7 +307,6 @@ public class MenuScreen implements Screen {
             batch.draw(disconnect, viewport.getScreenX() + 50, 60 + viewport.getScreenY() + ((MathUtils.sin(timeInScreen) + 1) / 2) * 20, 150, 150);
         }
 
-
         for (int i = 0; i < 7; i++) {
             batch.setColor(1, 1 - (.2f * i), 1, 1 - (.2f * i));
             batch.draw(logo, viewport.getScreenX(), viewport.getScreenY() + 14 + ((MathUtils.cos((timeInScreen * 3) - (7 * i)) + 1) / 2) * 20);
@@ -316,12 +315,9 @@ public class MenuScreen implements Screen {
         batch.setColor(1, 1, 1, 1);
         batch.draw(logo, viewport.getScreenX(), viewport.getScreenY() + 14 + ((MathUtils.cos(timeInScreen * 3) + 1) / 2) * 20);
 
-
         this.batch.end();
         stageMenu.draw();
         stageMenu.getRoot().setColor(1, 1, 1, 1 - timerStartGame);
-
-
     }
 
     private void check_screen_flag() {

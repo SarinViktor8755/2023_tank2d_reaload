@@ -6,13 +6,14 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
+import com.tanks_2d.ClientNetWork.VoiceChat.VoiceChatClient;
 import com.tanks_2d.MainGame;
 import com.tanks_2d.Units.NikName;
 import com.tanks_2d.Units.Tanks.Tank;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.TreeMap;
+
 
 
 public class MainClient {
@@ -26,9 +27,9 @@ public class MainClient {
     private static float coonection = -1; // происходит ли в реале конект или нет
     private static boolean key_coonection = false; // ключ на подключение
 
-    //private VoiceChatClient voiceChatClient;
+    private VoiceChatClient voiceChatClient;
     private NetworkPacketStock networkPacketStock;
-    public TreeMap<Integer, Network.PleyerPositionNom> otherPlayer;
+    // public TreeMap<Integer, Network.PleyerPositionNom> otherPlayer;
     public HashMap<Integer, Boolean> frameUpdates; //Обновления кадра для играков
 //    public ArrayDeque<PacketModel> inDequePacket; // входящие пакеты для обработки;
 
@@ -70,7 +71,7 @@ public class MainClient {
             System.out.println("An error occurred please try again!");
         }
 
-        otherPlayer = new TreeMap<>();
+     //   otherPlayer = new TreeMap<>();
         onLine = true;
 
         this.networkPacketStock = new NetworkPacketStock(client);
@@ -112,11 +113,9 @@ public class MainClient {
     }
 
     public void router(Object object) {
-        System.out.println("<<in" + object.getClass());
         if (!onLine) return;
         if (object instanceof Network.PleyerPositionNom) { // полученеи позиции играков
             Network.PleyerPositionNom pp = (Network.PleyerPositionNom) object;
-
             frameUpdates.put(pp.nom, true);
             // System.out.println("pp.nom  " + pp.nom + "   " +pp.xp);
             //   System.out.println(pp.nom + "x y " + pp.xp + " " + pp.yp );
@@ -139,7 +138,6 @@ public class MainClient {
 
                 } else
                     mg.getGamePlayScreen().getTanksOther().setTankPosition(pp, mg.getMainClient().frameUpdates.get(pp.nom));
-
             } catch (NullPointerException e) {
                 System.out.println("NET POLSOVATELY");
                 //   mg.getGamePlayScreen().getTanksOther().createOponent(-10_000,-10_000,pp.nom,0);
@@ -165,99 +163,100 @@ public class MainClient {
             return;
         }
 
-        if (object instanceof Network.Param_mess) {
+        if (object instanceof Network.StockMessOut) {
             //    System.out.println((Network.StockMessOut) object);
             try {
-                routerSM.routeSM((Network.Param_mess) object);
+                routerSM.routeSM((Network.StockMessOut) object);
             } catch (NullPointerException e) {
                 // e.printStackTrace();
             }
 
         }
 
-        if (object instanceof Network.Frag) {
-            mg.getGamePlayScreen().getController().addFrag();
-        }
+//        if (object instanceof Network.Frag) {
+//            mg.getGamePlayScreen().getController().addFrag();
+//        }
 
-//        if (object instanceof Network.RegisterUser) {
-////            mg.getGamePlayScreen().getController().addFrag();
-////            public void send_tokken_client_request ( int id_connect)
-////            { // запрос у клиента тойкена - вы полняется в том случае если клиент нет в лист плеере
-//                Network.RegisterUser rp = new Network.RegisterUser();
-//                rp.tokken = NikName.getTokken();
-//                rp.command = Tank.getMy_Command();
-//              //  this.client.sendUDP(rp);
-//
-//
-//            }
+        if (object instanceof Network.Register_Package) {
+            //  mg.getGamePlayScreen().getController().addFrag();
+//            public void send_tokken_client_request ( int id_connect)
+//            { // запрос у клиента тойкена - вы полняется в том случае если клиент нет в лист плеере
+            Network.Register_Package rp = new Network.Register_Package();
+            rp.tokken = NikName.getTokken();
+            rp.nik = NikName.getNikName();
+            rp.command = Tank.getMy_Command();
+            this.client.sendUDP(rp);
 
 
         }
 
 
-        public boolean isOnLine () {
-            return true;
-        }
-
-        public void upDateClient () {
-
-        }
-
-        public NetworkPacketStock getNetworkPacketStock () {
-            return this.networkPacketStock;
-        }
-
-        public boolean checkConnect ( int status_game){
-            boolean result = true;
-            reconectClienNewThred();
-            //     System.out.println(NetworkPacketStock.required_to_send_tooken);
-            // getNetworkPacketStock().toSendMyTokken(); // отправка ника и токкена
-            //   getNetworkPacketStock().toSendMyTokkenAndNikName();
-            //   if (!getClient().isConnected()) NetworkPacketStock.required_to_send_tooken = true;
+    }
 
 
-            return result;
-        }
+    public boolean isOnLine() {
+        return true;
+    }
+
+    public void upDateClient() {
+
+    }
+
+    public NetworkPacketStock getNetworkPacketStock() {
+        return this.networkPacketStock;
+    }
+
+    public boolean checkConnect(int status_game) {
+        boolean result = true;
+        reconectClienNewThred();
+        //     System.out.println(NetworkPacketStock.required_to_send_tooken);
+        // getNetworkPacketStock().toSendMyTokken(); // отправка ника и токкена
+        //   getNetworkPacketStock().toSendMyTokkenAndNikName();
+        //   if (!getClient().isConnected()) NetworkPacketStock.required_to_send_tooken = true;
+
+
+        return result;
+    }
 
 
 //    public VoiceChatClient getVoiceChatClient() {
 //        return this.clientThread.getVoiceChatClient();
 //    }
 
-        synchronized void reconectClienNewThred () { // выполняется каждые 50 мс
-            //   System.out.println(">>> " + coonection + "  " + key_coonection);
-            coonection -= Gdx.graphics.getDeltaTime();
+    synchronized void reconectClienNewThred() { // выполняется каждые 50 мс
+        //   System.out.println(">>> " + coonection + "  " + key_coonection);
+        coonection -= Gdx.graphics.getDeltaTime();
 
-            if (coonection > 0) return;
-            if (key_coonection) return;
-            if (client.isConnected()) return;
-            key_coonection = true;
-            coonection = 8;
+        if (coonection > 0) return;
+        if (key_coonection) return;
+        if (client.isConnected()) return;
+        key_coonection = true;
+        coonection = 8;
 
 
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
                     try {
-                        try {
-                            //   System.out.println(">->->->->->-  reconect ///////////");
+                        //   System.out.println(">->->->->->-  reconect ///////////");
 
-                            getClient().reconnect(5000);
-                            NetworkPacketStock.required_to_send_tooken = false;
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                            coonection = 0;
-                        } finally {
-                            key_coonection = false;
-                        }
-
-                    } catch (Exception e) {
-                        //    e.printStackTrace();
-                        System.out.println("not connect");
+                        getClient().reconnect(5000);
+                        NetworkPacketStock.required_to_send_tooken = false;
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        coonection = 0;
+                    } finally {
+                        key_coonection = false;
                     }
+
+                } catch (Exception e) {
+                    //    e.printStackTrace();
+                    System.out.println("not connect");
                 }
-            }).start();
-        }
-
-
+            }
+        }).start();
     }
+
+
+}

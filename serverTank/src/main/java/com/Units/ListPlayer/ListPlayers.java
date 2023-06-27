@@ -235,16 +235,16 @@ public class ListPlayers {
 
 
     public void sendParametersPlayers(int aboutPlayerID) { // рассылка о характеристиках игрока по id
-        Network.Param_mess sm = GameServer.get_Param_mess();
+        Network.StockMessOut sm = new Network.StockMessOut();
         Player p = this.players.get(aboutPlayerID);
         try {
             //  System.out.println(">>>" + p.nikName);
-            sm.text_messege = p.nikName;
-            sm.parm1 = aboutPlayerID;
-            sm.parm2 = p.command;
-            sm.parm3 = p.hp;
+            sm.textM = p.nikName;
+            sm.p1 = aboutPlayerID;
+            sm.p2 = p.command;
+            sm.p3 = p.hp;
             //sm.p4 = еще какой т опараметр;
-            sm.heandler_mess = Heading_type.PARAMETERS_PLAYER;
+            sm.tip = Heading_type.PARAMETERS_PLAYER;
             gameServer.getServer().sendToAllExceptTCP(aboutPlayerID, sm);
             gameServer.send_PARAMETERS_MATH();
 

@@ -5,11 +5,13 @@ import static com.tanks_2d.ClientNetWork.Network.register;
 import static main.java.com.Units.ListPlayer.StatisticMath.playerStatistics;
 
 import com.badlogic.gdx.math.MathUtils;
+import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.kryonet.Server;
 import com.tanks_2d.ClientNetWork.Heading_type;
 import com.tanks_2d.ClientNetWork.Network;
+import com.tanks_2d.ClientNetWork.VoiceChat.VoiceChatServer;
 import com.tanks_2d.Locations.MapsList;
 import com.tanks_2d.Screens.PauseScreen.PauseScreen;
 
@@ -30,7 +32,7 @@ public class GameServer {
     Server server;
     MainGame mainGame;
     IndexBot indexBot; // количество играков - по нему боты орентируюься сколько их нужно = для автобаласа
-    //   private VoiceChatServer relay;
+    private VoiceChatServer relay;
 
 
     public static boolean break_in_the_game;
@@ -42,7 +44,7 @@ public class GameServer {
     public GameServer(String[] args, ServerLauncher serverLauncher) throws IOException {
         GameServer.break_in_the_game = false;
 
-        int bufferSize = 100000000; // Recommened value.
+        int bufferSize = 10000000; // Recommened value.
 
         server = new Server(bufferSize, bufferSize);
         register(server);
@@ -50,7 +52,7 @@ public class GameServer {
         server.start();
         previousStepTime = System.currentTimeMillis();
 ///////////
-        //   relay = new VoiceChatServer(server.getKryo());
+        relay = new VoiceChatServer(server.getKryo());
 ///////////////
         mainGame = new MainGame(this, GameServer.getCountBot(args));
         server.addListener(new Listener() {
@@ -60,7 +62,7 @@ public class GameServer {
                                    try {
 
                                        Player p = lp.getPlayerForId(connection.getID());
-                                       if (p == null) return;
+                                       if(p == null) return;
                                        lp.disconect(p.getId());
 //                                       lp.getPlayerForId(connection.getID()).setStatus(Heading_type.DISCONECT_PLAYER);
 //                                       lp.getPlayerForId(connection.getID()).setPosition(Player.DISCONECT_SYS_LAYER);
@@ -84,14 +86,13 @@ public class GameServer {
                                @Override
                                public void received(Connection connection, Object object) {
 
-                                   //       relay.relayVoice(connection, object, server);
+                                   relay.relayVoice(connection, object, server);
                                    ///      System.out.println(server.getConnections().length +"    -------------");
                                    if (object instanceof Network.PleyerPosition) {
                                        try {
                                            Network.PleyerPosition pp = (Network.PleyerPosition) object;
                                            Player p = lp.getPlayerForId(connection.getID());
-                                           // System.out.println("position " + pp.xp);
-                                           if (p == null) return;
+                                           if(p == null) return;
                                            //  lp.sendToAllPlayerPosition(connection.getID(), (Network.PleyerPosition) object);
                                            p.setPosition(pp.xp, pp.yp);
                                            // d 92 стоке ошибка потом что нет игрока и постоянно срабаывает эксепшен 
@@ -107,9 +108,9 @@ public class GameServer {
                                        }
                                    }
 
-                                   if (object instanceof Network.Param_mess) {// полученеи сообщения
-                                       Network.Param_mess sm = (Network.Param_mess) object;
-                                       System.out.println("@@@"+sm);
+                                   if (object instanceof Network.StockMessOut) {// полученеи сообщения
+                                       Network.StockMessOut sm = (Network.StockMessOut) object;
+                                       System.out.println(sm);
                                        RouterMassege.routeSM(sm, connection.getID(), getMainGame().gameServer);
                                    }
 
@@ -122,31 +123,30 @@ public class GameServer {
                                    }
 
 
-//                                   if (object instanceof Network.RegisterUser) { //ПЕРЕДКЛАТЬ
-//                                       ///////////////////
-//                                       Network.RegisterUser rp = (Network.RegisterUser) object;
-//                                       String nikname = rp.tokken;
-//                                       String tokken = rp.tokken;
-//                                        int comand = rp.command;
-//                                       /////////////////////// тут регистрация пользователя _ это после конекта или плсде старта
-//                                       Player b_player = ListPlayers.getBasket().get(tokken);
-//                                       if (b_player == null) {
-//                                           Player p = new Player(connection.getID(), comand, tokken);
-//                                           getLp().addPlayer(p);
-//                                           ListPlayers.getBasket().put(p.getTokken(), p);
-//                                           System.out.println("KORZINA_ADD");
-//                                       //    p.setNikName(nikname);
-//                                       } else {
-//                                           System.out.println("KORZINA_BASKET");
-//                                           b_player.setId(connection.getID());
-//                                            ListPlayers.getListPlayers().put(connection.getID(),b_player);
-//                                           getLp().addPlayer(b_player);
-//                                         //   b_player.setNikName(nikname);
-//                                           send_PARAMETERS_PLAYER(b_player);
-//                                       }
-//
-//                                   }
-                                   ///////////////////////
+                                   if (object instanceof Network.Register_Package) { //ПЕРЕДКЛАТЬ
+                                       Network.Register_Package rp =  (Network.Register_Package) object;
+                                       String nikname = rp.nik;
+                                       String tokken = rp.tokken;
+                                       int comand = rp.command;
+                                       /////////////////////// тут регистрация пользователя _ это после конекта или плсде старта
+                                       Player b_player = ListPlayers.getBasket().get(tokken);
+                                       if (b_player == null){
+                                           Player p = new Player(connection.getID(), comand, tokken);
+                                           getLp().addPlayer(p);
+                                           ListPlayers.getBasket().put(p.getTokken(),p);
+                                           System.out.println("KORZINA_ADD");
+                                           p.setNikName(nikname);
+                                       }
+                                       else {
+                                           System.out.println("KORZINA_BASKET");
+                                           b_player.setId(connection.getID());
+                                           // ListPlayers.getListPlayers().put(id_coonect,b_player);
+                                           getLp().addPlayer(b_player);
+                                           b_player.setNikName(nikname);
+                                           send_PARAMETERS_PLAYER(b_player);
+                                       }
+
+                                   }
 //                                       //System.out.println(connection.getID() + " ::GivePlayerParameters" + (Network.GivePlayerParameters) object);
 //                                       Network.GivePlayerParameters gpp = (Network.GivePlayerParameters) object;
 //
@@ -173,14 +173,13 @@ public class GameServer {
 
 
     public void sendSHELL_RUPTURE(float x, float y, int nom, int author) {
-        Network.Param_mess stockMessOut =  get_Param_mess();
-        stockMessOut.heandler_mess = Heading_type.SHELL_RUPTURE;
-        stockMessOut.parm1 = x;
-        stockMessOut.parm2 = y;
-        stockMessOut.parm3 = nom;
-        stockMessOut.parm4 = author;
+        Network.StockMessOut stockMessOut = new Network.StockMessOut();
+        stockMessOut.tip = Heading_type.SHELL_RUPTURE;
+        stockMessOut.p1 = x;
+        stockMessOut.p2 = y;
+        stockMessOut.p3 = nom;
+        stockMessOut.p4 = author;
         //stockMessOut.textM = mainGame.gameServer.getLp().getPlayerForId()
-        System.out.println("-->> " + stockMessOut);
         this.sendToAllTCP_in_game(stockMessOut);
 
     }
@@ -192,15 +191,14 @@ public class GameServer {
 //    }
 
     public void send_PARAMETERS_PLAYER(int HP, int comant, String nikName, int forIdPlayer, int aboutPlayer) {
-        Network.Param_mess stockMessOut =  get_Param_mess();
-        stockMessOut.heandler_mess = Heading_type.PARAMETERS_PLAYER;
+        Network.StockMessOut stockMessOut = new Network.StockMessOut();
+        stockMessOut.tip = Heading_type.PARAMETERS_PLAYER;
         //  System.out.println(nikName);
-        stockMessOut.parm1 = aboutPlayer; // ХП
-        stockMessOut.parm2 = getCoomandforPlayer(aboutPlayer);// КОМАНДА
-        stockMessOut.parm3 = HP; // номер игрока
-        stockMessOut.parm4 = HP; // номер игрока
-        stockMessOut.text_messege = nikName; // ник нейм
-        System.out.println("-->> " + stockMessOut);
+        stockMessOut.p1 = aboutPlayer; // ХП
+        stockMessOut.p2 = getCoomandforPlayer(aboutPlayer);// КОМАНДА
+        stockMessOut.p3 = HP; // номер игрока
+        stockMessOut.p4 = HP; // номер игрока
+        stockMessOut.textM = nikName; // ник нейм
         this.server.sendToTCP(forIdPlayer, stockMessOut);
 
         //      System.out.println(nikName + ">>>>");
@@ -208,14 +206,13 @@ public class GameServer {
 
 
     public void send_RESPOUN_PLAYER(int id, float x, float y) {
-        Network.Param_mess stockMessOut =  get_Param_mess();
-        stockMessOut.heandler_mess = Heading_type.RESPOWN_TANK_PLAYER;
-        stockMessOut.parm1 = x; // позиция респауна
-        stockMessOut.parm2 = y; // позиция респауна
-        stockMessOut.parm3 = id; /// ид игрока
-        stockMessOut.parm4 = 0; /// ид игрока
+        Network.StockMessOut stockMessOut = new Network.StockMessOut();
+        stockMessOut.tip = Heading_type.RESPOWN_TANK_PLAYER;
+        stockMessOut.p1 = x; // позиция респауна
+        stockMessOut.p2 = y; // позиция респауна
+        stockMessOut.p3 = id; /// ид игрока
 
-        System.out.println("-->> " + stockMessOut);
+
         /// комада игрока - отом исправить мсена команды
         this.server.sendToTCP(id, stockMessOut);
     }
@@ -231,24 +228,22 @@ public class GameServer {
     }
 
     public void send_Chang_screen(boolean pause, float time) { // нужно добаить время на сколько уходим на паузу
-        Network.Param_mess stockMessOut =  get_Param_mess();
-        stockMessOut.heandler_mess = Heading_type.CHANGE_THE_SCREEN;
+        Network.StockMessOut stockMessOut = new Network.StockMessOut();
+        stockMessOut.tip = Heading_type.CHANGE_THE_SCREEN;
         if (pause) {
-            stockMessOut.parm3 = Heading_type.PAUSE_GAME;
+            stockMessOut.p1 = Heading_type.PAUSE_GAME;
             ///////////
             PauseScreen.setGame_statistics_players(playerStatistics.generating_string_clients());
-            stockMessOut.text_messege = PauseScreen.getGame_statistics_players();
-            System.out.println("-->> " + stockMessOut);
+            stockMessOut.textM = PauseScreen.getGame_statistics_players();
             //PauseScreen.parser_result();
         } else {
-            stockMessOut.parm1 = Heading_type.PLAY_GAME;
-            stockMessOut.text_messege = "";
+            stockMessOut.p1 = Heading_type.PLAY_GAME;
+            stockMessOut.textM = "";
             PlayerStatistics.clearListStatic();
-
             lp.respownAllPlaers();
 
         }
-        stockMessOut.parm2 = time;
+        stockMessOut.p2 = time;
 
         // if (stockMessOut.p1 == Heading_type.PLAY_GAME) return;
         ////System.out.println(">>>>>>>>>>>");
@@ -257,7 +252,6 @@ public class GameServer {
         //
         String map = mainGame.getMapSpace().getMap_math();
         mainGame.setMapSpace(new IndexMap(MapsList.getMapForServer(map))); // создаем новую карту
-        System.out.println("-->> " + stockMessOut);
         send_MAP_PARAMETOR();
 
     }
@@ -268,16 +262,16 @@ public class GameServer {
     }
 
     public void send_PARAMETERS_MATH() { // разослать параметры матча
-        Network.Param_mess stockMessOut =  get_Param_mess();
-        stockMessOut.heandler_mess = Heading_type.PARAMETERS_MATH;
+        Network.StockMessOut stockMessOut = new Network.StockMessOut();
+        stockMessOut.tip = Heading_type.PARAMETERS_MATH;
 
 //        stockMessOut.p1 = IndexMath.getBlue_team_score(); //счетсиний команды
 //        stockMessOut.p2 = IndexMath.getRed_team_score(); //счетсиний команды
 
-        stockMessOut.parm1 = IndexMath.getBlue_team_score_math(); //счетсиний команды
-        stockMessOut.parm2 = IndexMath.getRed_team_score_math(); //счетсиний команды
+        stockMessOut.p1 = IndexMath.getBlue_team_score_math(); //счетсиний команды
+        stockMessOut.p2 = IndexMath.getRed_team_score_math(); //счетсиний команды
 
-        stockMessOut.parm3 = getMainGame().getTimeMath(); // осталось времени в матче
+        stockMessOut.p3 = getMainGame().getTimeMath(); // осталось времени в матче
         //stockMessOut.p4 = lp.getLive_blue_size_player(); // ОСТАЛОСЬ ЖИВЫХ КРАСНЫХ
         //ПЕРЕНЕСТИ В ПАКЕТ МАТЧА
         // stockMessOut.p3 = IndexMath.getRealTimeMath(); // вернуьт ревльное время матча
@@ -287,7 +281,6 @@ public class GameServer {
 
 
         //stockMessOut.textM = ///IndexMath. // Номер карты будем делать менедже карт
-        System.out.println("-->> " + stockMessOut);
         this.sendToAllTCP_in_game(stockMessOut);
 
 
@@ -295,65 +288,62 @@ public class GameServer {
 
     /////!!!!!!!!!!!!!!!!!!!!!!!!!!
     public void send_PARAMETERS_PLAYER(Player p) { // для всех рассылк апараметров --- этот пакет определяет полнстью характеристики игрока))) !!!!!!!!!!
-        Network.Param_mess stockMessOut = get_Param_mess();
+        Network.StockMessOut stockMessOut = new Network.StockMessOut();
         if (p.getStatus() == Heading_type.DISCONECT_PLAYER) {
             send_DISCONECT_PLAYER(p.getId());
             return;
         }
         /// роерить - может не существует игкрок
-        stockMessOut.heandler_mess = Heading_type.PARAMETERS_PLAYER;
-        stockMessOut.parm1 = p.getId(); // id
-        stockMessOut.parm2 = getCoomandforPlayer(p.getId());// КОМАНДА
-        stockMessOut.parm3 = p.getHp(); // ХП
-        stockMessOut.parm4 = p.getCommand(); // номер игрока
-        stockMessOut.text_messege = p.getNikName(); // ник нейм
-        System.out.println("-->> " + stockMessOut);
+        stockMessOut.tip = Heading_type.PARAMETERS_PLAYER;
+        stockMessOut.p1 = p.getId(); // id
+        stockMessOut.p2 = getCoomandforPlayer(p.getId());// КОМАНДА
+        stockMessOut.p3 = p.getHp(); // ХП
+        stockMessOut.p4 = p.getCommand(); // номер игрока
+        stockMessOut.textM = p.getNikName(); // ник нейм
         this.sendToAllTCP_in_game(stockMessOut);
     }
 
     /////!!!!!!!!!!!!!!!!!!!!!!!!!!
     public void send_PARAMETERS_PLAYER(Player p, int send_forPlayer) { // для всех рассылк апараметров --- этот пакет определяет полнстью характеристики игрока))) !!!!!!!!!!
-        Network.Param_mess stockMessOut = get_Param_mess();
+        Network.StockMessOut stockMessOut = new Network.StockMessOut();
         if (p.getStatus() == Heading_type.DISCONECT_PLAYER) {
             send_DISCONECT_PLAYER(p.getId());
             return;
         }
         /// роерить - может не существует игкрок
-        stockMessOut.heandler_mess = Heading_type.PARAMETERS_PLAYER;
-        stockMessOut.parm1 = p.getId(); // id
-        stockMessOut.parm2 = getCoomandforPlayer(p.getId());// КОМАНДА
-        stockMessOut.parm3 = p.getHp(); // ХП
-        stockMessOut.parm4 = p.getCommand(); // номер игрока
-        stockMessOut.text_messege = p.getNikName(); // ник нейм
-        System.out.println("-->> " + stockMessOut);
+        stockMessOut.tip = Heading_type.PARAMETERS_PLAYER;
+        stockMessOut.p1 = p.getId(); // id
+        stockMessOut.p2 = getCoomandforPlayer(p.getId());// КОМАНДА
+        stockMessOut.p3 = p.getHp(); // ХП
+        stockMessOut.p4 = p.getCommand(); // номер игрока
+        stockMessOut.textM = p.getNikName(); // ник нейм
         this.sendToAllTCP_in_game(stockMessOut);
     }
 
     public void send_MAP_PARAMETOR() { // сообщить название карты
-        Network.Param_mess stockMessOut =  get_Param_mess();
-        stockMessOut.heandler_mess = Heading_type.PARAMETERS_MAP;
+        Network.StockMessOut stockMessOut = new Network.StockMessOut();
+        stockMessOut.tip = Heading_type.PARAMETERS_MAP;
         //stockMessOut.p1 = IndexMath.;
-        stockMessOut.text_messege = mainGame.mapSpace.getMap_math();
+        stockMessOut.textM = mainGame.mapSpace.getMap_math();
 //        if (mainGame.pause_game) stockMessOut.p1 = Heading_type.PAUSE_GAME;
 //        else stockMessOut.p1 = Heading_type.PLAY_GAME;
 //        if (GameServer.break_in_the_game) stockMessOut.p1 = Heading_type.PAUSE_GAME;
 //        else stockMessOut.p1 = Heading_type.PLAY_GAME;
-        System.out.println("-->> " + stockMessOut);
         this.server.sendToAllTCP(stockMessOut);
 
 
     }
 
     public void send_MAP_PARAMETOR(int id) { // сообщить название карты для одного
-        Network.Param_mess stockMessOut =  get_Param_mess();
-        stockMessOut.heandler_mess = Heading_type.PARAMETERS_MAP;
+        Network.StockMessOut stockMessOut = new Network.StockMessOut();
+        stockMessOut.tip = Heading_type.PARAMETERS_MAP;
 
-        if (GameServer.break_in_the_game) stockMessOut.parm1 = Heading_type.PAUSE_GAME;
-        else stockMessOut.parm1 = Heading_type.PLAY_GAME;
+        if (GameServer.break_in_the_game) stockMessOut.p1 = Heading_type.PAUSE_GAME;
+        else stockMessOut.p1 = Heading_type.PLAY_GAME;
 
-        stockMessOut.text_messege = mainGame.mapSpace.getMap_math();
+        stockMessOut.textM = mainGame.mapSpace.getMap_math();
         PlayerStatistics.clearListStatic();
-        System.out.println("-->> " + stockMessOut);
+
         this.server.sendToTCP(id, stockMessOut);
         System.out.println("!!!!!!!!!!MAP:::");
     }
@@ -400,10 +390,9 @@ public class GameServer {
     }
 
     public void send_DISCONECT_PLAYER(int idPlayer) {
-        Network.Param_mess stockMessOut = get_Param_mess();
-        stockMessOut.heandler_mess = Heading_type.DISCONECT_PLAYER;
-        stockMessOut.parm1 = idPlayer;
-        System.out.println("-->> " + stockMessOut);
+        Network.StockMessOut stockMessOut = new Network.StockMessOut();
+        stockMessOut.tip = Heading_type.DISCONECT_PLAYER;
+        stockMessOut.p1 = idPlayer;
         this.sendToAllTCP_in_game(stockMessOut);
     }
 
@@ -474,17 +463,6 @@ public class GameServer {
 //        if (MathUtils.randomBoolean()) return Heading_type.BLUE_COMMAND;
 //        else return Heading_type.RED_COMMAND;
 
-    }
-
-    public static Network.Param_mess get_Param_mess(){
-        Network.Param_mess pm = new Network.Param_mess();
-        pm.heandler_mess = 0;
-        pm.parm1 = 0;
-        pm.parm2 = 0;
-        pm.parm3 = 0;
-        pm.parm4 = 0;
-        pm.text_messege = "0000";
-        return pm;
     }
 
 

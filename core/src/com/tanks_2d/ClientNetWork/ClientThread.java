@@ -3,8 +3,10 @@ package com.tanks_2d.ClientNetWork;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.KryoNetException;
+import com.tanks_2d.ClientNetWork.VoiceChat.VoiceChatClient;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 public class ClientThread extends Thread {
     Client client;
@@ -30,9 +32,9 @@ public class ClientThread extends Thread {
  //       return voiceChatClient;
   //  }
 
-//    public void setVoiceChatClient(VoiceChatClient voiceChatClient) {
-//   //     this.voiceChatClient = voiceChatClient;
-//    }
+    public void setVoiceChatClient(VoiceChatClient voiceChatClient) {
+   //     this.voiceChatClient = voiceChatClient;
+    }
 
     @Override
     public void run() {

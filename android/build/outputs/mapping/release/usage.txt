@@ -125,6 +125,7 @@ com.tanks_2d.Screens.Controll.Banner:
 com.tanks_2d.Screens.Controll.Controller:
     com.badlogic.gdx.graphics.OrthographicCamera cameraGUI
     private com.badlogic.gdx.scenes.scene2d.ui.Label score_blue
+    public void addFrag()
     public com.badlogic.gdx.scenes.scene2d.ui.Label getLive_score_blue()
     public com.badlogic.gdx.scenes.scene2d.ui.Label getLive_score_red()
     public float getTime_in_game()

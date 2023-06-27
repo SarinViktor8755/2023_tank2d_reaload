@@ -11,20 +11,20 @@ import main.java.com.Units.ListPlayer.Player;
 
 public class RouterMassege {
 
-    public static void routeSM(Network.Param_mess sm, int id_coonect, GameServer gameServer) {
+    public static void routeSM(Network.StockMessOut sm, int id_coonect, GameServer gameServer) {
         //     System.out.println("-->> " + sm);
-        if (Heading_type.MY_SHOT == sm.heandler_mess) {
-            Vector2 velBullet = new Vector2(700, 0).setAngleDeg(sm.parm3);
-            gameServer.getMainGame().bullets.addBullet(new Vector2(sm.parm1, sm.parm2), velBullet, (int) sm.parm4, id_coonect);
+        if (Heading_type.MY_SHOT == sm.tip) {
+            Vector2 velBullet = new Vector2(700, 0).setAngleDeg(sm.p3);
+            gameServer.getMainGame().bullets.addBullet(new Vector2(sm.p1, sm.p2), velBullet, (int) sm.p4, id_coonect);
             //gameServer.getServer().sendToAllTCP(sm);
             gameServer.sendToAllTCP_in_game(sm);
             //System.out.println("shooooooooooot");
             return;
         }
 
-        if (Heading_type.MY_NIK == sm.heandler_mess) {
-            playerStatistics.set_nikname(id_coonect, sm.text_messege);
-            int comand = (int) sm.parm1;
+        if (Heading_type.MY_NIK == sm.tip) {
+            playerStatistics.set_nikname(id_coonect, sm.textM);
+            int comand = (int) sm.p1;
             gameServer.getLp().getPlayerForId(id_coonect).setCommand(comand);
             playerStatistics.set_comand(id_coonect, (int) comand);
 
@@ -36,34 +36,24 @@ public class RouterMassege {
         }
 
 
-        if (Heading_type.BUTTON_STARTGAME == sm.heandler_mess) { // ответ на кнопку нажать СТАРТ
-           try {
+        if (Heading_type.BUTTON_STARTGAME == sm.tip) { // ответ на кнопку нажать СТАРТ
             gameServer.send_MAP_PARAMETOR(id_coonect);
-            gameServer.lp.getPlayerForId(id_coonect).setNikName(sm.text_messege);
-            playerStatistics.set_nikname(id_coonect, sm.text_messege);
-            gameServer.lp.getPlayerForId(id_coonect).setCommand((int) sm.parm1);
+            gameServer.lp.getPlayerForId(id_coonect).setNikName(sm.textM);
+            playerStatistics.set_nikname(id_coonect, sm.textM);
+            gameServer.lp.getPlayerForId(id_coonect).setCommand((int) sm.p1);
           //  gameServer.lp.getPlayerForId(id_coonect).setHp(100);
             gameServer.lp.getPlayerForId(id_coonect).setStatus(Heading_type.CLICK_BOTON_START);
-           }catch (NullPointerException e){
-               System.out.println("no player");
-           }
-           finally {
-               return;
-           }
-
+            return;
         }
-        if (Heading_type.MY_TOKKEN == sm.heandler_mess) {
+        if (Heading_type.MY_TOKKEN == sm.tip) {
 //            gameServer.getLp().delete_by_toiken(sm.textM  + " _____________MY_TOKKEN");
 //            //basket_
-            Player b_player = ListPlayers.getBasket().get(sm.text_messege);
+            Player b_player = ListPlayers.getBasket().get(sm.textM);
             if (b_player == null){
-                Player p = new Player(id_coonect, (int) sm.parm1, sm.text_messege);
+                Player p = new Player(id_coonect, (int) sm.p1, sm.textM);
                 gameServer.getLp().addPlayer(p);
                 ListPlayers.getBasket().put(p.getTokken(),p);
                 System.out.println("KORZINA_ADD");
-
-                gameServer.lp.getPlayerForId(id_coonect).setStatus(Heading_type.CLICK_BOTON_START);
-                gameServer.send_MAP_PARAMETOR(id_coonect);
             }
             else {
                 System.out.println("KORZINA_BASKET");
@@ -71,9 +61,6 @@ public class RouterMassege {
                // ListPlayers.getListPlayers().put(id_coonect,b_player);
                 gameServer.getLp().addPlayer(b_player);
                 gameServer.send_PARAMETERS_PLAYER(b_player);
-
-                gameServer.lp.getPlayerForId(id_coonect).setStatus(Heading_type.CLICK_BOTON_START);
-                gameServer.send_MAP_PARAMETOR(id_coonect);
             }
 
 
@@ -81,36 +68,14 @@ public class RouterMassege {
         }
 
 
-        if (Heading_type.STATUS_GAME == sm.heandler_mess) {
+        if (Heading_type.STATUS_GAME == sm.tip) {
             //   System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!");
-            gameServer.lp.getPlayerForId(id_coonect).setCommand((int) sm.parm1);
+            gameServer.lp.getPlayerForId(id_coonect).setCommand((int) sm.p1);
             //  System.out.println(gameServer.lp.getPlayerForId(id_coonect).getCommand() + " ---");
             //  gameServer.getLp().getPlayerForId(id_coonect).setCommand();
 
             /// ответить время . карта параметры игры
             return;
-        }
-
-        if(Heading_type.MY_TOKKEN == sm.heandler_mess ){
-          //  String nikname = sm.text_messege;
-            String tokken = sm.text_messege;
-            int comand = (int)sm.parm1;
-            Player b_player = ListPlayers.getBasket().get(tokken);
-            if (b_player == null) {
-                System.out.println("A new player has been created !!!!");   // новый игрок
-                Player p = new Player(id_coonect, comand, tokken);
-                gameServer.lp.addPlayer(p);
-                ListPlayers.getBasket().put(p.getTokken(), p);
-            }else {
-                System.out.println("take from the basket");
-                System.out.println("player" + b_player + "  !!!!!!!!!!");
-                b_player.setId(id_coonect);
-                ListPlayers.getListPlayers().put(id_coonect,b_player);
-                gameServer.lp.addPlayer(b_player);
-                gameServer.send_PARAMETERS_PLAYER(b_player);
-
-            }
-
         }
 
 
