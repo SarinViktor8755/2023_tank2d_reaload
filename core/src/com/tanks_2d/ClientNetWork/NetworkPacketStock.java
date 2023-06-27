@@ -98,24 +98,32 @@ public class NetworkPacketStock {
     }
 
     private void send_param(){
-        Network.RegisterUser rp = new Network.RegisterUser();
-        rp.tokken = "2";
-      //  rp.param[1] = NikName.getNikName();
-        rp.command = Tank.getMy_Command();
-        client.sendTCP(rp);
+//        Network.RegisterUser rp = new Network.RegisterUser();
+//        rp.tokken = "2";
+//      //  rp.param[1] = NikName.getNikName();
+//        rp.command = Tank.getMy_Command();
+//        client.sendTCP(rp);
+//
+//        //////////////////////
+        send_package_to_server(
+                Heading_type.MY_TOKKEN,
+                Tank.getMy_Command(),
+                0,0,0,"getTokken"
+        );
+
     }
 
     public void toSendMyCommand(int command) {
         send_package_to_server(Heading_type.MY_COMMAND, command, 0, 0, 0, NikName.getNikName());
     }
 
-    public void toSendButtonStartClick() {
-        //toSendMyTokken(); // отправка ника и токкена
-        toSendMyTokkenAndNikName();
-        if (client.isConnected()) {
-            send_package_to_server(Heading_type.BUTTON_STARTGAME, Tank.getMy_Command(), 0, 0, 0, NikName.getNikName());
-        }
-    }
+//    public void toSendButtonStartClick() {
+//        //toSendMyTokken(); // отправка ника и токкена
+//        toSendMyTokkenAndNikName();
+//        if (client.isConnected()) {
+//            send_package_to_server(Heading_type.BUTTON_STARTGAME, Tank.getMy_Command(), 0, 0, 0, NikName.getNikName());
+//        }
+//    }
 
     public void toSendMYParameters(int hp) {
         send_package_to_server(Heading_type.MY_PARAMETERS, hp, 0, 0, 0, NikName.getNikName());

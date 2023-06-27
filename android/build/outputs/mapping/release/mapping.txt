@@ -3,8 +3,8 @@
 # min_api: 14
 # common_typos_disable
 # {"id":"com.android.tools.r8.mapping","version":"2.0"}
-# pg_map_id: a61159b
-# pg_map_hash: SHA-256 a61159bcb00ae8578c47ed46c0cce6a8a6520974819ebc2de19e10040b973fe4
+# pg_map_id: 83a493d
+# pg_map_hash: SHA-256 83a493d5a96f2e612acf43e0deb2b821581cf29c9515e6c5c6df6ca3a0ab34f0
 com.tanks_2d.Assets.AssetsManagerGame -> b.a:
     com.badlogic.gdx.assets.AssetManager assetManager -> b
     java.util.HashMap assets -> a
@@ -78,7 +78,10 @@ com.tanks_2d.CameraGame -> a.a:
     void setTargetCamera(com.tanks_2d.Units.Tanks.OpponentsTanks) -> k
 com.tanks_2d.ClientNetWork.ClientThread -> d.a:
     com.esotericsoftware.kryonet.Client client -> a
-com.tanks_2d.ClientNetWork.MainClient -> d.b:
+com.tanks_2d.ClientNetWork.Heading_type -> d.b:
+    java.util.HashMap domen -> a
+    java.lang.String getDomenTip(int) -> a
+com.tanks_2d.ClientNetWork.MainClient -> d.c:
     com.tanks_2d.ClientNetWork.NetworkPacketStock networkPacketStock -> f
     com.tanks_2d.MainGame mg -> c
     java.util.HashMap frameUpdates -> h
@@ -99,48 +102,44 @@ com.tanks_2d.ClientNetWork.MainClient -> d.b:
     void router(java.lang.Object) -> g
     void setMyIdConnect(int) -> h
     void upDateClient() -> i
-com.tanks_2d.ClientNetWork.MainClient$1 -> d.b$a:
+com.tanks_2d.ClientNetWork.MainClient$1 -> d.c$a:
     com.tanks_2d.ClientNetWork.MainClient this$0 -> a
-com.tanks_2d.ClientNetWork.MainClient$2 -> d.b$b:
+com.tanks_2d.ClientNetWork.MainClient$2 -> d.c$b:
     com.tanks_2d.ClientNetWork.MainClient this$0 -> a
-com.tanks_2d.ClientNetWork.Network -> d.c:
+com.tanks_2d.ClientNetWork.Network -> d.d:
     void register(com.esotericsoftware.kryonet.EndPoint) -> a
-com.tanks_2d.ClientNetWork.Network$Frag -> d.c$a:
-com.tanks_2d.ClientNetWork.Network$GivePlayerParameters -> d.c$b:
+com.tanks_2d.ClientNetWork.Network$Frag -> d.d$a:
+com.tanks_2d.ClientNetWork.Network$GivePlayerParameters -> d.d$b:
     java.lang.String nik -> b
     int nomerPlayer -> a
-com.tanks_2d.ClientNetWork.Network$Param_mess -> d.c$c:
+com.tanks_2d.ClientNetWork.Network$Param_mess -> d.d$c:
     java.lang.String text_messege -> f
     float parm4 -> e
     float parm3 -> d
     float parm2 -> c
     float parm1 -> b
     int heandler_mess -> a
-com.tanks_2d.ClientNetWork.Network$PleyerPosition -> d.c$d:
+com.tanks_2d.ClientNetWork.Network$PleyerPosition -> d.d$d:
     float roy_tower -> c
     float yp -> b
     float xp -> a
-com.tanks_2d.ClientNetWork.Network$PleyerPositionNom -> d.c$e:
+com.tanks_2d.ClientNetWork.Network$PleyerPositionNom -> d.d$e:
     float roy_tower -> d
     float yp -> c
     float xp -> b
     int nom -> a
-com.tanks_2d.ClientNetWork.Network$RegisterUser -> d.c$f:
-    java.lang.String tokken -> b
-    int command -> a
-com.tanks_2d.ClientNetWork.Network$StockMessInClient -> d.c$g:
-com.tanks_2d.ClientNetWork.NetworkPacketStock -> d.d:
+com.tanks_2d.ClientNetWork.Network$StockMessInClient -> d.d$f:
+com.tanks_2d.ClientNetWork.NetworkPacketStock -> d.e:
     com.esotericsoftware.kryonet.Client client -> a
     boolean required_to_send_tooken -> b
     void sendMuCoordinat(float,float,int) -> a
     void send_package_to_server(int,float,float,float,float,java.lang.String) -> b
     void send_param() -> c
-    void toSendButtonStartClick() -> d
-    void toSendMyNik() -> e
-    void toSendMyParPlayer(int) -> f
-    void toSendMyShot(float,float,float) -> g
-    void toSendMyTokkenAndNikName() -> h
-com.tanks_2d.ClientNetWork.RouterSM -> d.e:
+    void toSendMyNik() -> d
+    void toSendMyParPlayer(int) -> e
+    void toSendMyShot(float,float,float) -> f
+    void toSendMyTokkenAndNikName() -> g
+com.tanks_2d.ClientNetWork.RouterSM -> d.f:
     com.badlogic.gdx.math.Vector2 position -> c
     com.badlogic.gdx.math.Vector2 positionTemp -> d
     com.tanks_2d.MainGame mainGame -> a
@@ -624,10 +623,8 @@ com.tanks_2d.Units.Bullets -> m.a:
     com.badlogic.gdx.math.Vector2 removeBullet(int) -> d
     void removeBullet(com.tanks_2d.Units.BulletPool.Bullet) -> e
 com.tanks_2d.Units.NikName -> m.b:
-    java.lang.String genirateTokk() -> a
-    java.lang.String getNikName() -> b
-    java.lang.String getTokken() -> c
-    void setNikName(java.lang.String) -> d
+    java.lang.String getNikName() -> a
+    void setNikName(java.lang.String) -> b
 com.tanks_2d.Units.Tanks.OpponentsTanks -> o.a:
     float SPEED -> j
     float SPEED_ROTATION -> i
@@ -689,10 +686,9 @@ com.tanks_2d.Units.Tanks.Tank -> o.b:
     com.badlogic.gdx.graphics.Texture img_1B -> l
     com.badlogic.gdx.graphics.Texture target_guidance -> p
     boolean banner_death -> D
-    void setMy_Command(java.lang.Integer) -> A
-    void tower_sec() -> B
-    void upDateHpHud() -> C
-    void update(com.badlogic.gdx.math.Vector2,boolean) -> D
+    void tower_sec() -> A
+    void upDateHpHud() -> B
+    void update(com.badlogic.gdx.math.Vector2,boolean) -> C
     void banner_feith() -> a
     void collisinCircleTrue() -> b
     void collisinOtherTanksTrue() -> c

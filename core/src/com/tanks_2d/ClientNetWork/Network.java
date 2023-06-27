@@ -23,7 +23,7 @@ public class Network {
         kryo.register(StockMessInClient.class);
         kryo.register(GivePlayerParameters.class);
         kryo.register(Frag.class);
-        kryo.register(RegisterUser.class);
+//        kryo.register(RegisterUser.class);
 
     }
 
@@ -84,6 +84,14 @@ public class Network {
         public float parm3;
         public float parm4;
         public String text_messege;
+
+        @Override
+        public String toString() {
+            return "Param_mess{" +
+                    "heandler_mess=" + Heading_type.getDomenTip(heandler_mess) +
+                    ", text_messege='" + text_messege + '\'' +
+                    '}';
+        }
     }
 
     public static class StockMessInClient {   //сообщение из стока
@@ -116,9 +124,9 @@ public class Network {
     }
 
 
-    public static class RegisterUser{
-        public int command;
-        public String tokken;
-    }
+//    public static class RegisterUser{
+//        public int command;
+//        public String tokken;
+//    }
 
 }
