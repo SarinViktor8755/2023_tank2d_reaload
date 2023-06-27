@@ -37,6 +37,18 @@
    float   reportRayFixture(long, float, float, float, float, float);
 }
 
+
+###########
+
+-keepattributes *Annotation*, InnerClasses
+-dontnote kotlinx.serialization.SerializationKt
+-keep,includedescriptorclasses class com.tanks_2d.**$$serializer { *; } # <-- change package name to your app's
+-keepclassmembers class com.tanks_2d.** { # <-- change package name to your app's
+    *** Companion;
+}
+-keepclasseswithmembers class com.tanks_2d.** { # <-- change package name to your app's
+    kotlinx.serialization.KSerializer serializer(...);
+}
 ###########
 -keep class com.esotericsoftware.kryo.** {*;}
 -keep class com.esotericsoftware.** {*;}
@@ -52,5 +64,4 @@
    **[] $VALUES;
     *;
 }
-
 
