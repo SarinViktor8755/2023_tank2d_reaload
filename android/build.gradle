@@ -20,8 +20,8 @@ android {
         applicationId "com.tanks_2d"
         minSdkVersion 14
         targetSdkVersion 32
-        versionCode 3
-        versionName "2.0"
+        versionCode 4
+        versionName "4.0"
     }
     buildTypes {
         release {
