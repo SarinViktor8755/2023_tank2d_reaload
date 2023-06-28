@@ -1,4 +1,4 @@
-package com.tanks_2d.shaders;
+package com.tanks_2d.Shaders;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;

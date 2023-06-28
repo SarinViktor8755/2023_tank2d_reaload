@@ -160,6 +160,9 @@ com.tanks_2d.Screens.PauseScreen.TableResult:
     public void rander()
 com.tanks_2d.Screens.ScreenTransition
 com.tanks_2d.Screens.ScreenTransitionFade
+com.tanks_2d.Shaders.ShaderFilm
+com.tanks_2d.Shaders.Shaders:
+    public com.badlogic.gdx.graphics.g2d.SpriteBatch getSpriteBatch()
 com.tanks_2d.Units.BulletPool.Bullet:
     private static final int BULLET_SPEED
     public void fireBullet(com.badlogic.gdx.math.Vector2,com.badlogic.gdx.math.Vector2,int)
@@ -225,9 +228,6 @@ com.tanks_2d.Utils.VectorUtils:
     public static com.badlogic.gdx.math.Vector2 v3tov2(com.badlogic.gdx.math.Vector3)
 com.tanks_2d.adMod.AdAds
 com.tanks_2d.adMod.AdMod
-com.tanks_2d.shaders.ShaderFilm
-com.tanks_2d.shaders.Shaders:
-    public com.badlogic.gdx.graphics.g2d.SpriteBatch getSpriteBatch()
 org.objenesis.Objenesis
 org.objenesis.ObjenesisBase
 org.objenesis.ObjenesisException
@@ -263,6 +263,6 @@ org.objenesis.strategy.PlatformDescription
 org.objenesis.strategy.SerializingInstantiatorStrategy
 org.objenesis.strategy.SingleInstantiatorStrategy
 org.objenesis.strategy.StdInstantiatorStrategy
-com.tanks_2d.shaders.Shaders:
+com.tanks_2d.Shaders.Shaders:
     public static java.lang.String nigFR
     public static java.lang.String nigVR

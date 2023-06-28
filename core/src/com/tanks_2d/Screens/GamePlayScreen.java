@@ -2,7 +2,6 @@ package com.tanks_2d.Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -16,23 +15,16 @@ import com.tanks_2d.Assets.AssetsManagerGame;
 import com.tanks_2d.AudioEngine.AudioEngine;
 import com.tanks_2d.CameraGame;
 import com.tanks_2d.ClientNetWork.Heading_type;
-import com.tanks_2d.ClientNetWork.ServiceClient;
 import com.tanks_2d.InputProcessor.InputProcessorDesktop;
 import com.tanks_2d.Locations.GameSpace;
-import com.tanks_2d.Locations.MapsList;
 import com.tanks_2d.MainGame;
 import com.tanks_2d.ParticleEffect.ParticleCustum;
 import com.tanks_2d.Screens.Controll.Controller;
-import com.tanks_2d.Screens.PauseScreen.PauseScreen;
 import com.tanks_2d.Units.Bullets;
-import com.tanks_2d.Units.Player;
 import com.tanks_2d.Units.Tanks.Tank;
 import com.tanks_2d.Units.Tanks.TanksOther;
-import com.tanks_2d.MainGame;
-import com.tanks_2d.Units.Tanks.TanksOther;
-import com.tanks_2d.shaders.Shaders;
+import com.tanks_2d.Shaders.Shaders;
 
-import java.io.IOException;
 import java.util.ConcurrentModificationException;
 
 

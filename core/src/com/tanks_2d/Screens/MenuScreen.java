@@ -27,8 +27,8 @@ import com.tanks_2d.Locations.GameSpace;
 import com.tanks_2d.MainGame;
 import com.tanks_2d.Units.NikName;
 import com.tanks_2d.Units.Tanks.Tank;
-import com.tanks_2d.shaders.ShaderFilm;
-import com.tanks_2d.shaders.Shaders;
+import com.tanks_2d.Shaders.ShaderFilm;
+import com.tanks_2d.Shaders.Shaders;
 
 import java.io.IOException;
 
@@ -171,12 +171,12 @@ public class MenuScreen implements Screen {
                     mainGame.audioEngine.rady_for_action();
 
 
-                    //   mainClient.getNetworkPacketStock().toSendButtonStartClick();
+                    mainClient.getNetworkPacketStock().toSendButtonStartClick();
                     button_start_click = true;
 
 
-                    //mainGame.getMainClient().getNetworkPacketStock().toSendMyNik();
-                    // mainGame.getMainClient().getNetworkPacketStock().toSendMyTokkenAndNikName();
+                  //  mainGame.getMainClient().getNetworkPacketStock().toSendMyNik();
+                     mainGame.getMainClient().getNetworkPacketStock().toSendMyTokkenAndNikName();
 
                 }
                 startgameMP = true;
@@ -365,6 +365,8 @@ public class MenuScreen implements Screen {
             }
 
             mainGame.audioEngine.stopMusicPaseMenu();
+
+          //  startgameMP = true;
             if (startgameMP) mainGame.startGameMPley();
             if (startgameSP) mainGame.startGameSPley();
 

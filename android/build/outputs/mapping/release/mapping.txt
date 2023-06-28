@@ -1,10 +1,10 @@
 # compiler: R8
 # compiler_version: 3.2.74
-# min_api: 24
+# min_api: 14
 # common_typos_disable
 # {"id":"com.android.tools.r8.mapping","version":"2.0"}
-# pg_map_id: 7103805
-# pg_map_hash: SHA-256 71038059add1da84ca6d6bb26d9c12f507116aae991343564dc5582b653f8218
+# pg_map_id: 59dfeca
+# pg_map_hash: SHA-256 59dfeca9a0ead349d6c7aabe56e6b5acab9a3650334978e0c3e24313ea6dd8f3
 com.tanks_2d.Assets.AssetsManagerGame -> b.a:
     com.badlogic.gdx.assets.AssetManager assetManager -> b
     java.util.HashMap assets -> a
@@ -418,13 +418,13 @@ com.tanks_2d.Screens.GamePlayScreen -> i.a:
     int score_red_command -> n
     int live_blue_command -> o
     int score_blue_command -> m
+    com.tanks_2d.Shaders.Shaders s -> r
     com.tanks_2d.Units.Tanks.Tank tank -> i
     com.badlogic.gdx.graphics.g2d.SpriteBatch batch -> c
     float timeInGame -> d
     com.tanks_2d.ParticleEffect.ParticleCustum pc -> l
     com.badlogic.gdx.math.Vector2 pos -> j
     com.tanks_2d.Units.Bullets bullets -> k
-    com.tanks_2d.shaders.Shaders s -> r
     com.tanks_2d.CameraGame cameraGame -> b
     com.tanks_2d.InputProcessor.InputProcessorDesktop inputProcessorPC -> g
     com.tanks_2d.MainGame mainGame -> a
@@ -444,7 +444,7 @@ com.tanks_2d.Screens.GamePlayScreen -> i.a:
     int getLive_red_command() -> i
     com.tanks_2d.MainGame getMainGame() -> j
     com.tanks_2d.ParticleEffect.ParticleCustum getPc() -> k
-    com.tanks_2d.shaders.Shaders getS() -> l
+    com.tanks_2d.Shaders.Shaders getS() -> l
     com.tanks_2d.Units.Tanks.Tank getTank() -> m
     com.tanks_2d.Units.Tanks.TanksOther getTanksOther() -> n
     float getTimeInGame() -> o
@@ -528,7 +528,14 @@ com.tanks_2d.Screens.PauseScreen.TableResult -> k.c:
     com.badlogic.gdx.scenes.scene2d.ui.Table table -> a
     com.badlogic.gdx.scenes.scene2d.Stage stage -> b
     void generate_table() -> a
-com.tanks_2d.Units.BulletPool.Bullet -> m.a:
+com.tanks_2d.Shaders.Shaders -> l.a:
+    float timer -> a
+    com.badlogic.gdx.graphics.g2d.SpriteBatch spriteBatch -> b
+    com.badlogic.gdx.graphics.glutils.ShaderProgram shader -> c
+    com.badlogic.gdx.graphics.glutils.ShaderProgram getShader() -> a
+    void minus(float) -> b
+    void updateShader() -> c
+com.tanks_2d.Units.BulletPool.Bullet -> n.a:
     com.badlogic.gdx.math.Vector2 position -> a
     com.badlogic.gdx.math.Vector2 direction -> b
     float timeLife -> e
@@ -537,9 +544,9 @@ com.tanks_2d.Units.BulletPool.Bullet -> m.a:
     void fireBullet(float,float,float,float,int,int) -> a
     float getTimeLife() -> b
     void update(float) -> c
-com.tanks_2d.Units.BulletPool.BulletPool -> m.b:
+com.tanks_2d.Units.BulletPool.BulletPool -> n.b:
     com.tanks_2d.Units.BulletPool.Bullet newObject() -> a
-com.tanks_2d.Units.Bullets -> l.a:
+com.tanks_2d.Units.Bullets -> m.a:
     com.tanks_2d.Units.BulletPool.BulletPool bp -> c
     int MAX_distribution_smoke -> d
     com.badlogic.gdx.utils.Array activeBullets -> b
@@ -550,12 +557,12 @@ com.tanks_2d.Units.Bullets -> l.a:
     void randerBullets(float) -> c
     com.badlogic.gdx.math.Vector2 removeBullet(int) -> d
     void removeBullet(com.tanks_2d.Units.BulletPool.Bullet) -> e
-com.tanks_2d.Units.NikName -> l.b:
+com.tanks_2d.Units.NikName -> m.b:
     java.lang.String genirateTokk() -> a
     java.lang.String getNikName() -> b
     java.lang.String getTokken() -> c
     void setNikName(java.lang.String) -> d
-com.tanks_2d.Units.Tanks.OpponentsTanks -> n.a:
+com.tanks_2d.Units.Tanks.OpponentsTanks -> o.a:
     float SPEED -> j
     float SPEED_ROTATION -> i
     int hp -> m
@@ -582,7 +589,7 @@ com.tanks_2d.Units.Tanks.OpponentsTanks -> n.a:
     boolean isLive() -> i
     void setLive(float) -> j
     void setNikPlayer(java.lang.String) -> k
-com.tanks_2d.Units.Tanks.Tank -> n.b:
+com.tanks_2d.Units.Tanks.Tank -> o.b:
     com.badlogic.gdx.math.Vector2 deltaSledVec -> t
     float g -> B
     com.badlogic.gdx.math.Vector2 DEATH_VECTOR -> E
@@ -645,7 +652,7 @@ com.tanks_2d.Units.Tanks.Tank -> n.b:
     void rotation_the_tower(com.badlogic.gdx.math.Vector2) -> x
     void send_my_coordinat() -> y
     void setHp(int) -> z
-com.tanks_2d.Units.Tanks.TanksOther -> n.c:
+com.tanks_2d.Units.Tanks.TanksOther -> o.c:
     com.badlogic.gdx.math.Vector2 tRotation -> o
     com.badlogic.gdx.math.Vector2 temp -> n
     java.util.HashMap listOpponents -> b
@@ -674,7 +681,7 @@ com.tanks_2d.Units.Tanks.TanksOther -> n.c:
     void send_all_layer_live_100_hp() -> k
     void setTankPosition(com.tanks_2d.ClientNetWork.Network$PleyerPositionNom,java.lang.Boolean) -> l
     void updateColor(com.tanks_2d.Units.Tanks.OpponentsTanks,float) -> m
-com.tanks_2d.Units.Tanks.TowerRotation -> n.d:
+com.tanks_2d.Units.Tanks.TowerRotation -> o.d:
     java.lang.Integer nomTarget -> f
     int myCommand -> j
     boolean rotation -> k
@@ -706,18 +713,11 @@ com.tanks_2d.Units.Tanks.TowerRotation -> n.d:
     void targetDetectionTower(com.badlogic.gdx.math.Vector2) -> p
     void turningTower(float,float) -> q
     void update(float) -> r
-com.tanks_2d.Utils.VectorUtils -> o.a:
+com.tanks_2d.Utils.VectorUtils -> p.a:
     com.badlogic.gdx.math.Vector2 tempVector2 -> a
     com.badlogic.gdx.math.Vector2 tempVector1 -> b
     com.badlogic.gdx.math.Vector3 tempVector3 -> c
     float getLen2(com.badlogic.gdx.math.Vector2,float,float) -> a
     float getLen2(com.badlogic.gdx.math.Vector2,com.badlogic.gdx.math.Vector2) -> b
-com.tanks_2d.shaders.Shaders -> p.a:
-    float timer -> a
-    com.badlogic.gdx.graphics.g2d.SpriteBatch spriteBatch -> b
-    com.badlogic.gdx.graphics.glutils.ShaderProgram shader -> c
-    com.badlogic.gdx.graphics.glutils.ShaderProgram getShader() -> a
-    void minus(float) -> b
-    void updateShader() -> c
 org.objenesis.instantiator.ObjectInstantiator -> q.a:
 org.objenesis.strategy.InstantiatorStrategy -> r.a:

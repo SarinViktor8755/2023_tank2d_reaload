@@ -1,4 +1,4 @@
-package com.tanks_2d.shaders;
+package com.tanks_2d.Shaders;
 
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.math.MathUtils;
