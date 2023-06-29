@@ -26,6 +26,12 @@ public class ServiceClient {
     }
 
 
+    static public int invert_the_command(int comand) {
+        if(comand == Heading_type.RED_COMMAND) return Heading_type.BLUE_COMMAND;
+        if(comand == Heading_type.BLUE_COMMAND) return Heading_type.RED_COMMAND;
+        return -1;
+    }
+
 
 
 

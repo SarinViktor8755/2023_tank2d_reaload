@@ -3,6 +3,7 @@ package com.tanks_2d.Units.Tanks;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
+import com.tanks_2d.ClientNetWork.ServiceClient;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -121,12 +122,15 @@ public class TowerRotation { /// поворот любой башни ЛОГИК
         targetTreet.clear();
         for (Map.Entry<Integer, OpponentsTanks> tank : listOpponents.entrySet()) {
             if (!tank.getValue().isLive()) continue;
-            if (myCommand == tank.getValue().getCommand()) continue;
-            float l = tank.getValue().getPosition().cpy().sub(positionMy).len2();
-            // System.out.println("myCommand " + myCommand + "  " + tank.getValue().getCommand());
 
-            if (l < rast_to_target) {
-                this.targetTreet.put(returnAngle(tank.getValue().getPosition(), myPosition), tank.getKey());
+            if (myCommand == tank.getValue().getCommand()) continue;
+            if (tank.getValue().getCommand() == ServiceClient.invert_the_command(myCommand)) {
+
+                float l = tank.getValue().getPosition().cpy().sub(positionMy).len2();
+                // System.out.println("myCommand " + myCommand + "  " + tank.getValue().getCommand());
+                if (l < rast_to_target) {
+                    this.targetTreet.put(returnAngle(tank.getValue().getPosition(), myPosition), tank.getKey());
+                }
             }
         }
         //  System.out.println(targetTreet.size());

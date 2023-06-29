@@ -21,7 +21,7 @@ public class Service {
     public static String getComandFoeNomber(int n) {
         if (Heading_type.BLUE_COMMAND == n) return "BLUE";
         if (Heading_type.RED_COMMAND == n) return "RED";
-        return "N";
+        return "Nan";
     }
 
 
