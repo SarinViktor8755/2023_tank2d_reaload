@@ -173,9 +173,9 @@ public class MainClient {
 
         }
 
-//        if (object instanceof Network.Frag) {
-//            mg.getGamePlayScreen().getController().addFrag();
-//        }
+        if (object instanceof Network.Frag) {
+            mg.getGamePlayScreen().getController().addFrag();
+        }
 
         if (object instanceof Network.Register_Package) {
             //  mg.getGamePlayScreen().getController().addFrag();

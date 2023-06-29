@@ -395,6 +395,7 @@ public class Controller {
     }
 
     public void addFrag() {
+        System.out.println("FRAG+++");
         this.frag++;
         this.my_frag.setText("frags : " + frag);
     }

@@ -10,7 +10,7 @@ public class Network {
     //final public static Strin`g ip = "176.62.66.63";
     //final public static String ip = "185.231.68.81";
     //final public static String ip = "omskSarin2020.online";
-   // final  public static String host = "127.0.0.1";
+    // final  public static String host = "127.0.0.1";
     final public static String host = "92.124.144.204";
     //final  public static String host = "192.168.1.129";
 
@@ -22,7 +22,7 @@ public class Network {
         kryo.register(StockMessOut.class);
         kryo.register(StockMessInClient.class);
         kryo.register(GivePlayerParameters.class);
-     //   kryo.register(Frag.class);
+        //   kryo.register(Frag.class);
         kryo.register(Register_Package.class);
     }
 
@@ -78,20 +78,18 @@ public class Network {
         Integer nomerPlayer;
     }
 
-    public static class GivePlayerParameters{   // лиент просит параметры играка )))
-        public  int nomerPlayer;
+    public static class GivePlayerParameters {   // лиент просит параметры играка )))
+        public int nomerPlayer;
         public String nik;
 
         @Override
         public String toString() {
             return
                     "nomerPlayer=" + nomerPlayer +
-                    ", nik='" + nik + '\'' +
-                    '}';
+                            ", nik='" + nik + '\'' +
+                            '}';
         }
     }
-
-
 
 
 //    public static class statusPlayer{ // пакет статусов Live - 1
@@ -100,10 +98,16 @@ public class Network {
 //    }
 
 
-    public static class Register_Package{
+    public static class Register_Package {
         public String nik;
         public String tokken;
         public Integer command;
     }
 
+//    public class Frag {
+//    }
+
+    public static class Frag {   //позиция
+        int f;
+    }
 }

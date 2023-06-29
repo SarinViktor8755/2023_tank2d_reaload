@@ -100,7 +100,7 @@ public class IndexBullets {
 
                         IndexMath.add_score_team(player.getCommand());
 
-                        //gameServer.send_add_frag(bullet.getAuthor_bullet()); было возможно ошибка
+                        gameServer.send_add_frag(bullet.getAuthor_bullet()); //было возможно ошибка
                         /// отправить сообщение
                         ///////TEST
 
