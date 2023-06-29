@@ -56,6 +56,8 @@ public class MenuScreen implements Screen {
 
     public Label statusConnetct;
 
+
+
 //    public Label singelGame;
 
     //////////////
@@ -176,6 +178,7 @@ public class MenuScreen implements Screen {
 
 
                   //  mainGame.getMainClient().getNetworkPacketStock().toSendMyNik();
+
                      mainGame.getMainClient().getNetworkPacketStock().toSendMyTokkenAndNikName();
 
                 }

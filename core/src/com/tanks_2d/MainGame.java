@@ -11,6 +11,7 @@ import com.tanks_2d.ClientNetWork.MainClient;
 import com.tanks_2d.Screens.GamePlayScreen;
 import com.tanks_2d.Screens.MenuScreen;
 import com.tanks_2d.Screens.PauseScreen.PauseScreen;
+import com.tanks_2d.Units.Tanks.Tank;
 import com.tanks_2d.adMod.AdAds;
 
 
@@ -28,11 +29,15 @@ public class MainGame extends Game {
 
 
 
+
+
     private static byte flagChangeScreen = 0; // фоаг смены экрана - 0 не менять далее по показателям
 
     public static final int STATUS_GAME_MENU = 1;
     public static final int STATUS_GAME_GAMEPLAY = 2;
     public static final int STATUS_GAME_PAUSE = 3;
+
+    public static int command_player = Tank.generateCommand();
 
 
     public static String nik_name;

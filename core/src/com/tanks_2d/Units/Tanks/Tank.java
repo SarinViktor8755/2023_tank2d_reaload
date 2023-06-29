@@ -10,6 +10,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.tanks_2d.ClientNetWork.Heading_type;
 import com.tanks_2d.ClientNetWork.ServiceClient;
+import com.tanks_2d.MainGame;
 import com.tanks_2d.Screens.Controll.Controller;
 import com.tanks_2d.Screens.GamePlayScreen;
 
@@ -40,7 +41,7 @@ public class Tank {
 
     float deltaSled;
     Vector2 deltaSledVec;
-    static Integer my_Command = -1; // по умолчанию -1  ytnhfkmyzf rjvfylf
+   // static Integer my_Command = -1; // по умолчанию -1  ytnhfkmyzf rjvfylf
 
     final float SPEED = SPEED_MOVE_TANKS;
     final float SPEED_ROTATION = 180f;
@@ -64,7 +65,7 @@ public class Tank {
 //    private Integer nomTarget;
 
     public Tank(GamePlayScreen gsp) {
-        if (my_Command == -1) my_Command = generateCommand();
+     //   if (my_Command == -1) my_Command = generateCommand();
         banner_feith = true;
         time_life = 0;
         g = 1;
@@ -114,8 +115,8 @@ public class Tank {
         this.point_respown_blue.set(gsp.getGameSpace().getRasp1());
         this.point_respown_red.set(gsp.getGameSpace().getRasp2());
 
-        if (my_Command == Heading_type.RED_COMMAND) position.set(point_respown_red);
-        if (my_Command == Heading_type.BLUE_COMMAND) position.set(point_respown_blue);
+        if (MainGame.command_player == Heading_type.RED_COMMAND) position.set(point_respown_red);
+        if (MainGame.command_player  == Heading_type.BLUE_COMMAND) position.set(point_respown_blue);
 
         position.x += MathUtils.random(-100, 100);
         position.y += MathUtils.random(-100, 100);
@@ -124,11 +125,11 @@ public class Tank {
     }
 
     public void respownTank(int command) {
-        my_Command = command;
+
         hp = 100;
         time_life = 0;
-        if (my_Command == Heading_type.BLUE_COMMAND) position.set(point_respown_blue);
-        if (my_Command == Heading_type.RED_COMMAND) position.set(point_respown_red);
+        if (MainGame.command_player  == Heading_type.BLUE_COMMAND) position.set(point_respown_blue);
+        if (MainGame.command_player  == Heading_type.RED_COMMAND) position.set(point_respown_red);
         position.set(position.x, position.y);
         position.x += MathUtils.random(-100, 100);
         position.y += MathUtils.random(-100, 100);
@@ -143,10 +144,10 @@ public class Tank {
         gsp.getMainGame().getMainClient().getNetworkPacketStock().toSendMyNik();
         hp = 100;
         time_life = 0;
-        if (my_Command == -1) my_Command = generateCommand();
+      //  if (my_Command == -1) my_Command = generateCommand();
 
-        if (my_Command == Heading_type.BLUE_COMMAND) position.set(point_respown_blue);
-        if (my_Command == Heading_type.RED_COMMAND) position.set(point_respown_red);
+        if (MainGame.command_player  == Heading_type.BLUE_COMMAND) position.set(point_respown_blue);
+        if (MainGame.command_player  == Heading_type.RED_COMMAND) position.set(point_respown_red);
 
         position.set(position.x, position.y);
         position.x += MathUtils.random(-100, 100);
@@ -161,11 +162,11 @@ public class Tank {
     }
 
     public static Integer getMy_Command() {
-        return my_Command;
+        return MainGame.command_player ;
     }
 
     public static void setMy_Command(Integer my_Command) {
-        Tank.my_Command = my_Command;
+        MainGame.command_player  = my_Command;
     }
 
     public int getHp() {

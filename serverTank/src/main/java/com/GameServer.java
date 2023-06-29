@@ -147,7 +147,7 @@ public class GameServer {
 
                                            b_player.setNikName(nikname);
                                            b_player.setCommand(comand);
-                                           
+
                                            send_PARAMETERS_PLAYER(b_player);
 
 
