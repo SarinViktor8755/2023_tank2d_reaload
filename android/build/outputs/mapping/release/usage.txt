@@ -1,0 +1,267 @@
+com.tanks_2d.Assets.AssetsManagerGame:
+    public com.badlogic.gdx.assets.AssetManager getAssetManager()
+    public float getProgress(com.badlogic.gdx.assets.AssetManager)
+    public final com.badlogic.gdx.assets.AssetManager unloadAllAsset(com.badlogic.gdx.assets.AssetManager)
+com.tanks_2d.AudioEngine.AudioEngine:
+    java.util.concurrent.ConcurrentHashMap stepCounter
+    public static void Mute(boolean)
+    private static float countVolmeDistantion(com.badlogic.gdx.math.Vector2,com.badlogic.gdx.math.Vector2)
+    public java.lang.Long getIdTrack()
+    public void pleySoundKickStick()
+    public void pleySoundKickStick(float)
+    public void pley_pip_1()
+com.tanks_2d.BuildConfig
+com.tanks_2d.CameraGame:
+    private com.badlogic.gdx.math.Vector2 speed
+    public void setCamera(com.badlogic.gdx.graphics.OrthographicCamera)
+    public void updateCamera()
+    public void zoomCamera()
+com.tanks_2d.Locations.Collision.BoxCollision:
+    com.badlogic.gdx.math.Vector2 get_vector2_from_center(int,int)
+com.tanks_2d.Locations.Collision.CircleCollision:
+    public void <init>(float,float,float)
+    com.badlogic.gdx.math.Vector2 get_vector2_from_center(int,int)
+com.tanks_2d.Locations.GameSpace:
+    private com.badlogic.gdx.graphics.OrthographicCamera camera
+    com.badlogic.gdx.graphics.glutils.ShapeRenderer shapeRenderer
+    public boolean checkMapBorders(float,float)
+    public boolean checkMapBorders(com.badlogic.gdx.math.Vector2)
+    public boolean checkObstacles(com.badlogic.gdx.math.Vector2)
+    private void createShape()
+    public void dispouseMap()
+    public com.badlogic.gdx.graphics.OrthographicCamera getCamera()
+    public int getHideLocation()
+    public static java.lang.String getMapDesetrt()
+    public com.badlogic.gdx.maps.MapLayer getObstacles()
+    public int getWidthLocation()
+    public boolean inPointLocation(com.badlogic.gdx.math.Vector2)
+com.tanks_2d.Locations.MapsList:
+    public static java.lang.String getMapForServer()
+    public static java.lang.String getMapForServer(java.lang.String)
+com.tanks_2d.Locations.UtilsLighting.Constants
+com.tanks_2d.Locations.UtilsLighting.b2d.LightBuilder
+com.tanks_2d.MainGame:
+    public static final int HEIGHT_SCREEN
+    public static final int STATUS_GAME_GAMEPLAY
+    public static final int STATUS_GAME_MENU
+    public static final int STATUS_GAME_PAUSE
+    public static final int WIDTH_SCREEN
+    private com.tanks_2d.adMod.AdAds adMod
+    public java.lang.String tokken
+    private void count_edges_screen()
+    public float getHb()
+    public float getHu()
+    public static boolean isANDROID()
+    public void switchingFromGameMenu()
+    public void transitionScreenGameToMenu()
+com.tanks_2d.ParticleEffect.Explosion_Death:
+    public void setKefm(float)
+com.tanks_2d.ParticleEffect.Garbage:
+    public float getRot()
+com.tanks_2d.ParticleEffect.ParticalShootFlash
+com.tanks_2d.ParticleEffect.ParticleCustum:
+    java.util.ArrayDeque pasricalGarbage
+    com.tanks_2d.ParticleEffect.StereoSmoke.Point_of_fire point_of_fire
+    public void addParticalsSmoke(int,float,float,int)
+    public void addParticalsSmokeStereo(float,float,float,boolean)
+    public void addPasricalExplosion(float,float,float)
+    public void addPasricalExplosionDeath(float,float)
+    public void rander_Falling_element(com.badlogic.gdx.graphics.g2d.SpriteBatch,float)
+    private void rander_pasricalExplosions()
+    private void rander_pasricalExplosionsBigParam()
+    public void rander_smoke_element(com.badlogic.gdx.graphics.g2d.SpriteBatch,float)
+com.tanks_2d.ParticleEffect.ParticleSmoke:
+    public void setTime_life(int)
+com.tanks_2d.ParticleEffect.PasricalExplosion:
+    public com.badlogic.gdx.math.Vector2 getPosition()
+    public float getRotation()
+    public float getScale()
+    public float getTime_life()
+    public boolean isLife()
+    public void setBaseScale(float)
+    public void setParameters(float,float,float)
+    public void setPosition(com.badlogic.gdx.math.Vector2)
+    public void setRot(float)
+    public void setStartTimeMax(float)
+    public void setTime_life(float)
+    public void update()
+com.tanks_2d.ParticleEffect.PasricalExplosionBigParameter:
+    public float getAlpha()
+    public float getBaseScale()
+    public com.badlogic.gdx.math.Vector2 getPosition()
+    public float getRot()
+    public float getScale()
+    public boolean isLife()
+    public void setParameters(float,float)
+    public void update(com.tanks_2d.ParticleEffect.ParticleCustum)
+com.tanks_2d.ParticleEffect.StereoSmoke.Element_up_down
+com.tanks_2d.ParticleEffect.StereoSmoke.Falling_element:
+    static final float MAX_H
+    static final float MIN_H
+    com.badlogic.gdx.graphics.g2d.SpriteBatch spriteBatch
+    public void add(float,float,float,float,com.badlogic.gdx.graphics.Texture,float,float,float,float)
+com.tanks_2d.ParticleEffect.StereoSmoke.Flying_stereo_elements_base:
+    static final float MAX_H
+    static final float MIN_H
+    float hi
+    float wi
+com.tanks_2d.ParticleEffect.StereoSmoke.PasricalDeathSmoke:
+    static final float MAX_H
+    static final float MIN_H
+com.tanks_2d.ParticleEffect.StereoSmoke.Point_of_fire:
+    public void <init>(float,float,float,com.tanks_2d.ParticleEffect.ParticleCustum)
+com.tanks_2d.ParticleEffect.StereoSmoke.Precipitation
+com.tanks_2d.ParticleEffect.StereoSmoke.Smoke_element:
+    static final float MAX_H
+    static final float MIN_H
+com.tanks_2d.R$color
+com.tanks_2d.R$drawable
+com.tanks_2d.R$mipmap
+com.tanks_2d.R$string
+com.tanks_2d.R
+com.tanks_2d.Screens.Controll.Banner:
+    private static final float defoult_time_life
+    public void addBannerWiner()
+com.tanks_2d.Screens.Controll.Controller:
+    com.badlogic.gdx.graphics.OrthographicCamera cameraGUI
+    private com.badlogic.gdx.scenes.scene2d.ui.Label score_blue
+    public com.badlogic.gdx.scenes.scene2d.ui.Label getLive_score_blue()
+    public com.badlogic.gdx.scenes.scene2d.ui.Label getLive_score_red()
+    public float getTime_in_game()
+    public boolean isButtonChangingOpponent()
+    public boolean isVoiceButton()
+    public void resize(int,int)
+    public void setBlueCommand(int)
+    public void setRedCommand(int)
+    public void setVoiceButton(boolean)
+com.tanks_2d.Screens.GamePlayScreen:
+    com.badlogic.gdx.graphics.glutils.ShaderProgram shader
+    public void <init>()
+    private void disconect_protection()
+    public int getScore_blue_command()
+    public int getScore_red_command()
+    public void sendMyCommand(int)
+    public void setCameraGame(com.tanks_2d.CameraGame)
+    public void setMainGame(com.tanks_2d.MainGame)
+    public void setPos(float,float)
+    public void setScore_blue_command(int)
+    public void setScore_red_command(int)
+com.tanks_2d.Screens.MenuScreen:
+    public void aplha_add()
+    public void setStartgameMP(boolean)
+    public void setStartgameSP(boolean)
+com.tanks_2d.Screens.PauseScreen.PauseScreen:
+    private java.lang.String convertStringCen(java.lang.String,int)
+    public static void setDataPlyerStatistics(java.util.ArrayList)
+com.tanks_2d.Screens.PauseScreen.TableResult:
+    com.badlogic.gdx.graphics.g2d.SpriteBatch spriteBatch
+    com.badlogic.gdx.utils.viewport.StretchViewport stretchViewport
+    public void rander()
+com.tanks_2d.Screens.ScreenTransition
+com.tanks_2d.Screens.ScreenTransitionFade
+com.tanks_2d.Shaders.ShaderFilm
+com.tanks_2d.Shaders.Shaders:
+    public com.badlogic.gdx.graphics.g2d.SpriteBatch getSpriteBatch()
+com.tanks_2d.Units.BulletPool.Bullet:
+    private static final int BULLET_SPEED
+    public void fireBullet(com.badlogic.gdx.math.Vector2,com.badlogic.gdx.math.Vector2,int)
+    public int getNamber()
+com.tanks_2d.Units.BulletPool.BulletPool:
+    public void <init>(int,int)
+com.tanks_2d.Units.Bullets:
+    private boolean checkingTerrainObstacles(float,float)
+    public com.tanks_2d.Units.BulletPool.Bullet getBullet(int)
+com.tanks_2d.Units.ListPlayers
+com.tanks_2d.Units.NikName:
+    public void <init>()
+com.tanks_2d.Units.Player
+com.tanks_2d.Units.Tanks.BotAdmin
+com.tanks_2d.Units.Tanks.LogikBOT
+com.tanks_2d.Units.Tanks.LogikTank
+com.tanks_2d.Units.Tanks.OpponentsTanks:
+    private void attack()
+    public com.badlogic.gdx.math.Vector2 getDirectionMovementControll()
+    static java.lang.String getNikNameGen()
+    public com.badlogic.gdx.math.Vector2 getPoSmoke()
+    public com.tanks_2d.Units.Tanks.TowerRotation getTowerRotation()
+    private void move(float)
+    public void setCommand(java.lang.Integer)
+    public void setDirection(com.badlogic.gdx.math.Vector2)
+    public void setDirection_tower(com.badlogic.gdx.math.Vector2)
+    public void setNomder(int)
+    public void setPosition(float,float,float)
+    public void setPosition(com.badlogic.gdx.math.Vector2)
+    public void update(float)
+com.tanks_2d.Units.Tanks.Tank:
+    com.tanks_2d.Screens.Controll.Controller controller
+    com.badlogic.gdx.graphics.Texture imgr
+    public com.badlogic.gdx.math.Vector2 getDirection()
+    public void respownTank(int)
+    public float returnAngle(com.badlogic.gdx.math.Vector2)
+    public static void setMy_Command(java.lang.Integer)
+com.tanks_2d.Units.Tanks.TanksOther:
+    com.tanks_2d.Units.Tanks.BotAdmin botAdmin
+    java.util.ArrayList points
+    public void clearListOponent()
+    public void createFuelTank(int)
+    public void deathAllPlayers()
+    private boolean inCanMove(int,int)
+    public void updateClienOtherTank()
+    public void updateLocalTank()
+    public void updateOtherTank(boolean)
+com.tanks_2d.Units.Tanks.TanksOtherSP
+com.tanks_2d.Units.Tanks.TempPoint
+com.tanks_2d.Units.Tanks.TowerRotation:
+    private boolean checkVisebleRadar(float,float)
+    public int getTarget_tank()
+com.tanks_2d.Utils.VectorUtils:
+    public void <init>()
+    public static float getLen(com.badlogic.gdx.math.Vector2,com.badlogic.gdx.math.Vector2)
+    public static float getLen2(float,float,float,float)
+    public static com.badlogic.gdx.math.Vector2 getTempVector1()
+    public static com.badlogic.gdx.math.Vector2 getTempVector2()
+    public static com.badlogic.gdx.math.Vector3 getTempVector3()
+    public static com.badlogic.gdx.math.Vector2 takeTargetVector2Through(com.badlogic.gdx.math.Vector2,com.badlogic.gdx.math.Vector2)
+    public static com.badlogic.gdx.math.Vector2 tempVector2(float,float)
+    public static com.badlogic.gdx.math.Vector3 tempVector3(float,float)
+    public static com.badlogic.gdx.math.Vector2 v3tov2(com.badlogic.gdx.math.Vector3)
+com.tanks_2d.adMod.AdAds
+com.tanks_2d.adMod.AdMod
+org.objenesis.Objenesis
+org.objenesis.ObjenesisBase
+org.objenesis.ObjenesisException
+org.objenesis.ObjenesisHelper
+org.objenesis.ObjenesisSerializer
+org.objenesis.ObjenesisStd
+org.objenesis.instantiator.SerializationInstantiatorHelper
+org.objenesis.instantiator.android.Android10Instantiator
+org.objenesis.instantiator.android.Android17Instantiator
+org.objenesis.instantiator.android.Android18Instantiator
+org.objenesis.instantiator.android.AndroidSerializationInstantiator
+org.objenesis.instantiator.basic.AccessibleInstantiator
+org.objenesis.instantiator.basic.ConstructorInstantiator
+org.objenesis.instantiator.basic.FailingInstantiator
+org.objenesis.instantiator.basic.NewInstanceInstantiator
+org.objenesis.instantiator.basic.NullInstantiator
+org.objenesis.instantiator.basic.ObjectInputStreamInstantiator$MockStream
+org.objenesis.instantiator.basic.ObjectInputStreamInstantiator
+org.objenesis.instantiator.basic.ObjectStreamClassInstantiator
+org.objenesis.instantiator.gcj.GCJInstantiator
+org.objenesis.instantiator.gcj.GCJInstantiatorBase$DummyStream
+org.objenesis.instantiator.gcj.GCJInstantiatorBase
+org.objenesis.instantiator.gcj.GCJSerializationInstantiator
+org.objenesis.instantiator.jrockit.JRockitLegacyInstantiator
+org.objenesis.instantiator.perc.PercInstantiator
+org.objenesis.instantiator.perc.PercSerializationInstantiator
+org.objenesis.instantiator.sun.SunReflectionFactoryHelper
+org.objenesis.instantiator.sun.SunReflectionFactoryInstantiator
+org.objenesis.instantiator.sun.SunReflectionFactorySerializationInstantiator
+org.objenesis.instantiator.sun.UnsafeFactoryInstantiator
+org.objenesis.strategy.BaseInstantiatorStrategy
+org.objenesis.strategy.PlatformDescription
+org.objenesis.strategy.SerializingInstantiatorStrategy
+org.objenesis.strategy.SingleInstantiatorStrategy
+org.objenesis.strategy.StdInstantiatorStrategy
+com.tanks_2d.Shaders.Shaders:
+    public static java.lang.String nigFR
+    public static java.lang.String nigVR

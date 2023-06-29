@@ -22,7 +22,7 @@ public class Network {
         kryo.register(StockMessOut.class);
         kryo.register(StockMessInClient.class);
         kryo.register(GivePlayerParameters.class);
-        //   kryo.register(Frag.class);
+        kryo.register(Frag.class);
         kryo.register(Register_Package.class);
     }
 

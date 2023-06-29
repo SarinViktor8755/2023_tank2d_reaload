@@ -51,6 +51,9 @@ public class RouterMassege {
             Player b_player = ListPlayers.getBasket().get(sm.textM);
             if (b_player == null){
                 Player p = new Player(id_coonect, (int) sm.p1, sm.textM);
+
+
+
                 gameServer.getLp().addPlayer(p);
                 ListPlayers.getBasket().put(p.getTokken(),p);
                 System.out.println("KORZINA_ADD");
