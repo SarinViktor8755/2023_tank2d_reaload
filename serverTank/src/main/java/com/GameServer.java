@@ -124,6 +124,7 @@ public class GameServer {
 
 
                                    if (object instanceof Network.Register_Package) { //ПЕРЕДКЛАТЬ
+
                                        Network.Register_Package rp =  (Network.Register_Package) object;
                                        String nikname = rp.nik;
                                        String tokken = rp.tokken;
@@ -136,14 +137,20 @@ public class GameServer {
                                            ListPlayers.getBasket().put(p.getTokken(),p);
                                            System.out.println("KORZINA_ADD");
                                            p.setNikName(nikname);
+                                           p.setCommand(comand);
                                        }
                                        else {
                                            System.out.println("KORZINA_BASKET");
                                            b_player.setId(connection.getID());
                                            // ListPlayers.getListPlayers().put(id_coonect,b_player);
                                            getLp().addPlayer(b_player);
+
                                            b_player.setNikName(nikname);
+                                           b_player.setCommand(comand);
+                                           
                                            send_PARAMETERS_PLAYER(b_player);
+
+
                                        }
 
                                    }
