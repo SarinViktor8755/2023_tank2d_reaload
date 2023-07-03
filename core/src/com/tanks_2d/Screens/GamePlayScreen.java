@@ -396,7 +396,7 @@ public class GamePlayScreen implements Screen {
         this.score_blue_command = score_blue_command;
     }
 
-    public Shaders getS() {
+    public Shaders getShaderWhite() {
         return s;
     }
 }

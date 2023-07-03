@@ -234,12 +234,12 @@ public class RouterSM {
         mainGame.getGamePlayScreen().getTank().setHp((int) sm.p3);
 
         //mainGame.getGamePlayScreen().getTank().set((int) sm.p4);
-        if (!mainGame.getGamePlayScreen().getTank().isLive()) {
-            mainGame.getGamePlayScreen().getS().minus(80);
+        if (!mainGame.getGamePlayScreen().getTank().isLive()) { // если мертв
+            mainGame.getGamePlayScreen().getShaderWhite().minus(80);
             mainGame.getGamePlayScreen().getPc().addAnimationDeath(mainGame.getGamePlayScreen().getTank().getPosition().x, mainGame.getGamePlayScreen().getTank().getPosition().y);
         } else {
-            mainGame.getGamePlayScreen().getAudioEngine().pley_alarm_hit();
-            mainGame.getGamePlayScreen().getS().minus(100 - mainGame.getGamePlayScreen().getTank().getHp());
+            mainGame.getGamePlayScreen().getAudioEngine().pley_alarm_hit(); // если жив
+            mainGame.getGamePlayScreen().getShaderWhite().minus(100 - mainGame.getGamePlayScreen().getTank().getHp());
         }
 
     }

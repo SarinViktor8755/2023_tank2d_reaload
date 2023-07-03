@@ -131,7 +131,7 @@ public class MainClient {
                 //  System.out.println(tank);
 
                 if (mg.getGamePlayScreen().getTanksOther().getTankForID(pp.nom) == null) {
-                    // System.out.println("NET POLSOVATELY");
+                     System.out.println("NET POLSOVATELY!!!!!!!!!!!!!!!!!!");
                     if (MathUtils.randomBoolean(.01f))
                         networkPacketStock.toSendMyParPlayer(pp.nom);
 
@@ -189,6 +189,7 @@ public class MainClient {
 
 
         }
+
 
 
     }

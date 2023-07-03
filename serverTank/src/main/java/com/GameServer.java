@@ -100,10 +100,14 @@ public class GameServer {
 
                                            return;
                                        } catch (NullPointerException e) {
+
+
                                            System.out.println("------------------ _______________________");
                                            System.out.println(connection.getID());
                                            System.out.println(lp);
-                                           e.printStackTrace();
+                                       //    e.printStackTrace();
+
+                                           if(MathUtils.randomBoolean())token_request_udp(connection.getID());
                                            return;
                                        }
                                    }
@@ -197,6 +201,12 @@ public class GameServer {
 
     }
 
+    public void token_request_udp(int id){
+        System.out.println("token_request_udp");
+        Network.Register_Package rt = new Network.Register_Package();
+        this.server.sendToUDP(id,rt);
+    }
+
     public void send_PARAMETERS_PLAYER(int HP, int comant, String nikName, int forIdPlayer, int aboutPlayer) {
         Network.StockMessOut stockMessOut = new Network.StockMessOut();
         stockMessOut.tip = Heading_type.PARAMETERS_PLAYER;
@@ -218,7 +228,6 @@ public class GameServer {
         stockMessOut.p1 = x; // позиция респауна
         stockMessOut.p2 = y; // позиция респауна
         stockMessOut.p3 = id; /// ид игрока
-
 
         /// комада игрока - отом исправить мсена команды
         this.server.sendToTCP(id, stockMessOut);
@@ -294,7 +303,7 @@ public class GameServer {
     }
 
     /////!!!!!!!!!!!!!!!!!!!!!!!!!!
-    public void send_PARAMETERS_PLAYER(Player p) { // для всех рассылк апараметров --- этот пакет определяет полнстью характеристики игрока))) !!!!!!!!!!
+     public void  send_PARAMETERS_PLAYER(Player p) { // для всех рассылк апараметров --- этот пакет определяет полнстью характеристики игрока))) !!!!!!!!!!
         Network.StockMessOut stockMessOut = new Network.StockMessOut();
         if (p.getStatus() == Heading_type.DISCONECT_PLAYER) {
             send_DISCONECT_PLAYER(p.getId());

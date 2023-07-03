@@ -3,8 +3,8 @@
 # min_api: 24
 # common_typos_disable
 # {"id":"com.android.tools.r8.mapping","version":"2.0"}
-# pg_map_id: eb18a3e
-# pg_map_hash: SHA-256 eb18a3ee2be6009a094eb45c1c6922467b294cadc93ae02eae26521d4d689554
+# pg_map_id: f9ed1d5
+# pg_map_hash: SHA-256 f9ed1d54d313b8893795f1c84ecd723ab84d9a874046c33a0e256b16b37f9595
 com.tanks_2d.Assets.AssetsManagerGame -> b.a:
     com.badlogic.gdx.assets.AssetManager assetManager -> b
     java.util.HashMap assets -> a
@@ -446,7 +446,7 @@ com.tanks_2d.Screens.GamePlayScreen -> i.a:
     int getLive_red_command() -> i
     com.tanks_2d.MainGame getMainGame() -> j
     com.tanks_2d.ParticleEffect.ParticleCustum getPc() -> k
-    com.tanks_2d.Shaders.Shaders getS() -> l
+    com.tanks_2d.Shaders.Shaders getShaderWhite() -> l
     com.tanks_2d.Units.Tanks.Tank getTank() -> m
     com.tanks_2d.Units.Tanks.TanksOther getTanksOther() -> n
     float getTimeInGame() -> o
