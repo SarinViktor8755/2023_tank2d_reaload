@@ -1,5 +1,5 @@
 apply plugin: 'java'
-sourceCompatibility = 1.6
+sourceCompatibility = 1.8
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 sourceSets.main.java.srcDirs = [ "src/" ]
 project.ext.mainClassName = "main.java.com.ServerLauncher"
@@ -43,6 +43,7 @@ eclipse.project {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(8)  // Укажите нужную версию (8, 11, 17)
+    }
 }

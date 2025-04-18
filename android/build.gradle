@@ -1,6 +1,8 @@
 android {
-    buildToolsVersion "33.0.0"
-    compileSdkVersion 32
+    buildToolsVersion "34.0.0"  // Обновленная версия build tools
+    namespace 'com.tanks_2d'    // Исправленный namespace (должен совпадать с applicationId)
+    compileSdkVersion 34        // Обновленная версия compileSdk
+
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
@@ -11,18 +13,20 @@ android {
             assets.srcDirs = ['../assets']
             jniLibs.srcDirs = ['libs']
         }
-
     }
+
     packagingOptions {
         exclude 'META-INF/robovm/ios/robovm.xml'
     }
+
     defaultConfig {
         applicationId "com.tanks_2d"
-        minSdkVersion 14
-        targetSdkVersion 32
+        minSdkVersion 21        // Минимальная поддерживаемая версия Android повышена до 21
+        targetSdkVersion 34     // Обновленная версия targetSdk
         versionCode 5
         versionName "5.0"
     }
+
     buildTypes {
         release {
             minifyEnabled true
@@ -30,12 +34,14 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+
+    // Добавленные настройки для поддержки Java 8
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
-
-// called every time gradle gets executed, takes the native dependencies of
-// the natives configuration, and extracts them to the proper libs/ folders
-// so they get packed with the APK.
 task copyAndroidNatives {
     doFirst {
         file("libs/armeabi-v7a/").mkdirs()
@@ -60,8 +66,10 @@ task copyAndroidNatives {
     }
 }
 
-tasks.matching { it.name.contains("merge") && it.name.contains("JniLibFolders") }.configureEach { packageTask ->
-    packageTask.dependsOn 'copyAndroidNatives'
+tasks.whenTaskAdded { packageTask ->
+    if (packageTask.name.contains("merge") && packageTask.name.contains("JniLibFolders")) {
+        packageTask.dependsOn 'copyAndroidNatives'
+    }
 }
 
 task run(type: Exec) {

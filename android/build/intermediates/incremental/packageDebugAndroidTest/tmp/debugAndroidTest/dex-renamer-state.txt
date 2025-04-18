@@ -1,4 +1,0 @@
-#Thu Jun 01 23:38:12 OMST 2023
-base.0=E\:\\game_dev\\tanks\\android\\build\\intermediates\\dex\\debugAndroidTest\\mergeDexDebugAndroidTest\\classes.dex
-path.0=classes.dex
-renamed.0=classes.dex

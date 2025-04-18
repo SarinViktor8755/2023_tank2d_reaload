@@ -1,4 +1,0 @@
-#Mon Jul 03 18:11:00 OMST 2023
-base.0=E\:\\game_dev\\tanks\\android\\build\\intermediates\\dex\\release\\minifyReleaseWithR8\\classes.dex
-path.0=classes.dex
-renamed.0=classes.dex
