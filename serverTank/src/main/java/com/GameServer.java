@@ -17,6 +17,9 @@ import com.tanks_2d.Screens.PauseScreen.PauseScreen;
 
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.Date;
 
 
@@ -42,6 +45,8 @@ public class GameServer {
 
 
     public GameServer(String[] args, ServerLauncher serverLauncher) throws IOException {
+
+        try {
         GameServer.break_in_the_game = false;
 
         int bufferSize = 10000000; // Recommened value.
@@ -175,11 +180,54 @@ public class GameServer {
                                }
                            }
         );
+
+
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+                System.out.println("Shutdown hook triggered");
+                shutdownServer();
+            }));
         this.indexBot = new IndexBot(this, GameServer.getCountBot(args));
+    } catch (Exception e) {
+        handleServerCrash(e);
+    }
+
     }
 
     public Server getServer() {
         return server;
+    }
+
+    private void handleServerCrash(Exception e) {
+        System.err.println("!!! SERVER CRASH !!!");
+        e.printStackTrace();
+
+        // Логирование ошибки
+        try {
+            Files.write(Paths.get("server_crash.log"),
+                    (new Date() + ": " + e.toString() + "\n").getBytes(),
+                    StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+
+        // Попытка graceful shutdown
+        shutdownServer();
+
+        // Можно добавить автоматический рестарт
+        // restartServer();
+    }
+
+    public void shutdownServer() {
+        try {
+            if (server != null) {
+                server.stop();
+            }
+
+            System.out.println("Server stopped gracefully");
+        } catch (Exception e) {
+            System.err.println("Error during shutdown:");
+            e.printStackTrace();
+        }
     }
 
 

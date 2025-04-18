@@ -372,6 +372,7 @@ public class ListPlayers {
         } catch (
                 ConcurrentModificationException e) {
             e.printStackTrace();
+
         }
     }
 
